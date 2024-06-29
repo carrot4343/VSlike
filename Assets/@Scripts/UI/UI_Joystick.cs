@@ -12,12 +12,10 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
     Vector2 touchPosition;
     Vector2 moveDir;
     float joystickRadius;
-    PlayerController player;
 
     void Start()
     {
         joystickRadius = backGround.gameObject.GetComponent<RectTransform>().sizeDelta.y / 2;
-        player = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     void Update()
@@ -40,8 +38,7 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
     {
         handler.transform.position = touchPosition;
         moveDir = Vector2.zero;
-
-        player.MoveDir = moveDir;
+        Managers._Game.MoveDir = moveDir;
     }
     public void OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
@@ -51,6 +48,6 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
 
         Vector2 newPosition = touchPosition + moveDir * distance;
         handler.transform.position = newPosition;
-        player.MoveDir = moveDir;
+        Managers._Game.MoveDir = moveDir;
     }
 }
