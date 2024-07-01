@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class GameScene : MonoBehaviour
 {
-    public GameObject playerPrefab;
-    public GameObject snakePrefab;
-    public GameObject joystckPrefab;
     GameObject player;
     GameObject snake;
     GameObject joystick;
@@ -15,15 +12,21 @@ public class GameScene : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Instantiate(playerPrefab);
-        snake = GameObject.Instantiate(snakePrefab);
-        joystick = GameObject.Instantiate(joystckPrefab);
+        Managers._Resource.LoadAllAsync<GameObject>("Prefabs", (key, count, totalCount) =>
+        {
+            Debug.Log($"{key} {count} / {totalCount}");
+        });
+
+    }
+
+    void StartLoaded()
+    {
 
         GameObject monsters = new GameObject() { name = "@Monsters" };
         snake.transform.parent = monsters.transform;
 
-        player.name = "Player";
-        snake.name = snakePrefab.name;
+        //player.name = "Player";
+        //snake.name = snakePrefab.name;
 
         player.AddComponent<PlayerController>();
         Camera.main.GetComponent<CameraController>().target = player;
