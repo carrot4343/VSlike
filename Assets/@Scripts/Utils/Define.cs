@@ -13,4 +13,12 @@ public class Define
     {
 
     }
+
+    public enum ObjectType
+    {
+        Player,
+        Monster,
+        Projectile,
+        Env,
+    }
 }

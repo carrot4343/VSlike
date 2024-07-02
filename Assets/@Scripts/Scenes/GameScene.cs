@@ -4,34 +4,34 @@ using UnityEngine;
 
 public class GameScene : MonoBehaviour
 {
-    GameObject player;
-    GameObject snake;
-    GameObject joystick;
-
-
-
     void Start()
     {
         Managers._Resource.LoadAllAsync<GameObject>("Prefabs", (key, count, totalCount) =>
         {
             Debug.Log($"{key} {count} / {totalCount}");
+
+            if (count == totalCount)
+                StartLoaded();
         });
 
     }
 
     void StartLoaded()
     {
+        var player = Managers._Object.Spawn<PlayerController>();
 
-        GameObject monsters = new GameObject() { name = "@Monsters" };
-        snake.transform.parent = monsters.transform;
+        for(int i = 0; i < 10; i++)
+        {
+            MonsterController mc = Managers._Object.Spawn<MonsterController>(0);
+            mc.transform.position = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
+        }
 
-        //player.name = "Player";
-        //snake.name = snakePrefab.name;
+        var joystick = Managers._Resource.Instantiate("UI_Joystick.prefab");
+        joystick.name = "@UI_Jotstick";
 
-        player.AddComponent<PlayerController>();
-        Camera.main.GetComponent<CameraController>().target = player;
-
-        joystick.name = "@UI_Joystick";
+        var map = Managers._Resource.Instantiate("Map");
+        map.name = "@Map";
+        Camera.main.GetComponent<CameraController>().target = player.gameObject;
     }
 
     void Update()

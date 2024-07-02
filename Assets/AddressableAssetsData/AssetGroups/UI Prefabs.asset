@@ -10,25 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Prefabs
+  m_Name: UI Prefabs
   m_EditorClassIdentifier: 
-  m_GroupName: Prefabs
+  m_GroupName: UI Prefabs
   m_Data:
     m_SerializedData: []
-  m_GUID: 6e3ada4b2422add4a9f4253767857f1c
+  m_GUID: f76f434e4a846ce46b6b1825077df50b
   m_SerializeEntries:
-  - m_GUID: 41a97b221b33888448c517a43ee3d8c8
-    m_Address: Slime_01.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Prefabs
-  - m_GUID: 25a24350557b0ef4c8c5f7d62deeb158
-    m_Address: Snake_01.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Prefabs
-  - m_GUID: aa5d6971e80f3794ebf4175bb0eb3463
-    m_Address: Map
+  - m_GUID: aff7fe0e34c9fa7459451c3f9a4659f0
+    m_Address: UI_Joystick.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Prefabs
@@ -36,5 +26,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 68254714d3771cc4296e19cbb58661d1, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 7e94923e1d1488644bd9c04e0d4d336b, type: 2}
-    - {fileID: 11400000, guid: cf0eef1756ab83f428f9e9fb05539a6f, type: 2}
+    - {fileID: 11400000, guid: 673fbc8c8bbcd7746965a27f0ec71eb7, type: 2}
+    - {fileID: 11400000, guid: fb6f58b5ca6caa54cb7b1739e090419a, type: 2}

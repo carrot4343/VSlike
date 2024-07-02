@@ -31,6 +31,11 @@ public class ResourceManager
             Debug.Log($"Failed to load prefab : {key}");
             return null;
         }
+        //Pooling
+        if(pooling)
+        {
+
+        }
 
         //肺靛茄 府家胶 积己
         GameObject go = Object.Instantiate(prefab, parent);
