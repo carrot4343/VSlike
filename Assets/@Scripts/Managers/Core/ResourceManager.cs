@@ -34,7 +34,7 @@ public class ResourceManager
         //Pooling
         if(pooling)
         {
-
+            return Managers._Pool.Pop(prefab);
         }
 
         //肺靛茄 府家胶 积己
@@ -46,6 +46,9 @@ public class ResourceManager
     public void Destroy(GameObject go)
     {
         if (go == null)
+            return;
+
+        if (Managers._Pool.Push(go))
             return;
 
         Object.Destroy(go);

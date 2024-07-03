@@ -45,6 +45,7 @@ public class PlayerController : CreatureController
 
     public override void OnDamaged(BaseController attacker, int damage)
     {
+        //기존 부모클래스의 OnDamaged 를 유지하면서
         base.OnDamaged(attacker, damage);
 
         Debug.Log($"OnDamaged ! {HP}");

@@ -14,15 +14,16 @@ public class MonsterController : CreatureController
         return true;
     }
 
-    // Update is called once per frame
+    //물리 움직임을 이용할 땐 update 보단 fixed update
     void FixedUpdate()
     {
         PlayerController pc = Managers._Object.Player;
         if (pc == null)
             return;
 
+        //Player와 Monster의 벡터 관계를 통해 이동 결정. flipX 는 스프라이트 회전
         Vector3 dir = pc.transform.position - transform.position;
-        Vector3 newPos = transform.position + dir.normalized * Time.deltaTime * speed;
+        Vector3 newPos = transform.position + dir.normalized * Time.deltaTime * _speed;
         GetComponent<Rigidbody2D>().MovePosition(newPos);
         GetComponent<SpriteRenderer>().flipX = dir.x > 0;
     }
