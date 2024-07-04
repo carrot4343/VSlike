@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : CreatureController
 {
     Vector2 moveDir = Vector2.zero;
-    float speed = 1.0f;
+    float speed = 3.0f;
 
     void Start()
     {

@@ -8,6 +8,7 @@ public class SpawningPool : MonoBehaviour
 
     float spawnInterval = 0.1f;
     int maxMonsterCount = 100;
+
     Coroutine coUpdateSpawningPool;
     void Start()
     {

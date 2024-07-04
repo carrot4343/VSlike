@@ -21,10 +21,11 @@ class Pool
             return root;
         }
     }
-
+    
     public Pool(GameObject prefab)
     {
         _prefab = prefab;
+        //생성 / 활성화 / 비활성화 / 파괴
         _pool = new ObjectPool<GameObject>(OnCreate, OnGet, OnRelease, OnDestroy);
     }
 
@@ -41,6 +42,7 @@ class Pool
     GameObject OnCreate()
     {
         GameObject go = GameObject.Instantiate(_prefab);
+        //Root 아래에 모이게끔
         go.transform.parent = Root;
         go.name = _prefab.name;
         return go;
@@ -66,6 +68,7 @@ public class PoolManager
 {
     Dictionary<string, Pool> pools = new Dictionary<string, Pool>();
 
+    //오브젝트 활성화
     public GameObject Pop(GameObject prefab)
     {
         if (pools.ContainsKey(prefab.name) == false)
@@ -73,7 +76,7 @@ public class PoolManager
 
         return pools[prefab.name].Pop();
     }
-
+    //비활성화
     public bool Push(GameObject go)
     {
         if (pools.ContainsKey(go.name) == false)
@@ -82,10 +85,12 @@ public class PoolManager
         pools[go.name].Push(go);
         return true;
     }
-
+    //풀 생성
     void CreatePool(GameObject prefab)
     {
         Pool pool = new Pool(prefab);
         pools.Add(prefab.name, pool);
     }
+
+    
 }

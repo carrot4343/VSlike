@@ -11,9 +11,14 @@ public class GameScene : MonoBehaviour
             Debug.Log($"{key} {count} / {totalCount}");
 
             if (count == totalCount)
-                StartLoaded();
+                Managers._Resource.LoadAllAsync<TextAsset>("Data", (key2, count2, totalCount2) =>
+                {
+                    if (count2 == totalCount2)
+                    {
+                        StartLoaded();
+                    }
+                });
         });
-
     }
 
     void StartLoaded()
