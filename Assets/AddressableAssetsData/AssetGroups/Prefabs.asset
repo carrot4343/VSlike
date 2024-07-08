@@ -21,17 +21,22 @@ MonoBehaviour:
     m_Address: Slime_01.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Prefabs
+    - Preload
   - m_GUID: 25a24350557b0ef4c8c5f7d62deeb158
     m_Address: Snake_01.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Prefabs
+    - Preload
   - m_GUID: aa5d6971e80f3794ebf4175bb0eb3463
     m_Address: Map
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Prefabs
+    - Preload
+  - m_GUID: 7786076883138ec40b89ab83f02fa079
+    m_Address: BlueGem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 68254714d3771cc4296e19cbb58661d1, type: 2}
   m_SchemaSet:

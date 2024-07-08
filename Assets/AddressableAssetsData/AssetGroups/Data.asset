@@ -21,7 +21,7 @@ MonoBehaviour:
     m_Address: PlayerData.xml
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Data
+    - Preload
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 68254714d3771cc4296e19cbb58661d1, type: 2}
   m_SchemaSet:

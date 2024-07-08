@@ -6,18 +6,14 @@ public class GameScene : MonoBehaviour
 {
     void Start()
     {
-        Managers._Resource.LoadAllAsync<GameObject>("Prefabs", (key, count, totalCount) =>
+        Managers._Resource.LoadAllAsync<Object>("Preload", (key, count, totalCount) =>
         {
             Debug.Log($"{key} {count} / {totalCount}");
 
             if (count == totalCount)
-                Managers._Resource.LoadAllAsync<TextAsset>("Data", (key2, count2, totalCount2) =>
-                {
-                    if (count2 == totalCount2)
-                    {
-                        StartLoaded();
-                    }
-                });
+            {
+                StartLoaded();                    
+            };
         });
     }
 
@@ -25,12 +21,12 @@ public class GameScene : MonoBehaviour
     {
         SpawningPool spawingPool = gameObject.AddComponent<SpawningPool>();
 
-        var player = Managers._Object.Spawn<PlayerController>();
+        var player = Managers._Object.Spawn<PlayerController>(Vector3.zero);
 
         for(int i = 0; i < 10; i++)
         {
-            MonsterController mc = Managers._Object.Spawn<MonsterController>(0);
-            mc.transform.position = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
+            Vector3 randPos = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
+            MonsterController mc = Managers._Object.Spawn<MonsterController>(randPos);
         }
 
         var joystick = Managers._Resource.Instantiate("UI_Joystick.prefab");

@@ -10,15 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: UI Prefabs
+  m_Name: Spirtes
   m_EditorClassIdentifier: 
-  m_GroupName: UI Prefabs
+  m_GroupName: Spirtes
   m_Data:
     m_SerializedData: []
-  m_GUID: f76f434e4a846ce46b6b1825077df50b
+  m_GUID: a711b95681bc26f41af26361cf9dbb64
   m_SerializeEntries:
-  - m_GUID: aff7fe0e34c9fa7459451c3f9a4659f0
-    m_Address: UI_Joystick.prefab
+  - m_GUID: 86ce6973c1157184ba84929dbfe5abfc
+    m_Address: BlueGem.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 309175c197f35bd42bc0042f49a9b0ff
+    m_Address: YellowGem.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: b64f5b021f9c42d48b9824eaa257c5fa
+    m_Address: GreenGem.sprite
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
@@ -26,5 +36,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 68254714d3771cc4296e19cbb58661d1, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 673fbc8c8bbcd7746965a27f0ec71eb7, type: 2}
-    - {fileID: 11400000, guid: fb6f58b5ca6caa54cb7b1739e090419a, type: 2}
+    - {fileID: 11400000, guid: 8c2c89cc19b32654bb672aed2220023d, type: 2}
+    - {fileID: 11400000, guid: e10615364f2783b4e839667860c2f8bc, type: 2}

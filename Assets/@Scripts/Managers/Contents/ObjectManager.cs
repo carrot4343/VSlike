@@ -8,9 +8,10 @@ public class ObjectManager
     public PlayerController Player { get; private set; }
     public HashSet<MonsterController> Monsters { get; } = new HashSet<MonsterController>();
     public HashSet<ProjectileController> Projectiles { get; } = new HashSet<ProjectileController>();
+    public HashSet<GemController> Gems { get; } = new HashSet<GemController>();
 
-    //load한 리소스를 바탕으로 맵에 spawn하는 함수. 스폰할 객체의 ID를 매개변수로 받음.
-    public T Spawn<T>(int templateID = 0) where T : BaseController
+    //load한 리소스를 바탕으로 맵에 spawn하는 함수. 스폰할 객체의 ID와 스폰 위치를 매개변수로 받음.
+    public T Spawn<T>(Vector3 position, int templateID = 0) where T : BaseController
     {
         //스폰하는 물체의 타입 정보
         System.Type type = typeof(T);
@@ -21,9 +22,11 @@ public class ObjectManager
             //리소스 매니저의 Instantiate를 활용
             GameObject go = Managers._Resource.Instantiate("Slime_01.prefab");
             go.name = "Player";
+            go.transform.position = position;
 
             PlayerController pc = go.GetOrAddComponent<PlayerController>();
             Player = pc;
+            pc.Init();
 
             return pc as T;
         }
@@ -31,11 +34,30 @@ public class ObjectManager
         {
             string name = "Snake_01";
             GameObject go = Managers._Resource.Instantiate(name + ".prefab", pooling: true);
+            go.transform.position = position;
 
             MonsterController mc = go.GetOrAddComponent<MonsterController>();
             Monsters.Add(mc);
+            mc.Init();
 
             return mc as T;
+        }
+        else if(type == typeof(GemController))
+        {
+            GameObject go = Managers._Resource.Instantiate(Define.EXP_GEM_PREFAB, pooling: true);
+            go.transform.position = position;
+
+            GemController gc = go.GetOrAddComponent<GemController>();
+            Gems.Add(gc);
+            gc.Init();
+
+            string key = UnityEngine.Random.Range(0, 2) == 0 ? "BlueGem.sprite" : "GreenGem.sprite";
+            Sprite sprite = Managers._Resource.Load<Sprite>(key);
+            go.GetComponent<SpriteRenderer>().sprite = sprite;
+
+            GameObject.Find("@Grid").GetComponent<GridController>().Add(go);
+
+            return gc as T;
         }
 
         return null;
@@ -45,11 +67,11 @@ public class ObjectManager
     {
         System.Type type = typeof(T);
 
-        if(type == typeof(PlayerController))
+        if (type == typeof(PlayerController))
         {
             //Player가 Despawn? 생각해 봐야 할 문제.
         }
-        else if(type == typeof(MonsterController))
+        else if (type == typeof(MonsterController))
         {
             Monsters.Remove(obj as MonsterController);
             Managers._Resource.Destroy(obj.gameObject);
@@ -58,6 +80,12 @@ public class ObjectManager
         {
             Projectiles.Remove(obj as ProjectileController);
             Managers._Resource.Destroy(obj.gameObject);
+        }
+        else if (type == typeof(GemController))
+        {
+            Gems.Remove(obj as GemController);
+            Managers._Resource.Destroy(obj.gameObject);
+            GameObject.Find("@Grid").GetComponent<GridController>().Remove(obj.gameObject);
         }
     }
 }

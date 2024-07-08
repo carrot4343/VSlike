@@ -25,6 +25,11 @@ public class BaseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateController();
+    }
+
+    public virtual void UpdateController()
+    {
+
     }
 }

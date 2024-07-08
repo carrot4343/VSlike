@@ -68,9 +68,13 @@ public class ResourceManager
             callback?.Invoke(resource as T);
             return;
         }
+        //현재 addressable에 sprite는 texture의 자식으로 존재하므로 키값을 대체하기 위함.
+        string loadKey = key;
+        if (key.Contains(".sprite"))
+            loadKey = $"{key}[{key.Replace(".sprite", "")}]";
 
         //리소스 비동기 로딩
-        var asyncOperation = Addressables.LoadAssetAsync<T>(key);
+        var asyncOperation = Addressables.LoadAssetAsync<T>(loadKey);
         //로드를 완료하면
         asyncOperation.Completed += (op) =>
         {

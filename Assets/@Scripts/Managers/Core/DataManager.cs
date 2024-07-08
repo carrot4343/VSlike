@@ -34,11 +34,11 @@ public class DataManager
             return (Item)xs.Deserialize(stream);
     }
 
-    Loader LoadXml<Loader, Key, Item>(string name) where Loader : ILoader<Key, Item>, new()
+    Loader LoadXml<Loader, Key, Item>(string name) where Loader : ILoader<Key, Item>
     {
         XmlSerializer xs = new XmlSerializer(typeof(Loader));
         TextAsset textAsset = Managers._Resource.Load<TextAsset>(name);
         using (MemoryStream stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(textAsset.text)))
             return (Loader)xs.Deserialize(stream);
-    }
+    }    
 }

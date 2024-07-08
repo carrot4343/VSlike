@@ -70,6 +70,8 @@ public class MonsterController : CreatureController
             StopCoroutine(coDotDamage);
         coDotDamage = null;
 
+        GemController gc = Managers._Object.Spawn<GemController>(transform.position);
+
         Managers._Object.Despawn(this);
     }
 }
