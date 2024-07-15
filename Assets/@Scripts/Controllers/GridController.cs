@@ -4,6 +4,7 @@ using UnityEngine;
 
 class Cell
 {
+    //그리드 셀에 소속된 오브젝트 리스트셋
     public HashSet<GameObject> Objects { get; } = new HashSet<GameObject>();
 }
 public class GridController : BaseController
@@ -22,13 +23,16 @@ public class GridController : BaseController
 
     public void Add(GameObject go)
     {
+        //오브젝트의 위치를 좌표(그리드)로 변환
         Vector3Int cellPos = grid.WorldToCell(go.transform.position);
 
+        //위에서 얻은 좌표에 해당하는 그리드 셀
         Cell cell = GetCell(cellPos);
         if(cell == null)
         {
             return;
         }
+        //그리드 셀의 오브젝트 리스트에 go 추가
         cell.Objects.Add(go);
     }
 
@@ -41,7 +45,8 @@ public class GridController : BaseController
         {
             return;
         }
-        cell.Objects.Add(go);
+        //add와 동일하나 셀의 오브젝트 리스트에서 add인지 remove 인지만 다름.
+        cell.Objects.Remove(go);
     }
 
     Cell GetCell(Vector3Int cellPos)
@@ -77,6 +82,7 @@ public class GridController : BaseController
                 if (cells.ContainsKey(new Vector3Int(x, y, 0)) == false)
                     continue;
 
+                //x,y에 해당하는 그리드 셀의 오브젝트들을 objects 리스트에 모두 추가함.
                 objects.AddRange(cells[new Vector3Int(x, y, 0)].Objects);
             }
         }

@@ -94,4 +94,38 @@ namespace Data
         }
     }
     #endregion
+
+    #region SkillData
+
+    public class SkillData
+    {
+        [XmlAttribute]
+        public int templateID;
+        [XmlAttribute]
+        public Define.SkillType skillType = Define.SkillType.None;
+        [XmlAttribute]
+        public int nextID;
+        [XmlAttribute]
+        public string prefab;
+        [XmlAttribute]
+        public int damage;
+
+    }
+
+    [Serializable, XmlRoot("SkillDatas")]
+    public class SkillDataLoader : ILoader<int, SkillData>
+    {
+        [XmlElement("PlayerData")]
+        public List<SkillData> skills = new List<SkillData>();
+
+        public Dictionary<int, SkillData> MakeDict()
+        {
+            Dictionary<int, SkillData> dict = new Dictionary<int, SkillData>();
+            foreach (SkillData skill in skills)
+                dict.Add(skill.templateID, skill);
+            return dict;
+        }
+    }
+
+    #endregion
 }

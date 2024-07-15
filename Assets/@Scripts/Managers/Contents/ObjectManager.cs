@@ -26,6 +26,7 @@ public class ObjectManager
 
             PlayerController pc = go.GetOrAddComponent<PlayerController>();
             Player = pc;
+            //생성해주었으므로 Awake 나 Start를 대체한 Init 함수 실행
             pc.Init();
 
             return pc as T;

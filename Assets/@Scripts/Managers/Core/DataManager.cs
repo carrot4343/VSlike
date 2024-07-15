@@ -13,6 +13,7 @@ public interface ILoader<Key, Value>
 public class DataManager
 {
     public Dictionary<int, Data.PlayerData> PlayerDic { get; private set; } = new Dictionary<int, Data.PlayerData>();
+    public Dictionary<int, Data.SkillData> SkillDic { get; private set; } = new Dictionary<int, Data.SkillData>();
 
     public void Init()
     {

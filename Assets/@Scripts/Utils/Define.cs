@@ -22,6 +22,14 @@ public class Define
         Env,
     }
 
+    public enum SkillType
+    {
+        None,
+        Melee,
+        Projectile,
+        Etc,
+    }
+
     public const int PLAYER_DATA_ID = 1;
     public const string EXP_GEM_PREFAB = "BlueGem.prefab";
 }
