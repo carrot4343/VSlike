@@ -6,8 +6,8 @@ public class SpawningPool : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    float spawnInterval = 0.1f;
-    int maxMonsterCount = 100;
+    float m_spawnInterval = 0.1f;
+    int m_maxMonsterCount = 100;
 
     Coroutine coUpdateSpawningPool;
     void Start()
@@ -20,14 +20,14 @@ public class SpawningPool : MonoBehaviour
         while(true)
         {
             TrySpawn();
-            yield return new WaitForSeconds(spawnInterval);
+            yield return new WaitForSeconds(m_spawnInterval);
         }
     }
 
     void TrySpawn()
     {
         int monsterCount = Managers._Object.Monsters.Count;
-        if (monsterCount >= maxMonsterCount)
+        if (monsterCount >= m_maxMonsterCount)
             return;
 
         Vector3 randPos = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));

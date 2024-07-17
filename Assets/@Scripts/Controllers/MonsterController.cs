@@ -23,7 +23,7 @@ public class MonsterController : CreatureController
 
         //Player와 Monster의 벡터 관계를 통해 이동 결정. flipX 는 스프라이트 회전
         Vector3 dir = pc.transform.position - transform.position;
-        Vector3 newPos = transform.position + dir.normalized * Time.deltaTime * _speed;
+        Vector3 newPos = transform.position + dir.normalized * Time.deltaTime * m_speed;
         GetComponent<Rigidbody2D>().MovePosition(newPos);
         GetComponent<SpriteRenderer>().flipX = dir.x > 0;
     }
@@ -31,28 +31,32 @@ public class MonsterController : CreatureController
     private void OnCollisionEnter2D(Collision2D collision)
     {
         PlayerController target = collision.gameObject.GetComponent<PlayerController>();
-        if (target == null)
+        if (target.IsValid() == false)
+            return;
+        if (this.IsValid() == false)
             return;
 
-        if (coDotDamage != null)
-            StopCoroutine(coDotDamage);
+        if (m_coDotDamage != null)
+            StopCoroutine(m_coDotDamage);
 
-        coDotDamage = StartCoroutine(CoStartDotDamage(target));
+        m_coDotDamage = StartCoroutine(CoStartDotDamage(target));
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         PlayerController target = collision.gameObject.GetComponent<PlayerController>();
-        if (target == null)
+        if (target.IsValid() == false)
+            return;
+        if (this.IsValid() == false)
             return;
 
-        if (coDotDamage != null)
-            StopCoroutine(coDotDamage);
+        if (m_coDotDamage != null)
+            StopCoroutine(m_coDotDamage);
 
-        coDotDamage = null;
+        m_coDotDamage = null;
     }
 
-    Coroutine coDotDamage;
+    Coroutine m_coDotDamage;
     public IEnumerator CoStartDotDamage(PlayerController target)
     {
         while(true)
@@ -66,9 +70,9 @@ public class MonsterController : CreatureController
     {
         base.OnDead();
 
-        if (coDotDamage != null)
-            StopCoroutine(coDotDamage);
-        coDotDamage = null;
+        if (m_coDotDamage != null)
+            StopCoroutine(m_coDotDamage);
+        m_coDotDamage = null;
 
         GemController gc = Managers._Object.Spawn<GemController>(transform.position);
 

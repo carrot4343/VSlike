@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Managers : MonoBehaviour
 {
-    static Managers instance;
+    static Managers m_instance;
     static bool is_generated = false;
 
     #region Contents
@@ -45,9 +45,9 @@ public class Managers : MonoBehaviour
                 }
 
                 DontDestroyOnLoad(go);
-                instance = go.GetComponent<Managers>();
+                m_instance = go.GetComponent<Managers>();
             }
-            return instance;
+            return m_instance;
         }
     }
     void Start()

@@ -5,13 +5,24 @@ using System.Linq;
 
 public class PlayerController : CreatureController
 {
-    Vector2 moveDir = Vector2.zero;
-    float speed = 3.0f;
+    Vector2 m_moveDir = Vector2.zero;
+    float _speed = 3.0f;
     float EnvCollectDist { get; set; } = 1.0f;
 
-    void Start()
+    [SerializeField] Transform m_indicator;
+    [SerializeField] Transform m_fireSocket;
+
+    public override bool Init()
     {
+        if (base.Init() == false)
+            return false;
+
+        _speed = 5.0f;
         Managers._Game.OnMoveDirChanged += HandleOnMoveDirChanged;
+
+        StartProjectile();
+        
+        return true;
     }
 
     private void OnDestroy()
@@ -21,7 +32,7 @@ public class PlayerController : CreatureController
     }
     void HandleOnMoveDirChanged(Vector2 dir)
     {
-        moveDir = dir;
+        m_moveDir = dir;
     }
 
     void Update()
@@ -35,8 +46,15 @@ public class PlayerController : CreatureController
         //moveDir = Managers._Game.MoveDir;
 
 
-        Vector3 dir = moveDir * speed * Time.deltaTime;
+        Vector3 dir = m_moveDir * _speed * Time.deltaTime;
         transform.position += dir;
+
+        if (m_moveDir != Vector2.zero)
+        {
+            m_indicator.eulerAngles = new Vector3(0, 0, Mathf.Atan2(-dir.x, dir.y) * 180 / Mathf.PI);
+        }
+
+        GetComponent<Rigidbody2D>().velocity = Vector3.zero;
     }
 
     void CollectEnv()
@@ -67,9 +85,36 @@ public class PlayerController : CreatureController
         //기존 부모클래스의 OnDamaged 를 유지하면서
         base.OnDamaged(attacker, damage);
 
-        Debug.Log($"OnDamaged ! {HP}");
+        Debug.Log($"OnDamaged ! {m_HP}");
 
         CreatureController cc = attacker as CreatureController;
         cc?.OnDamaged(this, 10000);
     }
+
+    #region FireProjectile
+
+    Coroutine m_coFireProjectile;
+
+    void StartProjectile()
+    {
+        if (m_coFireProjectile != null)
+            StopCoroutine(m_coFireProjectile);
+
+        m_coFireProjectile = StartCoroutine(CoStartProjectile());
+    }
+
+    IEnumerator CoStartProjectile()
+    {
+        WaitForSeconds wait = new WaitForSeconds(0.5f);
+
+        while (true)
+        {
+            ProjectileController pc = Managers._Object.Spawn<ProjectileController>(m_fireSocket.position, 1);
+            pc.SetInfo(1, this, (m_fireSocket.position - m_indicator.position).normalized);
+
+            yield return wait;
+        }
+    }
+
+    #endregion
 }

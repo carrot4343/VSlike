@@ -9,22 +9,22 @@ class Cell
 }
 public class GridController : BaseController
 {
-    UnityEngine.Grid grid;
+    UnityEngine.Grid m_grid;
 
-    Dictionary<Vector3Int, Cell> cells = new Dictionary<Vector3Int, Cell>();
+    Dictionary<Vector3Int, Cell> m_cells = new Dictionary<Vector3Int, Cell>();
 
     public override bool Init()
     {
         base.Init();
 
-        grid = gameObject.GetOrAddcompnent<UnityEngine.Grid>();
+        m_grid = gameObject.GetOrAddcompnent<UnityEngine.Grid>();
         return true;
     }
 
     public void Add(GameObject go)
     {
         //오브젝트의 위치를 좌표(그리드)로 변환
-        Vector3Int cellPos = grid.WorldToCell(go.transform.position);
+        Vector3Int cellPos = m_grid.WorldToCell(go.transform.position);
 
         //위에서 얻은 좌표에 해당하는 그리드 셀
         Cell cell = GetCell(cellPos);
@@ -38,7 +38,7 @@ public class GridController : BaseController
 
     public void Remove(GameObject go)
     {
-        Vector3Int cellPos = grid.WorldToCell(go.transform.position);
+        Vector3Int cellPos = m_grid.WorldToCell(go.transform.position);
 
         Cell cell = GetCell(cellPos);
         if (cell == null)
@@ -52,10 +52,10 @@ public class GridController : BaseController
     Cell GetCell(Vector3Int cellPos)
     {
         Cell cell = null;
-        if (cells.TryGetValue(cellPos, out cell) == false)
+        if (m_cells.TryGetValue(cellPos, out cell) == false)
         {
             cell = new Cell();
-            cells.Add(cellPos, cell);
+            m_cells.Add(cellPos, cell);
         }
 
         return cell;
@@ -65,10 +65,10 @@ public class GridController : BaseController
     {
         List<GameObject> objects = new List<GameObject>();
 
-        Vector3Int left = grid.WorldToCell(pos = new Vector3(-range, 0));
-        Vector3Int right = grid.WorldToCell(pos = new Vector3(range, 0));
-        Vector3Int bottom = grid.WorldToCell(pos = new Vector3(0, -range));
-        Vector3Int top = grid.WorldToCell(pos = new Vector3(0, range));
+        Vector3Int left = m_grid.WorldToCell(pos = new Vector3(-range, 0));
+        Vector3Int right = m_grid.WorldToCell(pos = new Vector3(range, 0));
+        Vector3Int bottom = m_grid.WorldToCell(pos = new Vector3(0, -range));
+        Vector3Int top = m_grid.WorldToCell(pos = new Vector3(0, range));
 
         int minX = left.x;
         int maxX = right.x;
@@ -79,11 +79,11 @@ public class GridController : BaseController
         {
             for(int y = minY; y <= maxY; y++)
             {
-                if (cells.ContainsKey(new Vector3Int(x, y, 0)) == false)
+                if (m_cells.ContainsKey(new Vector3Int(x, y, 0)) == false)
                     continue;
 
                 //x,y에 해당하는 그리드 셀의 오브젝트들을 objects 리스트에 모두 추가함.
-                objects.AddRange(cells[new Vector3Int(x, y, 0)].Objects);
+                objects.AddRange(m_cells[new Vector3Int(x, y, 0)].Objects);
             }
         }
 

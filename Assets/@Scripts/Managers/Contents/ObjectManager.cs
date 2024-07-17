@@ -60,6 +60,17 @@ public class ObjectManager
 
             return gc as T;
         }
+        else if(type == typeof(ProjectileController))
+        {
+            GameObject go = Managers._Resource.Instantiate("FireProjectile.prefab", pooling: true);
+            go.transform.position = position;
+
+            ProjectileController pc = go.GetOrAddcompnent<ProjectileController>();
+            Projectiles.Add(pc);
+            pc.Init();
+
+            return pc as T;
+        }
 
         return null;
     }
@@ -77,16 +88,16 @@ public class ObjectManager
             Monsters.Remove(obj as MonsterController);
             Managers._Resource.Destroy(obj.gameObject);
         }
-        else if (type == typeof(ProjectileController))
-        {
-            Projectiles.Remove(obj as ProjectileController);
-            Managers._Resource.Destroy(obj.gameObject);
-        }
         else if (type == typeof(GemController))
         {
             Gems.Remove(obj as GemController);
             Managers._Resource.Destroy(obj.gameObject);
             GameObject.Find("@Grid").GetComponent<GridController>().Remove(obj.gameObject);
+        }
+        else if (type == typeof(ProjectileController))
+        {
+            Projectiles.Remove(obj as ProjectileController);
+            Managers._Resource.Destroy(obj.gameObject);
         }
     }
 }

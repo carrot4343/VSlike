@@ -17,9 +17,13 @@ public class GameScene : MonoBehaviour
         });
     }
 
+    SpawningPool m_spawingPool;
+
     void StartLoaded()
     {
-        SpawningPool spawingPool = gameObject.AddComponent<SpawningPool>();
+        Managers._Data.Init();
+
+        m_spawingPool = gameObject.AddComponent<SpawningPool>();
 
         var player = Managers._Object.Spawn<PlayerController>(Vector3.zero);
 
@@ -34,7 +38,7 @@ public class GameScene : MonoBehaviour
 
         var map = Managers._Resource.Instantiate("Map");
         map.name = "@Map";
-        Camera.main.GetComponent<CameraController>().target = player.gameObject;
+        Camera.main.GetComponent<CameraController>().m_target = player.gameObject;
     }
 
     void Update()

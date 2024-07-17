@@ -11,16 +11,16 @@ public class GameManager
     public int Gem { get; set; }
 
 
-    Vector2 moveDir;
+    Vector2 m_moveDir;
 
     public event Action<Vector2> OnMoveDirChanged;
     public Vector2 MoveDir
     {
-        get { return moveDir; }
+        get { return m_moveDir; }
         set
         {
-            moveDir = value;
-            OnMoveDirChanged?.Invoke(moveDir);
+            m_moveDir = value;
+            OnMoveDirChanged?.Invoke(m_moveDir);
         }
     }
 }

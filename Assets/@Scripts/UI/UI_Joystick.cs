@@ -6,16 +6,16 @@ using UnityEngine.EventSystems;
 
 public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
-    [SerializeField] Image backGround;
-    [SerializeField] Image handler;
+    [SerializeField] Image m_backGround;
+    [SerializeField] Image m_handler;
 
-    Vector2 touchPosition;
-    Vector2 moveDir;
-    float joystickRadius;
+    Vector2 m_touchPosition;
+    Vector2 m_moveDir;
+    float m_joystickRadius;
 
     void Start()
     {
-        joystickRadius = backGround.gameObject.GetComponent<RectTransform>().sizeDelta.y / 2;
+        m_joystickRadius = m_backGround.gameObject.GetComponent<RectTransform>().sizeDelta.y / 2;
     }
 
     void Update()
@@ -29,25 +29,25 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
     }
     public void OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        touchPosition = eventData.position;
-        backGround.transform.position = touchPosition;
-        handler.transform.position = touchPosition;
+        m_touchPosition = eventData.position;
+        m_backGround.transform.position = m_touchPosition;
+        m_handler.transform.position = m_touchPosition;
 
     }
     public void OnPointerUp(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        handler.transform.position = touchPosition;
-        moveDir = Vector2.zero;
-        Managers._Game.MoveDir = moveDir;
+        m_handler.transform.position = m_touchPosition;
+        m_moveDir = Vector2.zero;
+        Managers._Game.MoveDir = m_moveDir;
     }
     public void OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        Vector2 touchDir = (eventData.position - touchPosition);
-        float distance = Mathf.Min(touchDir.magnitude, joystickRadius);
-        moveDir = touchDir.normalized;
+        Vector2 touchDir = (eventData.position - m_touchPosition);
+        float distance = Mathf.Min(touchDir.magnitude, m_joystickRadius);
+        m_moveDir = touchDir.normalized;
 
-        Vector2 newPosition = touchPosition + moveDir * distance;
-        handler.transform.position = newPosition;
-        Managers._Game.MoveDir = moveDir;
+        Vector2 newPosition = m_touchPosition + m_moveDir * distance;
+        m_handler.transform.position = newPosition;
+        Managers._Game.MoveDir = m_moveDir;
     }
 }

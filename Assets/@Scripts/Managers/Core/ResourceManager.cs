@@ -9,13 +9,13 @@ using Object = UnityEngine.Object;
 public class ResourceManager
 {
     // key 는 addressable 에서의 이름, value 는 리소스를 저장
-    Dictionary<string, UnityEngine.Object> resources = new Dictionary<string, UnityEngine.Object>();
+    Dictionary<string, UnityEngine.Object> m_resources = new Dictionary<string, UnityEngine.Object>();
     
     //동기방식 load
     //resources 딕셔너리에 있으면 리소스 리턴, 없으면 null 리턴
     public T Load<T>(string key) where T : Object
     {
-        if (resources.TryGetValue(key, out Object resource))
+        if (m_resources.TryGetValue(key, out Object resource))
             return resource as T;
 
         return null;
@@ -62,7 +62,7 @@ public class ResourceManager
     {
         //캐시 확인
         //이미 key가 로드되어 있다면 (아니면 스킵하고 리소스 로드) 밸류 반환하고
-        if (resources.TryGetValue(key, out Object resource))
+        if (m_resources.TryGetValue(key, out Object resource))
         {
             //키값에 맞는 밸류값을 매개변수로 콜백함수 수행. 로드 되고 실행시킬 함수를 수행하는 것.
             callback?.Invoke(resource as T);
@@ -79,7 +79,7 @@ public class ResourceManager
         asyncOperation.Completed += (op) =>
         {
             //리소스 dictionary에 추가하고 콜백함수 수행.
-            resources.Add(key, op.Result);
+            m_resources.Add(key, op.Result);
             callback?.Invoke(op.Result);
         };
     }

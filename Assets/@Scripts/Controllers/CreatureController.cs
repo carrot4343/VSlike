@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CreatureController : BaseController
 {
-    protected float _speed = 1.0f;
+    protected float m_speed = 1.0f;
 
-    public int HP { get; set; } = 100;
-    public int maxHP { get; set; } = 100;
+    public int m_HP { get; set; } = 100;
+    public int m_maxHP { get; set; } = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +23,10 @@ public class CreatureController : BaseController
 
     public virtual void OnDamaged(BaseController attacker, int damage)
     {
-        HP -= damage;
-        if(HP <= 0)
+        m_HP -= damage;
+        if(m_HP <= 0)
         {
-            HP = 0;
+            m_HP = 0;
             OnDead();
         }
     }
