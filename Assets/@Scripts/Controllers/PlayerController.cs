@@ -6,7 +6,6 @@ using System.Linq;
 public class PlayerController : CreatureController
 {
     Vector2 m_moveDir = Vector2.zero;
-    float _speed = 3.0f;
     float EnvCollectDist { get; set; } = 1.0f;
 
     [SerializeField] Transform m_indicator;
@@ -17,10 +16,11 @@ public class PlayerController : CreatureController
         if (base.Init() == false)
             return false;
 
-        _speed = 5.0f;
+        m_speed = 5.0f;
         Managers._Game.OnMoveDirChanged += HandleOnMoveDirChanged;
 
         StartProjectile();
+        //StartEgoSword();
         
         return true;
     }
@@ -46,7 +46,7 @@ public class PlayerController : CreatureController
         //moveDir = Managers._Game.MoveDir;
 
 
-        Vector3 dir = m_moveDir * _speed * Time.deltaTime;
+        Vector3 dir = m_moveDir * m_speed * Time.deltaTime;
         transform.position += dir;
 
         if (m_moveDir != Vector2.zero)
@@ -59,18 +59,22 @@ public class PlayerController : CreatureController
 
     void CollectEnv()
     {
-        List<GemController> gems = Managers._Object.Gems.ToList();
-        foreach(GemController gem in gems)
+        float sqrCollectDist = EnvCollectDist * EnvCollectDist;
+
+        var findGems = GameObject.Find("@Grid").GetComponent<GridController>().GatherObjects(transform.position, EnvCollectDist + 0.5f);
+        
+        foreach(var go in findGems)
         {
+            GemController gem = go.GetComponent<GemController>();
+
             Vector3 dir = gem.transform.position - transform.position;
-            if(dir.magnitude <= EnvCollectDist)
+            if(dir.sqrMagnitude <= sqrCollectDist)
             {
                 Managers._Game.Gem += 1;
                 Managers._Object.Despawn(gem);
             }
         }
-        var findGems = GameObject.Find("@Grid").GetComponent<GridController>().GatherObjects(transform.position, EnvCollectDist + 0.5f);
-
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -116,5 +120,20 @@ public class PlayerController : CreatureController
         }
     }
 
+    #endregion
+
+    #region EgoSword
+
+    EgoSwordController m_egoSword;
+    void StartEgoSword()
+    {
+        if (m_egoSword.IsValid())
+            return;
+
+        m_egoSword = Managers._Object.Spawn<EgoSwordController>(m_indicator.position, Define.EGO_SWORD_ID);
+        m_egoSword.transform.SetParent(m_indicator);
+
+        m_egoSword.ActivateSkill();
+    }
     #endregion
 }

@@ -49,4 +49,19 @@ public class Utils
         }
         return null;
     }
+
+    public static Vector2 GenerateMonsterSpanwingPosition(Vector2 characterPosition, float minDistance = 10.0f, float maxDistance = 20.0f)
+    {
+        //플레이어 주변 원형 범위 설정
+        float angle = Random.Range(0, 360) * Mathf.Deg2Rad;
+
+        float distance = Random.Range(minDistance, maxDistance);
+
+        float xDist = Mathf.Cos(angle) * distance;
+        float yDist = Mathf.Sin(angle) * distance;
+
+        Vector2 spawnPosition = characterPosition + new Vector2(xDist, yDist);
+
+        return spawnPosition;
+    }
 }

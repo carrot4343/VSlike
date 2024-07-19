@@ -71,13 +71,35 @@ public class ObjectManager
 
             return pc as T;
         }
+        else if(typeof(T).IsSubclassOf(typeof(SkillController)))
+        {
+            if(Managers._Data.SkillDic.TryGetValue(templateID, out Data.SkillData skillData) == false)
+            {
+                Debug.LogError($"ObjectManager Spawn Skill failed {templateID}");
+                return null;
+            }
+
+            GameObject go = Managers._Resource.Instantiate(skillData.prefab, pooling: true);
+            go.transform.position = position;
+
+            T t = go.GetOrAddcompnent<T>();
+            t.Init();
+
+            return t;
+        }
 
         return null;
     }
 
     public void Despawn<T>(T obj) where T : BaseController
     {
+        if (obj.IsValid() == false)
+        {
+            return;
+        }
+
         System.Type type = typeof(T);
+
 
         if (type == typeof(PlayerController))
         {

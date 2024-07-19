@@ -66,9 +66,9 @@ public class GridController : BaseController
         List<GameObject> objects = new List<GameObject>();
 
         Vector3Int left = m_grid.WorldToCell(pos = new Vector3(-range, 0));
-        Vector3Int right = m_grid.WorldToCell(pos = new Vector3(range, 0));
+        Vector3Int right = m_grid.WorldToCell(pos = new Vector3(+range, 0));
         Vector3Int bottom = m_grid.WorldToCell(pos = new Vector3(0, -range));
-        Vector3Int top = m_grid.WorldToCell(pos = new Vector3(0, range));
+        Vector3Int top = m_grid.WorldToCell(pos = new Vector3(0, +range));
 
         int minX = left.x;
         int maxX = right.x;
