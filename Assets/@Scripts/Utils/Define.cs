@@ -30,7 +30,24 @@ public class Define
         Etc,
     }
 
+    public enum StageType
+    { 
+        Normal,
+        Boss,
+    }
+
+    public enum CreatureState
+    {
+        Idle,
+        Moving,
+        Skill,
+        Dead
+    }
+
     public const int PLAYER_DATA_ID = 1;
     public const string EXP_GEM_PREFAB = "BlueGem.prefab";
     public const int EGO_SWORD_ID = 10;
+    public const int GOBLIN_ID = 1;
+    public const int SNAKE_ID = 2;
+    public const int BOSS_ID = 3;
 }

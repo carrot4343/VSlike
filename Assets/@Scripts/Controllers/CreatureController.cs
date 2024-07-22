@@ -9,18 +9,6 @@ public class CreatureController : BaseController
     public int m_HP { get; set; } = 100;
     public int m_maxHP { get; set; } = 100;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public virtual void OnDamaged(BaseController attacker, int damage)
     {
         m_HP -= damage;

@@ -9,7 +9,7 @@ class Cell
 }
 public class GridController : BaseController
 {
-    UnityEngine.Grid m_grid;
+    Grid m_grid;
 
     Dictionary<Vector3Int, Cell> m_cells = new Dictionary<Vector3Int, Cell>();
 
@@ -17,7 +17,7 @@ public class GridController : BaseController
     {
         base.Init();
 
-        m_grid = gameObject.GetOrAddcompnent<UnityEngine.Grid>();
+        m_grid = gameObject.GetOrAddcompnent<Grid>();
         return true;
     }
 
@@ -65,10 +65,10 @@ public class GridController : BaseController
     {
         List<GameObject> objects = new List<GameObject>();
 
-        Vector3Int left = m_grid.WorldToCell(pos = new Vector3(-range, 0));
-        Vector3Int right = m_grid.WorldToCell(pos = new Vector3(+range, 0));
-        Vector3Int bottom = m_grid.WorldToCell(pos = new Vector3(0, -range));
-        Vector3Int top = m_grid.WorldToCell(pos = new Vector3(0, +range));
+        Vector3Int left = m_grid.WorldToCell(pos + new Vector3(-range, 0));
+        Vector3Int right = m_grid.WorldToCell(pos + new Vector3(+range, 0));
+        Vector3Int bottom = m_grid.WorldToCell(pos + new Vector3(0, -range));
+        Vector3Int top = m_grid.WorldToCell(pos + new Vector3(0, +range));
 
         int minX = left.x;
         int maxX = right.x;

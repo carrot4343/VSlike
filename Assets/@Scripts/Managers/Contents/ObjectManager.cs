@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using Unity.VisualScripting;
 
 public class ObjectManager
@@ -33,7 +34,21 @@ public class ObjectManager
         }
         else if(type == typeof(MonsterController))
         {
-            string name = "Snake_01";
+            string name = "";
+
+            switch (templateID)
+            {
+                case Define.GOBLIN_ID:
+                    name = "Goblin_01";
+                    break;
+                case Define.SNAKE_ID:
+                    name = "Snake_01";
+                    break;
+                case Define.BOSS_ID:
+                    name = "Boss_01";
+                    break;
+            };
+
             GameObject go = Managers._Resource.Instantiate(name + ".prefab", pooling: true);
             go.transform.position = position;
 
@@ -56,7 +71,9 @@ public class ObjectManager
             Sprite sprite = Managers._Resource.Load<Sprite>(key);
             go.GetComponent<SpriteRenderer>().sprite = sprite;
 
-            GameObject.Find("@Grid").GetComponent<GridController>().Add(go);
+            GridController gdc = GameObject.Find("@Grid").GetOrAddComponent<GridController>();
+            gdc.Add(go);
+            //GameObject.Find("@Grid").GetOrAddComponent<GridController>().Add(go);
 
             return gc as T;
         }
@@ -121,5 +138,13 @@ public class ObjectManager
             Projectiles.Remove(obj as ProjectileController);
             Managers._Resource.Destroy(obj.gameObject);
         }
+    }
+
+    public void DespawnallMonsters()
+    {
+        var monsters = Monsters.ToList();
+
+        foreach (var monster in monsters)
+            Despawn<MonsterController>(monster);
     }
 }

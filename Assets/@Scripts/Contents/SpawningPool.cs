@@ -10,6 +10,8 @@ public class SpawningPool : MonoBehaviour
     int m_maxMonsterCount = 100;
 
     Coroutine m_coUpdateSpawningPool;
+
+    public bool Stopped { get; set; } = false;
     void Start()
     {
         m_coUpdateSpawningPool = StartCoroutine(CoUpdateSpawningPool());
@@ -26,11 +28,13 @@ public class SpawningPool : MonoBehaviour
 
     void TrySpawn()
     {
+        if (Stopped)
+            return;
         int monsterCount = Managers._Object.Monsters.Count;
         if (monsterCount >= m_maxMonsterCount)
             return;
 
         Vector3 randPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 10, 15);
-        MonsterController mc = Managers._Object.Spawn<MonsterController>(randPos, Random.Range(0, 2));
+        MonsterController mc = Managers._Object.Spawn<MonsterController>(randPos, 2);
     }
 }

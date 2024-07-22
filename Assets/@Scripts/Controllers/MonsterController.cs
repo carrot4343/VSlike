@@ -4,12 +4,60 @@ using UnityEngine;
 
 public class MonsterController : CreatureController
 {
+    #region State Pattern
+    Define.CreatureState m_creatureState = Define.CreatureState.Moving;
+    public virtual Define.CreatureState CreatureState
+    {
+        get { return m_creatureState; }
+        set
+        {
+            m_creatureState = value;
+            UpdateAnimation();
+        }
+    }
+
+    protected Animator m_animator;
+    public virtual void UpdateAnimation()
+    {
+
+    }
+
+    public override void UpdateController()
+    {
+        base.UpdateController();
+
+        switch (CreatureState)
+        {
+            case Define.CreatureState.Idle:
+                UpdateIdle();
+                break;
+            case Define.CreatureState.Skill:
+                UpdateSkill();
+                break;
+            case Define.CreatureState.Moving:
+                UpdateMoving();
+                break;
+            case Define.CreatureState.Dead:
+                UpdateDead();
+                break;
+        }
+
+    }
+
+    protected virtual void UpdateIdle() { }
+    protected virtual void UpdateSkill() { }
+    protected virtual void UpdateMoving() { }
+    protected virtual void UpdateDead() { }
+
+    #endregion
     public override bool Init()
     {
         if (base.Init())
             return false;
         //TODO
         objectType = Define.ObjectType.Monster;
+        m_animator = GetComponent<Animator>();
+        CreatureState = Define.CreatureState.Moving;
 
         return true;
     }
@@ -17,6 +65,9 @@ public class MonsterController : CreatureController
     //물리 움직임을 이용할 땐 update 보단 fixed update
     void FixedUpdate()
     {
+        if (CreatureState != Define.CreatureState.Moving)
+            return;
+
         PlayerController pc = Managers._Object.Player;
         if (pc == null)
             return;
@@ -69,6 +120,8 @@ public class MonsterController : CreatureController
     protected override void OnDead()
     {
         base.OnDead();
+
+        Managers._Game.KillCount++;
 
         if (m_coDotDamage != null)
             StopCoroutine(m_coDotDamage);

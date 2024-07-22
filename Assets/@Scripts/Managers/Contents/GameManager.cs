@@ -8,7 +8,17 @@ public class GameManager
     public PlayerController Player { get{ return Managers._Object?.Player; } }
 
     public int Gold { get; set; }
-    public int Gem { get; set; }
+
+    int m_gem = 0;
+    public event Action<int> OnGemCountChanged;
+    public int Gem {
+        get { return m_gem; }
+        set
+        {
+            m_gem = value;
+            OnGemCountChanged?.Invoke(value);
+        }
+    }
 
 
     Vector2 m_moveDir;
@@ -21,6 +31,19 @@ public class GameManager
         {
             m_moveDir = value;
             OnMoveDirChanged?.Invoke(m_moveDir);
+        }
+    }
+
+
+    int m_killCount;
+    public event Action<int> OnKillCountChanged;
+
+    public int KillCount
+    {
+        get { return m_killCount; }
+        set
+        {
+            m_killCount = value; OnKillCountChanged?.Invoke(value);
         }
     }
 }

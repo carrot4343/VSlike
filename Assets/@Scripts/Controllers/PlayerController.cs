@@ -20,7 +20,7 @@ public class PlayerController : CreatureController
         Managers._Game.OnMoveDirChanged += HandleOnMoveDirChanged;
 
         StartProjectile();
-        //StartEgoSword();
+        StartEgoSword();
         
         return true;
     }
@@ -35,8 +35,9 @@ public class PlayerController : CreatureController
         m_moveDir = dir;
     }
 
-    void Update()
+    public override void UpdateController()
     {
+        base.UpdateController();
         MovePlayer();
         CollectEnv();
     }
@@ -74,7 +75,6 @@ public class PlayerController : CreatureController
                 Managers._Object.Despawn(gem);
             }
         }
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
