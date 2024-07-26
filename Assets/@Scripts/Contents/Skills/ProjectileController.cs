@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileController : SkillController
+public class ProjectileController : SkillBase
 {
     CreatureController m_owner;
     Vector3 m_moveDir;
     float m_speed = 10.0f;
     float m_lifeTime = 10.0f;
+
+    public ProjectileController() : base(Define.SkillType.None)
+    { 
+    
+    }
 
     public override bool Init()
     {

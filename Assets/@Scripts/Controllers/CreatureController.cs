@@ -9,6 +9,17 @@ public class CreatureController : BaseController
     public int m_HP { get; set; } = 100;
     public int m_maxHP { get; set; } = 100;
 
+    public SkillBook Skills { get; protected set; }
+
+    public override bool Init()
+    {
+        base.Init();
+
+        Skills = gameObject.GetOrAddcompnent<SkillBook>();
+
+        return true;
+    }
+
     public virtual void OnDamaged(BaseController attacker, int damage)
     {
         m_HP -= damage;

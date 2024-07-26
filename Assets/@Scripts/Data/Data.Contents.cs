@@ -35,14 +35,10 @@ namespace Data
     #region PlayerData
     public class PlayerData
     {
-        [XmlAttribute]
-        public int level;
-        [XmlAttribute]
-        public int maxHp;
-        [XmlAttribute]
-        public int attack;
-        [XmlAttribute]
-        public int totalExp;
+        [XmlAttribute] public int level;
+        [XmlAttribute] public int maxHp;
+        [XmlAttribute] public int attack;
+        [XmlAttribute] public int totalExp;
     }
     
     [Serializable, XmlRoot("PlayerDatas")]
@@ -65,18 +61,12 @@ namespace Data
 
     public class MonsterData
     {
-        [XmlAttribute]
-        public string name;
-        [XmlAttribute]
-        public string prefab;
-        [XmlAttribute]
-        public int level;
-        [XmlAttribute]
-        public int maxHp;
-        [XmlAttribute]
-        public int attack;
-        [XmlAttribute]
-        public float speed;
+        [XmlAttribute] public string name;
+        [XmlAttribute] public string prefab;
+        [XmlAttribute] public int level;
+        [XmlAttribute] public int maxHp;
+        [XmlAttribute] public int attack;
+        [XmlAttribute] public float speed;
     }
 
     [Serializable, XmlRoot("PlayerDatas")]
@@ -99,16 +89,11 @@ namespace Data
 
     public class SkillData
     {
-        [XmlAttribute]
-        public int templateID;
-        [XmlAttribute(AttributeName = "type")]
-        public Define.SkillType skillType = Define.SkillType.None;
-        [XmlAttribute]
-        public int nextID;
-        [XmlAttribute]
-        public string prefab;
-        [XmlAttribute]
-        public int damage;
+        [XmlAttribute] public int templateID;
+        //[XmlAttribute(AttributeName = "type")] public Define.SkillType skillType = Define.SkillType.None;
+        [XmlAttribute] public int nextID;
+        [XmlAttribute] public string prefab;
+        [XmlAttribute] public int damage;
 
     }
 

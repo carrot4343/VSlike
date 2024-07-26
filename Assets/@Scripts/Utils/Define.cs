@@ -25,9 +25,8 @@ public class Define
     public enum SkillType
     {
         None,
-        Melee,
-        Projectile,
-        Etc,
+        Sequence, // 단발성
+        Repeat, // 반복성
     }
 
     public enum StageType
