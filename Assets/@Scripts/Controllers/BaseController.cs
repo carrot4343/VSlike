@@ -22,7 +22,7 @@ public class BaseController : MonoBehaviour
         return true;
     }
 
-    // Update is called once per frame
+    // Update도 Start와 마찬가지
     void Update()
     {
         UpdateController();
