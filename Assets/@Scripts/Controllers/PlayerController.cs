@@ -23,8 +23,8 @@ public class PlayerController : CreatureController
         m_speed = 5.0f;
         Managers._Game.OnMoveDirChanged += HandleOnMoveDirChanged;
 
-        Skills.AddSkill<FireballSkill>(transform.position);
-        Skills.AddSkill<EgoSword>(transform.position);
+        Skills.AddSkill<FireballSkill>(transform.position, transform);
+        Skills.AddSkill<EgoSword>(transform.position, transform);
 
         return true;
     }
@@ -94,8 +94,5 @@ public class PlayerController : CreatureController
         base.OnDamaged(attacker, damage);
 
         Debug.Log($"OnDamaged ! {m_HP}");
-
-        CreatureController cc = attacker as CreatureController;
-        cc?.OnDamaged(this, 10000);
     }
 }

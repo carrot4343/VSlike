@@ -24,7 +24,7 @@ public class SkillBook : MonoBehaviour
             //스킬 스폰하고
             var egoSword = Managers._Object.Spawn<EgoSword>(position, Define.EGO_SWORD_ID);
             //스폰한 스킬의 부모 지정하고
-            egoSword.transform.SetParent(parent);
+            //egoSword.transform.SetParent(parent);
             //스킬 수행
             egoSword.ActivateSkill();
 
@@ -36,7 +36,7 @@ public class SkillBook : MonoBehaviour
         }
         else if (type == typeof(FireballSkill))
         {
-            var fireBall = Managers._Object.Spawn<FireballSkill>(position, Define.EGO_SWORD_ID);
+            var fireBall = Managers._Object.Spawn<FireballSkill>(position, Define.FIREBALL_ID);
             fireBall.transform.SetParent(parent);
             fireBall.ActivateSkill();
 

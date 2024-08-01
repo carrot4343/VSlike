@@ -20,11 +20,6 @@ public class SkillBase : BaseController
 
     public int Damage { get; set; } = 100;
 
-    public SkillBase(Define.SkillType skillType)
-    {
-        SkillType = skillType;
-    }
-
     public virtual void ActivateSkill()
     {
 

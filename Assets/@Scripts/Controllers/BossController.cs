@@ -28,7 +28,7 @@ public class BossController : MonsterController
     //State Pattern
     public override void UpdateAnimation()
     {
-        //현재 State에 따라 animation 수행.
+        //현재 State에 따라 animation 수행. State에 변화가 있을 때 실행됨.
         switch (CreatureState)
         {
             case Define.CreatureState.Idle:
@@ -46,42 +46,24 @@ public class BossController : MonsterController
         }
     }
     //MonsterController에서 상속받은 UpdateDead에서 
-    //이미 OnDead 라는 함수에서 Despawn을 처리하고 있는데 굳이 필요할까? 의문
+    //이미 OnDead 라는 함수에서 Despawn을 비롯한 여러 함수들을 처리하고 있는데 굳이 필요할까? 의문
     //실험 결과 딱히 문제는 없음
-    protected override void UpdateDead()
-    {
-        if (m_coWait == null)
-            Managers._Object.Despawn(this);
-    }
-
-    #region Wait Coroutine
-    Coroutine m_coWait;
-
-    void Wait(float waitSeconds)
-    {
-        if (m_coWait != null)
-            StopCoroutine(m_coWait);
-        m_coWait = StartCoroutine(CoStartWait(waitSeconds));
-    }
-
-    IEnumerator CoStartWait(float waitSeconds)
-    {
-        yield return new WaitForSeconds(waitSeconds);
-        m_coWait = null;
-    }
-
-
-    #endregion
+    //protected override void UpdateDead()
+    //{
+    //    if (m_coWait == null)
+    //        Managers._Object.Despawn(this);
+    //}
 
     public override void OnDamaged(BaseController attacker, int damage)
     {
         base.OnDamaged(attacker, damage);
+        Debug.Log($"{m_HP}");
     }
 
     protected override void OnDead()
     {
+        //상태를 Dead로 변경
         CreatureState = Define.CreatureState.Dead;
-        Wait(2.0f);
         base.OnDead();
     }
 }

@@ -50,6 +50,7 @@ namespace Data
         public Dictionary<int, PlayerData> MakeDict()
         {
             Dictionary<int, PlayerData> dict = new Dictionary<int, PlayerData>();
+            //level을 key값으로 해서 정보 로드. (1, (level, hp, atk, exp)) 구조
             foreach (PlayerData stat in stats)
                 dict.Add(stat.level, stat);
             return dict;

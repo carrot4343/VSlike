@@ -47,6 +47,7 @@ public class MonsterController : CreatureController
     protected virtual void UpdateIdle() { }
     protected virtual void UpdateSkill() { }
     protected virtual void UpdateMoving() { }
+    //OnDead가 있는 상황에서 UpdateDead를 비롯한 Dead State의 필요성?
     protected virtual void UpdateDead() { }
 
     #endregion

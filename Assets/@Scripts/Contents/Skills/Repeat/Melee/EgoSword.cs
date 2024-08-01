@@ -14,11 +14,6 @@ public class EgoSword : RepeatSkill
         Fourth
     }
 
-    public EgoSword()
-    {
-
-    }
-
     protected override IEnumerator CoStartSkill()
     {
         WaitForSeconds wait = new WaitForSeconds(CoolTime);

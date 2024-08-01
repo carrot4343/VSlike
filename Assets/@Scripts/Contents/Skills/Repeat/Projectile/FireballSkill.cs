@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class FireballSkill : RepeatSkill
 {
-    public FireballSkill()
-    {
-
-    }
-
     protected override void DoSkillJob()
     {
         if (Managers._Game.Player == null)
