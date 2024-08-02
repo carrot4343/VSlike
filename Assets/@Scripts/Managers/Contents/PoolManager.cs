@@ -9,7 +9,7 @@ class Pool
     IObjectPool<GameObject> _pool;
 
     Transform root;
-    Transform Root
+    public Transform Root
     { 
         get
         {
@@ -91,6 +91,4 @@ public class PoolManager
         Pool pool = new Pool(prefab);
         pools.Add(prefab.name, pool);
     }
-
-    
 }

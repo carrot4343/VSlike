@@ -10,8 +10,10 @@ public class PlayerController : CreatureController
 
     [SerializeField] Transform m_indicator;
     [SerializeField] Transform m_fireSocket;
+    [SerializeField] Transform m_skillBook;
 
     public Transform Indicator { get { return m_indicator; } }
+    public Transform SkillBook { get { return m_skillBook; } }
     public Vector3 FireSocket { get { return m_fireSocket.position; } }
     public Vector3 ShootDir { get { return (m_fireSocket.position - m_indicator.position).normalized; } }
 

@@ -20,6 +20,12 @@ public class SkillBase : BaseController
 
     public int Damage { get; set; } = 100;
 
+    public override bool Init()
+    {
+        base.Init();
+
+        return true;
+    }
     public virtual void ActivateSkill()
     {
 

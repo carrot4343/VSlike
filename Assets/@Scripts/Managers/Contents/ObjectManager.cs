@@ -79,7 +79,7 @@ public class ObjectManager
         }
         else if(type == typeof(ProjectileController))
         {
-            GameObject go = Managers._Resource.Instantiate("FireProjectile.prefab", pooling: true);
+            GameObject go = Managers._Resource.Instantiate("FireBall.prefab", pooling: true);
             go.transform.position = position;
 
             ProjectileController pc = go.GetOrAddcompnent<ProjectileController>();
