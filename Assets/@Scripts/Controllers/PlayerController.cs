@@ -23,11 +23,19 @@ public class PlayerController : CreatureController
             return false;
 
         m_speed = 5.0f;
-        Managers._Game.OnMoveDirChanged += HandleOnMoveDirChanged;
+        
+        return true;
+    }
 
+    //순서가 꼬이는걸 방지하기 위해 매니저를 사용하는건 initlate에서 수행.
+    //실제로 addskill을 init에 배치하면 object manager에서 아직 배치되지 않은 player객체 로드를 시도하여 null error를 발생시킴.
+    public override bool InitLate()
+    {
+        base.InitLate();
+
+        Managers._Game.OnMoveDirChanged += HandleOnMoveDirChanged;
         Skills.AddSkill<FireballSkill>(transform.position, transform);
         Skills.AddSkill<EgoSword>(transform.position, transform);
-
         return true;
     }
 
@@ -50,9 +58,6 @@ public class PlayerController : CreatureController
 
     void MovePlayer()
     {
-        //moveDir = Managers._Game.MoveDir;
-
-
         Vector3 dir = m_moveDir * m_speed * Time.deltaTime;
         transform.position += dir;
 

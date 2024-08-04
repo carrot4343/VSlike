@@ -239,6 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_indicator: {fileID: 1408306784083668203}
   m_fireSocket: {fileID: 4007699333364057295}
+  m_skillBook: {fileID: 7921277856229427355}
 --- !u!50 &1761277285947027709
 Rigidbody2D:
   serializedVersion: 4

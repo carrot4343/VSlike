@@ -16,7 +16,6 @@ public class ProjectileController : SkillBase
 
         return true;
     }
-
     public void SetInfo(int templateID, CreatureController owner, Vector3 moveDir)
     {
         if (Managers._Data.SkillDic.TryGetValue(templateID, out Data.SkillData data) == false)
@@ -50,6 +49,6 @@ public class ProjectileController : SkillBase
 
         StopDestroy();
 
-        Managers._Object.Despawn(this);
+        Managers._Object.Despawn<ProjectileController>(this);
     }
 }

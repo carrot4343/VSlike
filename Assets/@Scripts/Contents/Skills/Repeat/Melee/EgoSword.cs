@@ -18,6 +18,7 @@ public class EgoSword : RepeatSkill
     {
         WaitForSeconds wait = new WaitForSeconds(CoolTime);
 
+        //animation 1,2,3,4를 순회하며 그려지는 위치 설정, 
         while(true)
         {
             SetParticles(SwingType.First);

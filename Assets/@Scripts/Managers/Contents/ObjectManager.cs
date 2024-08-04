@@ -138,6 +138,12 @@ public class ObjectManager
             Projectiles.Remove(obj as ProjectileController);
             Managers._Resource.Destroy(obj.gameObject);
         }
+        else if (type == typeof(SkillBase))
+        {
+            if(obj.gameObject.GetComponent<ProjectileController>() != null)
+                Projectiles.Remove(obj as ProjectileController);
+            Managers._Resource.Destroy(obj.gameObject);
+        }
     }
 
     public void DespawnallMonsters()
