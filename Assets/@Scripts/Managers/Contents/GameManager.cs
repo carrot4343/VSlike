@@ -9,6 +9,7 @@ public class GameManager
 
     public int Gold { get; set; }
 
+    //gemcount가 바뀌었을 때 실행될 콜백 함수
     int m_gem = 0;
     public event Action<int> OnGemCountChanged;
     public int Gem {
@@ -19,7 +20,6 @@ public class GameManager
             OnGemCountChanged?.Invoke(value);
         }
     }
-
 
     Vector2 m_moveDir;
 
@@ -36,6 +36,7 @@ public class GameManager
 
 
     int m_killCount;
+    //killcount가 바뀌었을 때 실행될 콜백 함수
     public event Action<int> OnKillCountChanged;
 
     public int KillCount

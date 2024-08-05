@@ -6,10 +6,12 @@ public class GameScene : MonoBehaviour
 {
     void Start()
     {
+        //시작할때 모든 리소스 로드
         Managers._Resource.LoadAllAsync<Object>("Preload", (key, count, totalCount) =>
         {
             Debug.Log($"{key} {count} / {totalCount}");
 
+            //로딩이 완료되면 로드 이후에 실행되야 할 작업 수행
             if (count == totalCount)
             {
                 StartLoaded();                    
@@ -18,6 +20,8 @@ public class GameScene : MonoBehaviour
     }
 
     SpawningPool m_spawningPool;
+    //StageType.. 필요한가 ? N 번째 스테이지로 변경하는게 필요할듯 ?
+    //보스가 나왔다고 해서 잡몹 스폰이 멈출 필요가 있는가? 기획의 문제.
     Define.StageType m_stageType;
     public Define.StageType StageType
     {
@@ -27,6 +31,7 @@ public class GameScene : MonoBehaviour
             m_stageType = value;
             if(m_spawningPool != null)
             {
+                //스테이지 타입이 변경됨에 따라 스포닝 풀 켜고 끄기 설정
                 switch(value)
                 {
                     case Define.StageType.Normal:
@@ -39,23 +44,32 @@ public class GameScene : MonoBehaviour
             }
         }
     }
+    //리소스 로드 완료 이후 수행
     void StartLoaded()
     {
+        //데이터 로드
         Managers._Data.Init();
 
+        //기본 UI 표시
         Managers._UI.ShowSceneUI<UI_GameScene>();
 
+        //스포닝풀 생산
         m_spawningPool = gameObject.AddComponent<SpawningPool>();
 
+        //플레이어 스폰
         var player = Managers._Object.Spawn<PlayerController>(Vector3.zero);
 
+        //조이스틱 생성
         var joystick = Managers._Resource.Instantiate("UI_Joystick.prefab");
         joystick.name = "@UI_Jotstick";
 
+        //맵 생성
         var map = Managers._Resource.Instantiate("Map_01.prefab");
         map.name = "@Map";
+        //카메라 타겟 지정(플레이어)
         Camera.main.GetComponent<CameraController>().m_target = player.gameObject;
 
+        //킬 카운트, 젬 카운트 변경 시 수행되어야 할 작업
         Managers._Game.OnKillCountChanged -= HandleOnKillCountChanged;
         Managers._Game.OnKillCountChanged += HandleOnKillCountChanged;
         Managers._Game.OnGemCountChanged -= HandleOnGemCountChanged;
@@ -66,11 +80,13 @@ public class GameScene : MonoBehaviour
     int m_remainingTotalGemCount = 10;
     public void HandleOnGemCountChanged(int gemCount)
     {
-        m_collectedGemCount++;
+        m_collectedGemCount = Managers._Game.Gem;
+        //level up
         if(m_collectedGemCount == m_remainingTotalGemCount)
         {
             Managers._UI.ShowPopup<UI_SkillSelectPopup>();
             m_collectedGemCount = 0;
+            Managers._Game.Gem = m_collectedGemCount;
             m_remainingTotalGemCount *= 2;
         }
 
@@ -85,7 +101,7 @@ public class GameScene : MonoBehaviour
         {
             //Boss Spawn
             StageType = Define.StageType.Boss;
-
+            //맵의 모든 몬스터 없애고
             Managers._Object.DespawnallMonsters();
 
             Vector2 spawnPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 5, 10);
@@ -99,6 +115,7 @@ public class GameScene : MonoBehaviour
         if(Managers._Game != null)
         {
             Managers._Game.OnGemCountChanged -= HandleOnGemCountChanged;
+            Managers._Game.OnKillCountChanged -= HandleOnKillCountChanged;
         }
     }
 

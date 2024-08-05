@@ -37,6 +37,7 @@ public class SkillBook : MonoBehaviour
         else if (type == typeof(FireballSkill))
         {
             PlayerController pc = Managers._Object.Player;
+            //Player에게 fireballskill 컴포넌트를 추가하여 발사대로 설정
             var fireBall = pc.gameObject.GetOrAddcompnent<FireballSkill>();
             //fireBall.transform.SetParent(parent);
             fireBall.ActivateSkill();

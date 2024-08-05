@@ -34,7 +34,10 @@ public class Move : SequenceSkill
             Vector3 dir = ((Vector2)Managers._Game.Player.transform.position - m_rigidbody.position).normalized;
             Vector2 targetPosition = Managers._Game.Player.transform.position + dir * UnityEngine.Random.Range(1, 4);
 
-            if (Vector3.Distance(m_rigidbody.position, targetPosition) <= 0.2f)
+            //Target과 충분히 가까워지면
+            if (Vector3.Distance(m_rigidbody.position, targetPosition) <= 5.0f)
+                //TODO
+                //Attack State로 바뀐다던가
                 continue;
 
             Vector2 dirVec = targetPosition - m_rigidbody.position;
@@ -44,6 +47,7 @@ public class Move : SequenceSkill
             yield return null;
         }
 
+        //콜백함수 수행
         callback?.Invoke();
     }
 }

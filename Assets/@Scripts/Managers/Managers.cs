@@ -29,6 +29,7 @@ public class Managers : MonoBehaviour
     public static UIManager _UI { get { return Instance?.uiManager; } }
     #endregion
 
+    //Singletone
     public static Managers Instance
     {
         get

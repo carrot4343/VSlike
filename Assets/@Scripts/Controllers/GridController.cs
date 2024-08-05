@@ -65,6 +65,7 @@ public class GridController : BaseController
     {
         List<GameObject> objects = new List<GameObject>();
 
+        //pos 주변 range 만큼의 범위에 속하는 grid 계산
         Vector3Int left = m_grid.WorldToCell(pos + new Vector3(-range, 0));
         Vector3Int right = m_grid.WorldToCell(pos + new Vector3(+range, 0));
         Vector3Int bottom = m_grid.WorldToCell(pos + new Vector3(0, -range));
@@ -75,6 +76,7 @@ public class GridController : BaseController
         int minY = bottom.y;
         int maxY = top.y;
 
+        //위에서 구한 범위에 포함되는 오브젝트 탐색
         for(int x = minX; x <= maxX; x++)
         {
             for(int y = minY; y <= maxY; y++)

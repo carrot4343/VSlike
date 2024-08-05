@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MapTileController : MonoBehaviour
 {
+    //카메라의 collision box 가 map tile에서 벗어나면 해당 방향으로 map tile 이동
+    //무한맵 인 것 처럼
     private void OnTriggerExit2D(Collider2D collision)
     {
         Camera camera = collision.gameObject.GetComponent<Camera>();

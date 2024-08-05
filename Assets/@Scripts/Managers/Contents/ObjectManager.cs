@@ -66,7 +66,7 @@ public class ObjectManager
             GemController gc = go.GetOrAddComponent<GemController>();
             Gems.Add(gc);
             gc.Init();
-
+            //현재는 key값을 랜덤으로 정하지만 추후 경험치 양에 따라 스프라이트 변경
             string key = UnityEngine.Random.Range(0, 2) == 0 ? "BlueGem.sprite" : "GreenGem.sprite";
             Sprite sprite = Managers._Resource.Load<Sprite>(key);
             go.GetComponent<SpriteRenderer>().sprite = sprite;

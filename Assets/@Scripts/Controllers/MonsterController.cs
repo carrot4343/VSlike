@@ -87,7 +87,7 @@ public class MonsterController : CreatureController
             return;
         if (this.IsValid() == false)
             return;
-
+        //도트 장판 데미지
         if (m_coDotDamage != null)
             StopCoroutine(m_coDotDamage);
 
@@ -101,7 +101,7 @@ public class MonsterController : CreatureController
             return;
         if (this.IsValid() == false)
             return;
-
+        //도트 장판 데미지
         if (m_coDotDamage != null)
             StopCoroutine(m_coDotDamage);
 
@@ -114,6 +114,7 @@ public class MonsterController : CreatureController
         while(true)
         {
             target.OnDamaged(this, 2);
+            //cool time
             yield return new WaitForSeconds(0.1f);
         }
     }
