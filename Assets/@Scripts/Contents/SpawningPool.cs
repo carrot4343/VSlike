@@ -17,6 +17,7 @@ public class SpawningPool : MonoBehaviour
         m_coUpdateSpawningPool = StartCoroutine(CoUpdateSpawningPool());
     }
 
+    //Spawn Interval 만큼의 쿨타임을 가진 코루틴
     IEnumerator CoUpdateSpawningPool()
     {
         while(true)
@@ -31,9 +32,11 @@ public class SpawningPool : MonoBehaviour
         if (Stopped)
             return;
         int monsterCount = Managers._Object.Monsters.Count;
+        //최대 몬스터 수 이상이면 Spawn 중단 (떨어지면 개시)
         if (monsterCount >= m_maxMonsterCount)
             return;
 
+        //Player주변 랜덤 장소에 Spawn
         Vector3 randPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 10, 15);
         MonsterController mc = Managers._Object.Spawn<MonsterController>(randPos, 2);
     }

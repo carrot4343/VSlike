@@ -33,7 +33,7 @@ public class ProjectileController : SkillBase
     public override void UpdateController()
     {
         base.UpdateController();
-
+        //투사체 위치 update
         transform.position += m_moveDir * m_speed * Time.deltaTime;
     }
 

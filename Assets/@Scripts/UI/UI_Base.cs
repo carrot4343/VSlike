@@ -12,6 +12,7 @@ public class UI_Base : MonoBehaviour
     protected Dictionary<Type, UnityEngine.Object[]> m_objects = new Dictionary<Type, UnityEngine.Object[]>();
     protected bool m_init = false;
 
+    //BaseController와 마찬가지로 Init함수를 두어 자식 객체들과의 Start메서드가 꼬이지 않게 조정
     public virtual bool Init()
     {
         if (m_init)

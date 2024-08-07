@@ -30,13 +30,13 @@ public class SkillBase : BaseController
     {
 
     }
-
+    //Projectile 을 spawn하는 객체에서 사용
     protected virtual void GenerateProjectile(int templateID, CreatureController owner, Vector3 startPos, Vector3 dir, Vector3 targetPos)
     {
         ProjectileController pc = Managers._Object.Spawn<ProjectileController>(startPos, templateID);
         pc.SetInfo(templateID, owner, dir);
     }
-    //Pooling을 위해 destroy 를 사용하지 않고 따로 메서드를 만듬
+    //Pooling을 위해 destroy 를 사용하지 않고 따로 메서드를 만듬 (Despawn 을 쓰고 싶다는 뜻)
     #region Destroy
     Coroutine m_coDestroy;
     public void StartDestroy(float delaySeconds)

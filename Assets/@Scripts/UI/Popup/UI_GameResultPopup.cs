@@ -68,7 +68,7 @@ public class UI_GameResultPopup : UI_Base
 
     void OnClickStatisticsButton()
     {
-
+        int a = 3;
     }
 
     void OnClickComfirmButton()
