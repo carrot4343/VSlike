@@ -9,6 +9,7 @@ using TMPro;
 
 public class UI_Base : MonoBehaviour
 {
+    //하나의 키값(Type 정보)에 여러 밸류(type 에 해당하는 객체들. text들... button들...)들을 저장하는 Dict
     protected Dictionary<Type, UnityEngine.Object[]> m_objects = new Dictionary<Type, UnityEngine.Object[]>();
     protected bool m_init = false;
 
@@ -27,6 +28,7 @@ public class UI_Base : MonoBehaviour
         Init();
     }
 
+    //지금 Text가 바인드 되지 않는 문제가 있음. 배열 크기는 지정됐는데 각 값이 null인 상황.0809
     protected void Bind<T>(Type type) where T : UnityEngine.Object
     {
         string[] names = Enum.GetNames(type);
@@ -51,6 +53,7 @@ public class UI_Base : MonoBehaviour
     protected void BindButton(Type type) { Bind<Button>(type); }
     protected void BindToggle(Type type) { Bind<Toggle>(type); }
 
+    //m_objects Dictionary에 자료형을 대입해서 밸류값(배열)들을 반환함.
     protected T Get<T>(int idx) where T : UnityEngine.Object
     {
         UnityEngine.Object[] objects = null;
@@ -61,7 +64,7 @@ public class UI_Base : MonoBehaviour
     }
 
     protected GameObject GetObjects(int idx) { return Get<GameObject>(idx); }
-    protected TMP_Text GetText(int idx) { return Get<TMP_Text>(idx); }
+    protected Text GetText(int idx) { return Get<Text>(idx); }
     protected Button GetButton(int idx) { return Get<Button>(idx); }
     protected Image GetImage(int idx) { return Get<Image>(idx); }
     protected Toggle GetToggle(int idx) { return Get<Toggle>(idx); }

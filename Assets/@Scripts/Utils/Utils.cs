@@ -23,7 +23,7 @@ public class Utils
 
     public static T FindChild<T>(GameObject go, string name = null, bool recursive = false) where T : UnityEngine.Object
     {
-        if (go = null)
+        if (go == null)
             return null;
 
         if (recursive == false)
