@@ -44,7 +44,20 @@ public class GameManager
         get { return m_killCount; }
         set
         {
-            m_killCount = value; OnKillCountChanged?.Invoke(value);
+            m_killCount = value; 
+            OnKillCountChanged?.Invoke(value);
+        }
+    }
+
+    int m_playerLevel;
+    public event Action<int> OnPlayerLevelChanged;
+    public int PlayerLevel
+    {
+        get { return m_playerLevel; }
+        set
+        {
+            m_playerLevel = value;
+            OnPlayerLevelChanged?.Invoke(value);
         }
     }
 }

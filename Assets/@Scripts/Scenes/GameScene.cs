@@ -74,8 +74,11 @@ public class GameScene : MonoBehaviour
         Managers._Game.OnKillCountChanged += HandleOnKillCountChanged;
         Managers._Game.OnGemCountChanged -= HandleOnGemCountChanged;
         Managers._Game.OnGemCountChanged += HandleOnGemCountChanged;
+        Managers._Game.OnPlayerLevelChanged -= HandleOnPlayerLevelChanged;
+        Managers._Game.OnPlayerLevelChanged += HandleOnPlayerLevelChanged;
     }
 
+    //수치 변경이 되었는데 그 이슈를 GameScene 클래스에서 처리를 하는게 맞는가? 생각해봐야 함.
     int m_collectedGemCount = 0;
     int m_remainingTotalGemCount = 10;
     public void HandleOnGemCountChanged(int gemCount)
@@ -84,20 +87,24 @@ public class GameScene : MonoBehaviour
         //level up
         if(m_collectedGemCount == m_remainingTotalGemCount)
         {
-            Managers._UI.ShowPopup<UI_SkillSelectPopup>();
-            m_collectedGemCount = 0;
-            Managers._Game.Gem = m_collectedGemCount;
-            m_remainingTotalGemCount *= 2;
+            Managers._Game.PlayerLevel++;
         }
 
         Managers._UI.GetSceneUI<UI_GameScene>().SetGemCountRatio((float)m_collectedGemCount / m_remainingTotalGemCount);
     }
 
+    public void HandleOnPlayerLevelChanged(int playerLevel)
+    {
+        Managers._UI.ShowPopup<UI_SkillSelectPopup>();
+        m_collectedGemCount = 0;
+        Managers._Game.Gem = m_collectedGemCount;
+        m_remainingTotalGemCount *= 2;
+        Managers._UI.GetSceneUI<UI_GameScene>().SetGemCountRatio((float)m_collectedGemCount / m_remainingTotalGemCount);
+    }
+
     public void HandleOnKillCountChanged(int killCount)
     {
-        Managers._UI.GetSceneUI<UI_GameScene>().SetKillCount(killCount);
-
-        if(killCount == 5)
+        if(killCount == 20)
         {
             //Boss Spawn
             StageType = Define.StageType.Boss;

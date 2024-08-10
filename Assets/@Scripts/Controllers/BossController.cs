@@ -65,6 +65,8 @@ public class BossController : MonsterController
         //상태를 Dead로 변경
         CreatureState = Define.CreatureState.Dead;
         base.OnDead();
+
+        Managers._UI.ShowPopup<UI_GameResultPopup>();
     }
 }
 

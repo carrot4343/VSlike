@@ -28,13 +28,16 @@ public class UI_Base : MonoBehaviour
         Init();
     }
 
-    //지금 Text가 바인드 되지 않는 문제가 있음. 배열 크기는 지정됐는데 각 값이 null인 상황.0809
+    //코드상에서 Enum 타입으로 구성된 각각의 UI 객체와 실제 UI 오브젝트를 연결(Bind) 하는 작업.
+    //연결을 완료하면 Dictionary에 Type을 key로, 객체 배열을 value 로써 저장됨.
     protected void Bind<T>(Type type) where T : UnityEngine.Object
     {
+        //열거형을 로드하고, 로드한 갯수만큼의 오브젝트 배열을 m_objects에 add
         string[] names = Enum.GetNames(type);
         UnityEngine.Object[] objects = new UnityEngine.Object[names.Length];
         m_objects.Add(typeof(T), objects);
 
+        //objects에 실제 배치된 객체(버튼, 이미지, 텍스트 등)을 연결. 이때 dictionary는 참조 타입이므로 m_object는 자동 적용 
         for (int i = 0; i < names.Length; i++)
         {
             if (typeof(T) == typeof(GameObject))
@@ -47,13 +50,15 @@ public class UI_Base : MonoBehaviour
         }
     }
 
+    //UI에 있는 모든 타입들을 Bind
     protected void BindObject(Type type) { Bind<GameObject>(type); }
     protected void BindImage(Type type) { Bind<Image>(type); }
-    protected void BindText(Type type) { Bind<Text>(type); }
+    protected void BindText(Type type) { Bind<TMP_Text>(type); }
     protected void BindButton(Type type) { Bind<Button>(type); }
     protected void BindToggle(Type type) { Bind<Toggle>(type); }
 
     //m_objects Dictionary에 자료형을 대입해서 밸류값(배열)들을 반환함.
+    //Bind를 선행하는 작업이 필수. 안그럼 null (m_objects)을 참조하니까
     protected T Get<T>(int idx) where T : UnityEngine.Object
     {
         UnityEngine.Object[] objects = null;
@@ -64,7 +69,7 @@ public class UI_Base : MonoBehaviour
     }
 
     protected GameObject GetObjects(int idx) { return Get<GameObject>(idx); }
-    protected Text GetText(int idx) { return Get<Text>(idx); }
+    protected TMP_Text GetText(int idx) { return Get<TMP_Text>(idx); }
     protected Button GetButton(int idx) { return Get<Button>(idx); }
     protected Image GetImage(int idx) { return Get<Image>(idx); }
     protected Toggle GetToggle(int idx) { return Get<Toggle>(idx); }
