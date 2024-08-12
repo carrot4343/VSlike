@@ -60,4 +60,6 @@ public class Define
     public const int GOBLIN_ID = 1;
     public const int SNAKE_ID = 2;
     public const int BOSS_ID = 3;
+
+    public const int UI_SKILL_ICON_SIZE = 6;
 }
