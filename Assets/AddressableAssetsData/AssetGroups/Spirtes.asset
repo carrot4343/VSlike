@@ -17,18 +17,18 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: a711b95681bc26f41af26361cf9dbb64
   m_SerializeEntries:
-  - m_GUID: 86ce6973c1157184ba84929dbfe5abfc
+  - m_GUID: 28910816cb514024d9ee6c2b03564560
     m_Address: BlueGem.sprite
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
-  - m_GUID: 309175c197f35bd42bc0042f49a9b0ff
-    m_Address: YellowGem.sprite
+  - m_GUID: 1efb21ecc3e676c418306d8fed3065e7
+    m_Address: GreenGem.sprite
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
-  - m_GUID: b64f5b021f9c42d48b9824eaa257c5fa
-    m_Address: GreenGem.sprite
+  - m_GUID: 8909945f1d8834a4b824d209b9231d92
+    m_Address: YellowGem.sprite
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
