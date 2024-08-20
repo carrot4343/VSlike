@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SkillDatas>
-  <SkillData templateID="10" name="평타" type="Melee" prefab="EgoSword.prefab" damage="1000">
+  <SkillData templateID="10" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="1000">
   </SkillData>
-  <SkillData templateID="20" name="화염구" type="Projectile" prefab="FireBall.prefab" damage="1000" speed="2" >
+  <SkillData templateID="20" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="1000" speed="2" >
+  </SkillData>
+  <SkillData templateID="21" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="1000" speed="5" >
   </SkillData>
   <!--<SkillData templateID="20" name="평타" type="Melee" prefab="FireBall.prefab" damage="1000">
   </SkillData>-->

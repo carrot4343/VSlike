@@ -79,7 +79,13 @@ public class ObjectManager
         }
         else if(type == typeof(ProjectileController))
         {
-            GameObject go = Managers._Resource.Instantiate("FireBall.prefab", pooling: true);
+            if (Managers._Data.SkillDic.TryGetValue(templateID, out Data.SkillData skillData) == false)
+            {
+                Debug.LogError($"ObjectManager Spawn Skill failed {templateID} : projectile");
+                return null;
+            }
+
+            GameObject go = Managers._Resource.Instantiate(skillData.prefab, pooling: true);
             go.transform.position = position;
 
             ProjectileController pc = go.GetOrAddcompnent<ProjectileController>();
@@ -92,7 +98,7 @@ public class ObjectManager
         {
             if(Managers._Data.SkillDic.TryGetValue(templateID, out Data.SkillData skillData) == false)
             {
-                Debug.LogError($"ObjectManager Spawn Skill failed {templateID}");
+                Debug.LogError($"ObjectManager Spawn Skill failed {templateID} : skillbase");
                 return null;
             }
 

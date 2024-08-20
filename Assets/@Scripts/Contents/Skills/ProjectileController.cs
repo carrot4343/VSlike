@@ -13,6 +13,7 @@ public class ProjectileController : SkillBase
     {
         base.Init();
         StartDestroy(m_lifeTime);
+        
 
         return true;
     }
@@ -28,6 +29,7 @@ public class ProjectileController : SkillBase
         m_moveDir = moveDir;
         SkillData = data;
 
+        transform.localEulerAngles = new Vector3(0, 0, Mathf.Atan2(-m_moveDir.x, m_moveDir.y) * 180 / Mathf.PI);
     }
 
     public override void UpdateController()

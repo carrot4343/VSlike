@@ -47,6 +47,17 @@ public class SkillBook : MonoBehaviour
 
             return fireBall as T;
         }
+        else if(type == typeof(ArrowShot))
+        {
+            PlayerController pc = Managers._Object.Player;
+            var arrowShot = pc.gameObject.GetOrAddcompnent<ArrowShot>();
+            arrowShot.ActivateSkill();
+
+            Skills.Add(arrowShot);
+            RepeatedSkills.Add(arrowShot);
+
+            return arrowShot as T;
+        }
         else if (type.IsSubclassOf(typeof(SequenceSkill)))
         {
             //Sequence Skill은 스킬들을 등록하고 별도의 함수를 통해 실행시키는 별도의 과정이 필요함
