@@ -62,6 +62,7 @@ public class Define
     public const int EGO_SWORD_ID = 10;
     public const int FIREBALL_ID = 20;
     public const int ARROWSHOT_ID = 21;
+    public const int WINDCUTTER_ID = 22;
 
     public const int UI_SKILL_ICON_SIZE = 6;
 }

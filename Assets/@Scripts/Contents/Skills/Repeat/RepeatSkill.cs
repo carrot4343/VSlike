@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class RepeatSkill : SkillBase
 {
-    public float CoolTime { get; set; }
+    public float CoolTime { get; set; } = 1.0f;
 
     Coroutine m_coSkill;
 

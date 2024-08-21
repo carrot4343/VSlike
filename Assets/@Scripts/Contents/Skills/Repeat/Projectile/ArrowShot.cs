@@ -9,6 +9,7 @@ public class ArrowShot : RepeatSkill
         base.Init();
 
         CoolTime = 0.5f;
+        Damage = 50;
         return true;
     }
     protected override void DoSkillJob()

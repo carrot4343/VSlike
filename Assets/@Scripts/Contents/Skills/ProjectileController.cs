@@ -8,6 +8,26 @@ public class ProjectileController : SkillBase
     Vector3 m_moveDir;
     float m_speed = 10.0f;
     float m_lifeTime = 10.0f;
+    bool m_reverse = false;
+    projectileType m_type;
+    public enum projectileType
+    {
+        disposable, //일회용(적에 닿으면 없어짐)
+        penentrate, //투과체
+    }
+
+
+    public bool Reverse
+    {
+        get { return m_reverse; }
+        set { m_reverse = value; }
+    }
+
+    public float Speed
+    {
+        get { return m_speed; }
+        set { m_speed = value; }
+    }
 
     public override bool Init()
     {
@@ -17,7 +37,7 @@ public class ProjectileController : SkillBase
 
         return true;
     }
-    public void SetInfo(int templateID, CreatureController owner, Vector3 moveDir)
+    public void SetInfo(int templateID, CreatureController owner, Vector3 moveDir, projectileType type = projectileType.disposable)
     {
         if (Managers._Data.SkillDic.TryGetValue(templateID, out Data.SkillData data) == false)
         {
@@ -28,6 +48,7 @@ public class ProjectileController : SkillBase
         m_owner = owner;
         m_moveDir = moveDir;
         SkillData = data;
+        m_type = type;
 
         transform.localEulerAngles = new Vector3(0, 0, Mathf.Atan2(-m_moveDir.x, m_moveDir.y) * 180 / Mathf.PI);
     }
@@ -36,7 +57,11 @@ public class ProjectileController : SkillBase
     {
         base.UpdateController();
         //투사체 위치 update
-        transform.position += m_moveDir * m_speed * Time.deltaTime;
+        if (m_reverse)
+            transform.position += -m_moveDir * m_speed * Time.deltaTime;
+        else
+            transform.position += m_moveDir * m_speed * Time.deltaTime;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,8 +74,10 @@ public class ProjectileController : SkillBase
 
         mc.OnDamaged(m_owner, SkillData.damage);
 
-        StopDestroy();
-
-        Managers._Object.Despawn<ProjectileController>(this);
+        if(m_type == projectileType.disposable)
+        {
+            StopDestroy();
+            Managers._Object.Despawn<ProjectileController>(this);
+        }
     }
 }

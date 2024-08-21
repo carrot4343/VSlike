@@ -34,9 +34,7 @@ public class PlayerController : CreatureController
         base.InitLate();
 
         Managers._Game.OnMoveDirChanged += HandleOnMoveDirChanged;
-        Skills.AddSkill<ArrowShot>(transform.position, transform);
-        Skills.AddSkill<FireballSkill>(transform.position, transform);
-        Skills.AddSkill<EgoSword>(transform.position, transform);
+        Skills.AddSkill<WindCutter>(transform.position, transform);
         return true;
     }
 

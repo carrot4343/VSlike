@@ -2,10 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//EgoSword 평타
-//FireProjectile 투사체
-//PoisonField_AOE 독장판
-
 public class SkillBase : BaseController
 {
     public CreatureController Owner { get; set; }
@@ -31,10 +27,12 @@ public class SkillBase : BaseController
 
     }
     //Projectile 을 spawn하는 객체에서 사용
-    protected virtual void GenerateProjectile(int templateID, CreatureController owner, Vector3 startPos, Vector3 dir, Vector3 targetPos)
+    protected virtual ProjectileController GenerateProjectile(int templateID, CreatureController owner, Vector3 startPos, Vector3 dir, Vector3 targetPos, ProjectileController.projectileType type = ProjectileController.projectileType.disposable)
     {
         ProjectileController pc = Managers._Object.Spawn<ProjectileController>(startPos, templateID);
-        pc.SetInfo(templateID, owner, dir);
+        pc.SetInfo(templateID, owner, dir, type);
+
+        return pc;        
     }
     //Pooling을 위해 destroy 를 사용하지 않고 따로 메서드를 만듬 (Despawn 을 쓰고 싶다는 뜻)
     #region Destroy

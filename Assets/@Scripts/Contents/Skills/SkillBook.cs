@@ -58,6 +58,17 @@ public class SkillBook : MonoBehaviour
 
             return arrowShot as T;
         }
+        else if (type == typeof(WindCutter))
+        {
+            PlayerController pc = Managers._Object.Player;
+            var windCutter = pc.gameObject.GetOrAddcompnent<WindCutter>();
+            windCutter.ActivateSkill();
+
+            Skills.Add(windCutter);
+            RepeatedSkills.Add(windCutter);
+
+            return windCutter as T;
+        }
         else if (type.IsSubclassOf(typeof(SequenceSkill)))
         {
             //Sequence Skill은 스킬들을 등록하고 별도의 함수를 통해 실행시키는 별도의 과정이 필요함
