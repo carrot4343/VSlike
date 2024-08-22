@@ -8,6 +8,8 @@
   </SkillData>
   <SkillData templateID="22" name="WindCutter" type="Projectile" prefab="WindCutter.prefab" damage="500" speed="15" >
   </SkillData>
+  <SkillData templateID="23" name="ElectronicField" type="Melee" prefab="ElectronicField.prefab" damage="100">
+  </SkillData>
   <!--<SkillData templateID="20" name="평타" type="Melee" prefab="FireBall.prefab" damage="1000">
   </SkillData>-->
 	

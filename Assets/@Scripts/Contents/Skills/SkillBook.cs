@@ -69,6 +69,16 @@ public class SkillBook : MonoBehaviour
 
             return windCutter as T;
         }
+        else if (type == typeof(ElectronicField))
+        {
+            var electronicField = Managers._Object.Spawn<T>(position, Define.ELECTRONIC_FIELD_ID);
+            electronicField.ActivateSkill();
+
+            Skills.Add(electronicField);
+            RepeatedSkills.Add(electronicField);
+
+            return electronicField as T;
+        }
         else if (type.IsSubclassOf(typeof(SequenceSkill)))
         {
             //Sequence Skill은 스킬들을 등록하고 별도의 함수를 통해 실행시키는 별도의 과정이 필요함

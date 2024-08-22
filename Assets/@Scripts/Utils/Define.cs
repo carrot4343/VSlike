@@ -63,6 +63,7 @@ public class Define
     public const int FIREBALL_ID = 20;
     public const int ARROWSHOT_ID = 21;
     public const int WINDCUTTER_ID = 22;
+    public const int ELECTRONIC_FIELD_ID = 23;
 
     public const int UI_SKILL_ICON_SIZE = 6;
 }

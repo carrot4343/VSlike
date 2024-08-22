@@ -35,6 +35,7 @@ public class PlayerController : CreatureController
 
         Managers._Game.OnMoveDirChanged += HandleOnMoveDirChanged;
         Skills.AddSkill<WindCutter>(transform.position, transform);
+        Skills.AddSkill<ElectronicField>(transform.position, transform);
         return true;
     }
 
