@@ -34,7 +34,6 @@ public class PlayerController : CreatureController
         base.InitLate();
 
         Managers._Game.OnMoveDirChanged += HandleOnMoveDirChanged;
-        Skills.AddSkill<WindCutter>(transform.position, transform);
         Skills.AddSkill<ElectronicField>(transform.position, transform);
         return true;
     }
@@ -99,7 +98,5 @@ public class PlayerController : CreatureController
     {
         //기존 부모클래스의 OnDamaged 를 유지하면서
         base.OnDamaged(attacker, damage);
-
-        Debug.Log($"OnDamaged ! {m_HP}");
     }
 }
