@@ -104,7 +104,7 @@ public class GameScene : MonoBehaviour
 
     public void HandleOnKillCountChanged(int killCount)
     {
-        if(killCount == 20)
+        if(killCount == 20000)
         {
             //Boss Spawn
             StageType = Define.StageType.Boss;
