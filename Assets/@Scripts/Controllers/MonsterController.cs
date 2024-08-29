@@ -6,6 +6,7 @@ public class MonsterController : CreatureController
 {
     #region State Pattern
     Define.CreatureState m_creatureState = Define.CreatureState.Moving;
+    public int hp = 0;
     public virtual Define.CreatureState CreatureState
     {
         get { return m_creatureState; }
@@ -59,6 +60,7 @@ public class MonsterController : CreatureController
         objectType = Define.ObjectType.Monster;
         m_animator = GetComponent<Animator>();
         CreatureState = Define.CreatureState.Moving;
+        m_HP = m_maxHP;
 
         return true;
     }
