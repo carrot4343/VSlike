@@ -54,10 +54,12 @@ public class MonsterController : CreatureController
     #endregion
     public override bool Init()
     {
+        //매번 Init이 호출될 때마다 수행
         m_HP = m_maxHP;
+
+        //최초 1회만 수행
         if (base.Init())
             return false;
-        //TODO
         objectType = Define.ObjectType.Monster;
         m_animator = GetComponent<Animator>();
         CreatureState = Define.CreatureState.Moving;

@@ -34,7 +34,7 @@ public class PlayerController : CreatureController
         base.InitLate();
 
         Managers._Game.OnMoveDirChanged += HandleOnMoveDirChanged;
-        Skills.AddSkill<ElectronicField>(transform.position, transform);
+        Skills.AddSkill<IcicleArrow>(transform.position, transform);
         return true;
     }
 

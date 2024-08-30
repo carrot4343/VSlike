@@ -57,6 +57,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
+  - m_GUID: 217602d80e3c47349b5c0da40b94f7be
+    m_Address: IcicleArrow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 68254714d3771cc4296e19cbb58661d1, type: 2}
   m_SchemaSet:

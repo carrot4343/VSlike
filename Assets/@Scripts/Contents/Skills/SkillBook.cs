@@ -79,6 +79,17 @@ public class SkillBook : MonoBehaviour
 
             return electronicField as T;
         }
+        else if (type == typeof(IcicleArrow))
+        {
+            PlayerController pc = Managers._Object.Player;
+            var icicleArrow = pc.gameObject.GetOrAddcompnent<IcicleArrow>();
+            icicleArrow.ActivateSkill();
+
+            Skills.Add(icicleArrow);
+            RepeatedSkills.Add(icicleArrow);
+
+            return icicleArrow as T;
+        }
         else if (type.IsSubclassOf(typeof(SequenceSkill)))
         {
             //Sequence Skill은 스킬들을 등록하고 별도의 함수를 통해 실행시키는 별도의 과정이 필요함

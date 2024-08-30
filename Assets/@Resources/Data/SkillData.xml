@@ -10,6 +10,8 @@
   </SkillData>
   <SkillData templateID="23" name="ElectronicField" type="Melee" prefab="ElectronicField.prefab" damage="100">
   </SkillData>
+  <SkillData templateID="24" name="IcicleArrow" type="Projectile" prefab="IcicleArrow.prefab" damage="1000">
+  </SkillData>
   <!--<SkillData templateID="20" name="평타" type="Melee" prefab="FireBall.prefab" damage="1000">
   </SkillData>-->
 	
