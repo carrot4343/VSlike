@@ -54,13 +54,13 @@ public class MonsterController : CreatureController
     #endregion
     public override bool Init()
     {
+        m_HP = m_maxHP;
         if (base.Init())
             return false;
         //TODO
         objectType = Define.ObjectType.Monster;
         m_animator = GetComponent<Animator>();
         CreatureState = Define.CreatureState.Moving;
-        m_HP = m_maxHP;
 
         return true;
     }
@@ -68,6 +68,7 @@ public class MonsterController : CreatureController
     //물리 움직임을 이용할 땐 update 보단 fixed update
     void FixedUpdate()
     {
+        hp = m_HP;
         if (CreatureState != Define.CreatureState.Moving)
             return;
 

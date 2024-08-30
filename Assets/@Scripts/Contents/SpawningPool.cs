@@ -38,6 +38,6 @@ public class SpawningPool : MonoBehaviour
 
         //Player주변 랜덤 장소에 Spawn
         Vector3 randPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 10, 15);
-        MonsterController mc = Managers._Object.Spawn<MonsterController>(randPos, 2);
+        MonsterController mc = Managers._Object.Spawn<MonsterController>(randPos, Define.SNAKE_ID);
     }
 }
