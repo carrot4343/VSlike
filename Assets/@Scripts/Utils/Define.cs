@@ -65,6 +65,11 @@ public class Define
     public const int WINDCUTTER_ID = 22;
     public const int ELECTRONIC_FIELD_ID = 23;
     public const int ICICLEARROW_ID = 24;
+    public const int POISON_FIELD_PROJECTILE_ID = 25;
+    public const int POISON_FIELD = 26;
+    public const int STORM_BLADE_ID = 27;
 
     public const int UI_SKILL_ICON_SIZE = 6;
+
+    public const float DOT_DAMAGE_RATE = 0.2f;
 }

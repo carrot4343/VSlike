@@ -37,7 +37,7 @@ public class ProjectileController : SkillBase
 
         return true;
     }
-    public void SetInfo(int templateID, CreatureController owner, Vector3 moveDir, projectileType type = projectileType.disposable)
+    public void SetInfo(int templateID, CreatureController owner, Vector3 moveDir, float speed, projectileType type = projectileType.disposable)
     {
         if (Managers._Data.SkillDic.TryGetValue(templateID, out Data.SkillData data) == false)
         {
@@ -49,6 +49,7 @@ public class ProjectileController : SkillBase
         m_moveDir = moveDir;
         SkillData = data;
         m_type = type;
+        m_speed = speed;
 
         transform.localEulerAngles = new Vector3(0, 0, Mathf.Atan2(-m_moveDir.x, m_moveDir.y) * 180 / Mathf.PI);
     }

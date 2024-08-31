@@ -22,13 +22,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
-  - m_GUID: 95882028e0c868b4f8a0528a02f24fa6
-    m_Address: PoisonFieldProjectile.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Preload
-  - m_GUID: d51d297148b2ce84ab2b7a9be55de48e
-    m_Address: PoisonField_AOE_01.prefab
+  - m_GUID: a1490495b962c99428357e4675632521
+    m_Address: PoisonField.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
@@ -59,6 +54,16 @@ MonoBehaviour:
     - Preload
   - m_GUID: 217602d80e3c47349b5c0da40b94f7be
     m_Address: IcicleArrow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 95882028e0c868b4f8a0528a02f24fa6
+    m_Address: PoisonFieldProjectile.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: d8adfc81c5b128d499dd052b1dd520b5
+    m_Address: StormBlade.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload

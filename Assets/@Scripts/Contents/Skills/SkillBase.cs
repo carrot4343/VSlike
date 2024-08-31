@@ -27,10 +27,10 @@ public class SkillBase : BaseController
 
     }
     //Projectile 을 spawn하는 객체에서 사용
-    protected virtual ProjectileController GenerateProjectile(int templateID, CreatureController owner, Vector3 startPos, Vector3 dir, Vector3 targetPos, ProjectileController.projectileType type = ProjectileController.projectileType.disposable)
+    protected virtual ProjectileController GenerateProjectile(int templateID, CreatureController owner, Vector3 startPos, Vector3 dir, Vector3 targetPos, float speed = 10.0f, ProjectileController.projectileType type = ProjectileController.projectileType.disposable)
     {
         ProjectileController pc = Managers._Object.Spawn<ProjectileController>(startPos, templateID);
-        pc.SetInfo(templateID, owner, dir, type);
+        pc.SetInfo(templateID, owner, dir, speed, type);
 
         return pc;        
     }

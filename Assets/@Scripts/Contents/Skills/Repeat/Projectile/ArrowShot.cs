@@ -9,6 +9,7 @@ public class ArrowShot : RepeatSkill
         base.Init();
 
         CoolTime = 0.5f;
+        ProjectileSpeed = 10.0f;
         Damage = 50;
         return true;
     }
@@ -19,6 +20,6 @@ public class ArrowShot : RepeatSkill
 
         Vector3 spawnPos = Managers._Game.Player.FireSocket;
         Vector3 dir = Managers._Game.Player.ShootDir;
-        GenerateProjectile(Define.ARROWSHOT_ID, Managers._Game.Player, spawnPos, dir, Vector3.zero);
+        GenerateProjectile(Define.ARROWSHOT_ID, Managers._Game.Player, spawnPos, dir, Vector3.zero, ProjectileSpeed);
     }
 }

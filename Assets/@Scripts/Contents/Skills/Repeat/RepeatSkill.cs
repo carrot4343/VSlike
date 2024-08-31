@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class RepeatSkill : SkillBase
 {
     public float CoolTime { get; set; } = 1.0f;
-
+    public float ProjectileSpeed { get; set; } = 10.0f;
     Coroutine m_coSkill;
 
     //스킬 수행(코루틴).
@@ -34,4 +34,7 @@ public abstract class RepeatSkill : SkillBase
             yield return wait;
         }
     }
+
+    //특정 행동을 '단순히' 반복하는 경우 -> DoSkillJob을 오버라이드
+    //중간에 딜레이가 생긴다거나, 동작이 약간 바뀐다거나 하는 등의 이유로 yield return을 하는 일이 생기면 CoStartSkill을 오버라이드
 }

@@ -90,6 +90,28 @@ public class SkillBook : MonoBehaviour
 
             return icicleArrow as T;
         }
+        else if (type == typeof(PoisonFieldProjectile))
+        {
+            PlayerController pc = Managers._Object.Player;
+            var poisonField = pc.gameObject.GetOrAddcompnent<PoisonFieldProjectile>();
+            poisonField.ActivateSkill();
+
+            Skills.Add(poisonField);
+            RepeatedSkills.Add(poisonField);
+
+            return poisonField as T;
+        }
+        else if (type == typeof(StormBlade))
+        {
+            PlayerController pc = Managers._Object.Player;
+            var stormBlade = pc.gameObject.GetOrAddcompnent<StormBlade>();
+            stormBlade.ActivateSkill();
+
+            Skills.Add(stormBlade);
+            RepeatedSkills.Add(stormBlade);
+
+            return stormBlade as T;
+        }
         else if (type.IsSubclassOf(typeof(SequenceSkill)))
         {
             //Sequence Skill은 스킬들을 등록하고 별도의 함수를 통해 실행시키는 별도의 과정이 필요함
