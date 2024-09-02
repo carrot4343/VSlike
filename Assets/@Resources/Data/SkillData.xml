@@ -18,6 +18,8 @@
   </SkillData>
   <SkillData templateID="27" name="StormBlade" type="Melee" prefab="StormBlade.prefab" damage="70">
   </SkillData>
+  <SkillData templateID="28" name="FrozenHeart" type="Melee" prefab="FrozenHeart.prefab" damage="50">
+  </SkillData>
   <!--<SkillData templateID="20" name="평타" type="Melee" prefab="FireBall.prefab" damage="1000">
   </SkillData>-->
 	

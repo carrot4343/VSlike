@@ -63,7 +63,7 @@ public class ElectronicField : RepeatSkill
             if (target.IsValid() == false)
                 break;
 
-            target.OnDamaged(this, Damage);
+            target.OnDamaged(Owner, Damage);
             yield return new WaitForSeconds(Define.DOT_DAMAGE_RATE);
         }
     }

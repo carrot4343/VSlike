@@ -68,6 +68,7 @@ public class Define
     public const int POISON_FIELD_PROJECTILE_ID = 25;
     public const int POISON_FIELD = 26;
     public const int STORM_BLADE_ID = 27;
+    public const int FROZEN_HEART_ID = 28;
 
     public const int UI_SKILL_ICON_SIZE = 6;
 

@@ -112,6 +112,16 @@ public class SkillBook : MonoBehaviour
 
             return stormBlade as T;
         }
+        else if (type == typeof(FrozenHeart))
+        {
+            var frozenHeart = Managers._Object.Spawn<T>(position, Define.FROZEN_HEART_ID);
+            frozenHeart.ActivateSkill();
+
+            Skills.Add(frozenHeart);
+            RepeatedSkills.Add(frozenHeart);
+
+            return frozenHeart as T;
+        }
         else if (type.IsSubclassOf(typeof(SequenceSkill)))
         {
             //Sequence Skill은 스킬들을 등록하고 별도의 함수를 통해 실행시키는 별도의 과정이 필요함

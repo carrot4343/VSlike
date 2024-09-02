@@ -20,8 +20,8 @@ public class IcicleArrow : RepeatSkill
         Vector3 dir = Managers._Game.Player.ShootDir;
         Vector3 dir2 = Quaternion.Euler(0, 0, 20) * dir;
         Vector3 dir3 = Quaternion.Euler(0, 0, -20) * dir;
-        GenerateProjectile(Define.ICICLEARROW_ID, Managers._Game.Player, spawnPos, dir, Vector3.zero);
-        GenerateProjectile(Define.ICICLEARROW_ID, Managers._Game.Player, spawnPos, dir2, Vector3.zero);
-        GenerateProjectile(Define.ICICLEARROW_ID, Managers._Game.Player, spawnPos, dir3, Vector3.zero);
+        GenerateProjectile(Define.ICICLEARROW_ID, Owner, spawnPos, dir, Vector3.zero);
+        GenerateProjectile(Define.ICICLEARROW_ID, Owner, spawnPos, dir2, Vector3.zero);
+        GenerateProjectile(Define.ICICLEARROW_ID, Owner, spawnPos, dir3, Vector3.zero);
     }
 }

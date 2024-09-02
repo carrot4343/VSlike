@@ -15,7 +15,8 @@ public class StormBlade : RepeatSkill
     }
     protected override void DoSkillJob()
     {
-        
+        //단순히 Projectile을 생성하기만 하면 DoSkillJob을 오버라이드 해도 되지만
+        //각 발사마다 약간의 딜레이를 주고싶었기에 CoStartSkill을 오버라이드.
     }
 
     protected override IEnumerator CoStartSkill()
@@ -30,7 +31,7 @@ public class StormBlade : RepeatSkill
 
             for (int i = 0; i < m_numBlade; i++)
             {
-                GenerateProjectile(Define.STORM_BLADE_ID, Managers._Game.Player, spawnPos, new Vector3(Random.Range(-1.00f, 1.00f), Random.Range(-1.00f, 1.00f), 0.0f).normalized, Vector3.zero, ProjectileSpeed);
+                GenerateProjectile(Define.STORM_BLADE_ID, Owner, spawnPos, new Vector3(Random.Range(-1.00f, 1.00f), Random.Range(-1.00f, 1.00f), 0.0f).normalized, Vector3.zero, ProjectileSpeed);
                 yield return delay;
             }
                 

@@ -20,6 +20,6 @@ public class ArrowShot : RepeatSkill
 
         Vector3 spawnPos = Managers._Game.Player.FireSocket;
         Vector3 dir = Managers._Game.Player.ShootDir;
-        GenerateProjectile(Define.ARROWSHOT_ID, Managers._Game.Player, spawnPos, dir, Vector3.zero, ProjectileSpeed);
+        GenerateProjectile(Define.ARROWSHOT_ID, Owner, spawnPos, dir, Vector3.zero, ProjectileSpeed);
     }
 }
