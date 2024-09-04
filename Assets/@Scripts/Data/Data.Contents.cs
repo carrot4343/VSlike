@@ -91,11 +91,12 @@ namespace Data
     public class SkillData
     {
         [XmlAttribute] public int templateID;
-        //[XmlAttribute(AttributeName = "type")] public Define.SkillType skillType = Define.SkillType.None;
+        [XmlAttribute] public int name;
         [XmlAttribute] public int nextID;
         [XmlAttribute] public string prefab;
         [XmlAttribute] public int damage;
-
+        [XmlAttribute] public int speed;
+        [XmlAttribute] public int level;
     }
 
     [Serializable, XmlRoot("SkillDatas")]
