@@ -73,7 +73,7 @@ public class ProjectileController : SkillBase
         if (this.IsValid() == false)
             return;
 
-        mc.OnDamaged(m_owner, SkillData.damage);
+        mc.OnDamaged(m_owner, Damage);
 
         if(m_type == projectileType.disposable)
         {

@@ -91,8 +91,7 @@ namespace Data
     public class SkillData
     {
         [XmlAttribute] public int templateID;
-        [XmlAttribute] public int name;
-        [XmlAttribute] public int nextID;
+        [XmlAttribute] public string name;
         [XmlAttribute] public string prefab;
         [XmlAttribute] public int damage;
         [XmlAttribute] public int speed;

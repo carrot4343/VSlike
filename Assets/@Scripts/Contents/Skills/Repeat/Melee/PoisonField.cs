@@ -56,7 +56,7 @@ public class PoisonField : SkillBase
             if (target.IsValid() == false)
                 break;
 
-            target.OnDamaged(Owner, Damage);
+            target.OnDamaged(Owner, this.SkillData.damage);
             yield return new WaitForSeconds(Define.DOT_DAMAGE_RATE);
         }
     }

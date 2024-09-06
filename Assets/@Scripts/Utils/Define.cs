@@ -65,8 +65,8 @@ public class Define
     public const int WINDCUTTER_ID = 22;
     public const int ELECTRONIC_FIELD_ID = 23;
     public const int ICICLEARROW_ID = 24;
-    public const int POISON_FIELD_PROJECTILE_ID = 25;
-    public const int POISON_FIELD = 26;
+    public const int POISON_FIELD_PROJECTILE_ID = 160;
+    public const int POISON_FIELD = 170;
     public const int STORM_BLADE_ID = 27;
     public const int FROZEN_HEART_ID = 28;
 
