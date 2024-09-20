@@ -53,6 +53,8 @@ public class Define
         Dead
     }
 
+    //여기서 전역적으로 선언해서 수치를 힙공간에 저장하는게 옳은가?
+    //혹은 매번 데이터를 필요할때마다 로드하는게 옳은가? 오버헤드 줄이기 vs 힙공간 절약하기 가슴이 웅장해지는 싸움이다...
     public const int PLAYER_DATA_ID = 1;
     public const string EXP_GEM_PREFAB = "BlueGem.prefab";
     public const int GOBLIN_ID = 1;
