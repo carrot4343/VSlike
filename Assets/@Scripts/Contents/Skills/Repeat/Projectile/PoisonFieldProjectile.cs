@@ -8,9 +8,7 @@ public class PoisonFieldProjectile : RepeatSkill
     public override bool Init()
     {
         base.Init();
-
-        ProjectileSpeed = 5.0f;
-        CoolTime = 0.5f;
+        SetInfo(160);
         return true;
     }
     protected override void DoSkillJob()
@@ -25,7 +23,7 @@ public class PoisonFieldProjectile : RepeatSkill
         {
             Vector3 spawnPos = Managers._Game.Player.transform.position;
             Vector3 dir = new Vector3(Random.Range(-1.00f, 1.00f), Random.Range(-1.00f, 1.00f), 0.0f).normalized;
-            ProjectileController pc = GenerateProjectile(Define.POISON_FIELD_PROJECTILE_ID, Owner, spawnPos, dir, Vector3.zero, ProjectileSpeed, ProjectileController.projectileType.penentrate);
+            ProjectileController pc = GenerateProjectile(Define.POISON_FIELD_PROJECTILE_ID, Owner, spawnPos, dir, Vector3.zero, ProjectileController.projectileType.persistent);
             StartCoroutine(DestroyAndSpawnPoisonField(pc));
 
             yield return wait;
@@ -39,7 +37,7 @@ public class PoisonFieldProjectile : RepeatSkill
         if (pc != null)
             Managers._Object.Despawn(pc);
 
-        //많아야 5개이므로 풀링은 하지 않음.
+        //많아야 5개이므로 굳이 풀링은 하지 않음. 하는게 낫나?
         Managers._Object.Spawn<PoisonField>(pc.transform.position, Define.POISON_FIELD);
         yield break;
     }

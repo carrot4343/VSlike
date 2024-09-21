@@ -13,7 +13,7 @@ public class ProjectileController : SkillBase
     public enum projectileType
     {
         disposable, //일회용(적에 닿으면 없어짐)
-        penentrate, //투과체
+        persistent, //지속성
     }
 
 
@@ -33,23 +33,16 @@ public class ProjectileController : SkillBase
     {
         base.Init();
         StartDestroy(m_lifeTime);
-        
-
         return true;
     }
-    public void SetInfo(int templateID, CreatureController owner, Vector3 moveDir, float speed, projectileType type = projectileType.disposable)
+    
+    public void SetInfo(int templateID, CreatureController owner, Vector3 moveDir, projectileType type = projectileType.disposable)
     {
-        if (Managers._Data.SkillDic.TryGetValue(templateID, out Data.SkillData data) == false)
-        {
-            Debug.LogError("projectile controller setinfo failed");
-            return;
-        }
-
+        base.SetInfo(templateID);
         m_owner = owner;
         m_moveDir = moveDir;
-        SkillData = data;
         m_type = type;
-        m_speed = speed;
+        m_speed = SkillData.speed;
 
         transform.localEulerAngles = new Vector3(0, 0, Mathf.Atan2(-m_moveDir.x, m_moveDir.y) * 180 / Mathf.PI);
     }

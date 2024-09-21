@@ -18,6 +18,13 @@ public abstract class RepeatSkill : SkillBase
         m_coSkill = StartCoroutine(CoStartSkill());
     }
 
+    public override void SetInfo(int templateID)
+    {
+        base.SetInfo(templateID);
+        CoolTime = SkillData.coolTime;
+        ProjectileSpeed = SkillData.speed;
+    }
+
     //추상 함수로 선언함으로써 스킬의 수행 내용을 반드시 구현하도록 강제
     protected abstract void DoSkillJob();
 

@@ -93,6 +93,8 @@ namespace Data
         [XmlAttribute] public int templateID;
         [XmlAttribute] public string name;
         [XmlAttribute] public string prefab;
+        //type은 enum 자료형인데... 나중에 enum 타입으로 형변환을 하거나 data에 type을 int형으로 변환하던가 해야함
+        [XmlAttribute] public string type;
         [XmlAttribute] public int damage;
         [XmlAttribute] public int speed;
         [XmlAttribute] public int level;

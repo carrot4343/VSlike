@@ -12,7 +12,6 @@ public class PoisonField : SkillBase
     {
         base.Init();
         Damage = 20;
-        SkillData = Managers._Data.SkillDic.TryGetValue(templateID)
         Destroy(gameObject, m_duration);
         
         return true;
@@ -57,7 +56,7 @@ public class PoisonField : SkillBase
             if (target.IsValid() == false)
                 break;
 
-            target.OnDamaged(Owner, Managers._Data.);
+            target.OnDamaged(Owner, Damage);
             yield return new WaitForSeconds(Define.DOT_DAMAGE_RATE);
         }
     }
