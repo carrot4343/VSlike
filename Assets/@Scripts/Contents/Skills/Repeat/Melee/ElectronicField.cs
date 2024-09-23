@@ -10,7 +10,8 @@ public class ElectronicField : RepeatSkill
     public override bool Init()
     {
         base.Init();
-        Damage = 20;
+        TemplateID = TemplateID = Define.ELECTRONIC_FIELD_ID + SkillLevel;
+        SetInfo(TemplateID);
         transform.SetParent(Managers._Game.Player.transform);
         transform.position += new Vector3(0.0f, 0.65f, 0.0f);
         return true;

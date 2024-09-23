@@ -9,7 +9,24 @@ public class SkillBase : BaseController
     public Define.SkillType SkillType { get; set; } = Define.SkillType.None;
     public Data.SkillData SkillData { get; protected set; }
 
-    public int SkillLevel { get; set; } = 0;
+    public int TemplateID { get; set; }
+
+    //private 로 한 이유는 프로퍼티에서 적합한 조건을 거치지 않고 수정되는 경우를 방지하기 위함.
+    private int m_skillLevel = 0;
+    public int SkillLevel
+    {
+        get
+        {
+            return m_skillLevel;
+        }
+        set
+        {
+            if(m_skillLevel < 6)
+            {
+                m_skillLevel = value;
+            }
+        }
+    }
     public bool IsLearnedSkill
     {
         get { return SkillLevel > 0; }

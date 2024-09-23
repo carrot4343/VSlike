@@ -44,7 +44,9 @@ public class EgoSword : RepeatSkill
     public override bool Init()
     {
         base.Init();
-        CoolTime = 1.0f;
+
+        TemplateID = Define.EGO_SWORD_ID + SkillLevel;
+        SetInfo(TemplateID);
 
         return true;
     }

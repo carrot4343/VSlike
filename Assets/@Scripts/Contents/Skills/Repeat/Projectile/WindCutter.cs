@@ -8,7 +8,8 @@ public class WindCutter : RepeatSkill
     public override bool Init()
     {
         base.Init();
-        CoolTime = 2.0f;
+        TemplateID = Define.WINDCUTTER_ID + SkillLevel;
+        SetInfo(TemplateID);
         
         return true;
     }

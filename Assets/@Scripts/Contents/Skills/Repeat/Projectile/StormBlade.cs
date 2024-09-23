@@ -8,9 +8,8 @@ public class StormBlade : RepeatSkill
     public override bool Init()
     {
         base.Init();
-
-        CoolTime = 1.2f;
-        ProjectileSpeed = 20.0f;
+        TemplateID = Define.STORM_BLADE_ID + SkillLevel;
+        SetInfo(TemplateID);
         return true;
     }
     protected override void DoSkillJob()

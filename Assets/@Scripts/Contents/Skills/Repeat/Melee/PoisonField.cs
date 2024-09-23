@@ -11,7 +11,8 @@ public class PoisonField : SkillBase
     public override bool Init()
     {
         base.Init();
-        Damage = 20;
+        TemplateID = Define.POISON_FIELD + SkillLevel;
+        SetInfo(TemplateID);
         Destroy(gameObject, m_duration);
         
         return true;
