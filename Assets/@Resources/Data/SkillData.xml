@@ -12,29 +12,29 @@
   </SkillData>
   <SkillData templateID="105" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="400" coolTime="1.0" level="6">
   </SkillData>
-  <SkillData templateID="110" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="100" coolTime="1.2" speed="2" level="1">
+  <SkillData templateID="110" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="100" coolTime="1.2" speed="10" level="1">
   </SkillData>
-  <SkillData templateID="111" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="150" coolTime="1.2" speed="2" level="2">
+  <SkillData templateID="111" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="150" coolTime="1.2" speed="10" level="2">
   </SkillData>
-  <SkillData templateID="112" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="200" coolTime="1.2" speed="2" level="3">
+  <SkillData templateID="112" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="200" coolTime="1.2" speed="10" level="3">
   </SkillData>
-  <SkillData templateID="113" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="250" coolTime="1.2" speed="2" level="4">
+  <SkillData templateID="113" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="250" coolTime="1.2" speed="10" level="4">
   </SkillData>
-  <SkillData templateID="114" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="300" coolTime="1.2" speed="2" level="5">
+  <SkillData templateID="114" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="300" coolTime="1.2" speed="10" level="5">
   </SkillData>
-  <SkillData templateID="115" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="500" coolTime="1.2" speed="2" level="6">
+  <SkillData templateID="115" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="500" coolTime="1.2" speed="10" level="6">
   </SkillData>
-  <SkillData templateID="120" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="100" coolTime="0.5" speed="5" level="1">
+  <SkillData templateID="120" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="25" coolTime="0.7" speed="15" level="1">
   </SkillData>
-  <SkillData templateID="121" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="150" coolTime="0.5" speed="5" level="2">
+  <SkillData templateID="121" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="35" coolTime="0.7" speed="15" level="2">
   </SkillData>
-  <SkillData templateID="122" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="200" coolTime="0.5" speed="5" level="3">
+  <SkillData templateID="122" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="50" coolTime="0.7" speed="15" level="3">
   </SkillData>
-  <SkillData templateID="123" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="250" coolTime="0.5" speed="5" level="4">
+  <SkillData templateID="123" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="65" coolTime="0.7" speed="15" level="4">
   </SkillData>
-  <SkillData templateID="124" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="300" coolTime="0.5" speed="5" level="5">
+  <SkillData templateID="124" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="85" coolTime="0.7" speed="15" level="5">
   </SkillData>
-  <SkillData templateID="125" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="500" coolTime="0.5" speed="5" level="6">
+  <SkillData templateID="125" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="125" coolTime="0.7" speed="15" level="6">
   </SkillData>
   <SkillData templateID="130" name="WindCutter" type="Projectile" prefab="WindCutter.prefab" damage="100" coolTime="2.0" speed="15" level="1">
   </SkillData>

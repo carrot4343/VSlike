@@ -34,7 +34,7 @@ public class PlayerController : CreatureController
         base.InitLate();
 
         Managers._Game.OnMoveDirChanged += HandleOnMoveDirChanged;
-        Skills.AddSkill<PoisonFieldProjectile>(transform.position, transform);
+        Skills.AddSkill<ArrowShot>(transform.position, transform);
         return true;
     }
 
