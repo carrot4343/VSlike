@@ -27,6 +27,7 @@ public class SkillBase : BaseController
             }
         }
     }
+
     public bool IsLearnedSkill
     {
         get { return SkillLevel > 0; }
@@ -99,4 +100,20 @@ public class SkillBase : BaseController
     }
 
     #endregion
+
+    //UI를 다루는 클래스에서 직접 SkillLevel 값을 수정하는게 썩 마음에 들지 않아서 이런 형태를 하게 됐는데...
+    //사실 그냥 UI클래스에서 SkillLevel++ 하는거에 괜히 오버헤드만 추가된게 아닌가? 싶기는 함.
+    //물론 매 프레임마다 불러오는 메서드도 아니고 해서 영향이 크진 않겠지만 괜히 찝찝한 이 느낌.
+    //Skill을 Upgrade함에 있어서 무언가 추가적으로 수반되는 동작이 있을까? 싶긴함. 있다면 이 형태가 괜찮은데
+    //만약 없는게 확실하다면? 그러면 그냥 외부에서 SkillLevel++을 하는게 맞겠지...
+    public void SkillUpgrade()
+    {
+        SkillLevel++;
+        OnSkillLevelUpgrade();
+    }
+
+    protected virtual void OnSkillLevelUpgrade()
+    {
+
+    }
 }

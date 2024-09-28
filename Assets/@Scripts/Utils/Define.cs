@@ -73,4 +73,7 @@ public class Define
     public const int UI_SKILL_ICON_SIZE = 6;
 
     public const float DOT_DAMAGE_RATE = 0.2f;
+
+    public const float MAX_SPEED = 10.0f;
+    public const int MAX_SKILL_LEVEL = 6;
 }

@@ -7,6 +7,22 @@ public class PlayerController : CreatureController
 {
     Vector2 m_moveDir = Vector2.zero;
     float EnvCollectDist { get; set; } = 1.0f;
+    public int PlayerAtk { get; set; }
+    public float PlayerSpeed
+    {
+        get
+        {
+            return m_speed;
+        }
+        set
+        {
+            if (m_speed >= Define.MAX_SPEED)
+            {
+                return;
+            }
+            m_speed = value;
+        }
+    }
 
     [SerializeField] Transform m_indicator;
     [SerializeField] Transform m_fireSocket;

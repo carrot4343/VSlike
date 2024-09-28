@@ -5,8 +5,27 @@ using UnityEngine;
 public class CreatureController : BaseController
 {
     protected float m_speed = 1.0f;
+    int m_hp = 100;
 
-    public int m_HP { get; set; } = 100;
+    public int m_HP
+    {
+        get
+        {
+            return m_hp;
+        }
+        set
+        {
+            //최대 체력 초과 방지
+            if(value > m_maxHP)
+            {
+                m_hp = m_maxHP;
+            }
+            else
+            {
+                m_hp = value;
+            }
+        }
+    }
     public int m_maxHP { get; set; } = 100;
 
     public SkillBook Skills { get; protected set; }

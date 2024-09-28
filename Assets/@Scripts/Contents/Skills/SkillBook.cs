@@ -15,6 +15,10 @@ public class SkillBook : MonoBehaviour
     //parent의 SkillBook에 스킬 추가
     public T AddSkill<T>(Vector3 position, Transform parent = null) where T : SkillBase
     {
+        if(Skills.Exists(x=> x.GetType() == typeof(T)))
+        {
+            //여기 해야함 (스킬 업그레이드)
+        }
         //Generic type을 바탕으로 어떤 스킬인지 판별
         //추후 Data와 연계되게 바꿔야 할 듯.
         System.Type type = typeof(T);

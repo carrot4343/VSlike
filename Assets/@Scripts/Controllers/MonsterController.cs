@@ -6,7 +6,7 @@ public class MonsterController : CreatureController
 {
     #region State Pattern
     Define.CreatureState m_creatureState = Define.CreatureState.Moving;
-    public int hp = 0;
+    public int m_hp = 0;
     public virtual Define.CreatureState CreatureState
     {
         get { return m_creatureState; }
@@ -54,7 +54,7 @@ public class MonsterController : CreatureController
     #endregion
     public override bool Init()
     {
-        //매번 Init이 호출될 때마다 수행
+        //매번 Init이 호출될 때마다 수행. 이 과정을 분리하지 않고 최초 1회만 수행하면 Respawn 되자마자 OnDead호출
         m_HP = m_maxHP;
 
         //최초 1회만 수행
@@ -70,7 +70,7 @@ public class MonsterController : CreatureController
     //물리 움직임을 이용할 땐 update 보단 fixed update
     void FixedUpdate()
     {
-        hp = m_HP;
+        m_hp = m_HP;
         if (CreatureState != Define.CreatureState.Moving)
             return;
 
@@ -122,6 +122,17 @@ public class MonsterController : CreatureController
             //cool time
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    public override void OnDamaged(BaseController attacker, int damage)
+    {
+        //Player의 공격력 (스킬로 공격력 자체를 올린다거나 장비아이템을 얻는다거나...)을 더하는 과정.
+        //추후 계산식은 수정이 필요함 (기획의 문제)
+        if(attacker.GetComponent<PlayerController>() != null)
+        {
+            damage += Managers._Game.Player.PlayerAtk;
+        }
+        base.OnDamaged(attacker, damage);
     }
 
     protected override void OnDead()

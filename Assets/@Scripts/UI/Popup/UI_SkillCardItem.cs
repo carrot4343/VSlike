@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UI_SkillCardItem : UI_Base
 {
-    int m_templateId;
+    int m_templateID;
     Data.SkillData m_skillData;
     //OnEnable에서 혹은 refresh에서 Scale값을 1로 바꾸게 하자. 왜 이런 현상이 생길ㄲ? << 안됨. 강제로 일단 pixel을 늘려놓긴 했는데...
     private void OnEnable()
@@ -13,7 +13,7 @@ public class UI_SkillCardItem : UI_Base
     }
     public void SetInfo(int templateID)
     {
-        m_templateId = templateID;
+        m_templateID = templateID;
         //정리
         //1. 기획의 문제. 체력 회복 / 돈(같은 재화) 을 스킬에 넣어야 하는가?
         //2. 스킬에 공격력 같은 스텟 증가가 들어가야 하는가?
