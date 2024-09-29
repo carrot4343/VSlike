@@ -132,6 +132,7 @@ public class MonsterController : CreatureController
         {
             damage += Managers._Game.Player.PlayerAtk;
         }
+        Debug.Log("Get Damaged : " + damage);
         base.OnDamaged(attacker, damage);
     }
 

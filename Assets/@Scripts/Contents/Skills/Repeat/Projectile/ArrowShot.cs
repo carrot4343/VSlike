@@ -9,6 +9,7 @@ public class ArrowShot : RepeatSkill
         base.Init();
         //굳이굳이 define을 쓰는 이유는 편집을 편하게 하기 위해서...
         TemplateID = Define.ARROWSHOT_ID + SkillLevel;
+        Owner = Managers._Game.Player;
         SetInfo(TemplateID);
         return true;
     }

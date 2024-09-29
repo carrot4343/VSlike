@@ -99,6 +99,8 @@ namespace Data
         [XmlAttribute] public int speed;
         [XmlAttribute] public int level;
         [XmlAttribute] public float coolTime;
+        [XmlAttribute] public string description;
+        [XmlAttribute] public string image;
     }
 
     [Serializable, XmlRoot("SkillDatas")]
