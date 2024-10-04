@@ -10,21 +10,21 @@ public class UI_SkillSelectPopup : UI_Base
     }
 
     enum Image
-    { 
+    {
         BattleSkillImage,
-        BattleSkill_Icon_0,
-        BattleSkill_Icon_1,
-        BattleSkill_Icon_2,
-        BattleSkill_Icon_3,
-        BattleSkill_Icon_4,
-        BattleSkill_Icon_5,
-        SupportSkillImage,
-        SupportSkill_Icon_0,
-        SupportSkill_Icon_1,
-        SupportSkill_Icon_2,
-        SupportSkill_Icon_3,
-        SupportSkill_Icon_4,
-        SupportSkill_Icon_5,
+        BattleSkilISlot_0,
+        BattleSkilISlot_1,
+        BattleSkilISlot_2,
+        BattleSkilISlot_3,
+        BattleSkilISlot_4,
+        BattleSkilISlot_5,
+        SupportSkilllmage,
+        SupportSkillSlot_0,
+        SupportSkillSlot_1,
+        SupportSkillSlot_2,
+        SupportSkillSlot_3,
+        SupportSkillSlot_4,
+        SupportSkillSlot_5,
     }
     Image[] m_icons = new Image[sizeof(Image)];
     enum Texts

@@ -85,12 +85,12 @@ public class UI_GameScene : UI_Base
 
     void OnClickPauseButton()
     {
-
+        Debug.Log("Pause Button Clicked");
     }
 
     void OnClickDevelopButton()
     {
-        
+        Debug.Log("Pause Button Clicked");
     }
 
     private void Update()

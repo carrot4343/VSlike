@@ -11,6 +11,7 @@ public class UI_SkillCardItem : UI_Base
     private void OnEnable()
     {
         SetInfo(120);
+        RefreshUI();
     }
     public void SetInfo(int templateID)
     {
@@ -19,11 +20,6 @@ public class UI_SkillCardItem : UI_Base
         Managers._Data.SkillDic.TryGetValue(templateID, out m_skillData);
         m_skillType = System.Type.GetType(m_skillData.name);
         RefreshUI();
-    }
-
-    enum GameObjects
-    {
-        SkillCardSelectListObject,
     }
 
     enum Image
@@ -40,8 +36,8 @@ public class UI_SkillCardItem : UI_Base
 
     enum Buttons
     {
-        //이 UI 전체가 하나의 버튼임. 그러면 이걸 Bind 로 연결해야 하는가 ? 의문점
-        SkillCardBackGroundImage,
+        //이 UI 전체가 하나의 버튼임. 그러면 이걸 Bind 로 연결해야 하는가? 의문점
+        SkillCardBackgroundImage,
     }
 
     public override bool Init()
@@ -49,7 +45,6 @@ public class UI_SkillCardItem : UI_Base
         if (base.Init() == false)
             return false;
 
-        BindObject(typeof(GameObjects));
         BindText(typeof(Texts));
         BindButton(typeof(Buttons));
         BindImage(typeof(Image));
@@ -64,7 +59,7 @@ public class UI_SkillCardItem : UI_Base
         if (m_init == false)
             return;
 
-        GetButton((int)Buttons.SkillCardBackGroundImage).gameObject.BindEvent(OnClickSkillCardBackGroundImage);
+        //GetButton((int)Buttons.SkillCardBackGroundImage).gameObject.BindEvent(OnClickSkillCardBackGroundImage);
         GetText((int)Texts.CardNameText).text = m_skillData.name;
         GetText((int)Texts.SkillDescriptionText).text = m_skillData.description;
         GetText((int)Texts.NewText).text = "New!";
@@ -77,8 +72,8 @@ public class UI_SkillCardItem : UI_Base
         if (m_init == false)
             return;
 
-        //GetText((int)Texts.CardNameText).text = ;
-        //GetText((int)Texts.SkillDescriptionText).text = ;
+        GetText((int)Texts.CardNameText).text = m_skillData.name;
+        GetText((int)Texts.SkillDescriptionText).text = m_skillData.description;
         //GetImage((int)Image.BattleSkillImage) = ;
     }
 
