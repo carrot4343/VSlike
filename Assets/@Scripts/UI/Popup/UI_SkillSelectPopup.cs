@@ -11,14 +11,12 @@ public class UI_SkillSelectPopup : UI_Base
 
     enum Image
     {
-        BattleSkillImage,
         BattleSkilISlot_0,
         BattleSkilISlot_1,
         BattleSkilISlot_2,
         BattleSkilISlot_3,
         BattleSkilISlot_4,
         BattleSkilISlot_5,
-        SupportSkilllmage,
         SupportSkillSlot_0,
         SupportSkillSlot_1,
         SupportSkillSlot_2,
@@ -84,8 +82,8 @@ public class UI_SkillSelectPopup : UI_Base
         GetText((int)Texts.BeforeLevelValueText).text = (Managers._Game.PlayerLevel - 1).ToString();
         GetText((int)Texts.AfterLevelValueText).text = Managers._Game.PlayerLevel.ToString();
 
-        //GetImage((int)Image.BattleSkillImage) = ;
-        //GetImage((int)Image.SupportSkillImage) = ; TODO
+        GetImage(0).sprite = Managers._Resource.Load<Sprite>("ArrowShot_Icon.sprite");
+
         for(int i = 0; i < Define.UI_SKILL_ICON_SIZE; i++)
         {
             //1. Player의 SkillBook 정보를 가져온다
@@ -123,7 +121,7 @@ public class UI_SkillSelectPopup : UI_Base
             var go = Managers._Resource.Instantiate("UI_SkillCardItem.prefab");
             UI_SkillCardItem item = go.GetOrAddcompnent<UI_SkillCardItem>();
             item.transform.SetParent(m_grid.transform);
-
+            //item.SetInfo(randomInt)
             m_items.Add(item);
         }
     }

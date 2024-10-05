@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UI Sprites
+  m_EditorClassIdentifier: 
+  m_GroupName: UI Sprites
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 7b11780c092747a4cab29bde7fcccd9d
+  m_SerializeEntries:
+  - m_GUID: 3c7aad2d371db7d40b90f70a5f1ab9a7
+    m_Address: FireBall_Icon.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 97b6b4d9ee3bf7348a0b524a879c05d5
+    m_Address: IcicleArrow_Icon.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 68bbf33ea7ddf214eb9039655850aa19
+    m_Address: PoisonField_Icon.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: a4a243951f764b646b63405fd60a08f3
+    m_Address: ElectronicField_Icon.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 703f5c0aac127f644a78a16163e8e6e1
+    m_Address: FrozenHeart_Icon.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 7ebcb26b5d894d54c8edfa772ee86e05
+    m_Address: WindCutter_Icon.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 92cea59e29daf76409fb7e069cb69672
+    m_Address: StormBlate_Icon.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 40f0dfc566cb16f40b2584a80832344d
+    m_Address: ArrowShot_Icon.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 68254714d3771cc4296e19cbb58661d1, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 33c7e0841f835e04888fbaf5108dba94, type: 2}
+    - {fileID: 11400000, guid: ed0bbdbf87354de40abae012e6437294, type: 2}
