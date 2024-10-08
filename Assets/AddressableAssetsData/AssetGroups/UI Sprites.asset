@@ -48,7 +48,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
   - m_GUID: 92cea59e29daf76409fb7e069cb69672
-    m_Address: StormBlate_Icon.sprite
+    m_Address: StormBlade_Icon.sprite
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload

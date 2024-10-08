@@ -11,18 +11,18 @@ public class UI_SkillSelectPopup : UI_Base
 
     enum Image
     {
-        BattleSkilISlot_0,
-        BattleSkilISlot_1,
-        BattleSkilISlot_2,
-        BattleSkilISlot_3,
-        BattleSkilISlot_4,
-        BattleSkilISlot_5,
-        SupportSkillSlot_0,
-        SupportSkillSlot_1,
-        SupportSkillSlot_2,
-        SupportSkillSlot_3,
-        SupportSkillSlot_4,
-        SupportSkillSlot_5,
+        BattleSkilI_Icon_0,
+        BattleSkilI_Icon_1,
+        BattleSkilI_Icon_2,
+        BattleSkilI_Icon_3,
+        BattleSkilI_Icon_4,
+        BattleSkilI_Icon_5,
+        SupportSkilI_Icon_0,
+        SupportSkilI_Icon_1,
+        SupportSkilI_Icon_2,
+        SupportSkilI_Icon_3,
+        SupportSkilI_Icon_4,
+        SupportSkilI_Icon_5,
     }
     Image[] m_icons = new Image[sizeof(Image)];
     enum Texts
@@ -56,6 +56,7 @@ public class UI_SkillSelectPopup : UI_Base
         GetButton((int)Buttons.ADRefreshButton).gameObject.BindEvent(OnClickADRefreshButton);
 
         SetDefault();
+        RefreshUI();
         return true;
     }
 
@@ -79,31 +80,23 @@ public class UI_SkillSelectPopup : UI_Base
         GetText((int)Texts.CardRefreshText).text = "Refresh";
         GetText((int)Texts.ADRefreshText).text = "Refresh";
         GetText((int)Texts.CharacterLevelupTitleText).text = "Level up !";
-        GetText((int)Texts.BeforeLevelValueText).text = (Managers._Game.PlayerLevel - 1).ToString();
-        GetText((int)Texts.AfterLevelValueText).text = Managers._Game.PlayerLevel.ToString();
-
-        GetImage(0).sprite = Managers._Resource.Load<Sprite>("ArrowShot_Icon.sprite");
-
-        for(int i = 0; i < Define.UI_SKILL_ICON_SIZE; i++)
-        {
-            //1. Player의 SkillBook 정보를 가져온다
-            //2. SkillBook의 첫번째 항목부터 이게 무슨 스킬인지 판별하고
-            //3. 그에 맞는 이미지를 switch case로 판별한다.
-            //4. 이미지는 switch case로 addressable에 저장된걸 써야겠지? <<< 미리 addressable을 해놓자.
-        }
-
-        m_grid = GetObjects((int)GameObjects.SkillCardSelectListObject).transform;
-        PopulateGrid();
     }
 
     void RefreshUI()
     {
-        if (m_init == false)
-            return;
-
+        m_grid = GetObjects((int)GameObjects.SkillCardSelectListObject).transform;
         GetText((int)Texts.BeforeLevelValueText).text = (Managers._Game.PlayerLevel - 1).ToString();
         GetText((int)Texts.AfterLevelValueText).text = Managers._Game.PlayerLevel.ToString();
-        
+
+        for (int i = (int)Image.BattleSkilI_Icon_0; i <= (int)Image.BattleSkilI_Icon_5; i++)
+        {
+            //현재 player의 skill list를 참고하여 templateID를 가져오고
+            //그 templateID에 맞는 skill image를 로드함.
+            int templateID = Managers._Game.Player.Skills.Skills[i].TemplateID;
+            GetImage(i).enabled = true;
+            GetImage(i).sprite = Managers._Resource.Load<Sprite>(Managers._Data.SkillDic[templateID].image);
+        }
+
 
         PopulateGrid();
     }

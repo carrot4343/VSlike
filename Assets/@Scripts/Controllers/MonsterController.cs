@@ -6,7 +6,6 @@ public class MonsterController : CreatureController
 {
     #region State Pattern
     Define.CreatureState m_creatureState = Define.CreatureState.Moving;
-    public int m_hp = 0;
     public virtual Define.CreatureState CreatureState
     {
         get { return m_creatureState; }
@@ -70,7 +69,6 @@ public class MonsterController : CreatureController
     //물리 움직임을 이용할 땐 update 보단 fixed update
     void FixedUpdate()
     {
-        m_hp = m_HP;
         if (CreatureState != Define.CreatureState.Moving)
             return;
 
