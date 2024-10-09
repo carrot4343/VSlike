@@ -16,8 +16,12 @@ public class ResourceManager
     public T Load<T>(string key) where T : Object
     {
         if (m_resources.TryGetValue(key, out Object resource))
-            return resource as T;
+        {
+            if (resource == null)
+                Debug.Log($"Null Resource Load : {key}");
 
+            return resource as T;
+        }
         return null;
     }
 

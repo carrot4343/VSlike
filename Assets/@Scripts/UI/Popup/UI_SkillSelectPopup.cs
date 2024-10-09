@@ -80,23 +80,22 @@ public class UI_SkillSelectPopup : UI_Base
         GetText((int)Texts.CardRefreshText).text = "Refresh";
         GetText((int)Texts.ADRefreshText).text = "Refresh";
         GetText((int)Texts.CharacterLevelupTitleText).text = "Level up !";
+
+        m_grid = GetObjects((int)GameObjects.SkillCardSelectListObject).transform;
     }
 
     void RefreshUI()
     {
-        m_grid = GetObjects((int)GameObjects.SkillCardSelectListObject).transform;
         GetText((int)Texts.BeforeLevelValueText).text = (Managers._Game.PlayerLevel - 1).ToString();
         GetText((int)Texts.AfterLevelValueText).text = Managers._Game.PlayerLevel.ToString();
 
-        for (int i = (int)Image.BattleSkilI_Icon_0; i <= (int)Image.BattleSkilI_Icon_5; i++)
+        //보유중인 skill icon load
+        for (int i = (int)Image.BattleSkilI_Icon_0; i < (int)Image.BattleSkilI_Icon_0 + Managers._Game.Player.Skills.Skills.Count; i++)
         {
-            //현재 player의 skill list를 참고하여 templateID를 가져오고
-            //그 templateID에 맞는 skill image를 로드함.
             int templateID = Managers._Game.Player.Skills.Skills[i].TemplateID;
             GetImage(i).enabled = true;
             GetImage(i).sprite = Managers._Resource.Load<Sprite>(Managers._Data.SkillDic[templateID].image);
         }
-
 
         PopulateGrid();
     }

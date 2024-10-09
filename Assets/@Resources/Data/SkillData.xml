@@ -24,7 +24,7 @@
   </SkillData>
   <SkillData templateID="115" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="500" coolTime="1.2" speed="10" level="6">
   </SkillData>
-  <SkillData templateID="120" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="25" coolTime="0.7" speed="15" level="1" description="Fire penetrable arrow forward." image="ArrowShot_Icon.prefab">
+  <SkillData templateID="120" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="25" coolTime="0.7" speed="15" level="1" description="Fire penetrable arrow forward." image="ArrowShot_Icon.sprite">
   </SkillData>
   <SkillData templateID="121" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="35" coolTime="0.7" speed="15" level="2">
   </SkillData>
