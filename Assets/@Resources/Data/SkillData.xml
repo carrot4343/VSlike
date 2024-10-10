@@ -1,78 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SkillDatas>
-  <SkillData templateID="100" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="100" coolTime="1.0" level="1">
+  <SkillData templateID="100" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="100" coolTime="1.0" level="1"
+             description="Normal Attack" image="EgoSword_Icon.sprite">
   </SkillData>
-  <SkillData templateID="101" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="150" coolTime="1.0" level="2">
+  <SkillData templateID="101" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="150" coolTime="1.0" level="2"
+             description="Normal Attack" image="EgoSword_Icon.sprite">
   </SkillData>
-  <SkillData templateID="102" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="200" coolTime="1.0" level="3">
+  <SkillData templateID="102" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="200" coolTime="1.0" level="3"
+             description="Normal Attack" image="EgoSword_Icon.sprite">
   </SkillData>
-  <SkillData templateID="103" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="250" coolTime="1.0" level="4">
+  <SkillData templateID="103" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="250" coolTime="1.0" level="4"
+             description="Normal Attack" image="EgoSword_Icon.sprite">
   </SkillData>
-  <SkillData templateID="104" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="300" coolTime="1.0" level="5">
+  <SkillData templateID="104" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="300" coolTime="1.0" level="5"
+             description="Normal Attack" image="EgoSword_Icon.sprite">
   </SkillData>
-  <SkillData templateID="105" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="400" coolTime="1.0" level="6">
+  <SkillData templateID="105" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="400" coolTime="1.0" level="6"
+             description="Normal Attack" image="EgoSword_Icon.sprite">
   </SkillData>
-  <SkillData templateID="110" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="100" coolTime="1.2" speed="10" level="1">
+  <SkillData templateID="110" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="100" coolTime="1.2" speed="10" level="1"
+             description="Fire disposable fireball forward." image="FireBall_Icon.sprite">
   </SkillData>
-  <SkillData templateID="111" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="150" coolTime="1.2" speed="10" level="2">
+  <SkillData templateID="111" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="150" coolTime="1.2" speed="10" level="2"
+             description="Fire disposable fireball forward." image="FireBall_Icon.sprite">
   </SkillData>
-  <SkillData templateID="112" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="200" coolTime="1.2" speed="10" level="3">
+  <SkillData templateID="112" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="200" coolTime="1.2" speed="10" level="3"
+             description="Fire disposable fireball forward." image="FireBall_Icon.sprite">
   </SkillData>
-  <SkillData templateID="113" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="250" coolTime="1.2" speed="10" level="4">
+  <SkillData templateID="113" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="250" coolTime="1.2" speed="10" level="4"
+             description="Fire disposable fireball forward." image="FireBall_Icon.sprite">
   </SkillData>
-  <SkillData templateID="114" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="300" coolTime="1.2" speed="10" level="5">
+  <SkillData templateID="114" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="300" coolTime="1.2" speed="10" level="5"
+             description="Fire disposable fireball forward." image="FireBall_Icon.sprite">
   </SkillData>
-  <SkillData templateID="115" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="500" coolTime="1.2" speed="10" level="6">
+  <SkillData templateID="115" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="500" coolTime="1.2" speed="10" level="6"
+             description="Fire disposable fireball forward." image="FireBall_Icon.sprite">
   </SkillData>
-  <SkillData templateID="120" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="25" coolTime="0.7" speed="15" level="1" description="Fire penetrable arrow forward." image="ArrowShot_Icon.sprite">
+  <SkillData templateID="120" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="25" coolTime="0.7" speed="15" level="1" 
+             description="Fire penetrable arrow forward." image="ArrowShot_Icon.sprite">
   </SkillData>
-  <SkillData templateID="121" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="35" coolTime="0.7" speed="15" level="2">
+  <SkillData templateID="121" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="35" coolTime="0.7" speed="15" level="2"
+             description="Fire penetrable arrow forward." image="ArrowShot_Icon.sprite">
   </SkillData>
-  <SkillData templateID="122" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="50" coolTime="0.7" speed="15" level="3">
+  <SkillData templateID="122" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="50" coolTime="0.7" speed="15" level="3"
+             description="Fire penetrable arrow forward." image="ArrowShot_Icon.sprite">
   </SkillData>
-  <SkillData templateID="123" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="65" coolTime="0.7" speed="15" level="4">
+  <SkillData templateID="123" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="65" coolTime="0.7" speed="15" level="4"
+             description="Fire penetrable arrow forward." image="ArrowShot_Icon.sprite">
   </SkillData>
-  <SkillData templateID="124" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="85" coolTime="0.7" speed="15" level="5">
+  <SkillData templateID="124" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="85" coolTime="0.7" speed="15" level="5"
+             description="Fire penetrable arrow forward." image="ArrowShot_Icon.sprite">
   </SkillData>
-  <SkillData templateID="125" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="125" coolTime="0.7" speed="15" level="6">
+  <SkillData templateID="125" name="ArrowShot" type="Projectile" prefab="ArrowShot.prefab" damage="125" coolTime="0.7" speed="15" level="6"
+             description="Fire penetrable arrow forward." image="ArrowShot_Icon.sprite">
   </SkillData>
-  <SkillData templateID="130" name="WindCutter" type="Projectile" prefab="WindCutter.prefab" damage="100" coolTime="2.0" speed="15" level="1">
+  <SkillData templateID="130" name="WindCutter" type="Projectile" prefab="WindCutter.prefab" damage="100" coolTime="2.0" speed="15" level="1"
+             description="Fire shurikens that return." image="WindCutter_Icon.sprite">
   </SkillData>
-  <SkillData templateID="131" name="WindCutter" type="Projectile" prefab="WindCutter.prefab" damage="150" coolTime="2.0" speed="15" level="2">
+  <SkillData templateID="131" name="WindCutter" type="Projectile" prefab="WindCutter.prefab" damage="150" coolTime="2.0" speed="15" level="2"
+             description="Fire shurikens that return." image="WindCutter_Icon.sprite">
   </SkillData>
-  <SkillData templateID="132" name="WindCutter" type="Projectile" prefab="WindCutter.prefab" damage="200" coolTime="2.0" speed="15" level="3">
+  <SkillData templateID="132" name="WindCutter" type="Projectile" prefab="WindCutter.prefab" damage="200" coolTime="2.0" speed="15" level="3"
+             description="Fire shurikens that return." image="WindCutter_Icon.sprite">
   </SkillData>
-  <SkillData templateID="133" name="WindCutter" type="Projectile" prefab="WindCutter.prefab" damage="250" coolTime="2.0" speed="15" level="4">
+  <SkillData templateID="133" name="WindCutter" type="Projectile" prefab="WindCutter.prefab" damage="250" coolTime="2.0" speed="15" level="4"
+             description="Fire shurikens that return." image="WindCutter_Icon.sprite">
   </SkillData>
-  <SkillData templateID="134" name="WindCutter" type="Projectile" prefab="WindCutter.prefab" damage="300" coolTime="2.0" speed="15" level="5">
+  <SkillData templateID="134" name="WindCutter" type="Projectile" prefab="WindCutter.prefab" damage="300" coolTime="2.0" speed="15" level="5"
+             description="Fire shurikens that return." image="WindCutter_Icon.sprite">
   </SkillData>
-  <SkillData templateID="135" name="WindCutter" type="Projectile" prefab="WindCutter.prefab" damage="500" coolTime="2.0" speed="15" level="6">
+  <SkillData templateID="135" name="WindCutter" type="Projectile" prefab="WindCutter.prefab" damage="500" coolTime="2.0" speed="15" level="6"
+             description="Fire shurikens that return." image="WindCutter_Icon.sprite">
   </SkillData>
-  <SkillData templateID="140" name="ElectronicField" type="Melee" prefab="ElectronicField.prefab" damage="20" level="1">
+  <SkillData templateID="140" name="ElectronicField" type="Melee" prefab="ElectronicField.prefab" damage="20" level="1"
+             description="Create an electronic field centered around player." image="ElectronicField_Icon.sprite">
   </SkillData>
-  <SkillData templateID="141" name="ElectronicField" type="Melee" prefab="ElectronicField.prefab" damage="30" level="2">
+  <SkillData templateID="141" name="ElectronicField" type="Melee" prefab="ElectronicField.prefab" damage="30" level="2"
+             description="Create an electronic field centered around player." image="ElectronicField_Icon.sprite">
   </SkillData>
-  <SkillData templateID="142" name="ElectronicField" type="Melee" prefab="ElectronicField.prefab" damage="40" level="3">
+  <SkillData templateID="142" name="ElectronicField" type="Melee" prefab="ElectronicField.prefab" damage="40" level="3"
+             description="Create an electronic field centered around player." image="ElectronicField_Icon.sprite">
   </SkillData>
-  <SkillData templateID="143" name="ElectronicField" type="Melee" prefab="ElectronicField.prefab" damage="50" level="4">
+  <SkillData templateID="143" name="ElectronicField" type="Melee" prefab="ElectronicField.prefab" damage="50" level="4"
+             description="Create an electronic field centered around player." image="ElectronicField_Icon.sprite">
   </SkillData>
-  <SkillData templateID="144" name="ElectronicField" type="Melee" prefab="ElectronicField.prefab" damage="60" level="5">
+  <SkillData templateID="144" name="ElectronicField" type="Melee" prefab="ElectronicField.prefab" damage="60" level="5"
+             description="Create an electronic field centered around player." image="ElectronicField_Icon.sprite">
   </SkillData>
-  <SkillData templateID="145" name="ElectronicField" type="Melee" prefab="ElectronicField.prefab" damage="100" level="6">
+  <SkillData templateID="145" name="ElectronicField" type="Melee" prefab="ElectronicField.prefab" damage="100" level="6"
+             description="Create an electronic field centered around player." image="ElectronicField_Icon.sprite">
   </SkillData>
-  <SkillData templateID="150" name="IcicleArrow" type="Projectile" prefab="IcicleArrow.prefab" damage="70" coolTime="1.0" level="1">
+  <SkillData templateID="150" name="IcicleArrow" type="Projectile" prefab="IcicleArrow.prefab" damage="70" coolTime="1.0" level="1"
+             description="Fire some arrows forward." image="IcicleArrow_Icon.sprite">
   </SkillData>
-  <SkillData templateID="151" name="IcicleArrow" type="Projectile" prefab="IcicleArrow.prefab" damage="100" coolTime="1.0" level="2">
+  <SkillData templateID="151" name="IcicleArrow" type="Projectile" prefab="IcicleArrow.prefab" damage="100" coolTime="1.0" level="2"
+             description="Fire some arrows forward." image="IcicleArrow_Icon.sprite">
   </SkillData>
-  <SkillData templateID="152" name="IcicleArrow" type="Projectile" prefab="IcicleArrow.prefab" damage="140" coolTime="1.0" level="3">
+  <SkillData templateID="152" name="IcicleArrow" type="Projectile" prefab="IcicleArrow.prefab" damage="140" coolTime="1.0" level="3"
+             description="Fire some arrows forward." image="IcicleArrow_Icon.sprite">
   </SkillData>
-  <SkillData templateID="153" name="IcicleArrow" type="Projectile" prefab="IcicleArrow.prefab" damage="200" coolTime="1.0" level="4">
+  <SkillData templateID="153" name="IcicleArrow" type="Projectile" prefab="IcicleArrow.prefab" damage="200" coolTime="1.0" level="4"
+             description="Fire some arrows forward." image="IcicleArrow_Icon.sprite">
   </SkillData>
-  <SkillData templateID="154" name="IcicleArrow" type="Projectile" prefab="IcicleArrow.prefab" damage="250" coolTime="1.0" level="5">
+  <SkillData templateID="154" name="IcicleArrow" type="Projectile" prefab="IcicleArrow.prefab" damage="250" coolTime="1.0" level="5"
+             description="Fire some arrows forward." image="IcicleArrow_Icon.sprite">
   </SkillData>
-  <SkillData templateID="155" name="IcicleArrow" type="Projectile" prefab="IcicleArrow.prefab" damage="400" coolTime="1.0" level="6">
+  <SkillData templateID="155" name="IcicleArrow" type="Projectile" prefab="IcicleArrow.prefab" damage="400" coolTime="1.0" level="6"
+             description="Fire some arrows forward." image="IcicleArrow_Icon.sprite">
   </SkillData>
-  <SkillData templateID="160" name="PoisonFieldProjectile" type="Projectile" prefab="PoisonFieldProjectile.prefab" coolTime="5.0" damage="0" speed="5">
+  <SkillData templateID="160" name="PoisonFieldProjectile" type="Projectile" prefab="PoisonFieldProjectile.prefab" coolTime="5.0" damage="0" speed="5" level="1"
+             description="Create zones that make continuous damage." image="PoisonField_Icon.sprite">
+  </SkillData>
+  <SkillData templateID="161" name="PoisonFieldProjectile" type="Projectile" prefab="PoisonFieldProjectile.prefab" coolTime="5.0" damage="0" speed="5" level="1"
+             description="Create zones that make continuous damage." image="PoisonField_Icon.sprite">
+  </SkillData>
+  <SkillData templateID="162" name="PoisonFieldProjectile" type="Projectile" prefab="PoisonFieldProjectile.prefab" coolTime="5.0" damage="0" speed="5" level="1"
+             description="Create zones that make continuous damage." image="PoisonField_Icon.sprite">
+  </SkillData>
+  <SkillData templateID="163" name="PoisonFieldProjectile" type="Projectile" prefab="PoisonFieldProjectile.prefab" coolTime="5.0" damage="0" speed="5" level="1"
+             description="Create zones that make continuous damage." image="PoisonField_Icon.sprite">
+  </SkillData>
+  <SkillData templateID="164" name="PoisonFieldProjectile" type="Projectile" prefab="PoisonFieldProjectile.prefab" coolTime="5.0" damage="0" speed="5" level="1"
+             description="Create zones that make continuous damage." image="PoisonField_Icon.sprite">
+  </SkillData>
+  <SkillData templateID="165" name="PoisonFieldProjectile" type="Projectile" prefab="PoisonFieldProjectile.prefab" coolTime="5.0" damage="0" speed="5" level="1"
+             description="Create zones that make continuous damage." image="PoisonField_Icon.sprite">
   </SkillData>
   <SkillData templateID="170" name="PoisonField" type="Melee" prefab="PoisonField.prefab" damage="20" level="1">
   </SkillData>
@@ -86,29 +138,41 @@
   </SkillData>
   <SkillData templateID="175" name="PoisonField" type="Melee" prefab="PoisonField.prefab" damage="100" level="6">
   </SkillData>
-  <SkillData templateID="180" name="StormBlade" type="Projectile" prefab="StormBlade.prefab" damage="70" coolTime="1.2" level="1" speed="20">
+  <SkillData templateID="180" name="StormBlade" type="Projectile" prefab="StormBlade.prefab" damage="70" coolTime="1.2" level="1" speed="20"
+             description="Fire some blades in random directions." image="StormBlade_Icon.sprite">
   </SkillData>
-  <SkillData templateID="181" name="StormBlade" type="Projectile" prefab="StormBlade.prefab" damage="100" coolTime="1.2" level="2" speed="20">
+  <SkillData templateID="181" name="StormBlade" type="Projectile" prefab="StormBlade.prefab" damage="100" coolTime="1.2" level="2" speed="20"
+             description="Fire some blades in random directions." image="StormBlade_Icon.sprite">
   </SkillData>
-  <SkillData templateID="182" name="StormBlade" type="Projectile" prefab="StormBlade.prefab" damage="130" coolTime="1.2" level="3" speed="20">
+  <SkillData templateID="182" name="StormBlade" type="Projectile" prefab="StormBlade.prefab" damage="130" coolTime="1.2" level="3" speed="20"
+             description="Fire some blades in random directions." image="StormBlade_Icon.sprite">
   </SkillData>
-  <SkillData templateID="183" name="StormBlade" type="Projectile" prefab="StormBlade.prefab" damage="160" coolTime="1.2" level="4" speed="20">
+  <SkillData templateID="183" name="StormBlade" type="Projectile" prefab="StormBlade.prefab" damage="160" coolTime="1.2" level="4" speed="20"
+             description="Fire some blades in random directions." image="StormBlade_Icon.sprite">
   </SkillData>
-  <SkillData templateID="184" name="StormBlade" type="Projectile" prefab="StormBlade.prefab" damage="190" coolTime="1.2" level="5" speed="20">
+  <SkillData templateID="184" name="StormBlade" type="Projectile" prefab="StormBlade.prefab" damage="190" coolTime="1.2" level="5" speed="20"
+             description="Fire some blades in random directions." image="StormBlade_Icon.sprite">
   </SkillData>
-  <SkillData templateID="185" name="StormBlade" type="Projectile" prefab="StormBlade.prefab" damage="250" coolTime="1.2" level="6" speed="20">
+  <SkillData templateID="185" name="StormBlade" type="Projectile" prefab="StormBlade.prefab" damage="250" coolTime="1.2" level="6" speed="20"
+             description="Fire some blades in random directions." image="StormBlade_Icon.sprite">
   </SkillData>
-  <SkillData templateID="190" name="FrozenHeart" type="Melee" prefab="FrozenHeart.prefab" damage="50" coolTime="3.0" level="1" speed="100">
+  <SkillData templateID="190" name="FrozenHeart" type="Melee" prefab="FrozenHeart.prefab" damage="50" coolTime="3.0" level="1" speed="100"
+             description="Create frozen hearts that rotate around the player." image="FrozenHeart_Icon.sprite">
   </SkillData>
-  <SkillData templateID="191" name="FrozenHeart" type="Melee" prefab="FrozenHeart.prefab" damage="70" coolTime="3.0" level="2" speed="100">
+  <SkillData templateID="191" name="FrozenHeart" type="Melee" prefab="FrozenHeart.prefab" damage="70" coolTime="3.0" level="2" speed="100"
+             description="Create frozen hearts that rotate around the player." image="FrozenHeart_Icon.sprite">
   </SkillData>
-  <SkillData templateID="192" name="FrozenHeart" type="Melee" prefab="FrozenHeart.prefab" damage="90" coolTime="3.0" level="3" speed="100">
+  <SkillData templateID="192" name="FrozenHeart" type="Melee" prefab="FrozenHeart.prefab" damage="90" coolTime="3.0" level="3" speed="100"
+             description="Create frozen hearts that rotate around the player." image="FrozenHeart_Icon.sprite">
   </SkillData>
-  <SkillData templateID="193" name="FrozenHeart" type="Melee" prefab="FrozenHeart.prefab" damage="110" coolTime="3.0" level="4" speed="100">
+  <SkillData templateID="193" name="FrozenHeart" type="Melee" prefab="FrozenHeart.prefab" damage="110" coolTime="3.0" level="4" speed="100"
+             description="Create frozen hearts that rotate around the player." image="FrozenHeart_Icon.sprite">
   </SkillData>
-  <SkillData templateID="194" name="FrozenHeart" type="Melee" prefab="FrozenHeart.prefab" damage="130" coolTime="3.0" level="5" speed="100">
+  <SkillData templateID="194" name="FrozenHeart" type="Melee" prefab="FrozenHeart.prefab" damage="130" coolTime="3.0" level="5" speed="100"
+             description="Create frozen hearts that rotate around the player." image="FrozenHeart_Icon.sprite">
   </SkillData>
-  <SkillData templateID="195" name="FrozenHeart" type="Melee" prefab="FrozenHeart.prefab" damage="200" coolTime="3.0" level="6" speed="100">
+  <SkillData templateID="195" name="FrozenHeart" type="Melee" prefab="FrozenHeart.prefab" damage="200" coolTime="3.0" level="6" speed="100"
+             description="Create frozen hearts that rotate around the player." image="FrozenHeart_Icon.sprite">
   </SkillData>
 	<!--<SkillData templateID="1" name="화염구" type="projectile" prefab="FireProjectile.prefab" damage="1000">
 		<ProjectileData speed="3" damage="10" hitCount="1">

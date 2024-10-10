@@ -40,7 +40,7 @@ public class Define
     }
 
     public enum StageType
-    { 
+    {
         Normal,
         Boss,
     }
@@ -70,7 +70,7 @@ public class Define
     public const int STORM_BLADE_ID = 180;
     public const int FROZEN_HEART_ID = 190;
 
-    public const int UI_SKILL_ICON_SIZE = 6;
+    
 
     public const float DOT_DAMAGE_RATE = 0.2f;
 

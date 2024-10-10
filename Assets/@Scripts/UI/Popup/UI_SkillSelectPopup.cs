@@ -42,6 +42,11 @@ public class UI_SkillSelectPopup : UI_Base
         ADRefreshButton,
     }
 
+    //UI 클래스에서 이런 리스트를 만드는게 좋지 않은데 어캐 해야 될지 모르겠음.
+    //이대로 가면 스킬 추가될때마다 UI 클래스인 여기 와서 수정을 해야되는데 당연히 좋은 방식일리가 없음.
+    //그래서 Define 클래스에 전역적으로 리스트를 선언하려고 했는데 그것도 안됨.
+    private List<int> templateIdList;
+
     public override bool Init()
     {
         if (base.Init() == false)
@@ -57,17 +62,14 @@ public class UI_SkillSelectPopup : UI_Base
 
         SetDefault();
         RefreshUI();
+
         return true;
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
-        RefreshUI();
-    }
-
-    public void SetInfo()
-    {
-        RefreshUI();
+        if (m_init == true)
+            RefreshUI();
     }
 
     void SetDefault()
@@ -84,6 +86,7 @@ public class UI_SkillSelectPopup : UI_Base
         m_grid = GetObjects((int)GameObjects.SkillCardSelectListObject).transform;
     }
 
+    //OnEnable 에서 RefreshUI 를 하면 null error가 발생한다. 이유가 뭘까? -> 생명주기 문제였음. Init 메서드를 Start가 아닌 Awake에 놓음으로 해결.
     void RefreshUI()
     {
         GetText((int)Texts.BeforeLevelValueText).text = (Managers._Game.PlayerLevel - 1).ToString();
@@ -96,7 +99,6 @@ public class UI_SkillSelectPopup : UI_Base
             GetImage(i).enabled = true;
             GetImage(i).sprite = Managers._Resource.Load<Sprite>(Managers._Data.SkillDic[templateID].image);
         }
-
         PopulateGrid();
     }
 

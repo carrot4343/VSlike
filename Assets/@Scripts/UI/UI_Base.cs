@@ -23,9 +23,24 @@ public class UI_Base : MonoBehaviour
         return true;
     }
 
-    private void Start()
+    bool m_initLate = false;
+    public virtual bool InitLate()
+    {
+        if (m_initLate)
+            return false;
+
+        m_initLate = true;
+        return true;
+    }
+
+    private void Awake()
     {
         Init();
+    }
+
+    private void Start()
+    {
+        InitLate();
     }
 
     //코드상에서 Enum 타입으로 구성된 각각의 UI 객체와 실제 UI 오브젝트를 연결(Bind) 하는 작업.
