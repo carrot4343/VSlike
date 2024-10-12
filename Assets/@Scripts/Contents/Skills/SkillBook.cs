@@ -12,6 +12,10 @@ public class SkillBook : MonoBehaviour
     public List<SkillBase> RepeatedSkills { get; } = new List<SkillBase>();
     public List<SequenceSkill> SequenceSkills { get; } = new List<SequenceSkill>();
 
+    public List<int> availableTemplateIdList { get; } = new List<int>() {
+    100, 110, 120, 130, 140, 150, 160, 180, 190
+    };
+
     //parent의 SkillBook에 스킬 추가
     public T AddSkill<T>(Vector3 position, Transform parent = null) where T : SkillBase
     {

@@ -8,17 +8,13 @@ public class UI_SkillCardItem : UI_Base
     Data.SkillData m_skillData;
     System.Type m_skillType;
     //OnEnable에서 혹은 refresh에서 Scale값을 1로 바꾸게 하자. 왜 이런 현상이 생길ㄲ? << 안됨. 강제로 일단 pixel을 늘려놓긴 했는데...
-    private void OnEnable()
-    {
-        SetInfo(120);
-        RefreshUI();
-    }
     public void SetInfo(int templateID)
     {
         m_templateID = templateID;
         
         Managers._Data.SkillDic.TryGetValue(templateID, out m_skillData);
         m_skillType = System.Type.GetType(m_skillData.name);
+        SetDefault();
         RefreshUI();
     }
 
@@ -49,8 +45,6 @@ public class UI_SkillCardItem : UI_Base
         BindButton(typeof(Buttons));
         BindImage(typeof(Image));
 
-
-        SetDefault();
         return true;
     }
 
@@ -59,7 +53,7 @@ public class UI_SkillCardItem : UI_Base
         if (m_init == false)
             return;
 
-        //GetButton((int)Buttons.SkillCardBackGroundImage).gameObject.BindEvent(OnClickSkillCardBackGroundImage);
+        GetButton((int)Buttons.SkillCardBackgroundImage).gameObject.BindEvent(OnClickSkillCardBackGroundImage);
         GetText((int)Texts.CardNameText).text = m_skillData.name;
         GetText((int)Texts.SkillDescriptionText).text = m_skillData.description;
         GetText((int)Texts.NewText).text = "New!";
@@ -74,7 +68,7 @@ public class UI_SkillCardItem : UI_Base
 
         GetText((int)Texts.CardNameText).text = m_skillData.name;
         GetText((int)Texts.SkillDescriptionText).text = m_skillData.description;
-        //GetImage((int)Image.BattleSkillImage) = ;
+        GetImage((int)Image.SkillImage).sprite = Managers._Resource.Load<Sprite>(Managers._Data.SkillDic[m_templateID].image);
     }
 
     void OnClickSkillCardBackGroundImage()

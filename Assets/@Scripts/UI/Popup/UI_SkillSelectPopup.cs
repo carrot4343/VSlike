@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class UI_SkillSelectPopup : UI_Base
 {
     enum GameObjects
@@ -41,11 +41,6 @@ public class UI_SkillSelectPopup : UI_Base
         CardRefreshButton,
         ADRefreshButton,
     }
-
-    //UI 클래스에서 이런 리스트를 만드는게 좋지 않은데 어캐 해야 될지 모르겠음.
-    //이대로 가면 스킬 추가될때마다 UI 클래스인 여기 와서 수정을 해야되는데 당연히 좋은 방식일리가 없음.
-    //그래서 Define 클래스에 전역적으로 리스트를 선언하려고 했는데 그것도 안됨.
-    private List<int> templateIdList;
 
     public override bool Init()
     {
@@ -115,9 +110,36 @@ public class UI_SkillSelectPopup : UI_Base
             var go = Managers._Resource.Instantiate("UI_SkillCardItem.prefab");
             UI_SkillCardItem item = go.GetOrAddcompnent<UI_SkillCardItem>();
             item.transform.SetParent(m_grid.transform);
-            //item.SetInfo(randomInt)
+            int[] randomTemplateID = CreateRandomTemplateID(3);
+            item.SetInfo(randomTemplateID[i]);
             m_items.Add(item);
         }
+    }
+
+    int[] CreateRandomTemplateID(int size)
+    {
+        int[] randomInt = new int[size];
+
+        List<int> tempList = new List<int>(Managers._Game.Player.Skills.availableTemplateIdList);
+
+        //이미 업그레이드가 완료된 스킬의 id를 리스트에서 제거
+        for(int i = 0; i < Managers._Game.Player.Skills.Skills.Count; i++)
+        {
+            if (Managers._Game.Player.Skills.Skills[i].SkillLevel >= 6)
+            {
+                //list의 template id는 기본 id라서 10 단위이므로 1의자리에서 내림 함. template id = template id + skill level이기 때문
+                tempList.Remove((Managers._Game.Player.Skills.Skills[i].TemplateID / 10) * 10);
+            }
+        }
+
+        for(int i = 0; i < size; i++)
+        {
+            int rndIndex = UnityEngine.Random.Range(0, tempList.Count);
+            randomInt[i] = tempList[rndIndex];
+            tempList.RemoveAt(rndIndex);
+        }
+
+        return randomInt;
     }
 
     void OnClickCardRefreshButton()
