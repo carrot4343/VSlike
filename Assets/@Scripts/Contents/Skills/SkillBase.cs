@@ -109,11 +109,13 @@ public class SkillBase : BaseController
     public void SkillUpgrade()
     {
         SkillLevel++;
+
+        Debug.Log($"Skill upgraded. skill level : {SkillLevel}");
         OnSkillLevelUpgrade();
     }
 
     protected virtual void OnSkillLevelUpgrade()
     {
-
+        
     }
 }

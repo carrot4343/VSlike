@@ -29,6 +29,8 @@ public class SkillBook : MonoBehaviour
                 if (Skills[i].GetType() == type)
                 {
                     Skills[i].SkillUpgrade();
+                    //이 작업을 하지 않으면 skill level은 올라가는데 실시간으로 적용이 안됨
+                    Skills[i].Init();
                     return Skills[i] as T;
                 }
             }
