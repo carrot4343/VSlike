@@ -17,7 +17,7 @@ public class SkillBook : MonoBehaviour
     };
 
     //parent의 SkillBook에 스킬 추가
-    public T AddSkill<T>(Vector3 position, Transform parent = null) where T : SkillBase
+    public T AddSkill<T>(Vector3 position, Transform parent = null, int templateID = 0) where T : SkillBase
     {
         //Generic type을 바탕으로 어떤 스킬인지 판별
         //추후 Data와 연계되게 바꿔야 할 듯.
@@ -36,10 +36,10 @@ public class SkillBook : MonoBehaviour
             }
         }
 
-        if (type == typeof(EgoSword))
+        if (type == typeof(EgoSword) || templateID == 100)
         {
             //스킬 스폰하고
-            var egoSword = Managers._Object.Spawn<T>(position, Define.EGO_SWORD_ID);
+            var egoSword = Managers._Object.Spawn<EgoSword>(position, Define.EGO_SWORD_ID);
             //스폰한 스킬의 부모 지정하고
             //egoSword.transform.SetParent(parent);
             //스킬 수행
@@ -51,7 +51,7 @@ public class SkillBook : MonoBehaviour
 
             return egoSword as T;
         }
-        else if (type == typeof(FireballSkill))
+        else if (type == typeof(FireballSkill) || templateID == 110)
         {
             PlayerController pc = Managers._Object.Player;
             //Player에게 fireballskill 컴포넌트를 추가하여 발사대로 설정
@@ -64,7 +64,7 @@ public class SkillBook : MonoBehaviour
 
             return fireBall as T;
         }
-        else if(type == typeof(ArrowShot))
+        else if(type == typeof(ArrowShot) || templateID == 120)
         {
             PlayerController pc = Managers._Object.Player;
             var arrowShot = pc.gameObject.GetOrAddcompnent<ArrowShot>();
@@ -75,7 +75,7 @@ public class SkillBook : MonoBehaviour
 
             return arrowShot as T;
         }
-        else if (type == typeof(WindCutter))
+        else if (type == typeof(WindCutter) || templateID == 130)
         {
             PlayerController pc = Managers._Object.Player;
             var windCutter = pc.gameObject.GetOrAddcompnent<WindCutter>();
@@ -86,9 +86,9 @@ public class SkillBook : MonoBehaviour
 
             return windCutter as T;
         }
-        else if (type == typeof(ElectronicField))
+        else if (type == typeof(ElectronicField) || templateID == 140)
         {
-            var electronicField = Managers._Object.Spawn<T>(position, Define.ELECTRONIC_FIELD_ID);
+            var electronicField = Managers._Object.Spawn<ElectronicField>(position, Define.ELECTRONIC_FIELD_ID);
             electronicField.ActivateSkill();
 
             Skills.Add(electronicField);
@@ -96,7 +96,7 @@ public class SkillBook : MonoBehaviour
 
             return electronicField as T;
         }
-        else if (type == typeof(IcicleArrow))
+        else if (type == typeof(IcicleArrow) || templateID == 150)
         {
             PlayerController pc = Managers._Object.Player;
             var icicleArrow = pc.gameObject.GetOrAddcompnent<IcicleArrow>();
@@ -107,7 +107,7 @@ public class SkillBook : MonoBehaviour
 
             return icicleArrow as T;
         }
-        else if (type == typeof(PoisonFieldProjectile))
+        else if (type == typeof(PoisonFieldProjectile) || templateID == 160)
         {
             PlayerController pc = Managers._Object.Player;
             var poisonField = pc.gameObject.GetOrAddcompnent<PoisonFieldProjectile>();
@@ -118,7 +118,7 @@ public class SkillBook : MonoBehaviour
 
             return poisonField as T;
         }
-        else if (type == typeof(StormBlade))
+        else if (type == typeof(StormBlade) || templateID == 180)
         {
             PlayerController pc = Managers._Object.Player;
             var stormBlade = pc.gameObject.GetOrAddcompnent<StormBlade>();
@@ -129,9 +129,9 @@ public class SkillBook : MonoBehaviour
 
             return stormBlade as T;
         }
-        else if (type == typeof(FrozenHeart))
+        else if (type == typeof(FrozenHeart) || templateID == 190)
         {
-            var frozenHeart = Managers._Object.Spawn<T>(position, Define.FROZEN_HEART_ID);
+            var frozenHeart = Managers._Object.Spawn<FrozenHeart>(position, Define.FROZEN_HEART_ID);
             frozenHeart.ActivateSkill();
 
             Skills.Add(frozenHeart);

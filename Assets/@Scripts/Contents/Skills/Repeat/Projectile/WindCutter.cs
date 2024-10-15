@@ -9,6 +9,7 @@ public class WindCutter : RepeatSkill
     {
         base.Init();
         TemplateID = Define.WINDCUTTER_ID + SkillLevel;
+        Owner = Managers._Game.Player;
         SetInfo(TemplateID);
         
         return true;

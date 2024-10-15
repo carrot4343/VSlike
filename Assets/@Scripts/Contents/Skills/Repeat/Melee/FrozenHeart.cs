@@ -10,7 +10,9 @@ public class FrozenHeart : RepeatSkill
     public override bool Init()
     {
         base.Init();
-        m_playerPos = Managers._Game.Player.transform.position;
+        Owner = Managers._Game.Player;
+        SkillLevel = 4;
+        m_playerPos = Owner.transform.position;
         TemplateID = Define.FROZEN_HEART_ID + SkillLevel;
         SetInfo(TemplateID);
         initScale();
@@ -19,7 +21,7 @@ public class FrozenHeart : RepeatSkill
 
     void initScale()
     {
-        for (int i = 0; i < SkillLevel; i++)
+        for (int i = 0; i <= SkillLevel; i++)
         {
             m_frozenHeartParticles[i].transform.localScale = new Vector3(0.5f, 0.5f, 0.0f);
         }
@@ -36,14 +38,14 @@ public class FrozenHeart : RepeatSkill
         while (true)
         {
             //skill on
-            for(int i = 0; i < SkillLevel; i++)
+            for(int i = 0; i <= SkillLevel; i++)
             {
                 m_frozenHeartParticles[i].gameObject.SetActive(true);
             }
             yield return duration;
 
             //skill off
-            for (int i = 0; i < SkillLevel; i++)
+            for (int i = 0; i <= SkillLevel; i++)
             {
                 m_frozenHeartParticles[i].gameObject.SetActive(false);
             }

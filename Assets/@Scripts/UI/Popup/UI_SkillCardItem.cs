@@ -73,10 +73,7 @@ public class UI_SkillCardItem : UI_Base
 
     void OnClickSkillCardBackGroundImage()
     {
-        Managers._Game.Player.Skills.AddSkill<ArrowShot>(Managers._Game.Player.transform.position, Managers._Game.Player.transform);
-        Managers._Data.SkillDic.TryGetValue(m_templateID, out m_skillData);
-        System.Type type = m_skillData.type.GetType();
-        //TODO
+        Managers._Game.Player.Skills.AddSkill<SkillBase>(Managers._Game.Player.transform.position, Managers._Game.Player.transform, m_templateID);
         Managers._UI.ClosedPopup();
     }
 

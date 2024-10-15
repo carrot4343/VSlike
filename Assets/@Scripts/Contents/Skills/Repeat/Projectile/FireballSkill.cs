@@ -8,6 +8,7 @@ public class FireballSkill : RepeatSkill
     {
         base.Init();
         TemplateID = Define.FIREBALL_ID + SkillLevel;
+        Owner = Managers._Game.Player;
         SetInfo(TemplateID);
         return true;
     }

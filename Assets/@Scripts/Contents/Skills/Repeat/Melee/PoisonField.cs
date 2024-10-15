@@ -12,6 +12,7 @@ public class PoisonField : SkillBase
     {
         base.Init();
         TemplateID = Define.POISON_FIELD + SkillLevel;
+        Owner = Managers._Game.Player;
         SetInfo(TemplateID);
         Destroy(gameObject, m_duration);
         

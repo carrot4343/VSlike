@@ -46,6 +46,7 @@ public class EgoSword : RepeatSkill
         base.Init();
 
         TemplateID = Define.EGO_SWORD_ID + SkillLevel;
+        Owner = Managers._Game.Player;
         SetInfo(TemplateID);
 
         return true;

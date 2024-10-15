@@ -11,8 +11,9 @@ public class ElectronicField : RepeatSkill
     {
         base.Init();
         TemplateID = TemplateID = Define.ELECTRONIC_FIELD_ID + SkillLevel;
+        Owner = Managers._Game.Player;
         SetInfo(TemplateID);
-        transform.SetParent(Managers._Game.Player.transform);
+        transform.SetParent(Owner.transform);
         transform.position += new Vector3(0.0f, 0.65f, 0.0f);
         return true;
     }

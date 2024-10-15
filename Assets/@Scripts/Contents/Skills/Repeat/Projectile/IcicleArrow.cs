@@ -8,6 +8,7 @@ public class IcicleArrow : RepeatSkill
     {
         base.Init();
         TemplateID = Define.ICICLEARROW_ID + SkillLevel;
+        Owner = Managers._Game.Player;
         SetInfo(TemplateID);
         return true;
     }

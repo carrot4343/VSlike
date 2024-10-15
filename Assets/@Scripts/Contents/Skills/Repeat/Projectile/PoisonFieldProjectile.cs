@@ -9,6 +9,7 @@ public class PoisonFieldProjectile : RepeatSkill
     {
         base.Init();
         TemplateID = Define.POISON_FIELD_PROJECTILE_ID + SkillLevel;
+        Owner = Managers._Game.Player;
         SetInfo(TemplateID);
         return true;
     }

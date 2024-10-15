@@ -9,6 +9,7 @@ public class StormBlade : RepeatSkill
     {
         base.Init();
         TemplateID = Define.STORM_BLADE_ID + SkillLevel;
+        Owner = Managers._Game.Player;
         SetInfo(TemplateID);
         return true;
     }
