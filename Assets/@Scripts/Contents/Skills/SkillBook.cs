@@ -22,11 +22,11 @@ public class SkillBook : MonoBehaviour
         //Generic type을 바탕으로 어떤 스킬인지 판별
         //추후 Data와 연계되게 바꿔야 할 듯.
         System.Type type = typeof(T);
-        if (Skills.Exists(skill => skill.GetType() == type))
+        if (Skills.Exists(skill => skill.GetType() == type) || Skills.Exists(skill => (skill.TemplateID / 10) * 10 == templateID))
         {
             for (int i = 0; i < Skills.Count; i++)
             {
-                if (Skills[i].GetType() == type)
+                if (Skills[i].GetType() == type || Skills[i].TemplateID/10 * 10 == templateID)
                 {
                     Skills[i].SkillUpgrade();
                     //이 작업을 하지 않으면 skill level은 올라가는데 실시간으로 적용이 안됨
@@ -40,8 +40,6 @@ public class SkillBook : MonoBehaviour
         {
             //스킬 스폰하고
             var egoSword = Managers._Object.Spawn<EgoSword>(position, Define.EGO_SWORD_ID);
-            //스폰한 스킬의 부모 지정하고
-            //egoSword.transform.SetParent(parent);
             //스킬 수행
             egoSword.ActivateSkill();
 

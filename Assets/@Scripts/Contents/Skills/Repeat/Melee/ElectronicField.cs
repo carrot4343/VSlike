@@ -13,8 +13,17 @@ public class ElectronicField : RepeatSkill
         TemplateID = TemplateID = Define.ELECTRONIC_FIELD_ID + SkillLevel;
         Owner = Managers._Game.Player;
         SetInfo(TemplateID);
+        
+        return true;
+    }
+    //InitLate를 Unity 생명주기를 이용하기 위해 사용 할 수 있지만, 때로는 이렇게 한번만 실행되고 싶은 기능들을 분리 할 때에도 사용.
+    //MonsterController에서 if(base.Init())을 사용하여 호출 타이밍을 조정하였으나, 이 경우는 base init이 반드시 선행되어야 하고 Setinfo는 반복 수행되어야 하기에 이러한 방법을 취함.
+    public override bool InitLate()
+    {
+        base.InitLate();
         transform.SetParent(Owner.transform);
         transform.position += new Vector3(0.0f, 0.65f, 0.0f);
+
         return true;
     }
     protected override void DoSkillJob()

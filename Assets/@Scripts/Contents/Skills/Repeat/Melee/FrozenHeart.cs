@@ -11,7 +11,6 @@ public class FrozenHeart : RepeatSkill
     {
         base.Init();
         Owner = Managers._Game.Player;
-        SkillLevel = 4;
         m_playerPos = Owner.transform.position;
         TemplateID = Define.FROZEN_HEART_ID + SkillLevel;
         SetInfo(TemplateID);
@@ -59,9 +58,9 @@ public class FrozenHeart : RepeatSkill
         deg += Time.deltaTime * ProjectileSpeed;
         if(deg < 360)
         {
-            for(int i = 0; i < SkillLevel; i++)
+            for(int i = 0; i <= SkillLevel; i++)
             {
-                var rad = Mathf.Deg2Rad * (deg + (i * (360/ SkillLevel)));
+                var rad = Mathf.Deg2Rad * (deg + (i * (360/ (SkillLevel+1))));
                 var x = 2.0f * Mathf.Sin(rad);
                 var y = 2.0f * Mathf.Cos(rad);
                 m_frozenHeartParticles[i].transform.position = (m_playerPos + new Vector3(0, 0.65f)) + new Vector3(x, y);

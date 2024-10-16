@@ -50,7 +50,9 @@ public class PlayerController : CreatureController
         base.InitLate();
 
         Managers._Game.OnMoveDirChanged += HandleOnMoveDirChanged;
-        Skills.AddSkill<FrozenHeart>(transform.position, transform, 190);
+        Skills.AddSkill<FrozenHeart>(transform.position, transform);
+        Skills.AddSkill<FrozenHeart>(transform.position, transform);
+        Skills.AddSkill<FrozenHeart>(transform.position, transform);
         return true;
     }
 
