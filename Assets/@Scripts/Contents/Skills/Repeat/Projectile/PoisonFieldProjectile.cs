@@ -23,7 +23,7 @@ public class PoisonFieldProjectile : RepeatSkill
 
         while (true)
         {
-            for(int i = 0; i < SkillLevel; i++)
+            for(int i = 0; i <= SkillLevel; i++)
             {
                 Vector3 spawnPos = Managers._Game.Player.transform.position;
                 Vector3 dir = new Vector3(Random.Range(-1.00f, 1.00f), Random.Range(-1.00f, 1.00f), 0.0f).normalized;

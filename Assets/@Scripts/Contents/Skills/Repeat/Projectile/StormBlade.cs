@@ -31,7 +31,7 @@ public class StormBlade : RepeatSkill
 
             for (int i = 0; i < m_numBlade; i++)
             {
-                GenerateProjectile(Define.STORM_BLADE_ID, Owner, spawnPos, new Vector3(Random.Range(-1.00f, 1.00f), Random.Range(-1.00f, 1.00f), 0.0f).normalized, Vector3.zero);
+                GenerateProjectile(TemplateID, Owner, spawnPos, new Vector3(Random.Range(-1.00f, 1.00f), Random.Range(-1.00f, 1.00f), 0.0f).normalized, Vector3.zero);
                 yield return delay;
             }
                 

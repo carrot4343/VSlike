@@ -105,12 +105,12 @@ public class UI_SkillSelectPopup : UI_Base
         foreach (Transform t in m_grid.transform)
             Managers._Resource.Destroy(t.gameObject);
 
+        int[] randomTemplateID = CreateRandomTemplateID(3);
         for (int i = 0; i < 3; i++)
         {
             var go = Managers._Resource.Instantiate("UI_SkillCardItem.prefab");
             UI_SkillCardItem item = go.GetOrAddcompnent<UI_SkillCardItem>();
             item.transform.SetParent(m_grid.transform);
-            int[] randomTemplateID = CreateRandomTemplateID(3);
             item.SetInfo(randomTemplateID[i]);
             m_items.Add(item);
         }
