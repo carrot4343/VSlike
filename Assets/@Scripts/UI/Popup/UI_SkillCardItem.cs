@@ -5,15 +5,27 @@ using UnityEngine;
 public class UI_SkillCardItem : UI_Base
 {
     int m_templateID;
+    int m_skillLevel = 0;
     Data.SkillData m_skillData;
-    System.Type m_skillType;
-    //OnEnable에서 혹은 refresh에서 Scale값을 1로 바꾸게 하자. 왜 이런 현상이 생길ㄲ? << 안됨. 강제로 일단 pixel을 늘려놓긴 했는데...
+    bool m_isNew;
+    List<SkillBase> m_playerSkill;
+    
+    //OnEnable에서 혹은 refresh에서 Scale값을 1로 바꾸게 하자. 왜 이런 현상이 생길까? << 안됨. 강제로 일단 pixel을 늘려놓긴 했는데...
     public void SetInfo(int templateID)
     {
         m_templateID = templateID;
-        
+        m_isNew = true;
         Managers._Data.SkillDic.TryGetValue(templateID, out m_skillData);
-        m_skillType = System.Type.GetType(m_skillData.name);
+        m_playerSkill = Managers._Game.Player.Skills.Skills;
+        for (int i = 0; i < m_playerSkill.Count; i++)
+        {
+            if(m_playerSkill[i].TemplateID/10 * 10 == templateID)
+            {
+                m_skillLevel = m_playerSkill[i].SkillLevel;
+                m_isNew = false;
+            }
+        }
+
         SetDefault();
         RefreshUI();
     }
@@ -21,6 +33,16 @@ public class UI_SkillCardItem : UI_Base
     enum Image
     {
         SkillImage,
+        StarOn_0,
+        StarOn_1,
+        StarOn_2,
+        StarOn_3,
+        StarOn_4,
+        StarOff_0,
+        StarOff_1,
+        StarOff_2,
+        StarOff_3,
+        StarOff_4,
     }
     enum Texts
     {
@@ -56,9 +78,29 @@ public class UI_SkillCardItem : UI_Base
         GetButton((int)Buttons.SkillCardBackgroundImage).gameObject.BindEvent(OnClickSkillCardBackGroundImage);
         GetText((int)Texts.CardNameText).text = m_skillData.name;
         GetText((int)Texts.SkillDescriptionText).text = m_skillData.description;
-        GetText((int)Texts.NewText).text = "New!";
         GetText((int)Texts.EvoText).text = "Evo";
-        //GetImage((int)Image.SkillImage) = ;
+
+        for (int i = 1; i <= 5; i++)
+        {
+            GetImage(i).enabled = false;
+        }
+        if (m_isNew)
+        {
+            for(int i = 6; i <= 10; i++)
+            {
+                GetImage(i).enabled = false;
+            }
+            GetText((int)Texts.NewText).text = "New!";
+        }
+        else
+        {
+            for (int i = 6; i <= 10; i++)
+            {
+                GetImage(i).enabled = true;
+            }
+            GetText((int)Texts.NewText).text = "";
+        }
+        
     }
 
     void RefreshUI()
@@ -69,6 +111,14 @@ public class UI_SkillCardItem : UI_Base
         GetText((int)Texts.CardNameText).text = m_skillData.name;
         GetText((int)Texts.SkillDescriptionText).text = m_skillData.description;
         GetImage((int)Image.SkillImage).sprite = Managers._Resource.Load<Sprite>(Managers._Data.SkillDic[m_templateID].image);
+
+        if(m_isNew == false)
+        {
+            for (int i = 0; i <= m_skillLevel; i++)
+            {
+                GetImage(i).enabled = true;
+            }
+        }
     }
 
     void OnClickSkillCardBackGroundImage()

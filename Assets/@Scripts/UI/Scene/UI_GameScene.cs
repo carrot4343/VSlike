@@ -61,7 +61,7 @@ public class UI_GameScene : UI_Base
             return;
 
         GetText((int)Texts.WaveText).text = "Wave";
-        GetText((int)Texts.WaveValueText).text = "0"; //현재 몇 웨이브인지
+        GetText((int)Texts.WaveValueText).text = "1"; //현재 몇 웨이브인지
         GetText((int)Texts.TimeLimitValueText).text = "15:00";
         GetText((int)Texts.GoldValueText).text = Managers._Game.Gold.ToString();
         GetText((int)Texts.KillValueText).text = Managers._Game.KillCount.ToString();
