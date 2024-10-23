@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 public class UI_SkillSelectPopup : UI_Base
 {
+    #region enums
     enum GameObjects
     {
         SkillCardSelectListObject,
@@ -30,6 +31,7 @@ public class UI_SkillSelectPopup : UI_Base
         SkillSelectCommentText,
         SkillSelectTitleText,
         CardRefreshText,
+        CardRefreshCountValueText,
         ADRefreshText,
         CharacterLevelupTitleText,
         BeforeLevelValueText,
@@ -41,6 +43,7 @@ public class UI_SkillSelectPopup : UI_Base
         CardRefreshButton,
         ADRefreshButton,
     }
+    #endregion
 
     public override bool Init()
     {
@@ -86,6 +89,7 @@ public class UI_SkillSelectPopup : UI_Base
     {
         GetText((int)Texts.BeforeLevelValueText).text = (Managers._Game.PlayerLevel - 1).ToString();
         GetText((int)Texts.AfterLevelValueText).text = Managers._Game.PlayerLevel.ToString();
+        GetText((int)Texts.CardRefreshCountValueText).text = $"{restRefresh} / 3";
 
         //보유중인 skill icon load
         for (int i = (int)Image.BattleSkilI_Icon_0; i < (int)Image.BattleSkilI_Icon_0 + Managers._Game.Player.Skills.Skills.Count; i++)
@@ -121,9 +125,16 @@ public class UI_SkillSelectPopup : UI_Base
         int[] randomInt = new int[size];
 
         List<int> tempList = new List<int>(Managers._Game.Player.Skills.availableTemplateIdList);
-
+        //스킬 보유 상한선에 도달한 경우 리스트 제한
+        if (Managers._Game.Player.Skills.Skills.Count >= 6)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                tempList[i] = Managers._Game.Player.Skills.Skills[i].TemplateID / 10 * 10;
+            }
+        }
         //이미 업그레이드가 완료된 스킬의 id를 리스트에서 제거
-        for(int i = 0; i < Managers._Game.Player.Skills.Skills.Count; i++)
+        for (int i = 0; i < Managers._Game.Player.Skills.Skills.Count; i++)
         {
             if (Managers._Game.Player.Skills.Skills[i].SkillLevel >= 6)
             {
@@ -142,9 +153,15 @@ public class UI_SkillSelectPopup : UI_Base
         return randomInt;
     }
 
+    //잔여 refresh는 스테이지를 관리하는 클래스에 이양할 필요가 있음. 일단은 기능구현을 위해,,,,
+    int restRefresh = 3;
     void OnClickCardRefreshButton()
     {
-
+        if(restRefresh > 0)
+        {
+            restRefresh--;
+            RefreshUI();
+        }
     }
 
     void OnClickADRefreshButton()

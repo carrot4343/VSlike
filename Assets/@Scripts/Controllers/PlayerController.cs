@@ -50,9 +50,13 @@ public class PlayerController : CreatureController
         base.InitLate();
 
         Managers._Game.OnMoveDirChanged += HandleOnMoveDirChanged;
-        Skills.AddSkill<IcicleArrow>(transform.position, transform);
-        Skills.AddSkill<IcicleArrow>(transform.position, transform);
-        Skills.AddSkill<StormBlade>(transform.position, transform);
+        //기본스킬
+        Skills.AddSkill<EgoSword>(transform.position, transform);
+        Skills.AddSkill<EgoSword>(transform.position, transform);
+        Skills.AddSkill<EgoSword>(transform.position, transform);
+        Skills.AddSkill<EgoSword>(transform.position, transform);
+        Skills.AddSkill<EgoSword>(transform.position, transform);
+        Skills.AddSkill<EgoSword>(transform.position, transform);
         return true;
     }
 

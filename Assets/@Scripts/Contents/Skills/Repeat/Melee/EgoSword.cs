@@ -25,17 +25,20 @@ public class EgoSword : RepeatSkill
             m_swingParticles[(int)SwingType.First].gameObject.SetActive(true);
             yield return new WaitForSeconds(m_swingParticles[(int)SwingType.First].main.duration);
 
-            SetParticles(SwingType.Second);
-            m_swingParticles[(int)SwingType.Second].gameObject.SetActive(true);
-            yield return new WaitForSeconds(m_swingParticles[(int)SwingType.Second].main.duration);
+            if(SkillLevel >= 5)
+            {
+                SetParticles(SwingType.Second);
+                m_swingParticles[(int)SwingType.Second].gameObject.SetActive(true);
+                yield return new WaitForSeconds(m_swingParticles[(int)SwingType.Second].main.duration);
 
-            SetParticles(SwingType.Third);
-            m_swingParticles[(int)SwingType.Third].gameObject.SetActive(true);
-            yield return new WaitForSeconds(m_swingParticles[(int)SwingType.Third].main.duration);
+                SetParticles(SwingType.Third);
+                m_swingParticles[(int)SwingType.Third].gameObject.SetActive(true);
+                yield return new WaitForSeconds(m_swingParticles[(int)SwingType.Third].main.duration);
 
-            SetParticles(SwingType.Fourth);
-            m_swingParticles[(int)SwingType.Fourth].gameObject.SetActive(true);
-            yield return new WaitForSeconds(m_swingParticles[(int)SwingType.Fourth].main.duration);
+                SetParticles(SwingType.Fourth);
+                m_swingParticles[(int)SwingType.Fourth].gameObject.SetActive(true);
+                yield return new WaitForSeconds(m_swingParticles[(int)SwingType.Fourth].main.duration);
+            }
 
             yield return wait;
         }
