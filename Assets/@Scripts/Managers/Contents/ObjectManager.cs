@@ -88,7 +88,7 @@ public class ObjectManager
             GameObject go = Managers._Resource.Instantiate(skillData.prefab, pooling: true);
             go.transform.position = position;
 
-            ProjectileController pc = go.GetOrAddcompnent<ProjectileController>();
+            ProjectileController pc = go.GetOrAddComponent<ProjectileController>();
             Projectiles.Add(pc);
             pc.Init();
 
@@ -105,7 +105,7 @@ public class ObjectManager
             GameObject go = Managers._Resource.Instantiate(skillData.prefab, pooling: true);
             go.transform.position = position;
 
-            T t = go.GetOrAddcompnent<T>();
+            T t = go.GetOrAddComponent<T>();
             t.Init();
 
             return t;

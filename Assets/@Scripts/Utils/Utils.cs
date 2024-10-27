@@ -1,8 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using static Define;
+using Random = UnityEngine.Random;
+using Transform = UnityEngine.Transform;
 
-public class Utils
+public static class Utils
 {
     public static T GetOrAddComponent<T>(GameObject go) where T : UnityEngine.Component
     {

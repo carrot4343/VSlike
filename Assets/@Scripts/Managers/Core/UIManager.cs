@@ -1,12 +1,66 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager
 {
+    int m_order = 10;
+    int m_toastOrder = 500;
     UI_Base m_sceneUI;
 
     Stack<UI_Base> m_uiStack = new Stack<UI_Base>();
+    UI_Scene _sceneUI = null;
+    public UI_Scene SceneUI { get { return _sceneUI; } }
+
+    public GameObject Root
+    {
+        get
+        {
+            GameObject root = GameObject.Find("@UI_Root");
+            if (root == null)
+                root = new GameObject { name = "@UI_Root" };
+            return root;
+        }
+    }
+
+    public void SetCanvas(GameObject go, bool sort = true, int sortOrder = 0, bool isToast = false)
+    {
+        Canvas canvas = Utils.GetOrAddComponent<Canvas>(go);
+        if (canvas == null)
+        {
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvas.overrideSorting = true;
+        }
+
+        CanvasScaler cs = go.GetOrAddComponent<CanvasScaler>();
+        if (cs != null)
+        {
+            cs.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            cs.referenceResolution = new Vector2(1080, 1920);
+        }
+
+        go.GetOrAddComponent<GraphicRaycaster>();
+
+        if (sort)
+        {
+            canvas.sortingOrder = m_order;
+            m_order++;
+        }
+        else
+        {
+            canvas.sortingOrder = sortOrder;
+        }
+
+        if (isToast)
+        {
+            m_toastOrder++;
+            canvas.sortingOrder = m_toastOrder;
+        }
+
+    }
 
     public T GetSceneUI<T>() where T : UI_Base
     {
@@ -19,7 +73,7 @@ public class UIManager
             return GetSceneUI<T>();
 
         string key = typeof(T).Name + ".prefab";
-        T ui = Managers._Resource.Instantiate(key, pooling: true).GetOrAddcompnent<T>();
+        T ui = Managers._Resource.Instantiate(key, pooling: true).GetOrAddComponent<T>();
         m_sceneUI = ui;
 
         return ui;
@@ -28,15 +82,27 @@ public class UIManager
     public T ShowPopup<T>(bool refreshTimeScale = true) where T : UI_Base
     {
         string key = typeof(T).Name + ".prefab";
-        T ui = Managers._Resource.Instantiate(key, pooling: true).GetOrAddcompnent<T>();
+        T ui = Managers._Resource.Instantiate(key, pooling: true).GetOrAddComponent<T>();
         m_uiStack.Push(ui);
         if(refreshTimeScale)
             RefreshTimeScale();
 
         return ui;
     }
+    public void ClosePopup(UI_Popup popup)
+    {
+        if (m_uiStack.Count == 0)
+            return;
 
-    public void ClosedPopup()
+        if (m_uiStack.Peek() != popup)
+        {
+            Debug.Log("Close Popup Failed!");
+            return;
+        }
+        //Managers._Sound.PlayPopupClose();
+        ClosePopup();
+    }
+    public void ClosePopup()
     {
         if (m_uiStack.Count == 0)
             return;

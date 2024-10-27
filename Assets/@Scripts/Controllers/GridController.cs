@@ -17,7 +17,7 @@ public class GridController : BaseController
     {
         base.Init();
 
-        m_grid = gameObject.GetOrAddcompnent<Grid>();
+        m_grid = gameObject.GetOrAddComponent<Grid>();
         return true;
     }
 

@@ -53,7 +53,7 @@ public class SkillBook : MonoBehaviour
         {
             PlayerController pc = Managers._Object.Player;
             //Player에게 fireballskill 컴포넌트를 추가하여 발사대로 설정
-            var fireBall = pc.gameObject.GetOrAddcompnent<FireballSkill>();
+            var fireBall = pc.gameObject.GetOrAddComponent<FireballSkill>();
             //fireBall.transform.SetParent(parent);
             fireBall.ActivateSkill();
 
@@ -65,7 +65,7 @@ public class SkillBook : MonoBehaviour
         else if(type == typeof(ArrowShot) || templateID == 120)
         {
             PlayerController pc = Managers._Object.Player;
-            var arrowShot = pc.gameObject.GetOrAddcompnent<ArrowShot>();
+            var arrowShot = pc.gameObject.GetOrAddComponent<ArrowShot>();
             arrowShot.ActivateSkill();
 
             Skills.Add(arrowShot);
@@ -76,7 +76,7 @@ public class SkillBook : MonoBehaviour
         else if (type == typeof(WindCutter) || templateID == 130)
         {
             PlayerController pc = Managers._Object.Player;
-            var windCutter = pc.gameObject.GetOrAddcompnent<WindCutter>();
+            var windCutter = pc.gameObject.GetOrAddComponent<WindCutter>();
             windCutter.ActivateSkill();
 
             Skills.Add(windCutter);
@@ -97,7 +97,7 @@ public class SkillBook : MonoBehaviour
         else if (type == typeof(IcicleArrow) || templateID == 150)
         {
             PlayerController pc = Managers._Object.Player;
-            var icicleArrow = pc.gameObject.GetOrAddcompnent<IcicleArrow>();
+            var icicleArrow = pc.gameObject.GetOrAddComponent<IcicleArrow>();
             icicleArrow.ActivateSkill();
 
             Skills.Add(icicleArrow);
@@ -108,7 +108,7 @@ public class SkillBook : MonoBehaviour
         else if (type == typeof(PoisonFieldProjectile) || templateID == 160)
         {
             PlayerController pc = Managers._Object.Player;
-            var poisonField = pc.gameObject.GetOrAddcompnent<PoisonFieldProjectile>();
+            var poisonField = pc.gameObject.GetOrAddComponent<PoisonFieldProjectile>();
             poisonField.ActivateSkill();
 
             Skills.Add(poisonField);
@@ -119,7 +119,7 @@ public class SkillBook : MonoBehaviour
         else if (type == typeof(StormBlade) || templateID == 180)
         {
             PlayerController pc = Managers._Object.Player;
-            var stormBlade = pc.gameObject.GetOrAddcompnent<StormBlade>();
+            var stormBlade = pc.gameObject.GetOrAddComponent<StormBlade>();
             stormBlade.ActivateSkill();
 
             Skills.Add(stormBlade);
@@ -141,7 +141,7 @@ public class SkillBook : MonoBehaviour
         {
             //Sequence Skill은 스킬들을 등록하고 별도의 함수를 통해 실행시키는 별도의 과정이 필요함
             //AddSkill 후 StartNextSequenceSkill()
-            var skill = gameObject.GetOrAddcompnent<T>();
+            var skill = gameObject.GetOrAddComponent<T>();
             Skills.Add(skill);
             SequenceSkills.Add(skill as SequenceSkill);
 

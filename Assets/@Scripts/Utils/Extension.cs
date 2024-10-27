@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 public static class Extension
 {
-    public static T GetOrAddcompnent<T>(this GameObject go) where T : UnityEngine.Component
+    public static T GetOrAddComponent<T>(this GameObject go) where T : UnityEngine.Component
     {
         return Utils.GetOrAddComponent<T>(go);
     }

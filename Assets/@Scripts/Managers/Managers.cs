@@ -51,14 +51,12 @@ public class Managers : MonoBehaviour
             return m_instance;
         }
     }
-    void Start()
+    public static void Clear()
     {
-        
-    }
-
-    
-    void Update()
-    {
-        
+        //_Sound.Clear();
+        _Scene.Clear();
+        //_UI.Clear();
+        //_Pool.Clear();
+        //_Object.Clear();
     }
 }

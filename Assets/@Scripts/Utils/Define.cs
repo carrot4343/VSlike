@@ -16,7 +16,10 @@ public class Define
     }
     public enum Scene
     {
-
+        Unknown,
+        TitleScene,
+        LobbyScene,
+        GameScene,
     }
 
     public enum Sound

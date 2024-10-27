@@ -124,7 +124,7 @@ public class UI_SkillCardItem : UI_Base
     void OnClickSkillCardBackGroundImage()
     {
         Managers._Game.Player.Skills.AddSkill<SkillBase>(Managers._Game.Player.transform.position, Managers._Game.Player.transform, m_templateID);
-        Managers._UI.ClosedPopup();
+        Managers._UI.ClosePopup();
     }
 
 }

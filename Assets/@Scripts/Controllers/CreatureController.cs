@@ -34,7 +34,7 @@ public class CreatureController : BaseController
     {
         base.Init();
 
-        Skills = gameObject.GetOrAddcompnent<SkillBook>();
+        Skills = gameObject.GetOrAddComponent<SkillBook>();
 
         return true;
     }
