@@ -12,8 +12,7 @@ public class UIManager
     UI_Base m_sceneUI;
 
     Stack<UI_Base> m_uiStack = new Stack<UI_Base>();
-    UI_Scene _sceneUI = null;
-    public UI_Scene SceneUI { get { return _sceneUI; } }
+    public UI_Base SceneUI { get { return m_sceneUI; } }
 
     public GameObject Root
     {

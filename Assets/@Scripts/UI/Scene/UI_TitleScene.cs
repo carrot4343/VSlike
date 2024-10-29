@@ -41,13 +41,12 @@ public class UI_TitleScene : UI_Base
 
         return true;
     }
-    private void Awake()
+
+    public override bool InitLate()
     {
-        Init();
-    }
-    private void Start()
-    {
-        Managers._Resource.LoadAllAsync<Object>("PreLoad", (key, count, totalCount) =>
+        base.InitLate();
+
+        Managers._Resource.LoadAllAsync<Object>("Preload", (key, count, totalCount) =>
         {
             GetObjects((int)GameObjects.Slider).GetComponent<Slider>().value = (float)count / totalCount;
             if (count == totalCount)
@@ -60,7 +59,10 @@ public class UI_TitleScene : UI_Base
                 //StartButtonAnimation();
             }
         });
+
+        return true;
     }
+   
     /*
     void StartButtonAnimation()
     {
