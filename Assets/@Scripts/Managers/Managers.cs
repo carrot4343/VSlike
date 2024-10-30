@@ -51,6 +51,8 @@ public class Managers : MonoBehaviour
             return m_instance;
         }
     }
+
+    //각각 등록된 collection, action들을 비우는 작업
     public static void Clear()
     {
         //_Sound.Clear();

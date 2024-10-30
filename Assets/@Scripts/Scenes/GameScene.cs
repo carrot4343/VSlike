@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GameScene : BaseScene
+public class GameScene : BaseScene
 {
     void Start()
     {
@@ -109,7 +109,7 @@ public abstract class GameScene : BaseScene
     }
 
     void Update()
-    {
+    { 
         
     }
 
