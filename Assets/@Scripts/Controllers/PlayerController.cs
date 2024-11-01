@@ -52,11 +52,6 @@ public class PlayerController : CreatureController
         Managers._Game.OnMoveDirChanged += HandleOnMoveDirChanged;
         //기본스킬
         Skills.AddSkill<EgoSword>(transform.position, transform);
-        Skills.AddSkill<EgoSword>(transform.position, transform);
-        Skills.AddSkill<EgoSword>(transform.position, transform);
-        Skills.AddSkill<EgoSword>(transform.position, transform);
-        Skills.AddSkill<EgoSword>(transform.position, transform);
-        Skills.AddSkill<EgoSword>(transform.position, transform);
         return true;
     }
 

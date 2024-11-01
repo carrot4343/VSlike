@@ -7,8 +7,11 @@ public class SpawningPool : MonoBehaviour
     // Start is called before the first frame update
 
     float m_spawnInterval = 0.1f;
+    float m_stageInterval = 5.0f;
     int m_maxMonsterCount = 100;
-
+    int m_maxSpawnCount = 500;
+    int m_spawnCount = 0;
+    //spawn data 연동해주어야 함.
     Coroutine m_coUpdateSpawningPool;
 
     public bool Stopped { get; set; } = false;
@@ -22,8 +25,13 @@ public class SpawningPool : MonoBehaviour
     {
         while(true)
         {
-            TrySpawn();
-            yield return new WaitForSeconds(m_spawnInterval);
+            if(m_spawnCount <= m_maxSpawnCount)
+            {
+                TrySpawn();
+                yield return new WaitForSeconds(m_spawnInterval);
+            }
+            
+            
         }
     }
 
@@ -39,5 +47,6 @@ public class SpawningPool : MonoBehaviour
         //Player주변 랜덤 장소에 Spawn
         Vector3 randPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 10, 15);
         MonsterController mc = Managers._Object.Spawn<MonsterController>(randPos, Define.SNAKE_ID);
+        m_spawnCount++;
     }
 }
