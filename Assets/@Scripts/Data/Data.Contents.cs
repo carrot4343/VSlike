@@ -119,4 +119,34 @@ namespace Data
     }
 
     #endregion
+
+    #region StageData
+
+    public class StageData
+    {
+        [XmlAttribute] public int stage;
+        [XmlAttribute] public string wave1Prefab;
+        [XmlAttribute] public string wave2Prefab;
+        [XmlAttribute] public string wave3Prefab;
+        [XmlAttribute] public string elite1Prefab;
+        [XmlAttribute] public string elite2Prefab;
+        [XmlAttribute] public string bossPrefab;
+    }
+
+    [Serializable, XmlRoot("StageDatas")]
+    public class StageDataLoader : ILoader<int, StageData>
+    {
+        [XmlElement("StageData")]
+        public List<StageData> stages = new List<StageData>();
+
+        public Dictionary<int,StageData> MakeDict()
+        {
+            Dictionary<int, StageData> dict = new Dictionary<int, StageData>();
+            foreach (StageData stage in stages)
+                dict.Add(stage.stage, stage);
+            return dict;
+        }
+    }
+
+    #endregion
 }

@@ -86,12 +86,12 @@ public class GameScene : BaseScene
 
     public void HandleOnKillCountChanged(int killCount)
     {
-        if(killCount == 2000)
+        if(killCount == 3000)
         {
             //Boss Spawn
             StageType = Define.StageType.Boss;
-            //맵의 모든 몬스터 없애고
-            Managers._Object.DespawnallMonsters();
+            //맵의 모든 몬스터 없애고 << 없앨까 생각중.
+            //Managers._Object.DespawnallMonsters();
 
             Vector2 spawnPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 5, 10);
 

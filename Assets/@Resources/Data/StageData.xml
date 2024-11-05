@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SkillDatas>
+  <StageData stage="1" wave1Prefab="" wave2Prefab="" wave3Prefab="" elite1Prefab="" elite2Prefab="" bossPrefab="">
+  </StageData>
+  <StageData stage="2" wave1Prefab="" wave2Prefab="" wave3Prefab="" elite1Prefab="" elite2Prefab="" bossPrefab="">
+  </StageData>
+  <StageData stage="3" wave1Prefab="" wave2Prefab="" wave3Prefab="" elite1Prefab="" elite2Prefab="" bossPrefab="">
+  </StageData>
+</SkillDatas>

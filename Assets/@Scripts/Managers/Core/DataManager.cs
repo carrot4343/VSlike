@@ -5,6 +5,7 @@ using UnityEngine;
 using System.IO;
 using System.Xml.Serialization;
 
+//MakeDict 구현 강제
 public interface ILoader<Key, Value>
 {
     Dictionary<Key, Value> MakeDict();
@@ -14,11 +15,13 @@ public class DataManager
 {
     public Dictionary<int, Data.PlayerData> PlayerDic { get; private set; } = new Dictionary<int, Data.PlayerData>();
     public Dictionary<int, Data.SkillData> SkillDic { get; private set; } = new Dictionary<int, Data.SkillData>();
+    public Dictionary<int, Data.StageData> StageDic { get; private set; } = new Dictionary<int, Data.StageData>();
 
     public void Init()
     {
         PlayerDic = LoadXml<Data.PlayerDataLoader, int, Data.PlayerData>("PlayerData.xml").MakeDict();
         SkillDic = LoadXml<Data.SkillDataLoader, int, Data.SkillData>("SkillData.xml").MakeDict();
+        StageDic = LoadXml<Data.StageDataLoader, int, Data.StageData>("StageData.xml").MakeDict();
 
         //PlayerDic = LoadJson<Data.PlayerDataLoader, int, Data.PlayerData>("PlayerData.json").MakeDict();
     }
