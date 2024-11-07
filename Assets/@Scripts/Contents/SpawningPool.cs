@@ -14,6 +14,9 @@ public class SpawningPool : MonoBehaviour
     int m_wave2max = 2000;
     int m_wave3max = 3000;
     int m_spawnCount = 0;
+
+    public int SpawnTemplateID { get; set; }
+
     //spawn data 연동해주어야 함.
     Coroutine m_coUpdateSpawningPool;
 
@@ -31,28 +34,30 @@ public class SpawningPool : MonoBehaviour
         //1스테이지
         while(m_spawnCount <= m_wave1max)
         {
-            BasicSpawn();
+            BasicSpawn(SpawnTemplateID);
             yield return new WaitForSeconds(m_spawnInterval);
         }
 
+        //EliteSpawn();
         yield return new WaitForSeconds(m_stageInterval);
 
         while(m_spawnCount <= m_wave2max)
         {
-            BasicSpawn();
+            BasicSpawn(SpawnTemplateID);
             yield return new WaitForSeconds(m_spawnInterval);
         }
 
+        //EliteSpawn();
         yield return new WaitForSeconds(m_stageInterval);
 
         while (m_spawnCount <= m_wave3max)
         {
-            BasicSpawn();
+            BasicSpawn(SpawnTemplateID);
             yield return new WaitForSeconds(m_spawnInterval);
         }
     }
 
-    void BasicSpawn()
+    void BasicSpawn(int templateID)
     {
         if (Stopped)
             return;
@@ -64,7 +69,29 @@ public class SpawningPool : MonoBehaviour
         //Player주변 랜덤 장소에 Spawn
         Vector3 randPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 10, 15);
         //조건에 따라 다른 몬스터를 소환할 필요 있음. 1000킬부터는~ 2000킬부터는~
-        MonsterController mc = Managers._Object.Spawn<MonsterController>(randPos, Define.SNAKE_ID);
+        MonsterController mc = Managers._Object.Spawn<MonsterController>(randPos, templateID);
         m_spawnCount++;
+    }
+
+    void EliteSpawn(int templateID)
+    {
+        //Player주변 랜덤 장소에 Spawn
+        Vector3 randPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 10, 15);
+        MonsterController mc = Managers._Object.Spawn<MonsterController>(randPos, templateID);
+    }
+
+    public int GetWaveMaxCount(int waveNum)
+    {
+        switch(waveNum)
+        {
+            case 1:
+                return m_wave1max;
+            case 2:
+                return m_wave2max;
+            case 3:
+                return m_wave3max;
+        }
+
+        return 0;
     }
 }

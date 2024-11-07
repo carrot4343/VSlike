@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameScene : BaseScene
 {
+    
     void Start()
     {
         //기본 UI 표시
@@ -11,6 +12,7 @@ public class GameScene : BaseScene
 
         //스포닝풀 생산
         m_spawningPool = gameObject.AddComponent<SpawningPool>();
+        m_killCountTillBoss = m_spawningPool.GetWaveMaxCount(3);
 
         //플레이어 스폰
         var player = Managers._Object.Spawn<PlayerController>(Vector3.zero);
@@ -84,9 +86,10 @@ public class GameScene : BaseScene
         Managers._UI.GetSceneUI<UI_GameScene>().SetGemCountRatio((float)m_collectedGemCount / m_remainingTotalGemCount);
     }
 
+    int m_killCountTillBoss;
     public void HandleOnKillCountChanged(int killCount)
     {
-        if(killCount == 3000)
+        if(killCount == m_killCountTillBoss)
         {
             //Boss Spawn
             StageType = Define.StageType.Boss;

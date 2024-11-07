@@ -62,6 +62,7 @@ namespace Data
 
     public class MonsterData
     {
+        [XmlAttribute] public int templateID;
         [XmlAttribute] public string name;
         [XmlAttribute] public string prefab;
         [XmlAttribute] public int level;
@@ -71,16 +72,16 @@ namespace Data
     }
 
     [Serializable, XmlRoot("PlayerDatas")]
-    public class MonsterDataLoader : ILoader<string, MonsterData>
+    public class MonsterDataLoader : ILoader<int, MonsterData>
     {
         [XmlElement("PlayerData")]
         public List<MonsterData> stats = new List<MonsterData>();
 
-        public Dictionary<string, MonsterData> MakeDict()
+        public Dictionary<int, MonsterData> MakeDict()
         {
-            Dictionary<string, MonsterData> dict = new Dictionary<string, MonsterData>();
+            Dictionary<int, MonsterData> dict = new Dictionary<int, MonsterData>();
             foreach (MonsterData stat in stats)
-                dict.Add(stat.name, stat);
+                dict.Add(stat.templateID, stat);
             return dict;
         }
     }

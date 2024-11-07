@@ -61,6 +61,7 @@ public class Define
     public const int GOBLIN_ID = 1;
     public const int SNAKE_ID = 2;
     public const int BOSS_ID = 3;
+    public const int ElITE_ID = 5;
 
     public const int EGO_SWORD_ID = 100;
     public const int FIREBALL_ID = 110;

@@ -34,22 +34,13 @@ public class ObjectManager
         }
         else if(type == typeof(MonsterController))
         {
-            string name = "";
-
-            switch (templateID)
+            if (Managers._Data.MonsterDic.TryGetValue(templateID, out Data.MonsterData monsterData) == false)
             {
-                case Define.GOBLIN_ID:
-                    name = "Goblin_01";
-                    break;
-                case Define.SNAKE_ID:
-                    name = "Snake_01";
-                    break;
-                case Define.BOSS_ID:
-                    name = "Boss_01";
-                    break;
-            };
+                Debug.LogError($"ObjectManager Monster Spawn failed {templateID}");
+                return null;
+            }
 
-            GameObject go = Managers._Resource.Instantiate(name + ".prefab", pooling: true);
+            GameObject go = Managers._Resource.Instantiate(monsterData.prefab, pooling: true);
             go.transform.position = position;
 
             MonsterController mc = go.GetOrAddComponent<MonsterController>();
