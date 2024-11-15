@@ -93,11 +93,11 @@ public class GameScene : BaseScene
         {
             //Boss Spawn
             StageType = Define.StageType.Boss;
-            //맵의 모든 몬스터 없애고 << 없앨까 생각중.
+            //맵의 모든 몬스터 없애고 << 흠 필요한가.
             //Managers._Object.DespawnallMonsters();
 
             Vector2 spawnPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 5, 10);
-
+            //여기서 보스 소환하는 메커니즘을 좀 바꾸어줘야할수도?
             Managers._Object.Spawn<MonsterController>(spawnPos, Define.BOSS_ID);
         }
     }

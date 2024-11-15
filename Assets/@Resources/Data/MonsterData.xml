@@ -1,46 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <MonsterDatas>
-	<MonsterData templateID="10000" name="Snake_01" prefab="Snake_01" level="1" maxHp="100" attack="10" speed="3.2">
-		<DropData minCount="3">
-			<!--<DropItem type="gold" gold="100"/>-->
-			<Gold gold="100"/>
-			<Gem exp="100"/>
-			<Meat hp="30"/>
-			<Skill count="2"/>
-		</DropData>
-		<DropData maxCount="1">
-			<!-- Random = 5 이라면? -->
-			<Item prob="3" templateID="집행검" count="1" />
-			<Item prob="17" templateID="레어검" count="1" />
-			<Item prob="80" templateID="빨간물약" count="1"/>
-		</DropData>
-		<DropData maxCount="3">
-			<Item prob="3" templateID="집행검" count="1" />
-			<Item prob="17" templateID="레어검" count="1" />
-			<Item prob="80" templateID="빨간물약" count="1"/>
-		</DropData>
-		<DropData maxCount="1">
-			<DropBox prob="3">
-				<Item prob="3" templateID="집행검" count="1" />
-				<Item prob="17" templateID="레어검" count="1" />
-				<Item prob="80" templateID="빨간물약" count="1"/>
-			</DropBox>
-			<DropBox prob="17">
-				<Item prob="20" templateID="난쟁이검" count="1" />
-				<Item prob="20" templateID="레어검" count="1" />
-				<Item prob="60" templateID="빨간물약" count="2"/>
-			</DropBox>
-			<DropBox prob="80">
-				<Item prob="20" templateID="쓰레기검" count="1" />
-				<Item prob="30" templateID="쓰레기 방패" count="1" />
-				<Item prob="50" templateID="투명물약" count="1"/>
-			</DropBox>
-		</DropData>
+	<MonsterData templateID="10000" name="Monster1" prefab="Monster1.prefab" level="1" maxHp="100" attack="10" speed="3.2" exp="10">
 	</MonsterData>
-	<MonsterData templateID="10001" name="Goblin_01" prefab="Goblin_01" level="2" maxHp="200" attack="10" speed="3.2">		
-	</MonsterData>
-  <MonsterData templateID="10002" name="Goblin_01" prefab="Goblin_01" level="3" maxHp="200" attack="10" speed="3.2">
+  <MonsterData templateID="10001" name="Monster1" prefab="Monster1.prefab" level="2" maxHp="150" attack="10" speed="3.2" exp="15">
   </MonsterData>
-  <MonsterData templateID="10010" name="Snake_01" prefab="Snake_01" level="1" maxHp="100" attack="10" speed="3.2">
+  <MonsterData templateID="10002" name="Monster1" prefab="Monster1.prefab" level="3" maxHp="200" attack="11" speed="3.2" exp="20">
+  </MonsterData>
+  <MonsterData templateID="10003" name="Monster1" prefab="Monster1.prefab" level="4" maxHp="250" attack="11" speed="3.2" exp="25">
+  </MonsterData>
+  <MonsterData templateID="10004" name="Monster1" prefab="Monster1.prefab" level="5" maxHp="300" attack="12" speed="3.2" exp="30">
+	</MonsterData>
+  <MonsterData templateID="10005" name="Monster1" prefab="Monster1.prefab" level="6" maxHp="350" attack="12" speed="3.2" exp="35">
+  </MonsterData>
+  <MonsterData templateID="10006" name="Monster1" prefab="Monster1.prefab" level="7" maxHp="400" attack="13" speed="3.2" exp="40">
+  </MonsterData>
+  <MonsterData templateID="10007" name="Monster1" prefab="Monster1.prefab" level="8" maxHp="450" attack="13" speed="3.2" exp="45">
+  </MonsterData>
+  <MonsterData templateID="10008" name="Monster1" prefab="Monster1.prefab" level="9" maxHp="500" attack="14" speed="3.2" exp="50">
+  </MonsterData>
+  <MonsterData templateID="10009" name="Monster1" prefab="Monster1.prefab" level="10" maxHp="550" attack="14" speed="3.2" exp="50">
+  </MonsterData>
+	<MonsterData templateID="10010" name="Monster1" prefab="Monster1.prefab" level="1" maxHp="400" attack="15" speed="4.0" exp="100">		
+	</MonsterData>
+  <MonsterData templateID="10011" name="Monster2" prefab="Goblin_01" level="2" maxHp="460" attack="15" speed="4.0" exp="120">
+  </MonsterData>
+  <MonsterData templateID="10012" name="Monster2" prefab="Goblin_01" level="3" maxHp="520" attack="15" speed="4.0" exp="120">
+  </MonsterData>
+  <MonsterData templateID="10013" name="Monster2" prefab="Goblin_01" level="4" maxHp="580" attack="16" speed="4.0" exp="120">
+  </MonsterData>
+  <MonsterData templateID="10014" name="Monster2" prefab="Goblin_01" level="5" maxHp="640" attack="16" speed="4.0" exp="120">
+  </MonsterData>
+  <MonsterData templateID="10015" name="Monster2" prefab="Goblin_01" level="6" maxHp="700" attack="16" speed="4.0" exp="120">
+  </MonsterData>
+  <MonsterData templateID="10016" name="Monster2" prefab="Goblin_01" level="7" maxHp="800" attack="17" speed="4.0" exp="120">
+  </MonsterData>
+  <MonsterData templateID="10017" name="Monster2" prefab="Goblin_01" level="8" maxHp="900" attack="17" speed="4.0" exp="120">
+  </MonsterData>
+  <MonsterData templateID="10018" name="Monster2" prefab="Goblin_01" level="9" maxHp="1000" attack="17" speed="4.0" exp="120">
+  </MonsterData>
+  <MonsterData templateID="10019" name="Monster2" prefab="Goblin_01" level="10" maxHp="1000" attack="17" speed="4.0" exp="120">
+  </MonsterData>
+  <MonsterData templateID="10020" name="Boss_01" prefab="Boss_01" level="1" maxHp="1000" attack="100" speed="3.0">
   </MonsterData>
 </MonsterDatas>
