@@ -32,11 +32,16 @@ public class SpawningPool : MonoBehaviour
         //특수몹 소환(엘리트몹)에 대해서 고민할 필요 있음.
         //그리고 현재 보스 소환시 맵의 모든 몹을 없애는데 그게 필요할까? 없애자.
         //1스테이지
-        while(m_spawnCount <= m_wave1max)
+        for(int i = 0; i < 3; i++)
         {
-            BasicSpawn(SpawnTemplateID);
-            yield return new WaitForSeconds(m_spawnInterval);
+            SpawnTemplateID += i;
+            while (m_spawnCount <= m_wave1max)
+            {
+                BasicSpawn(SpawnTemplateID);
+                yield return new WaitForSeconds(m_spawnInterval);
+            }
         }
+        
 
         //EliteSpawn();
         yield return new WaitForSeconds(m_stageInterval);
