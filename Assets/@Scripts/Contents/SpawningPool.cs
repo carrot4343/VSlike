@@ -16,6 +16,8 @@ public class SpawningPool : MonoBehaviour
     int m_spawnCount = 0;
 
     public int SpawnTemplateID { get; set; }
+    public int SpawnEliteTemplateID { get; set; }
+    public int SpawnBossTemplateID { get; set; }
 
     //spawn data 연동해주어야 함.
     Coroutine m_coUpdateSpawningPool;
@@ -34,32 +36,45 @@ public class SpawningPool : MonoBehaviour
         //1스테이지
         for(int i = 0; i < 3; i++)
         {
-            SpawnTemplateID += i;
             while (m_spawnCount <= m_wave1max)
             {
                 BasicSpawn(SpawnTemplateID);
                 yield return new WaitForSeconds(m_spawnInterval);
             }
+            SpawnTemplateID += 1;
         }
         
 
         //EliteSpawn();
         yield return new WaitForSeconds(m_stageInterval);
 
-        while(m_spawnCount <= m_wave2max)
+        for(int i = 0; i < 3; i++)
         {
-            BasicSpawn(SpawnTemplateID);
-            yield return new WaitForSeconds(m_spawnInterval);
+            while (m_spawnCount <= m_wave2max)
+            {
+                BasicSpawn(SpawnTemplateID);
+                yield return new WaitForSeconds(m_spawnInterval);
+            }
+            SpawnTemplateID += 1;
         }
+        
 
         //EliteSpawn();
         yield return new WaitForSeconds(m_stageInterval);
 
-        while (m_spawnCount <= m_wave3max)
+
+        for(int i = 0; i < 3; i++)
         {
-            BasicSpawn(SpawnTemplateID);
-            yield return new WaitForSeconds(m_spawnInterval);
+            while (m_spawnCount <= m_wave3max)
+            {
+                BasicSpawn(SpawnTemplateID);
+                yield return new WaitForSeconds(m_spawnInterval);
+            }
+            SpawnTemplateID += 1;
         }
+        
+
+
     }
 
     void BasicSpawn(int templateID)
@@ -78,9 +93,8 @@ public class SpawningPool : MonoBehaviour
         m_spawnCount++;
     }
 
-    void EliteSpawn(int templateID)
+    void SpecialSpawn(int templateID)
     {
-        //Player주변 랜덤 장소에 Spawn
         Vector3 randPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 10, 15);
         MonsterController mc = Managers._Object.Spawn<MonsterController>(randPos, templateID);
     }
@@ -98,5 +112,11 @@ public class SpawningPool : MonoBehaviour
         }
 
         return 0;
+    }
+
+    public void Clear()
+    {
+        StopCoroutine(CoUpdateSpawningPool());
+        SpawnTemplateID = (int)(SpawnTemplateID / 10) * 10;
     }
 }

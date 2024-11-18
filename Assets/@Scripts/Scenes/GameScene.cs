@@ -89,15 +89,21 @@ public class GameScene : BaseScene
     int m_killCountTillBoss;
     public void HandleOnKillCountChanged(int killCount)
     {
+        //elite spawn
+        if(killCount % 1000 == 0 || killCount < m_killCountTillBoss)
+        {
+            Vector2 spawnPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 5, 10);
+            //Elite ID로 바꾸어주어야 함. Stage Data 연동 필요
+            Managers._Object.Spawn<MonsterController>(spawnPos, Define.BOSS_ID);
+        }
+
+        //boss spawn
         if(killCount == m_killCountTillBoss)
         {
-            //Boss Spawn
             StageType = Define.StageType.Boss;
-            //맵의 모든 몬스터 없애고 << 흠 필요한가.
-            //Managers._Object.DespawnallMonsters();
 
             Vector2 spawnPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 5, 10);
-            //여기서 보스 소환하는 메커니즘을 좀 바꾸어줘야할수도?
+            //Boss ID Stage Data 연동 필요.
             Managers._Object.Spawn<MonsterController>(spawnPos, Define.BOSS_ID);
         }
     }
