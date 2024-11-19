@@ -69,12 +69,13 @@ namespace Data
         [XmlAttribute] public int maxHp;
         [XmlAttribute] public int attack;
         [XmlAttribute] public float speed;
+        [XmlAttribute] public float exp;
     }
 
-    [Serializable, XmlRoot("PlayerDatas")]
+    [Serializable, XmlRoot("MonsterDatas")]
     public class MonsterDataLoader : ILoader<int, MonsterData>
     {
-        [XmlElement("PlayerData")]
+        [XmlElement("MonsterData")]
         public List<MonsterData> stats = new List<MonsterData>();
 
         public Dictionary<int, MonsterData> MakeDict()
@@ -126,12 +127,10 @@ namespace Data
     public class StageData
     {
         [XmlAttribute] public int stage;
-        [XmlAttribute] public string wave1Prefab;
-        [XmlAttribute] public string wave2Prefab;
-        [XmlAttribute] public string wave3Prefab;
-        [XmlAttribute] public string elite1Prefab;
-        [XmlAttribute] public string elite2Prefab;
-        [XmlAttribute] public string bossPrefab;
+        [XmlAttribute] public int basicMonsterID;
+        [XmlAttribute] public int firstEliteID;
+        [XmlAttribute] public int secondEliteID;
+        [XmlAttribute] public int bossID;
     }
 
     [Serializable, XmlRoot("StageDatas")]

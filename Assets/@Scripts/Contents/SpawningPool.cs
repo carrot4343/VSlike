@@ -25,15 +25,19 @@ public class SpawningPool : MonoBehaviour
     public bool Stopped { get; set; } = false;
     void Start()
     {
+        if (Managers._Data.StageDic.TryGetValue(Managers._Game.Stage, out Data.StageData stagedata) == false)
+        {
+            Debug.LogError($"Wrong Stage Number {Managers._Game.Stage}");
+        }
+        SpawnTemplateID = stagedata.basicMonsterID;
+        SpawnEliteTemplateID = stagedata.firstEliteID;
+        SpawnBossTemplateID = stagedata.bossID;
         m_coUpdateSpawningPool = StartCoroutine(CoUpdateSpawningPool());
     }
 
     //Spawn Interval 만큼의 쿨타임을 가진 코루틴
     IEnumerator CoUpdateSpawningPool()
     {
-        //특수몹 소환(엘리트몹)에 대해서 고민할 필요 있음.
-        //그리고 현재 보스 소환시 맵의 모든 몹을 없애는데 그게 필요할까? 없애자.
-        //1스테이지
         for(int i = 0; i < 3; i++)
         {
             while (m_spawnCount <= m_wave1max)
@@ -45,7 +49,7 @@ public class SpawningPool : MonoBehaviour
         }
         
 
-        //EliteSpawn();
+        SpecialSpawn(SpawnEliteTemplateID);
         yield return new WaitForSeconds(m_stageInterval);
 
         for(int i = 0; i < 3; i++)
@@ -57,9 +61,9 @@ public class SpawningPool : MonoBehaviour
             }
             SpawnTemplateID += 1;
         }
-        
 
-        //EliteSpawn();
+
+        SpecialSpawn(SpawnEliteTemplateID + 1);
         yield return new WaitForSeconds(m_stageInterval);
 
 
@@ -72,9 +76,9 @@ public class SpawningPool : MonoBehaviour
             }
             SpawnTemplateID += 1;
         }
-        
 
 
+        SpecialSpawn(SpawnBossTemplateID);
     }
 
     void BasicSpawn(int templateID)
@@ -88,11 +92,11 @@ public class SpawningPool : MonoBehaviour
 
         //Player주변 랜덤 장소에 Spawn
         Vector3 randPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 10, 15);
-        //조건에 따라 다른 몬스터를 소환할 필요 있음. 1000킬부터는~ 2000킬부터는~
         MonsterController mc = Managers._Object.Spawn<MonsterController>(randPos, templateID);
         m_spawnCount++;
     }
 
+    //특수 스폰 -> 소환 횟수 등의 조건에 구애받지 않음.
     void SpecialSpawn(int templateID)
     {
         Vector3 randPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 10, 15);

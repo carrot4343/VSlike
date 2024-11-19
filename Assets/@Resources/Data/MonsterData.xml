@@ -2,32 +2,78 @@
 <MonsterDatas>
 	<MonsterData templateID="10000" name="Monster_01" prefab="Monster_01.prefab" level="1" maxHp="100" attack="10" speed="3.2" exp="10">
 	</MonsterData>
-  <MonsterData templateID="10001" name="Monster_01" prefab="Monster2.prefab" level="2" maxHp="120" attack="11" speed="3.2" exp="12">
+  <MonsterData templateID="10001" name="Monster_01" prefab="Monster_01.prefab" level="2" maxHp="120" attack="11" speed="3.2" exp="12">
   </MonsterData>
-  <MonsterData templateID="10002" name="Monster_01" prefab="Monster3.prefab" level="3" maxHp="140" attack="12" speed="3.2" exp="13">
+  <MonsterData templateID="10002" name="Monster_01" prefab="Monster_01.prefab" level="3" maxHp="140" attack="12" speed="3.2" exp="13">
   </MonsterData>
-  <MonsterData templateID="10003" name="Monster_02" prefab="Monster4.prefab" level="1" maxHp="200" attack="15" speed="3.2" exp="15">
+  <MonsterData templateID="10003" name="Monster_02" prefab="Monster_02.prefab" level="1" maxHp="200" attack="15" speed="3.2" exp="15">
   </MonsterData>
-  <MonsterData templateID="10004" name="Monster_02" prefab="Monster5.prefab" level="2" maxHp="250" attack="16" speed="3.2" exp="18">
+  <MonsterData templateID="10004" name="Monster_02" prefab="Monster_02.prefab" level="2" maxHp="250" attack="16" speed="3.2" exp="18">
   </MonsterData>
-  <MonsterData templateID="10005" name="Monster_02" prefab="Monster6.prefab" level="3" maxHp="300" attack="17" speed="3.2" exp="20">
+  <MonsterData templateID="10005" name="Monster_02" prefab="Monster_02.prefab" level="3" maxHp="300" attack="17" speed="3.2" exp="20">
   </MonsterData>
-  <MonsterData templateID="10006" name="Monster_03" prefab="Monster7.prefab" level="1" maxHp="400" attack="20" speed="3.2" exp="25">
+  <MonsterData templateID="10006" name="Monster_03" prefab="Monster_03.prefab" level="1" maxHp="400" attack="20" speed="3.2" exp="25">
   </MonsterData>
-  <MonsterData templateID="10007" name="Monster_03" prefab="Monster8.prefab" level="2" maxHp="450" attack="22" speed="3.2" exp="30">
+  <MonsterData templateID="10007" name="Monster_03" prefab="Monster_03.prefab" level="2" maxHp="450" attack="22" speed="3.2" exp="30">
   </MonsterData>
-  <MonsterData templateID="10008" name="Monster_03" prefab="Monster9.prefab" level="3" maxHp="500" attack="25" speed="3.2" exp="40">
+  <MonsterData templateID="10008" name="Monster_03" prefab="Monster_03.prefab" level="3" maxHp="500" attack="25" speed="3.2" exp="40">
   </MonsterData>
+  
+  <MonsterData templateID="10010" name="Monster_04" prefab="Monster_04.prefab" level="1" maxHp="110" attack="11" speed="3.2" exp="10">
+  </MonsterData>
+  <MonsterData templateID="10011" name="Monster_04" prefab="Monster_04.prefab" level="2" maxHp="130" attack="12" speed="3.2" exp="12">
+  </MonsterData>
+  <MonsterData templateID="10012" name="Monster_04" prefab="Monster_04.prefab" level="3" maxHp="150" attack="13" speed="3.2" exp="13">
+  </MonsterData>
+  <MonsterData templateID="10013" name="Monster_05" prefab="Monster_05.prefab" level="1" maxHp="220" attack="16" speed="3.2" exp="15">
+  </MonsterData>
+  <MonsterData templateID="10014" name="Monster_05" prefab="Monster_05.prefab" level="2" maxHp="275" attack="17" speed="3.2" exp="18">
+  </MonsterData>
+  <MonsterData templateID="10015" name="Monster_05" prefab="Monster_05.prefab" level="3" maxHp="330" attack="20" speed="3.2" exp="20">
+  </MonsterData>
+  <MonsterData templateID="10016" name="Monster_06" prefab="Monster_06.prefab" level="1" maxHp="440" attack="22" speed="3.2" exp="25">
+  </MonsterData>
+  <MonsterData templateID="10017" name="Monster_06" prefab="Monster_06.prefab" level="2" maxHp="500" attack="25" speed="3.2" exp="30">
+  </MonsterData>
+  <MonsterData templateID="10018" name="Monster_06" prefab="Monster_06.prefab" level="3" maxHp="550" attack="28" speed="3.2" exp="40">
+  </MonsterData>
+  
+  <MonsterData templateID="10020" name="Monster_07" prefab="Monster_07.prefab" level="1" maxHp="120" attack="12" speed="3.2" exp="10">
+  </MonsterData>
+  <MonsterData templateID="10021" name="Monster_07" prefab="Monster_07.prefab" level="2" maxHp="150" attack="13" speed="3.2" exp="12">
+  </MonsterData>
+  <MonsterData templateID="10022" name="Monster_07" prefab="Monster_07.prefab" level="3" maxHp="180" attack="15" speed="3.2" exp="13">
+  </MonsterData>
+  <MonsterData templateID="10023" name="Monster_08" prefab="Monster_08.prefab" level="1" maxHp="250" attack="18" speed="3.2" exp="15">
+  </MonsterData>
+  <MonsterData templateID="10024" name="Monster_08" prefab="Monster_08.prefab" level="2" maxHp="320" attack="22" speed="3.2" exp="18">
+  </MonsterData>
+  <MonsterData templateID="10025" name="Monster_08" prefab="Monster_08.prefab" level="3" maxHp="400" attack="25" speed="3.2" exp="20">
+  </MonsterData>
+  <MonsterData templateID="10026" name="Monster_09" prefab="Monster_09.prefab" level="1" maxHp="500" attack="28" speed="3.2" exp="25">
+  </MonsterData>
+  <MonsterData templateID="10027" name="Monster_09" prefab="Monster_09.prefab" level="2" maxHp="600" attack="30" speed="3.2" exp="30">
+  </MonsterData>
+  <MonsterData templateID="10028" name="Monster_09" prefab="Monster_09.prefab" level="3" maxHp="700" attack="35" speed="3.2" exp="40">
+  </MonsterData>
+  
   <MonsterData templateID="11000" name="Elite_01" prefab="Elite_01.prefab" level="1" maxHp="2000" attack="20" speed="3.0" exp="300">
   </MonsterData>
   <MonsterData templateID="11001" name="Elite_02" prefab="Elite_02.prefab" level="1" maxHp="3000" attack="30" speed="3.0" exp="600">
   </MonsterData>
   <MonsterData templateID="11002" name="Elite_03" prefab="Elite_03.prefab" level="1" maxHp="5000" attack="40" speed="3.0" exp="1000">
   </MonsterData>
-  <MonsterData templateID="11100" name="Boss_01" prefab="Boss_01.prefab" level="1" maxHp="10000" attack="25" speed="3.0" exp="1000">
+  <MonsterData templateID="11003" name="Elite_04" prefab="Elite_04.prefab" level="1" maxHp="5000" attack="25" speed="3.0" exp="300">
   </MonsterData>
-  <MonsterData templateID="11101" name="Boss_02" prefab="Boss_02.prefab" level="1" maxHp="12000" attack="25" speed="3.0" exp="1000">
+  <MonsterData templateID="11004" name="Elite_05" prefab="Elite_05.prefab" level="1" maxHp="5000" attack="35" speed="3.0" exp="600">
   </MonsterData>
-  <MonsterData templateID="11102" name="Boss_03" prefab="Boss_03.prefab" level="1" maxHp="1400" attack="25" speed="3.0" exp="1000">
+  <MonsterData templateID="11005" name="Elite_06" prefab="Elite_06.prefab" level="1" maxHp="5000" attack="45" speed="3.0" exp="1000">
+  </MonsterData>
+  
+  <MonsterData templateID="11100" name="Boss_01" prefab="Boss_01.prefab" level="1" maxHp="10000" attack="60" speed="3.0" exp="0">
+  </MonsterData>
+  <MonsterData templateID="11101" name="Boss_02" prefab="Boss_02.prefab" level="1" maxHp="12000" attack="65" speed="3.0" exp="0">
+  </MonsterData>
+  <MonsterData templateID="11102" name="Boss_03" prefab="Boss_03.prefab" level="1" maxHp="14000" attack="70" speed="3.0" exp="0">
   </MonsterData>
 </MonsterDatas>

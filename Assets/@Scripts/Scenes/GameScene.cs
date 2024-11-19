@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameScene : BaseScene
 {
-    
     void Start()
     {
         //기본 UI 표시
@@ -82,29 +81,17 @@ public class GameScene : BaseScene
         Managers._UI.ShowPopup<UI_SkillSelectPopup>();
         m_collectedGemCount = 0;
         Managers._Game.Gem = m_collectedGemCount;
-        m_remainingTotalGemCount *= 2;
+        m_remainingTotalGemCount = (int)((float)m_remainingTotalGemCount * 1.3);
         Managers._UI.GetSceneUI<UI_GameScene>().SetGemCountRatio((float)m_collectedGemCount / m_remainingTotalGemCount);
     }
 
     int m_killCountTillBoss;
     public void HandleOnKillCountChanged(int killCount)
     {
-        //elite spawn
-        if(killCount % 1000 == 0 || killCount < m_killCountTillBoss)
-        {
-            Vector2 spawnPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 5, 10);
-            //Elite ID로 바꾸어주어야 함. Stage Data 연동 필요
-            Managers._Object.Spawn<MonsterController>(spawnPos, Define.BOSS_ID);
-        }
-
         //boss spawn
         if(killCount == m_killCountTillBoss)
         {
             StageType = Define.StageType.Boss;
-
-            Vector2 spawnPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 5, 10);
-            //Boss ID Stage Data 연동 필요.
-            Managers._Object.Spawn<MonsterController>(spawnPos, Define.BOSS_ID);
         }
     }
 

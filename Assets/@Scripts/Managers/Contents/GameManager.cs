@@ -60,4 +60,17 @@ public class GameManager
             OnPlayerLevelChanged?.Invoke(value);
         }
     }
+
+    int stage = 1;
+    public int Stage
+    {
+        get
+        {
+            return stage;
+        }
+        set
+        {
+            stage = value;
+        }
+    }
 }
