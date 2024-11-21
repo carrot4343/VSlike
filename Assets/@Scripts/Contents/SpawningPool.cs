@@ -9,10 +9,7 @@ public class SpawningPool : MonoBehaviour
     float m_spawnInterval = 0.1f;
     float m_stageInterval = 10.0f;
     int m_maxMonsterCount = 500;
-    int m_maxSpawnCount = 3000;
-    int m_wave1max = 1000;
-    int m_wave2max = 2000;
-    int m_wave3max = 3000;
+    int m_waveMax = 333;
     int m_spawnCount = 0;
 
     public int SpawnTemplateID { get; set; }
@@ -38,46 +35,23 @@ public class SpawningPool : MonoBehaviour
     //Spawn Interval 만큼의 쿨타임을 가진 코루틴
     IEnumerator CoUpdateSpawningPool()
     {
-        for(int i = 0; i < 3; i++)
+        //일반몬스터 333마리 소환하고 999마리째에서 엘리트 하나 소환해서 1000 채움. 333,666,999,1000,1333,1666...
+        for(int i = 0; i < 9; i++)
         {
-            while (m_spawnCount <= m_wave1max)
+            //다시.
+            while (m_spawnCount <= m_waveMax)
             {
                 BasicSpawn(SpawnTemplateID);
                 yield return new WaitForSeconds(m_spawnInterval);
             }
-            SpawnTemplateID += 1;
-        }
-        
 
-        SpecialSpawn(SpawnEliteTemplateID);
-        yield return new WaitForSeconds(m_stageInterval);
-
-        for(int i = 0; i < 3; i++)
-        {
-            while (m_spawnCount <= m_wave2max)
+            if(i % 3 == 2)
             {
-                BasicSpawn(SpawnTemplateID);
-                yield return new WaitForSeconds(m_spawnInterval);
+                SpecialSpawn(SpawnEliteTemplateID);
+                yield return new WaitForSeconds(m_stageInterval);
             }
             SpawnTemplateID += 1;
         }
-
-
-        SpecialSpawn(SpawnEliteTemplateID + 1);
-        yield return new WaitForSeconds(m_stageInterval);
-
-
-        for(int i = 0; i < 3; i++)
-        {
-            while (m_spawnCount <= m_wave3max)
-            {
-                BasicSpawn(SpawnTemplateID);
-                yield return new WaitForSeconds(m_spawnInterval);
-            }
-            SpawnTemplateID += 1;
-        }
-
-
         SpecialSpawn(SpawnBossTemplateID);
     }
 
@@ -101,21 +75,7 @@ public class SpawningPool : MonoBehaviour
     {
         Vector3 randPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 10, 15);
         MonsterController mc = Managers._Object.Spawn<MonsterController>(randPos, templateID);
-    }
-
-    public int GetWaveMaxCount(int waveNum)
-    {
-        switch(waveNum)
-        {
-            case 1:
-                return m_wave1max;
-            case 2:
-                return m_wave2max;
-            case 3:
-                return m_wave3max;
-        }
-
-        return 0;
+        m_spawnCount++;
     }
 
     public void Clear()

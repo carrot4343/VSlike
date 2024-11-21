@@ -44,6 +44,7 @@ public class ObjectManager
             go.transform.position = position;
 
             MonsterController mc = go.GetOrAddComponent<MonsterController>();
+            mc.m_maxHP = monsterData.maxHp;
             Monsters.Add(mc);
             mc.Init();
 

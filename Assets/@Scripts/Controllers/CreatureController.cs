@@ -39,6 +39,11 @@ public class CreatureController : BaseController
         return true;
     }
 
+    public void OnEnable()
+    {
+        m_HP = m_maxHP;
+    }
+
     //Creature들은 공통적으로 피해를 받을 때와 사망했을 때를 처리해주어야 하므로 가상함수로써 각자 클래스에서 구현하게 함.
     public virtual void OnDamaged(BaseController attacker, int damage)
     {
