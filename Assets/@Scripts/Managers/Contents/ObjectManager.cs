@@ -151,4 +151,24 @@ public class ObjectManager
         foreach (var monster in monsters)
             Despawn<MonsterController>(monster);
     }
+
+    public void ShowDamageFont(Vector2 pos, float damage, float healAmount, Transform parent, bool isCritical = false)
+    {
+        string prefabName;
+        if (isCritical)
+            prefabName = "CriticalDamageFont";
+        else
+            prefabName = "DamageFont";
+
+        GameObject go = Managers._Resource.Instantiate(prefabName + ".prefab", pooling: true);
+        DamageFont damageText = go.GetOrAddComponent<DamageFont>();
+        damageText.SetInfo(pos, damage, healAmount, parent, isCritical);
+    }
+
+    public void Clear()
+    {
+        Monsters.Clear();
+        Gems.Clear();
+        Projectiles.Clear();
+    }
 }

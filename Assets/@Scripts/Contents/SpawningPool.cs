@@ -51,6 +51,7 @@ public class SpawningPool : MonoBehaviour
                 yield return new WaitForSeconds(m_stageInterval);
             }
             SpawnTemplateID += 1;
+            m_spawnCount = 0;
         }
         SpecialSpawn(SpawnBossTemplateID);
     }

@@ -6,7 +6,15 @@ public class CreatureController : BaseController
 {
     protected float m_speed = 1.0f;
     int m_hp = 100;
+    private Collider2D m_offset;
 
+    public Vector3 CenterPosition
+    {
+        get
+        {
+            return m_offset.bounds.center;
+        }
+    }
     public int m_HP
     {
         get
@@ -35,6 +43,7 @@ public class CreatureController : BaseController
         base.Init();
 
         Skills = gameObject.GetOrAddComponent<SkillBook>();
+        m_offset = GetComponent<Collider2D>();
 
         return true;
     }
@@ -48,7 +57,8 @@ public class CreatureController : BaseController
     public virtual void OnDamaged(BaseController attacker, int damage)
     {
         m_HP -= damage;
-        if(m_HP <= 0)
+        Managers._Object.ShowDamageFont(CenterPosition, damage, 0, transform);
+        if (m_HP <= 0)
         {
             m_HP = 0;
             OnDead();
