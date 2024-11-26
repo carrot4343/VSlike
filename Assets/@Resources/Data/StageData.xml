@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StageDatas>
-  <StageData stage="1" basicMonsterID="10000" firstEliteID="11000" secondEliteID="11001" bossID="11100">
+  <StageData stage="1" basicMonsterID="10000" firstEliteID="11000" secondEliteID="11001" bossID="11100" mapPrefab ="Map_01">
   </StageData>
   <StageData stage="2" basicMonsterID="10010" firstEliteID="11002" secondEliteID="11003" bossID="11101">
   </StageData>
