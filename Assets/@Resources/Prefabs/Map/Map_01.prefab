@@ -800,9 +800,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2675372736507371019}
     m_Modifications:
+    - target: {fileID: 15443806587173196, guid: 123eabf60e3db3b478db12bdd50ab084, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 15443806587173196, guid: 123eabf60e3db3b478db12bdd50ab084, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 537052115477802331, guid: 123eabf60e3db3b478db12bdd50ab084, type: 3}
       propertyPath: m_SortingOrder
-      value: 201
+      value: 299
+      objectReference: {fileID: 0}
+    - target: {fileID: 1290159578811059053, guid: 123eabf60e3db3b478db12bdd50ab084, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1290159579780068140, guid: 123eabf60e3db3b478db12bdd50ab084, type: 3}
       propertyPath: scalingMode

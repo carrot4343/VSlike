@@ -74,8 +74,12 @@ public class PlayerController : CreatureController
 
     void MovePlayer()
     {
+        
         Vector3 dir = m_moveDir * m_speed * Time.deltaTime;
-        transform.position += dir;
+        if ((transform.position + dir).magnitude < 75)
+        {
+            transform.position += dir;
+        }
 
         if (m_moveDir != Vector2.zero)
         {

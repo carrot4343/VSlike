@@ -38,7 +38,6 @@ public class SpawningPool : MonoBehaviour
         //일반몬스터 333마리 소환하고 999마리째에서 엘리트 하나 소환해서 1000 채움. 333,666,999,1000,1333,1666...
         for(int i = 0; i < 9; i++)
         {
-            //다시.
             while (m_spawnCount <= m_waveMax)
             {
                 BasicSpawn(SpawnTemplateID);

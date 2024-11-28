@@ -78,4 +78,6 @@ public class Define
 
     public const float MAX_SPEED = 10.0f;
     public const int MAX_SKILL_LEVEL = 6;
+
+    public const float SAFETY_ZONE_RADIUS = 65.0f;
 }
