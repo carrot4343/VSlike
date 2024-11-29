@@ -77,7 +77,7 @@ public class GameScene : BaseScene
 
     public void HandleOnPlayerLevelChanged(int playerLevel)
     {
-        Managers._UI.ShowPopup<UI_SkillSelectPopup>();
+        Managers._UI.ShowPopupUI<UI_SkillSelectPopup>();
         m_collectedGemCount = 0;
         Managers._Game.Gem = m_collectedGemCount;
         m_remainingTotalGemCount = (int)((float)m_remainingTotalGemCount * 1.3);

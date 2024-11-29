@@ -81,7 +81,7 @@ public class UI_SkillSelectPopup : UI_Base
         GetText((int)Texts.ADRefreshText).text = "Refresh";
         GetText((int)Texts.CharacterLevelupTitleText).text = "Level up !";
 
-        m_grid = GetObjects((int)GameObjects.SkillCardSelectListObject).transform;
+        m_grid = GetObject((int)GameObjects.SkillCardSelectListObject).transform;
     }
 
     //OnEnable 에서 RefreshUI 를 하면 null error가 발생한다. 이유가 뭘까? -> 생명주기 문제였음. Init 메서드를 Start가 아닌 Awake에 놓음으로 해결.

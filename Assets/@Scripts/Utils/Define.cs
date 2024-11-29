@@ -80,4 +80,6 @@ public class Define
     public const int MAX_SKILL_LEVEL = 6;
 
     public const float SAFETY_ZONE_RADIUS = 65.0f;
+
+    public const int MAX_STAMINA = 100;
 }

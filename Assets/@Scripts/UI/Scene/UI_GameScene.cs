@@ -67,7 +67,7 @@ public class UI_GameScene : UI_Base
         GetText((int)Texts.KillValueText).text = Managers._Game.KillCount.ToString();
         GetText((int)Texts.CharacterLevelValueText).text = Managers._Game.PlayerLevel.ToString();
 
-        GetObjects((int)GameObjects.ExpSliderObject).GetComponent<Slider>().value = 0;
+        GetObject((int)GameObjects.ExpSliderObject).GetComponent<Slider>().value = 0;
     }
 
     void RefreshUI()
@@ -80,7 +80,7 @@ public class UI_GameScene : UI_Base
         GetText((int)Texts.KillValueText).text = Managers._Game.KillCount.ToString();
         GetText((int)Texts.CharacterLevelValueText).text = Managers._Game.PlayerLevel.ToString();
 
-        GetObjects((int)GameObjects.ExpSliderObject).GetComponent<Slider>().value = m_expRatio;
+        GetObject((int)GameObjects.ExpSliderObject).GetComponent<Slider>().value = m_expRatio;
     }
 
     void OnClickPauseButton()

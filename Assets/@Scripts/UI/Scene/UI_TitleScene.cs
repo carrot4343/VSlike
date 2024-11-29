@@ -31,7 +31,7 @@ public class UI_TitleScene : UI_Base
         BindButton(typeof(Buttons));
         BindText(typeof(Texts));
 
-        GetObjects((int)GameObjects.Slider).GetComponent<Slider>().value = 0;
+        GetObject((int)GameObjects.Slider).GetComponent<Slider>().value = 0;
         GetButton((int)Buttons.StartButton).gameObject.BindEvent(() =>
         {
             //¿œ¥‹¿∫ GameScene
@@ -48,7 +48,7 @@ public class UI_TitleScene : UI_Base
 
         Managers._Resource.LoadAllAsync<Object>("Preload", (key, count, totalCount) =>
         {
-            GetObjects((int)GameObjects.Slider).GetComponent<Slider>().value = (float)count / totalCount;
+            GetObject((int)GameObjects.Slider).GetComponent<Slider>().value = (float)count / totalCount;
             if (count == totalCount)
             {
                 isPreLoad = true;

@@ -37,7 +37,8 @@ public class Map : MonoBehaviour
         Managers._Game.CurrentMap = this;
     }
 
-
+    //시간이 지날수록 맵을 좁아지게 함.
+    //나중에 해야함 (11/29(금))
     public void ChangeMapSize(float targetRate, float time = 120)
     {
         Vector3 currentSize = Vector3.one * 20f;

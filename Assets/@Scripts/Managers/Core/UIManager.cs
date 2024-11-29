@@ -78,7 +78,7 @@ public class UIManager
         return ui;
     }
 
-    public T ShowPopup<T>(bool refreshTimeScale = true) where T : UI_Base
+    public T ShowPopupUI<T>(bool refreshTimeScale = true) where T : UI_Base
     {
         string key = typeof(T).Name + ".prefab";
         T ui = Managers._Resource.Instantiate(key, pooling: true).GetOrAddComponent<T>();
