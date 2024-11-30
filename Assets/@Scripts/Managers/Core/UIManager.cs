@@ -88,7 +88,7 @@ public class UIManager
 
         return ui;
     }
-    public void ClosePopup(UI_Popup popup)
+    public void ClosePopupUI(UI_Popup popup)
     {
         if (m_uiStack.Count == 0)
             return;
@@ -99,9 +99,9 @@ public class UIManager
             return;
         }
         //Managers._Sound.PlayPopupClose();
-        ClosePopup();
+        ClosePopupUI();
     }
-    public void ClosePopup()
+    public void ClosePopupUI()
     {
         if (m_uiStack.Count == 0)
             return;

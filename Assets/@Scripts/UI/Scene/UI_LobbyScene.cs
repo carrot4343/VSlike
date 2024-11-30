@@ -22,15 +22,11 @@ public class UI_LobbyScene : UI_Scene
         //ShopToggleRedDotObject, // 알림 상황 시 사용 할 레드닷
         //EquipmentToggleRedDotObject,
         BattleToggleRedDotObject,
-        //ChallengeToggleRedDotObject,
-        //EvolveToggleRedDotObject,
 
         MenuToggleGroup,
-        //CheckShopImageObject,
-        //CheckEquipmentImageObject,
+        CheckShopImageObject,
+        CheckEquipmentImageObject,
         CheckBattleImageObject,
-        //CheckChallengeImageObject,
-        //CheckEvolveImageObject,
     }
 
     enum Buttons
@@ -40,12 +36,9 @@ public class UI_LobbyScene : UI_Scene
 
     enum Texts
     {
-
-        //ShopToggleText,
-        //EquipmentToggleText,
+        ShopToggleText,
+        EquipmentToggleText,
         BattleToggleText,
-        //ChallengeToggleText,
-        //EvolveToggleText,
         //UserNameText,
         //UserLevelText,
         StaminaValueText,
@@ -56,11 +49,9 @@ public class UI_LobbyScene : UI_Scene
 
     enum Toggles
     {
-        //ShopToggle,
-        //EquipmentToggle,
+        ShopToggle,
+        EquipmentToggle,
         BattleToggle,
-        //ChallengeToggle,
-        //EvolveToggle,
     }
 
     enum Images
@@ -70,26 +61,12 @@ public class UI_LobbyScene : UI_Scene
 
     #endregion
 
-    UI_BattlePopup _battlePopupUI;
-    bool _isSelectedBattle = false;
-    //UI_EvolvePopup _evolvePopupUI;
-    //UI_EquipmentPopup _equipmentPopupUI;
-    //public UI_EquipmentPopup EquipmentPopupUI { get { return _equipmentPopupUI; } }
-    bool _isSelectedEquipment = false;
-    //UI_ShopPopup _shopPopupUI;
-    bool _isSelectedShop = false;
-    UI_ChallengePopup _challengePopupUI;
-    UI_MergePopup _mergePopupUI;
-    public UI_MergePopup MergePopupUI { get { return _mergePopupUI; } }
-    //UI_EquipmentInfoPopup _equipmentInfoPopupUI;
-    //public UI_EquipmentInfoPopup EquipmentInfoPopupUI { get { return _equipmentInfoPopupUI; } }
-    //UI_EquipmentResetPopup _equipmentResetPopupUI;
-    //public UI_EquipmentResetPopup EquipmentResetPopupUI { get { return _equipmentResetPopupUI; } }
-    UI_RewardPopup _rewardPopupUI;
-    public UI_RewardPopup RewardPopupUI { get { return _rewardPopupUI; } }
-    UI_MergeResultPopup _mergeResultPopupUI;
-    public UI_MergeResultPopup MergeResultPopupUI { get { return _mergeResultPopupUI; } }
-
+    UI_BattlePopup m_battlePopupUI;
+    bool m_isSelectedBattle = false;
+    UI_EquipmentPopup m_equipmentPopupUI;
+    public UI_EquipmentPopup EquipmentPopupUI { get { return m_equipmentPopupUI; } }
+    UI_ShopPopup m_shopPopupUI;
+    
     public void OnDestroy()
     {
         if (Managers._Game != null)
@@ -107,20 +84,13 @@ public class UI_LobbyScene : UI_Scene
         BindImage(typeof(Images));
 
         // 토글 클릭 시 행동
-        //GetToggle((int)Toggles.ShopToggle).gameObject.BindEvent(OnClickShopToggle);
-        //GetToggle((int)Toggles.EquipmentToggle).gameObject.BindEvent(OnClickEquipmentToggle);
+        GetToggle((int)Toggles.ShopToggle).gameObject.BindEvent(OnClickShopToggle);
+        GetToggle((int)Toggles.EquipmentToggle).gameObject.BindEvent(OnClickEquipmentToggle);
         GetToggle((int)Toggles.BattleToggle).gameObject.BindEvent(OnClickBattleToggle);
 
-        //_shopPopupUI = Managers._UI.ShowPopupUI<UI_ShopPopup>();
-        //_equipmentPopupUI = Managers._UI.ShowPopupUI<UI_EquipmentPopup>();
-        _battlePopupUI = Managers._UI.ShowPopupUI<UI_BattlePopup>();
-        _challengePopupUI = Managers._UI.ShowPopupUI<UI_ChallengePopup>();
-        //_evolvePopupUI = Managers._UI.ShowPopupUI<UI_EvolvePopup>();
-        //_equipmentInfoPopupUI = Managers._UI.ShowPopupUI<UI_EquipmentInfoPopup>();
-        _mergePopupUI = Managers._UI.ShowPopupUI<UI_MergePopup>();
-        //_equipmentResetPopupUI = Managers._UI.ShowPopupUI<UI_EquipmentResetPopup>();
-        _rewardPopupUI = Managers._UI.ShowPopupUI<UI_RewardPopup>();
-        _mergeResultPopupUI = Managers._UI.ShowPopupUI<UI_MergeResultPopup>();
+        m_shopPopupUI = Managers._UI.ShowPopupUI<UI_ShopPopup>();
+        m_equipmentPopupUI = Managers._UI.ShowPopupUI<UI_EquipmentPopup>();
+        m_battlePopupUI = Managers._UI.ShowPopupUI<UI_BattlePopup>();
 
         //토글에 따른 ContentObject.SetActive()를 위한 오브젝트
         TogglesInit();
@@ -152,61 +122,40 @@ public class UI_LobbyScene : UI_Scene
     {
         #region 팝업 초기화
 
-        //_shopPopupUI.gameObject.SetActive(false);
-        //_equipmentPopupUI.gameObject.SetActive(false);
-        _battlePopupUI.gameObject.SetActive(false);
-        _challengePopupUI.gameObject.SetActive(false);
-        //_evolvePopupUI.gameObject.SetActive(false);
-        //_equipmentInfoPopupUI.gameObject.SetActive(false);
-        _mergePopupUI.gameObject.SetActive(false);
-        //_equipmentResetPopupUI.gameObject.SetActive(false);
-        _rewardPopupUI.gameObject.SetActive(false);
-        _mergeResultPopupUI.gameObject.SetActive(false);
+        m_shopPopupUI.gameObject.SetActive(false);
+        m_equipmentPopupUI.gameObject.SetActive(false);
+        m_battlePopupUI.gameObject.SetActive(false);
 
         #endregion
 
         #region 토글 버튼 초기화
         // 재 클릭 방지 트리거 초기화
-        _isSelectedEquipment = false;
-        _isSelectedShop = false;
-        _isSelectedBattle = false;
-        //GetToggle((int)Toggles.ChallengeToggle).enabled = false; // 도전 탭 비활성화 #Neo
-        //GetToggle((int)Toggles.EvolveToggle).enabled = false; // 진화 탭 비활성화 #Neo
+        m_isSelectedBattle = false;
 
         // 버튼 레드닷 초기화
         //GetObject((int)GameObjects.ShopToggleRedDotObject).SetActive(false);
         //GetObject((int)GameObjects.EquipmentToggleRedDotObject).SetActive(false);
         GetObject((int)GameObjects.BattleToggleRedDotObject).SetActive(false);
-        //GetObject((int)GameObjects.ChallengeToggleRedDotObject).SetActive(false);
-        //GetObject((int)GameObjects.EvolveToggleRedDotObject).SetActive(false);
 
         // 선택 토글 아이콘 초기화
-        //GetObject((int)GameObjects.CheckShopImageObject).SetActive(false);
-        //GetObject((int)GameObjects.CheckEquipmentImageObject).SetActive(false);
+        GetObject((int)GameObjects.CheckShopImageObject).SetActive(false);
+        GetObject((int)GameObjects.CheckEquipmentImageObject).SetActive(false);
         GetObject((int)GameObjects.CheckBattleImageObject).SetActive(false);
-        //GetObject((int)GameObjects.CheckChallengeImageObject).SetActive(false);
-        //GetObject((int)GameObjects.CheckEvolveImageObject).SetActive(false);
 
-        //GetObject((int)GameObjects.CheckShopImageObject).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 155);
-        //GetObject((int)GameObjects.CheckEquipmentImageObject).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 155);
+        GetObject((int)GameObjects.CheckShopImageObject).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 155);
+        GetObject((int)GameObjects.CheckEquipmentImageObject).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 155);
         GetObject((int)GameObjects.CheckBattleImageObject).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 155);
-        //GetObject((int)GameObjects.CheckChallengeImageObject).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 155);
-        //GetObject((int)GameObjects.CheckEvolveImageObject).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 155);
 
 
         // 메뉴 텍스트 초기화
-        //GetText((int)Texts.ShopToggleText).gameObject.SetActive(false);
-        //GetText((int)Texts.EquipmentToggleText).gameObject.SetActive(false);
+        GetText((int)Texts.ShopToggleText).gameObject.SetActive(false);
+        GetText((int)Texts.EquipmentToggleText).gameObject.SetActive(false);
         GetText((int)Texts.BattleToggleText).gameObject.SetActive(false);
-        //GetText((int)Texts.ChallengeToggleText).gameObject.SetActive(false);
-        //GetText((int)Texts.EvolveToggleText).gameObject.SetActive(false);
 
         // 토글 크기 초기화
-        //GetToggle((int)Toggles.ShopToggle).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 150);
-        //GetToggle((int)Toggles.EquipmentToggle).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 150);
+        GetToggle((int)Toggles.ShopToggle).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 150);
+        GetToggle((int)Toggles.EquipmentToggle).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 150);
         GetToggle((int)Toggles.BattleToggle).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 150);
-        //GetToggle((int)Toggles.ChallengeToggle).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 150);
-        //GetToggle((int)Toggles.EvolveToggle).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 150);
 
         #endregion
 
@@ -224,37 +173,26 @@ public class UI_LobbyScene : UI_Scene
 
         Refresh();
     }
-    /*
+    
     void OnClickShopToggle()
     {
-        //Managers._Sound.PlayButtonClick();
-        GetImage((int)Images.Backgroundimage).color = Utils.HexToColor("525DAD"); // 배경 색상 변경
-        if (_isSelectedShop == true) // 활성화 후 토글 클릭 방지
-            return;
-        ShowUI(_shopPopupUI.gameObject, GetToggle((int)Toggles.ShopToggle), GetText((int)Texts.ShopToggleText), GetObject((int)GameObjects.CheckShopImageObject));
-        _isSelectedShop = true;
+        Managers._UI.ShowPopupUI<UI_NotDeveloped>();
+        OnClickBattleToggle();
     }
     void OnClickEquipmentToggle()
     {
-        //Managers._Sound.PlayButtonClick();
-        GetImage((int)Images.Backgroundimage).color = Utils.HexToColor("5C254B"); // 배경 색상 변경
-        if (_isSelectedEquipment == true) // 활성화 후 토글 클릭 방지
-            return;
-
-        ShowUI(_equipmentPopupUI.gameObject, GetToggle((int)Toggles.EquipmentToggle), GetText((int)Texts.EquipmentToggleText), GetObject((int)GameObjects.CheckEquipmentImageObject));
-        _isSelectedEquipment = true;
-
-        _equipmentPopupUI.SetInfo();
+        Managers._UI.ShowPopupUI<UI_NotDeveloped>();
+        OnClickBattleToggle();
     }
-    */
+    
     void OnClickBattleToggle()
     {
         //Managers._Sound.PlayButtonClick();
         GetImage((int)Images.Backgroundimage).color = Utils.HexToColor("1F5FA0"); // 배경 색상 변경
-        if (_isSelectedBattle == true) // 활성화 후 토글 클릭 방지
+        if (m_isSelectedBattle == true) // 활성화 후 토글 클릭 방지
             return;
-        ShowUI(_battlePopupUI.gameObject, GetToggle((int)Toggles.BattleToggle), GetText((int)Texts.BattleToggleText), GetObject((int)GameObjects.CheckBattleImageObject));
-        _isSelectedBattle = true;
+        ShowUI(m_battlePopupUI.gameObject, GetToggle((int)Toggles.BattleToggle), GetText((int)Texts.BattleToggleText), GetObject((int)GameObjects.CheckBattleImageObject));
+        m_isSelectedBattle = true;
     }
 
     #endregion

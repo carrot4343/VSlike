@@ -36,7 +36,7 @@ public class UI_TitleScene : UI_Base
         {
             //¿œ¥‹¿∫ GameScene
             if (isPreLoad)
-                Managers._Scene.LoadScene(Define.Scene.GameScene, transform);
+                Managers._Scene.LoadScene(Define.Scene.LobbyScene, transform);
         });
 
         return true;

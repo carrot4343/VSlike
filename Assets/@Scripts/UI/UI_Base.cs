@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -124,5 +125,11 @@ public class UI_Base : MonoBehaviour
                 evt.OnEndDragHandler += dragAction;
                 break;
         }
+    }
+
+    public void PopupOpenAnimation(GameObject contentObject) // ÆË¾÷ ¿ÀÇÂ ¿¬Ãâ
+    {
+        contentObject.transform.localScale = new Vector3(0.8f, 0.8f, 1);
+        contentObject.transform.DOScale(1f, 0.1f).SetEase(Ease.InOutBack).SetUpdate(true);
     }
 }
