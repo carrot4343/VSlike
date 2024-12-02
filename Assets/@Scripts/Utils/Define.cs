@@ -82,4 +82,5 @@ public class Define
     public const float SAFETY_ZONE_RADIUS = 65.0f;
 
     public const int MAX_STAMINA = 100;
+    public const int GAME_PER_STAMINA = 3;
 }
