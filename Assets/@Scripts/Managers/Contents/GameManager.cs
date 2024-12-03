@@ -1,24 +1,32 @@
 using System.Collections;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System;
 using Data;
 using System.Linq;
-using static Define;
 using System.IO;
 
+[Serializable]
+public class StageClearInfo
+{
+    public int StageIndex = 1;
+    public int MaxWaveIndex = 0;
+    public bool isClear = false;
+}
 public class GameData
 {
     public int UserLevel = 1;
     public string UserName = "Player";
 
-    public int Stamina = 100;
+    public int Stamina = Define.MAX_STAMINA;
     public int Gold = 0;
     public int Dia = 0;
 
     public ContinueData ContinueInfo = new ContinueData();
-    public int Stage = 1;
+    public StageData CurrentStage = new StageData();
+    public Dictionary<int, StageClearInfo> DicStageClearInfo = new Dictionary<int, StageClearInfo>();
 }
 #region 미완
 [Serializable]
@@ -52,7 +60,7 @@ public class ContinueData
 
     //public List<SupportSkillData> SoulShopList = new List<SupportSkillData>();
     //public List<SupportSkillData> SavedSupportSkill = new List<SupportSkillData>();
-    public Dictionary<Define.SkillType, int> SavedBattleSkill = new Dictionary<Define.SkillType, int>();
+    public List<SkillBase> SavedBattleSkill = new List<SkillBase>();
 
     public int WaveIndex;
     public void Clear()
@@ -93,8 +101,6 @@ public class ContinueData
 #endregion
 public class GameManager
 {
-    public PlayerController Player { get{ return Managers._Object?.Player; } }
-
     public GameData m_gameData = new GameData();
 
     public event Action OnResourcesChanged;
@@ -104,16 +110,7 @@ public class GameManager
         set 
         { 
             m_gameData.Gold = value;
-            OnResourcesChanged?.Invoke();
-        }
-    }
-
-    public int Stage
-    {
-        get { return m_gameData.Stage; }
-        set
-        { 
-            m_gameData.Stage = value;
+            SaveGame();
             OnResourcesChanged?.Invoke();
         }
     }
@@ -124,9 +121,45 @@ public class GameManager
         set
         {
             m_gameData.Stamina = value;
+            SaveGame();
             OnResourcesChanged?.Invoke();
         }
     }
+
+    public Dictionary<int, StageClearInfo> DicStageClearInfo
+    {
+        get { return m_gameData.DicStageClearInfo; }
+        set
+        {
+            m_gameData.DicStageClearInfo = value;
+            SaveGame();
+        }
+    }
+
+    public ContinueData ContinueInfo
+    {
+        get { return m_gameData.ContinueInfo; }
+        set
+        {
+            m_gameData.ContinueInfo = value;
+        }
+    }
+
+    public StageData CurrentStageData
+    {
+        get { return m_gameData.CurrentStage; }
+        set { m_gameData.CurrentStage = value; }
+    }
+    /*public int CurrentWave
+    {
+        get { return CurrentStageData.WaveArray[CurrentWaveIndex]; }
+    }*/
+    public int CurrentWaveIndex
+    {
+        get { return m_gameData.ContinueInfo.WaveIndex; }
+        set { m_gameData.ContinueInfo.WaveIndex = value; }
+    }
+    public Map CurrentMap { get; set; }
 
     //gemcount가 바뀌었을 때 실행될 콜백 함수
     int m_gem = 0;
@@ -140,6 +173,7 @@ public class GameManager
         }
     }
 
+    public PlayerController Player { get { return Managers._Object?.Player; } }
     Vector2 m_moveDir;
 
     public event Action<Vector2> OnMoveDirChanged;
@@ -179,19 +213,46 @@ public class GameManager
             OnPlayerLevelChanged?.Invoke(value);
         }
     }
-    
-    
-    #region 미완
-    public Map CurrentMap { get; set; }
-    public int CurrentWaveIndex
+
+    public bool IsLoaded = false;
+    public bool IsGameEnd = false;
+    public void Init()
     {
-        get { return m_gameData.ContinueInfo.WaveIndex; }
-        set { m_gameData.ContinueInfo.WaveIndex = value; }
+        m_path = Application.persistentDataPath + "/SaveData.json";
     }
-    #endregion
 
-    
+    string m_path;
+    public void SaveGame()
+    {
+        if (Player != null)
+        {
+            m_gameData.ContinueInfo.SavedBattleSkill = Player.Skills?.Skills;
+            //m_gameData.ContinueInfo.SavedSupportSkill = Player.Skills?.SupportSkills;
+        }
+        string jsonStr = JsonConvert.SerializeObject(m_gameData);
+        File.WriteAllText(m_path, jsonStr);
+    }
 
+    public bool LoadGame()
+    {
+        if (PlayerPrefs.GetInt("ISFIRST", 1) == 1)
+        {
+            string path = Application.persistentDataPath + "/SaveData.json";
+            if (File.Exists(path))
+                File.Delete(path);
+            return false;
+        }
+
+        if (File.Exists(m_path) == false)
+            return false;
+
+        string fileStr = File.ReadAllText(m_path);
+        GameData data = JsonConvert.DeserializeObject<GameData>(fileStr);
+        if (data != null)
+            m_gameData = data;
+        IsLoaded = true;
+        return true;
+    }
     public void Clear()
     {
         Gold = 0;

@@ -176,12 +176,12 @@ public class UI_LobbyScene : UI_Scene
     
     void OnClickShopToggle()
     {
-        Managers._UI.ShowPopupUI<UI_NotDeveloped>();
+        Managers._UI.ShowPopupUI<UI_NotReady>();
         OnClickBattleToggle();
     }
     void OnClickEquipmentToggle()
     {
-        Managers._UI.ShowPopupUI<UI_NotDeveloped>();
+        Managers._UI.ShowPopupUI<UI_NotReady>();
         OnClickBattleToggle();
     }
     

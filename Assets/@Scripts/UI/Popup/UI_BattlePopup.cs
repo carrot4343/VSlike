@@ -32,6 +32,7 @@ public class UI_BattlePopup : UI_Popup
     //필요할까? 라는 생각도 듬.
     //스태미너가 있는 게임이니까 필요하다고 생각이 들기는 함...
     //결국 GameManager부터 더 뜯어보는수밖에...
+
     #region Enum
     enum GameObjects
     {
@@ -87,9 +88,9 @@ public class UI_BattlePopup : UI_Popup
         BindImage(typeof(Images));
 
         // 버튼 기능 
-        GetButton((int)Buttons.GameStartButton).gameObject.BindEvent(OnClickGameStartButton);
+        //GetButton((int)Buttons.GameStartButton).gameObject.BindEvent(OnClickGameStartButton);
         GetButton((int)Buttons.GameStartButton).GetOrAddComponent<UI_ButtonAnimation>();
-        GetButton((int)Buttons.StageSelectButton).gameObject.BindEvent(OnClickStageSelectButton);
+        //GetButton((int)Buttons.StageSelectButton).gameObject.BindEvent(OnClickStageSelectButton);
         GetButton((int)Buttons.StageSelectButton).GetOrAddComponent<UI_ButtonAnimation>();
 
         // 생존 웨이브
@@ -112,6 +113,7 @@ public class UI_BattlePopup : UI_Popup
         //Managers.Game.CurrentStageData = Managers.Data.StageDic[Managers.Game.GetMaxStageClearIndex() + 1];
 
         // StageNameText : 마지막 도전한 스테이지 표시
+        /*
         GetText((int)Texts.StageNameText).text = Managers._Game.CurrentStageData.StageName;
 
         // SurvivalWaveValueText : 해당 스테이지에서 도달했던 맥스 웨이브 수 (스테이지 클리어 시 처리 고민 필요)
@@ -214,8 +216,8 @@ public class UI_BattlePopup : UI_Popup
             return;
         }
 
-        Managers.Game.Stamina -= Define.GAME_PER_STAMINA;
-        if (Managers.Game.DicMission.TryGetValue(MissionTarget.StageEnter, out MissionInfo mission))
+        Managers._Game.Stamina -= Define.GAME_PER_STAMINA;
+        if (Managers._Game.DicMission.TryGetValue(MissionTarget.StageEnter, out MissionInfo mission))
             mission.Progress++;
         Managers.Scene.LoadScene(Define.Scene.GameScene, transform);
         //Managers.Game.CurrentStageData = Managers.Data.StageDic[_currentStageInfo];
@@ -235,5 +237,6 @@ public class UI_BattlePopup : UI_Popup
         //현재는 임시로 1스테이지 불러오게 해놨음
         stageSelectPopupUI.SetInfo(Managers._Game.CurrentStageData);
     }
-    #endregion
+    #endregion*/
+    }
 }

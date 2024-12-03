@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class UI_NotDeveloped : UI_Popup
+public class UI_NotReady : UI_Popup
 {
     #region Enum
     enum GameObjects
@@ -17,8 +17,8 @@ public class UI_NotDeveloped : UI_Popup
 
     enum Texts
     {
-        BackToBattleTitleText,
-        BackToBattleContentText,
+        NotReadyTitleText,
+        NotReadyContentText,
         ConfirmText,
     }
 

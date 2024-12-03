@@ -22,14 +22,14 @@ public class SpawningPool : MonoBehaviour
     public bool Stopped { get; set; } = false;
     void Start()
     {
-        if (Managers._Data.StageDic.TryGetValue(Managers._Game.Stage, out Data.StageData stagedata) == false)
+        /*if (Managers._Data.StageDic.TryGetValue(Managers._Game.Stage, out Data.StageData stagedata) == false)
         {
             Debug.LogError($"Wrong Stage Number {Managers._Game.Stage}");
         }
         SpawnTemplateID = stagedata.basicMonsterID;
         SpawnEliteTemplateID = stagedata.firstEliteID;
         SpawnBossTemplateID = stagedata.bossID;
-        m_coUpdateSpawningPool = StartCoroutine(CoUpdateSpawningPool());
+        m_coUpdateSpawningPool = StartCoroutine(CoUpdateSpawningPool());*/
     }
 
     //Spawn Interval 만큼의 쿨타임을 가진 코루틴
@@ -38,6 +38,7 @@ public class SpawningPool : MonoBehaviour
         //일반몬스터 333마리 소환하고 999마리째에서 엘리트 하나 소환해서 1000 채움. 333,666,999,1000,1333,1666...
         for(int i = 0; i < 9; i++)
         {
+            Managers._Game.CurrentWaveIndex = i;
             while (m_spawnCount <= m_waveMax)
             {
                 BasicSpawn(SpawnTemplateID);

@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 6839652296602319914}
   - component: {fileID: 6839652296602319915}
   m_Layer: 5
-  m_Name: BackToBattlePopupTitle
+  m_Name: NotReadyPopupTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 6839652297183392451}
   - component: {fileID: 151949119625436530}
   m_Layer: 5
-  m_Name: UI_NotDeveloped
+  m_Name: UI_NotReady
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -694,7 +694,7 @@ GameObject:
   - component: {fileID: 6839652297975198640}
   - component: {fileID: 6839652297975198641}
   m_Layer: 5
-  m_Name: BackToBattleTitleText
+  m_Name: NotReadyTitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -748,7 +748,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBBF8\uAC1C\uBC1C \uAE30\uB2A5"
+  m_text: "\uC54C\uB9BC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ca90ca78b225dcd45a6e56a829c9c7a7, type: 2}
   m_sharedMaterial: {fileID: 5207820940069087074, guid: ca90ca78b225dcd45a6e56a829c9c7a7, type: 2}
@@ -926,7 +926,7 @@ GameObject:
   - component: {fileID: 6839652298143476261}
   - component: {fileID: 6839652298143476266}
   m_Layer: 5
-  m_Name: BackToBattleContentText
+  m_Name: NotReadyContentText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -980,7 +980,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC544\uC9C1 \uAC1C\uBC1C\uC911\uC778 \uAE30\uB2A5\uC785\uB2C8\uB2E4."
+  m_text: "\uC900\uBE44\uC911\uC778 \uAE30\uB2A5\uC785\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ca90ca78b225dcd45a6e56a829c9c7a7, type: 2}
   m_sharedMaterial: {fileID: 5207820940069087074, guid: ca90ca78b225dcd45a6e56a829c9c7a7, type: 2}
