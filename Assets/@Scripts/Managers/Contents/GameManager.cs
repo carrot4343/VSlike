@@ -150,6 +150,8 @@ public class GameManager
         get { return m_gameData.CurrentStage; }
         set { m_gameData.CurrentStage = value; }
     }
+    //해야 하는 작업
+    //게임 매니저에서 웨이브 변수를 처리하는 작업을 준비해야함.
     /*public int CurrentWave
     {
         get { return CurrentStageData.WaveArray[CurrentWaveIndex]; }
