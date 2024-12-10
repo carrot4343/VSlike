@@ -127,10 +127,13 @@ namespace Data
     public class StageData
     {
         [XmlAttribute] public int stage;
+        [XmlAttribute] public string name;
+        [XmlAttribute] public string stageImage;
         [XmlAttribute] public int basicMonsterID;
         [XmlAttribute] public int firstEliteID;
         [XmlAttribute] public int secondEliteID;
         [XmlAttribute] public int bossID;
+        [XmlAttribute] public string mapPrefab;
     }
 
     [Serializable, XmlRoot("StageDatas")]

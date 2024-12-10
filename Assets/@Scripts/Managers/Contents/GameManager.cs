@@ -161,6 +161,28 @@ public class GameManager
         get { return m_gameData.ContinueInfo.WaveIndex; }
         set { m_gameData.ContinueInfo.WaveIndex = value; }
     }
+
+    public int GetMaxStageIndex()
+    {
+        foreach (StageClearInfo clearInfo in m_gameData.DicStageClearInfo.Values)
+        {
+            if (clearInfo.MaxWaveIndex != 10)
+                return clearInfo.StageIndex;
+        }
+        return 0;
+    }
+
+    public int GetMaxStageClearIndex()
+    {
+        int MaxStageClearIndex = 0;
+
+        foreach (StageClearInfo stageClearInfo in Managers._Game.DicStageClearInfo.Values)
+        {
+            if (stageClearInfo.isClear == true)
+                MaxStageClearIndex = Mathf.Max(MaxStageClearIndex, stageClearInfo.StageIndex);
+        }
+        return MaxStageClearIndex;
+    }
     public Map CurrentMap { get; set; }
 
     //gemcount가 바뀌었을 때 실행될 콜백 함수

@@ -110,7 +110,7 @@ public class UI_BattlePopup : UI_Popup
             Managers._Game.CurrentStageData = Managers._Data.StageDic[1];
         }
         //todo
-        //Managers._Game.CurrentStageData = Managers._Data.StageDic[Managers._Game.GetMaxStageClearIndex() + 1];
+        Managers._Game.CurrentStageData = Managers._Data.StageDic[Managers._Game.GetMaxStageClearIndex() + 1];
 
         // StageNameText : 마지막 도전한 스테이지 표시
         /*

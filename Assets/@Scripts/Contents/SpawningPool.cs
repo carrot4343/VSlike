@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SpawningPool : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //해야 할 일 12/10
+    //스테이지 데이터, 웨이브 데이터 분리하기.
 
     float m_spawnInterval = 0.1f;
     float m_stageInterval = 10.0f;
