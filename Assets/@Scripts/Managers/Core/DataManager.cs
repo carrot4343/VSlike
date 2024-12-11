@@ -24,22 +24,6 @@ public class DataManager
         SkillDic = LoadXml<Data.SkillDataLoader, int, Data.SkillData>("SkillData.xml").MakeDict();
         StageDic = LoadXml<Data.StageDataLoader, int, Data.StageData>("StageData.xml").MakeDict();
         MonsterDic = LoadXml<Data.MonsterDataLoader, int, Data.MonsterData>("MonsterData.xml").MakeDict();
-
-        //PlayerDic = LoadJson<Data.PlayerDataLoader, int, Data.PlayerData>("PlayerData.json").MakeDict();
-    }
-
-    Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
-    {
-        TextAsset textAsset = Managers._Resource.Load<TextAsset>($"{path}");
-        return JsonUtility.FromJson<Loader>(textAsset.text);
-    }
-
-    Item LoadSingleXml<Item>(string name)
-    {
-        XmlSerializer xs = new XmlSerializer(typeof(Item));
-        TextAsset textAsset = Managers._Resource.Load<TextAsset>(name);
-        using (MemoryStream stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(textAsset.text)))
-            return (Item)xs.Deserialize(stream);
     }
 
     Loader LoadXml<Loader, Key, Item>(string name) where Loader : ILoader<Key, Item>

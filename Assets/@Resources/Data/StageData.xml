@@ -2,8 +2,8 @@
 <StageDatas>
   <StageData stage="1" name="1스테이지" stageImage="" basicMonsterID="10000" firstEliteID="11000" secondEliteID="11001" bossID="11100" mapPrefab ="Map_01">
   </StageData>
-  <StageData stage="2" name="2스테이지" stageImage="" basicMonsterID="10010" firstEliteID="11002" secondEliteID="11003" bossID="11101" mapPrefab ="Map_02">
+  <StageData stage="2" name="2스테이지" stageImage="" basicMonsterID="10010" firstEliteID="11002" secondEliteID="11003" bossID="11101" mapPrefab ="Map_08">
   </StageData>
-  <StageData stage="3" name="3스테이지" stageImage="" basicMonsterID="10020" firstEliteID="11004" secondEliteID="11005" bossID="11102" mapPrefab ="Map_03">
+  <StageData stage="3" name="3스테이지" stageImage="" basicMonsterID="10020" firstEliteID="11004" secondEliteID="11005" bossID="11102" mapPrefab ="Map_14">
   </StageData>
 </StageDatas>

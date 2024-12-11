@@ -123,7 +123,7 @@ namespace Data
     #endregion
 
     #region StageData
-
+    [Serializable]
     public class StageData
     {
         [XmlAttribute] public int stage;
@@ -134,8 +134,10 @@ namespace Data
         [XmlAttribute] public int secondEliteID;
         [XmlAttribute] public int bossID;
         [XmlAttribute] public string mapPrefab;
+        public List<WaveData> WaveArray;
     }
-
+    //해야 할 일
+    //WaveArray를 StageData에 포함시킬 방법을 강구해야함. 데이터 틀은 생겼는데(리스트) 정작 들어있는게 없음. 어캐 채움 ?
     [Serializable, XmlRoot("StageDatas")]
     public class StageDataLoader : ILoader<int, StageData>
     {
@@ -151,5 +153,31 @@ namespace Data
         }
     }
 
+    #endregion
+
+    #region WaveData
+    [Serializable]
+    public class WaveData
+    {
+        [XmlAttribute] public int stage;
+        [XmlAttribute] public int wave;
+        [XmlAttribute] public int monsterID;
+        [XmlAttribute] public int spawnAmount;
+    }
+
+    [Serializable, XmlRoot("WaveDatas")]
+    public class WaveDataLoader : ILoader<int, WaveData>
+    {
+        [XmlElement("WaveData")]
+        public List<WaveData> waves = new List<WaveData>();
+
+        public Dictionary<int, WaveData> MakeDict()
+        {
+            Dictionary<int, WaveData> dict = new Dictionary<int, WaveData>();
+            foreach (WaveData wave in waves)
+                dict.Add(wave.wave, wave);
+            return dict;
+        }
+    }
     #endregion
 }
