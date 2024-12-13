@@ -126,25 +126,21 @@ namespace Data
     [Serializable]
     public class StageData
     {
-        [XmlAttribute] public int stage;
-        [XmlAttribute] public string name;
-        [XmlAttribute] public string stageImage;
-        [XmlAttribute] public int basicMonsterID;
-        [XmlAttribute] public int firstEliteID;
-        [XmlAttribute] public int secondEliteID;
-        [XmlAttribute] public int bossID;
-        [XmlAttribute] public string mapPrefab;
-        public List<WaveData> WaveArray;
+        public int stage;
+        public string name;
+        public string stageImage;
+        public int basicMonsterID;
+        public int firstEliteID;
+        public int secondEliteID;
+        public int bossID;
+        public string mapPrefab;
     }
-    //해야 할 일
-    //WaveArray를 StageData에 포함시킬 방법을 강구해야함. 데이터 틀은 생겼는데(리스트) 정작 들어있는게 없음. 어캐 채움 ?
-    [Serializable, XmlRoot("StageDatas")]
+
     public class StageDataLoader : ILoader<int, StageData>
     {
-        [XmlElement("StageData")]
         public List<StageData> stages = new List<StageData>();
 
-        public Dictionary<int,StageData> MakeDict()
+        public Dictionary<int, StageData> MakeDict()
         {
             Dictionary<int, StageData> dict = new Dictionary<int, StageData>();
             foreach (StageData stage in stages)
@@ -156,13 +152,14 @@ namespace Data
     #endregion
 
     #region WaveData
+    /*
     [Serializable]
     public class WaveData
     {
-        [XmlAttribute] public int stage;
-        [XmlAttribute] public int wave;
-        [XmlAttribute] public int monsterID;
-        [XmlAttribute] public int spawnAmount;
+        public int stage;
+        public int wave;
+        public int monsterID;
+        public int spawnAmount;
     }
 
     [Serializable, XmlRoot("WaveDatas")]
@@ -179,5 +176,6 @@ namespace Data
             return dict;
         }
     }
+    */
     #endregion
 }

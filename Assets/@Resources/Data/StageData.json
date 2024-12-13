@@ -1,0 +1,18 @@
+{
+  "stages": [
+    {
+      "stage": 1,
+      "name": "1스테이지",
+      "stageImage": "MapIcon_01.sprite",
+      "mapPrefab": "Map_01",
+      "waveArray": [
+        {
+          "wave": 1
+        },
+        {
+          "wave": 2
+        }
+      ]
+    }
+  ]
+}

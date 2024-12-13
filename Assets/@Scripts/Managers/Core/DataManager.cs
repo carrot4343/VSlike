@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 //MakeDict 구현 강제
 public interface ILoader<Key, Value>
@@ -22,8 +23,9 @@ public class DataManager
     {
         PlayerDic = LoadXml<Data.PlayerDataLoader, int, Data.PlayerData>("PlayerData.xml").MakeDict();
         SkillDic = LoadXml<Data.SkillDataLoader, int, Data.SkillData>("SkillData.xml").MakeDict();
-        StageDic = LoadXml<Data.StageDataLoader, int, Data.StageData>("StageData.xml").MakeDict();
         MonsterDic = LoadXml<Data.MonsterDataLoader, int, Data.MonsterData>("MonsterData.xml").MakeDict();
+
+        StageDic = LoadJson<Data.StageDataLoader, int, Data.StageData>("StageData").MakeDict();
     }
 
     Loader LoadXml<Loader, Key, Item>(string name) where Loader : ILoader<Key, Item>
@@ -32,5 +34,10 @@ public class DataManager
         TextAsset textAsset = Managers._Resource.Load<TextAsset>(name);
         using (MemoryStream stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(textAsset.text)))
             return (Loader)xs.Deserialize(stream);
-    }    
+    }
+    Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
+    {
+        TextAsset textAsset = Managers._Resource.Load<TextAsset>($"{path}");
+        return JsonConvert.DeserializeObject<Loader>(textAsset.text);
+    }
 }
