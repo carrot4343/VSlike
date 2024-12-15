@@ -54,9 +54,9 @@ public static class Utils
         return null;
     }
 
-    public static Vector2 GenerateMonsterSpanwingPosition(Vector2 characterPosition, float minDistance = 10.0f, float maxDistance = 20.0f)
+    public static Vector2 GenerateMonsterSpanwingPosition(Vector2 characterPosition, float minDistance = 15.0f, float maxDistance = 20.0f)
     {
-        //ÇÃ·¹ÀÌ¾î ÁÖº¯ ¿øÇü ¹üÀ§ ¼³Á¤
+        //í”Œë ˆì´ì–´ ì£¼ë³€ ì›í˜• ë²”ìœ„ ì„¤ì •
         float angle = Random.Range(0, 360) * Mathf.Deg2Rad;
 
         float distance = Random.Range(minDistance, maxDistance);

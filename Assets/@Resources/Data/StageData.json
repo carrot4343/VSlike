@@ -1,16 +1,218 @@
 {
   "stages": [
     {
-      "stage": 1,
-      "name": "1Ω∫≈◊¿Ã¡ˆ",
+      "stageIndex": 1,
+      "name": "1Ïä§ÌÖåÏù¥ÏßÄ",
       "stageImage": "MapIcon_01.sprite",
       "mapPrefab": "Map_01",
+      "eliteBossArray": [ 11000, 11001, 11100 ],
       "waveArray": [
         {
-          "wave": 1
+          "waveIndex": 1,
+          "monsterID": [ 10000 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 3
         },
         {
-          "wave": 2
+          "waveIndex": 2,
+          "monsterID": [ 10001 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 5
+        },
+        {
+          "waveIndex": 3,
+          "monsterID": [ 10002 ],
+          "eliteID": [ 11001 ],
+          "bossID": [],
+          "spawnAmount": 7
+        },
+        {
+          "waveIndex": 4,
+          "monsterID": [ 10003 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 10
+        },
+        {
+          "waveIndex": 5,
+          "monsterID": [ 10004 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 12
+        },
+        {
+          "waveIndex": 6,
+          "monsterID": [ 10005 ],
+          "eliteID": [ 11002 ],
+          "bossID": [],
+          "spawnAmount": 14
+        },
+        {
+          "waveIndex": 7,
+          "monsterID": [ 10006 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 16
+        },
+        {
+          "waveIndex": 8,
+          "monsterID": [ 10007 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 18
+        },
+        {
+          "waveIndex": 9,
+          "monsterID": [ 10008 ],
+          "eliteID": [],
+          "bossID": [ 11100 ],
+          "spawnAmount": 20
+        }
+      ]
+    },
+    {
+      "stageIndex": 2,
+      "name": "2Ïä§ÌÖåÏù¥ÏßÄ",
+      "stageImage": "MapIcon_08.sprite",
+      "mapPrefab": "Map_02",
+      "eliteBossArray": [ 11002, 11003, 11101 ],
+      "waveArray": [
+        {
+          "waveIndex": 1,
+          "monsterID": [ 10010 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 3
+        },
+        {
+          "waveIndex": 2,
+          "monsterID": [ 10011 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 5
+        },
+        {
+          "waveIndex": 3,
+          "monsterID": [ 10012 ],
+          "eliteID": [ 11003 ],
+          "bossID": [],
+          "spawnAmount": 7
+        },
+        {
+          "waveIndex": 4,
+          "monsterID": [ 10013 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 10
+        },
+        {
+          "waveIndex": 5,
+          "monsterID": [ 10014 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 12
+        },
+        {
+          "waveIndex": 6,
+          "monsterID": [ 10015 ],
+          "eliteID": [ 11004 ],
+          "bossID": [],
+          "spawnAmount": 14
+        },
+        {
+          "waveIndex": 7,
+          "monsterID": [ 10016 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 16
+        },
+        {
+          "waveIndex": 8,
+          "monsterID": [ 10017 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 18
+        },
+        {
+          "waveIndex": 9,
+          "monsterID": [ 10018 ],
+          "eliteID": [],
+          "bossID": [ 11101 ],
+          "spawnAmount": 20
+        }
+      ]
+    },
+    {
+      "stageIndex": 3,
+      "name": "3Ïä§ÌÖåÏù¥ÏßÄ",
+      "stageImage": "MapIcon_14.sprite",
+      "mapPrefab": "Map_03",
+      "eliteBossArray": [ 11004, 11005, 11102 ],
+      "waveArray": [
+        {
+          "waveIndex": 1,
+          "monsterID": [ 10020 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 3
+        },
+        {
+          "waveIndex": 2,
+          "monsterID": [ 10021 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 5
+        },
+        {
+          "waveIndex": 3,
+          "monsterID": [ 10022 ],
+          "eliteID": [ 11005 ],
+          "bossID": [],
+          "spawnAmount": 7
+        },
+        {
+          "waveIndex": 4,
+          "monsterID": [ 10023 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 10
+        },
+        {
+          "waveIndex": 5,
+          "monsterID": [ 10024 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 12
+        },
+        {
+          "waveIndex": 6,
+          "monsterID": [ 10025 ],
+          "eliteID": [ 11006 ],
+          "bossID": [],
+          "spawnAmount": 14
+        },
+        {
+          "waveIndex": 7,
+          "monsterID": [ 10026 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 16
+        },
+        {
+          "waveIndex": 8,
+          "monsterID": [ 10027 ],
+          "eliteID": [],
+          "bossID": [],
+          "spawnAmount": 18
+        },
+        {
+          "waveIndex": 9,
+          "monsterID": [ 10028 ],
+          "eliteID": [],
+          "bossID": [ 11102 ],
+          "spawnAmount": 20
         }
       ]
     }

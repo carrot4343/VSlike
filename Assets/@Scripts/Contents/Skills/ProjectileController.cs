@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,8 +12,8 @@ public class ProjectileController : SkillBase
     projectileType m_type;
     public enum projectileType
     {
-        disposable, //ÀÏÈ¸¿ë(Àû¿¡ ´êÀ¸¸é ¾ø¾îÁü)
-        persistent, //Áö¼Ó¼º
+        disposable, //ì¼íšŒìš©(ì ì— ë‹¿ìœ¼ë©´ ì—†ì–´ì§)
+        persistent, //ì§€ì†ì„±
     }
 
 
@@ -50,7 +50,7 @@ public class ProjectileController : SkillBase
     public override void UpdateController()
     {
         base.UpdateController();
-        //Åõ»çÃ¼ À§Ä¡ update
+        //íˆ¬ì‚¬ì²´ ìœ„ì¹˜ update
         if (m_reverse)
             transform.position += -m_moveDir * m_speed * Time.deltaTime;
         else

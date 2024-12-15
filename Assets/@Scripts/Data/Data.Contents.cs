@@ -126,14 +126,12 @@ namespace Data
     [Serializable]
     public class StageData
     {
-        public int stage;
+        public int stageIndex;
         public string name;
         public string stageImage;
-        public int basicMonsterID;
-        public int firstEliteID;
-        public int secondEliteID;
-        public int bossID;
         public string mapPrefab;
+        public List<int> eliteBossArray;
+        public List<WaveData> waveArray;
     }
 
     public class StageDataLoader : ILoader<int, StageData>
@@ -144,7 +142,7 @@ namespace Data
         {
             Dictionary<int, StageData> dict = new Dictionary<int, StageData>();
             foreach (StageData stage in stages)
-                dict.Add(stage.stage, stage);
+                dict.Add(stage.stageIndex, stage);
             return dict;
         }
     }
@@ -152,13 +150,13 @@ namespace Data
     #endregion
 
     #region WaveData
-    /*
     [Serializable]
     public class WaveData
     {
-        public int stage;
-        public int wave;
-        public int monsterID;
+        public int waveIndex;
+        public List<int> monsterID;
+        public List<int> eliteID;
+        public List<int> bossID;
         public int spawnAmount;
     }
 
@@ -172,10 +170,9 @@ namespace Data
         {
             Dictionary<int, WaveData> dict = new Dictionary<int, WaveData>();
             foreach (WaveData wave in waves)
-                dict.Add(wave.wave, wave);
+                dict.Add(wave.waveIndex, wave);
             return dict;
         }
     }
-    */
     #endregion
 }

@@ -151,10 +151,10 @@ public class GameManager
         get { return m_gameData.CurrentStage; }
         set { m_gameData.CurrentStage = value; }
     }
-    /*public WaveData CurrentWaveData
+    public WaveData CurrentWaveData
     {
-        get { return CurrentStageData.WaveArray[CurrentWaveIndex]; }
-    }*/
+        get { return CurrentStageData.waveArray[CurrentWaveIndex]; }
+    }
     public int CurrentWaveIndex
     {
         get { return m_gameData.ContinueInfo.WaveIndex; }

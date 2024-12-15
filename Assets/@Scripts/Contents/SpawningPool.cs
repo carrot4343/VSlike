@@ -4,39 +4,33 @@ using UnityEngine;
 
 public class SpawningPool : MonoBehaviour
 {
-    //ÇØ¾ß ÇÒ ÀÏ 12/10
-    //½ºÅ×ÀÌÁö µ¥ÀÌÅÍ, ¿şÀÌºê µ¥ÀÌÅÍ ºĞ¸®ÇÏ±â.
+    //í•´ì•¼ í•  ì¼ 12/10
+    //ìŠ¤í…Œì´ì§€ ë°ì´í„°, ì›¨ì´ë¸Œ ë°ì´í„° ë¶„ë¦¬í•˜ê¸°.
 
     float m_spawnInterval = 0.1f;
     float m_stageInterval = 10.0f;
     int m_maxMonsterCount = 500;
-    int m_waveMax = 333;
+    int m_waveMax = 1000;
     int m_spawnCount = 0;
 
     public int SpawnTemplateID { get; set; }
     public int SpawnEliteTemplateID { get; set; }
     public int SpawnBossTemplateID { get; set; }
 
-    //spawn data ¿¬µ¿ÇØÁÖ¾î¾ß ÇÔ.
+    //spawn data ì—°ë™í•´ì£¼ì–´ì•¼ í•¨.
     Coroutine m_coUpdateSpawningPool;
 
     public bool Stopped { get; set; } = false;
     void Start()
     {
-        /*if (Managers._Data.StageDic.TryGetValue(Managers._Game.Stage, out Data.StageData stagedata) == false)
-        {
-            Debug.LogError($"Wrong Stage Number {Managers._Game.Stage}");
-        }
-        SpawnTemplateID = stagedata.basicMonsterID;
-        SpawnEliteTemplateID = stagedata.firstEliteID;
-        SpawnBossTemplateID = stagedata.bossID;
-        m_coUpdateSpawningPool = StartCoroutine(CoUpdateSpawningPool());*/
+        m_coUpdateSpawningPool = StartCoroutine(CoUpdateSpawningPool());
     }
 
-    //Spawn Interval ¸¸Å­ÀÇ ÄğÅ¸ÀÓÀ» °¡Áø ÄÚ·çÆ¾
+    //Spawn Interval ë§Œí¼ì˜ ì¿¨íƒ€ì„ì„ ê°€ì§„ ì½”ë£¨í‹´
     IEnumerator CoUpdateSpawningPool()
     {
-        //ÀÏ¹İ¸ó½ºÅÍ 333¸¶¸® ¼ÒÈ¯ÇÏ°í 999¸¶¸®Â°¿¡¼­ ¿¤¸®Æ® ÇÏ³ª ¼ÒÈ¯ÇØ¼­ 1000 Ã¤¿ò. 333,666,999,1000,1333,1666...
+
+        //í•œ ì›¨ì´ë¸Œì— 1000ë§ˆë¦¬?
         for(int i = 0; i < 9; i++)
         {
             Managers._Game.CurrentWaveIndex = i;
@@ -62,20 +56,20 @@ public class SpawningPool : MonoBehaviour
         if (Stopped)
             return;
         int monsterCount = Managers._Object.Monsters.Count;
-        //ÃÖ´ë ¸ó½ºÅÍ ¼ö ÀÌ»óÀÌ¸é Spawn Áß´Ü (¶³¾îÁö¸é °³½Ã)
+        //ìµœëŒ€ ëª¬ìŠ¤í„° ìˆ˜ ì´ìƒì´ë©´ Spawn ì¤‘ë‹¨ (ë–¨ì–´ì§€ë©´ ê°œì‹œ)
         if (monsterCount >= m_maxMonsterCount)
             return;
 
-        //PlayerÁÖº¯ ·£´ı Àå¼Ò¿¡ Spawn
-        Vector3 randPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 10, 15);
+        //Playerì£¼ë³€ ëœë¤ ì¥ì†Œì— Spawn
+        Vector3 randPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position);
         MonsterController mc = Managers._Object.Spawn<MonsterController>(randPos, templateID);
         m_spawnCount++;
     }
 
-    //Æ¯¼ö ½ºÆù -> ¼ÒÈ¯ È½¼ö µîÀÇ Á¶°Ç¿¡ ±¸¾Ö¹ŞÁö ¾ÊÀ½.
+    //íŠ¹ìˆ˜ ìŠ¤í° -> ì†Œí™˜ íšŸìˆ˜ ë“±ì˜ ì¡°ê±´ì— êµ¬ì• ë°›ì§€ ì•ŠìŒ.
     void SpecialSpawn(int templateID)
     {
-        Vector3 randPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position, 10, 15);
+        Vector3 randPos = Utils.GenerateMonsterSpanwingPosition(Managers._Game.Player.transform.position);
         MonsterController mc = Managers._Object.Spawn<MonsterController>(randPos, templateID);
         m_spawnCount++;
     }

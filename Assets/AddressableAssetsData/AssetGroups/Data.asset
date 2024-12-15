@@ -32,13 +32,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
-  - m_GUID: 8fb3f6af32dc16f4e95b80942cbad739
-    m_Address: StageData.xml
+  - m_GUID: 86b7f66ad8e311946a1f589282f86a91
+    m_Address: WaveData.xml
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
-  - m_GUID: 86b7f66ad8e311946a1f589282f86a91
-    m_Address: WaveData.xml
+  - m_GUID: a56a586048e264844bcfad5669362e28
+    m_Address: StageData.json
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
