@@ -7,19 +7,19 @@ using UnityEngine.UI;
 
 public class UI_LobbyScene : UI_Scene
 {
-    #region UI ±â´É ¸®½ºÆ®
-    // ·ÎÄÃ¶óÀÌÂ¡ ÅØ½ºÆ®
-    // ShopToggleText : »óÁ¡
-    // EquipmentToggleText : Àåºñ
-    // BattleToggleText : ÀüÅõ
-    // ChallengeToggleText : µµÀü
-    // EvolveToggleText : ·é
+    #region UI ê¸°ëŠ¥ ë¦¬ìŠ¤íŠ¸
+    // ë¡œì»¬ë¼ì´ì§• í…ìŠ¤íŠ¸
+    // ShopToggleText : ìƒì 
+    // EquipmentToggleText : ì¥ë¹„
+    // BattleToggleText : ì „íˆ¬
+    // ChallengeToggleText : ë„ì „
+    // EvolveToggleText : ë£¬
     #endregion
 
     #region Enum
     enum GameObjects
     {
-        //ShopToggleRedDotObject, // ¾Ë¸² »óÈ² ½Ã »ç¿ë ÇÒ ·¹µå´å
+        //ShopToggleRedDotObject, // ì•Œë¦¼ ìƒí™© ì‹œ ì‚¬ìš© í•  ë ˆë“œë‹·
         //EquipmentToggleRedDotObject,
         BattleToggleRedDotObject,
 
@@ -31,7 +31,7 @@ public class UI_LobbyScene : UI_Scene
 
     enum Buttons
     {
-        //UserIconButton, // ÃßÈÄ À¯Àú Á¤º¸ ÆË¾÷ ¸¸µé¾î¼­ È£Ãâ
+        //UserIconButton, // ì¶”í›„ ìœ ì € ì •ë³´ íŒì—… ë§Œë“¤ì–´ì„œ í˜¸ì¶œ
     }
 
     enum Texts
@@ -83,7 +83,7 @@ public class UI_LobbyScene : UI_Scene
         BindToggle(typeof(Toggles));
         BindImage(typeof(Images));
 
-        // Åä±Û Å¬¸¯ ½Ã Çàµ¿
+        // í† ê¸€ í´ë¦­ ì‹œ í–‰ë™
         GetToggle((int)Toggles.ShopToggle).gameObject.BindEvent(OnClickShopToggle);
         GetToggle((int)Toggles.EquipmentToggle).gameObject.BindEvent(OnClickEquipmentToggle);
         GetToggle((int)Toggles.BattleToggle).gameObject.BindEvent(OnClickBattleToggle);
@@ -92,7 +92,7 @@ public class UI_LobbyScene : UI_Scene
         m_equipmentPopupUI = Managers._UI.ShowPopupUI<UI_EquipmentPopup>();
         m_battlePopupUI = Managers._UI.ShowPopupUI<UI_BattlePopup>();
 
-        //Åä±Û¿¡ µû¸¥ ContentObject.SetActive()¸¦ À§ÇÑ ¿ÀºêÁ§Æ®
+        //í† ê¸€ì— ë”°ë¥¸ ContentObject.SetActive()ë¥¼ ìœ„í•œ ì˜¤ë¸Œì íŠ¸
         TogglesInit();
         GetToggle((int)Toggles.BattleToggle).gameObject.GetComponent<Toggle>().isOn = true;
         OnClickBattleToggle();
@@ -111,16 +111,16 @@ public class UI_LobbyScene : UI_Scene
         //GetText((int)Texts.DiaValueText).text = Managers._Game.Dia.ToString();
         GetText((int)Texts.GoldValueText).text = Managers._Game.Gold.ToString();
 
-        // Åä±Û ¼±ÅÃ ½Ã ¸®ÇÁ·¹½Ã ¹ö±× ´ëÀÀ
+        // í† ê¸€ ì„ íƒ ì‹œ ë¦¬í”„ë ˆì‹œ ë²„ê·¸ ëŒ€ì‘
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetObject((int)GameObjects.MenuToggleGroup).GetComponent<RectTransform>());
     }
 
     #region  Toggle SetActive
 
-    // Åä±Û ÃÊ±âÈ­
+    // í† ê¸€ ì´ˆê¸°í™”
     void TogglesInit()
     {
-        #region ÆË¾÷ ÃÊ±âÈ­
+        #region íŒì—… ì´ˆê¸°í™”
 
         m_shopPopupUI.gameObject.SetActive(false);
         m_equipmentPopupUI.gameObject.SetActive(false);
@@ -128,16 +128,16 @@ public class UI_LobbyScene : UI_Scene
 
         #endregion
 
-        #region Åä±Û ¹öÆ° ÃÊ±âÈ­
-        // Àç Å¬¸¯ ¹æÁö Æ®¸®°Å ÃÊ±âÈ­
+        #region í† ê¸€ ë²„íŠ¼ ì´ˆê¸°í™”
+        // ì¬ í´ë¦­ ë°©ì§€ íŠ¸ë¦¬ê±° ì´ˆê¸°í™”
         m_isSelectedBattle = false;
 
-        // ¹öÆ° ·¹µå´å ÃÊ±âÈ­
+        // ë²„íŠ¼ ë ˆë“œë‹· ì´ˆê¸°í™”
         //GetObject((int)GameObjects.ShopToggleRedDotObject).SetActive(false);
         //GetObject((int)GameObjects.EquipmentToggleRedDotObject).SetActive(false);
         GetObject((int)GameObjects.BattleToggleRedDotObject).SetActive(false);
 
-        // ¼±ÅÃ Åä±Û ¾ÆÀÌÄÜ ÃÊ±âÈ­
+        // ì„ íƒ í† ê¸€ ì•„ì´ì½˜ ì´ˆê¸°í™”
         GetObject((int)GameObjects.CheckShopImageObject).SetActive(false);
         GetObject((int)GameObjects.CheckEquipmentImageObject).SetActive(false);
         GetObject((int)GameObjects.CheckBattleImageObject).SetActive(false);
@@ -147,12 +147,12 @@ public class UI_LobbyScene : UI_Scene
         GetObject((int)GameObjects.CheckBattleImageObject).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 155);
 
 
-        // ¸Ş´º ÅØ½ºÆ® ÃÊ±âÈ­
+        // ë©”ë‰´ í…ìŠ¤íŠ¸ ì´ˆê¸°í™”
         GetText((int)Texts.ShopToggleText).gameObject.SetActive(false);
         GetText((int)Texts.EquipmentToggleText).gameObject.SetActive(false);
         GetText((int)Texts.BattleToggleText).gameObject.SetActive(false);
 
-        // Åä±Û Å©±â ÃÊ±âÈ­
+        // í† ê¸€ í¬ê¸° ì´ˆê¸°í™”
         GetToggle((int)Toggles.ShopToggle).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 150);
         GetToggle((int)Toggles.EquipmentToggle).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 150);
         GetToggle((int)Toggles.BattleToggle).GetComponent<RectTransform>().sizeDelta = new Vector2(200, 150);
@@ -188,8 +188,8 @@ public class UI_LobbyScene : UI_Scene
     void OnClickBattleToggle()
     {
         //Managers._Sound.PlayButtonClick();
-        GetImage((int)Images.Backgroundimage).color = Utils.HexToColor("1F5FA0"); // ¹è°æ »ö»ó º¯°æ
-        if (m_isSelectedBattle == true) // È°¼ºÈ­ ÈÄ Åä±Û Å¬¸¯ ¹æÁö
+        GetImage((int)Images.Backgroundimage).color = Utils.HexToColor("1F5FA0"); // ë°°ê²½ ìƒ‰ìƒ ë³€ê²½
+        if (m_isSelectedBattle == true) // í™œì„±í™” í›„ í† ê¸€ í´ë¦­ ë°©ì§€
             return;
         ShowUI(m_battlePopupUI.gameObject, GetToggle((int)Toggles.BattleToggle), GetText((int)Texts.BattleToggleText), GetObject((int)GameObjects.CheckBattleImageObject));
         m_isSelectedBattle = true;

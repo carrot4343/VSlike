@@ -36,19 +36,20 @@ public class SpawningPool : MonoBehaviour
             Managers._Game.CurrentWaveIndex = i;
             while (m_spawnCount <= m_waveMax)
             {
-                BasicSpawn(SpawnTemplateID);
+                BasicSpawn(Managers._Game.CurrentWaveData.monsterID[0]);
                 yield return new WaitForSeconds(m_spawnInterval);
             }
 
-            if(i % 3 == 2)
+            if(Managers._Game.CurrentWaveData.eliteID.Count > 0)
             {
-                SpecialSpawn(SpawnEliteTemplateID);
+                SpecialSpawn(Managers._Game.CurrentWaveData.eliteID[0]);
                 yield return new WaitForSeconds(m_stageInterval);
             }
             SpawnTemplateID += 1;
             m_spawnCount = 0;
         }
-        SpecialSpawn(SpawnBossTemplateID);
+        //배열 마지막은 boss id
+        SpecialSpawn(Managers._Game.CurrentStageData.eliteBossArray[-1]);
     }
 
     void BasicSpawn(int templateID)

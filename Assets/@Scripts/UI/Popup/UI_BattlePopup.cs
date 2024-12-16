@@ -11,34 +11,34 @@ using static Define;
 
 public class UI_BattlePopup : UI_Popup
 {
-    #region UI ±â´É ¸®½ºÆ®
-    // Á¤º¸ °»½Å
-    // StageNameText : ¸¶Áö¸· µµÀüÇÑ ½ºÅ×ÀÌÁö Ç¥½Ã
-    // SurvivalWaveValueText : ÇØ´ç ½ºÅ×ÀÌÁö¿¡¼­ µµ´ŞÇß´ø ¸Æ½º ¿şÀÌºê ¼ö (½ºÅ×ÀÌÁö Å¬¸®¾î ½Ã Ã³¸® °í¹Î ÇÊ¿ä)
-    // StageImage : ¸¶Áö¸· µµÀüÇÑ ½ºÅ×ÀÌÁöÀÇ ÀÌ¹ÌÁö
-    // GameStartCostValueText : °ÔÀÓ ½ºÅ¸Æ® ½Ã ÇÊ¿äÇÑ ½ºÅ×ÀÌ³ª Ç¥½ÃÇÏ°í Á¶°Ç¿¡ µû¶ó ÅØ½ºÆ® »ö»ó º¯°æ 
-    // - ÇÃ·¹ÀÌ °¡´É : #FFFFFF
-    // - ÇÃ·¹ÀÌ ºÒ°¡´É : #FF1E00
+    #region UI ê¸°ëŠ¥ ë¦¬ìŠ¤íŠ¸
+    // ì •ë³´ ê°±ì‹ 
+    // StageNameText : ë§ˆì§€ë§‰ ë„ì „í•œ ìŠ¤í…Œì´ì§€ í‘œì‹œ
+    // SurvivalWaveValueText : í•´ë‹¹ ìŠ¤í…Œì´ì§€ì—ì„œ ë„ë‹¬í–ˆë˜ ë§¥ìŠ¤ ì›¨ì´ë¸Œ ìˆ˜ (ìŠ¤í…Œì´ì§€ í´ë¦¬ì–´ ì‹œ ì²˜ë¦¬ ê³ ë¯¼ í•„ìš”)
+    // StageImage : ë§ˆì§€ë§‰ ë„ì „í•œ ìŠ¤í…Œì´ì§€ì˜ ì´ë¯¸ì§€
+    // GameStartCostValueText : ê²Œì„ ìŠ¤íƒ€íŠ¸ ì‹œ í•„ìš”í•œ ìŠ¤í…Œì´ë‚˜ í‘œì‹œí•˜ê³  ì¡°ê±´ì— ë”°ë¼ í…ìŠ¤íŠ¸ ìƒ‰ìƒ ë³€ê²½ 
+    // - í”Œë ˆì´ ê°€ëŠ¥ : #FFFFFF
+    // - í”Œë ˆì´ ë¶ˆê°€ëŠ¥ : #FF1E00
 
-    // ·ÎÄÃ¶óÀÌÂ¡
-    // SurvivalWaveText : »ıÁ¸ ¿şÀÌºê
+    // ë¡œì»¬ë¼ì´ì§•
+    // SurvivalWaveText : ìƒì¡´ ì›¨ì´ë¸Œ
     // GameStartButtonText : START
     #endregion
 
-    //¿ì¼± GameManager¿¡ GameData¸¦ ¸¸µé¾î¼­ ¾µÁö¸¦ »ı°¢ÇØº¸¾Æ¾ß ÇÔ.
-    //ºĞ¸í ÃßÈÄ¿¡ µµ¿òÀÌ µÇ±ä ÇÏ°ÚÁö¸¸ ½Ã°£ÀÌ ²Ï ±æ¾îÁú °Å °°À½.
-    //±×¸®°í ÀÌ¾îÇÏ±â ±â´É¿¡ ´ëÇÑ »ı°¢.
-    //ÀÌ¾îÇÏ±â ±â´ÉÀ» ¸¸µé °ÍÀÎ°¡? ¸¸µé°Ô µÈ´Ù¸é ¾îµğ¼­ºÎÅÍ °Çµé¾î¾ß ÇÏÁö?
-    //ÇÊ¿äÇÒ±î? ¶ó´Â »ı°¢µµ µë.
-    //½ºÅÂ¹Ì³Ê°¡ ÀÖ´Â °ÔÀÓÀÌ´Ï±î ÇÊ¿äÇÏ´Ù°í »ı°¢ÀÌ µé±â´Â ÇÔ...
-    //°á±¹ GameManagerºÎÅÍ ´õ ¶â¾îº¸´Â¼ö¹Û¿¡...
+    //ìš°ì„  GameManagerì— GameDataë¥¼ ë§Œë“¤ì–´ì„œ ì“¸ì§€ë¥¼ ìƒê°í•´ë³´ì•„ì•¼ í•¨.
+    //ë¶„ëª… ì¶”í›„ì— ë„ì›€ì´ ë˜ê¸´ í•˜ê² ì§€ë§Œ ì‹œê°„ì´ ê½¤ ê¸¸ì–´ì§ˆ ê±° ê°™ìŒ.
+    //ê·¸ë¦¬ê³  ì´ì–´í•˜ê¸° ê¸°ëŠ¥ì— ëŒ€í•œ ìƒê°.
+    //ì´ì–´í•˜ê¸° ê¸°ëŠ¥ì„ ë§Œë“¤ ê²ƒì¸ê°€? ë§Œë“¤ê²Œ ëœë‹¤ë©´ ì–´ë””ì„œë¶€í„° ê±´ë“¤ì–´ì•¼ í•˜ì§€?
+    //í•„ìš”í• ê¹Œ? ë¼ëŠ” ìƒê°ë„ ë“¬.
+    //ìŠ¤íƒœë¯¸ë„ˆê°€ ìˆëŠ” ê²Œì„ì´ë‹ˆê¹Œ í•„ìš”í•˜ë‹¤ê³  ìƒê°ì´ ë“¤ê¸°ëŠ” í•¨...
+    //ê²°êµ­ GameManagerë¶€í„° ë” ëœ¯ì–´ë³´ëŠ”ìˆ˜ë°–ì—...
 
     #region Enum
     enum GameObjects
     {
         ContentObject,
-        GameStartCostGroupObject, // ¸®ÇÁ·¹½Ã
-        SurvivalTimeObject, // ¸®ÇÁ·¹½Ã
+        GameStartCostGroupObject, // ë¦¬í”„ë ˆì‹œ
+        SurvivalTimeObject, // ë¦¬í”„ë ˆì‹œ
         StageRewardProgressFillArea,
         StageRewardProgressSliderObject,
     }
@@ -87,13 +87,13 @@ public class UI_BattlePopup : UI_Popup
         BindText(typeof(Texts));
         BindImage(typeof(Images));
 
-        // ¹öÆ° ±â´É 
+        // ë²„íŠ¼ ê¸°ëŠ¥ 
         //GetButton((int)Buttons.GameStartButton).gameObject.BindEvent(OnClickGameStartButton);
         GetButton((int)Buttons.GameStartButton).GetOrAddComponent<UI_ButtonAnimation>();
         //GetButton((int)Buttons.StageSelectButton).gameObject.BindEvent(OnClickStageSelectButton);
         GetButton((int)Buttons.StageSelectButton).GetOrAddComponent<UI_ButtonAnimation>();
 
-        // »ıÁ¸ ¿şÀÌºê
+        // ìƒì¡´ ì›¨ì´ë¸Œ
         GetText((int)Texts.SurvivalWaveText).gameObject.SetActive(false);
         GetText((int)Texts.SurvivalWaveValueText).gameObject.SetActive(false);
 
@@ -107,51 +107,51 @@ public class UI_BattlePopup : UI_Popup
     {
         if (Managers._Game.CurrentStageData == null)
         {
-            Managers._Game.CurrentStageData = Managers._Data.StageDic[1];
+            Managers._Game.CurrentStageData = Managers._Data.StageDic[0];
         }
         //todo
         Managers._Game.CurrentStageData = Managers._Data.StageDic[Managers._Game.GetMaxStageClearIndex() + 1];
 
-        // StageNameText : ¸¶Áö¸· µµÀüÇÑ ½ºÅ×ÀÌÁö Ç¥½Ã
-        /*
-        GetText((int)Texts.StageNameText).text = Managers._Game.CurrentStageData.StageName;
+        // StageNameText : ë§ˆì§€ë§‰ ë„ì „í•œ ìŠ¤í…Œì´ì§€ í‘œì‹œ
+        
+        GetText((int)Texts.StageNameText).text = Managers._Game.CurrentStageData.name;
 
-        // SurvivalWaveValueText : ÇØ´ç ½ºÅ×ÀÌÁö¿¡¼­ µµ´ŞÇß´ø ¸Æ½º ¿şÀÌºê ¼ö (½ºÅ×ÀÌÁö Å¬¸®¾î ½Ã Ã³¸® °í¹Î ÇÊ¿ä)
-        if (Managers._Game.DicStageClearInfo.TryGetValue(Managers._Game.CurrentStageData.StageIndex, out StageClearInfo info))
+        // SurvivalWaveValueText : í•´ë‹¹ ìŠ¤í…Œì´ì§€ì—ì„œ ë„ë‹¬í–ˆë˜ ë§¥ìŠ¤ ì›¨ì´ë¸Œ ìˆ˜ (ìŠ¤í…Œì´ì§€ í´ë¦¬ì–´ ì‹œ ì²˜ë¦¬ ê³ ë¯¼ í•„ìš”)
+        if (Managers._Game.DicStageClearInfo.TryGetValue(Managers._Game.CurrentStageData.stageIndex, out StageClearInfo info))
         {
             if (info.MaxWaveIndex == 0)
             {
                 //GetObject((int)GameObjects.StageRewardProgressFillArea).GetComponent<Slider>().value = 0;
-                GetText((int)Texts.SurvivalWaveValueText).text = "±â·Ï ¾øÀ½";
+                GetText((int)Texts.SurvivalWaveValueText).text = "ê¸°ë¡ ì—†ìŒ";
             }
             else
                 GetText((int)Texts.SurvivalWaveValueText).text = (info.MaxWaveIndex + 1).ToString();
         }
         else
-            GetText((int)Texts.SurvivalWaveValueText).text = "±â·Ï ¾øÀ½";
+            GetText((int)Texts.SurvivalWaveValueText).text = "ê¸°ë¡ ì—†ìŒ";
 
-        // StageImage : ¸¶Áö¸· µµÀüÇÑ ½ºÅ×ÀÌÁöÀÇ ÀÌ¹ÌÁö
-        GetImage((int)Images.StageImage).sprite = Managers._Resource.Load<Sprite>(Managers._Game.CurrentStageData.StageImage);
+        // StageImage : ë§ˆì§€ë§‰ ë„ì „í•œ ìŠ¤í…Œì´ì§€ì˜ ì´ë¯¸ì§€
+        GetImage((int)Images.StageImage).sprite = Managers._Resource.Load<Sprite>(Managers._Game.CurrentStageData.stageImage);
 
-        // °¢ ¹öÆ°ÀÇ ·¹µå´å(RedDotObject) : À¯Àú¿¡°Ô ¾Ë¸±°ÍÀÌ ÀÖÀ»¶§ È°¼ºÈ­ (»óÈ² °í¹Î ÇÊ¿ä)
-        // GameStartCostValueText : °ÔÀÓ ½ºÅ¸Æ® ½Ã ÇÊ¿äÇÑ ½ºÅ×ÀÌ³ª Ç¥½ÃÇÏ°í Á¶°Ç¿¡ µû¶ó ÅØ½ºÆ® »ö»ó º¯°æ 
-        // - ÇÃ·¹ÀÌ °¡´É : #FFFFFF
-        // - ÇÃ·¹ÀÌ ºÒ°¡´É : #FF1E00
-        // PaymentRewardButton : Ã¹°áÁ¦ º¸»óÀÌ Áö±Ş‰ç´Ù¸é ºñÈ°¼ºÈ­
+        // ê° ë²„íŠ¼ì˜ ë ˆë“œë‹·(RedDotObject) : ìœ ì €ì—ê²Œ ì•Œë¦´ê²ƒì´ ìˆì„ë•Œ í™œì„±í™” (ìƒí™© ê³ ë¯¼ í•„ìš”)
+        // GameStartCostValueText : ê²Œì„ ìŠ¤íƒ€íŠ¸ ì‹œ í•„ìš”í•œ ìŠ¤í…Œì´ë‚˜ í‘œì‹œí•˜ê³  ì¡°ê±´ì— ë”°ë¼ í…ìŠ¤íŠ¸ ìƒ‰ìƒ ë³€ê²½ 
+        // - í”Œë ˆì´ ê°€ëŠ¥ : #FFFFFF
+        // - í”Œë ˆì´ ë¶ˆê°€ëŠ¥ : #FF1E00
+        // PaymentRewardButton : ì²«ê²°ì œ ë³´ìƒì´ ì§€ê¸‰ë¬ë‹¤ë©´ ë¹„í™œì„±í™”
 
-        //if() // ÇöÀç º¸À¯ÇÑ ½ºÅ×¹Ì³Ê°¡ 5¹Ì¸¸ ÀÏ¶§ 
+        //if() // í˜„ì¬ ë³´ìœ í•œ ìŠ¤í…Œë¯¸ë„ˆê°€ 5ë¯¸ë§Œ ì¼ë•Œ 
         //    GetText((int)Texts.GameStartCostText).color = #FFFFFF;
-        //else // ÇöÀç º¸À¯ÇÑ ½ºÅ×¹Ì³Ê°¡ 5ÀÌ»ó ÀÏ¶§ 
+        //else // í˜„ì¬ ë³´ìœ í•œ ìŠ¤í…Œë¯¸ë„ˆê°€ 5ì´ìƒ ì¼ë•Œ 
         //    GetText((int)Texts.GameStartCostText).color = #F1331A;
 
-        // ½ºÅ×ÀÌÁö º¸»ó ( Å¬¸®¾î Á¶°Ç¿¡ µû¶ó »óÅÂ º¯È­ ÇÊ¿ä)
+        // ìŠ¤í…Œì´ì§€ ë³´ìƒ ( í´ë¦¬ì–´ ì¡°ê±´ì— ë”°ë¼ ìƒíƒœ ë³€í™” í•„ìš”)
         if (info != null)
         {
             m_currentStageData = Managers._Game.CurrentStageData;
-            int itemCode = m_currentStageData.FirstWaveClearRewardItemId;
+            //int itemCode = m_currentStageData.FirstWaveClearRewardItemId;
 
-            #region »ıÁ¸ ¿şÀÌºê 
-            //½½¶óÀÌ´õ
+            #region ìƒì¡´ ì›¨ì´ë¸Œ 
+            //ìŠ¬ë¼ì´ë”
             int wave = info.MaxWaveIndex;
 
             if (info.isClear == true)
@@ -159,21 +159,21 @@ public class UI_BattlePopup : UI_Popup
                 GetText((int)Texts.SurvivalWaveText).gameObject.SetActive(false);
                 GetText((int)Texts.SurvivalWaveValueText).gameObject.SetActive(true);
                 GetText((int)Texts.SurvivalWaveValueText).color = Utils.HexToColor("60FF08");
-                GetText((int)Texts.SurvivalWaveValueText).text = "½ºÅ×ÀÌÁö Å¬¸®¾î";
+                GetText((int)Texts.SurvivalWaveValueText).text = "ìŠ¤í…Œì´ì§€ í´ë¦¬ì–´";
                 GetObject((int)GameObjects.StageRewardProgressFillArea).GetComponent<Slider>().value = wave + 1;
             }
             else
             {
-                // Ã³À½ Á¢¼Ó
+                // ì²˜ìŒ ì ‘ì†
                 if (info.MaxWaveIndex == 0)
                 {
                     GetText((int)Texts.SurvivalWaveText).gameObject.SetActive(false);
                     GetText((int)Texts.SurvivalWaveValueText).gameObject.SetActive(true);
                     GetText((int)Texts.SurvivalWaveValueText).color = Utils.HexToColor("FFDB08");
-                    GetText((int)Texts.SurvivalWaveValueText).text = "±â·Ï ¾øÀ½";
+                    GetText((int)Texts.SurvivalWaveValueText).text = "ê¸°ë¡ ì—†ìŒ";
                     GetObject((int)GameObjects.StageRewardProgressFillArea).GetComponent<Slider>().value = wave;
                 }
-                // ÁøÇàÁß
+                // ì§„í–‰ì¤‘
                 else
                 {
                     GetText((int)Texts.SurvivalWaveText).gameObject.SetActive(true);
@@ -183,14 +183,14 @@ public class UI_BattlePopup : UI_Popup
                     GetObject((int)GameObjects.StageRewardProgressFillArea).GetComponent<Slider>().value = wave + 1;
                 }
 
-                //// »õ·Î¿î ½ºÅ×ÀÌÁö
+                //// ìƒˆë¡œìš´ ìŠ¤í…Œì´ì§€
                 //if (Managers.Game.DicStageClearInfo.TryGetValue(_currentStageData.StageIndex - 1, out StageClearInfo PrevInfo) == false)
                 //    return;
                 //if (PrevInfo.isClear == true)
                 //{
                 //    GetText((int)Texts.SurvivalWaveText).gameObject.SetActive(false);
                 //    GetText((int)Texts.SurvivalWaveValueText).gameObject.SetActive(true);
-                //    GetText((int)Texts.SurvivalWaveValueText).text = "±â·Ï ¾øÀ½";
+                //    GetText((int)Texts.SurvivalWaveValueText).text = "ê¸°ë¡ ì—†ìŒ";
                 //    GetObject((int)GameObjects.StageRewardProgressFillArea).GetComponent<Slider>().value = wave;
                 //}
             }
@@ -199,44 +199,44 @@ public class UI_BattlePopup : UI_Popup
         }
 
 
-        // ¸®ÇÁ·¹½Ã ¹ö±× ´ëÀÀ
+        // ë¦¬í”„ë ˆì‹œ ë²„ê·¸ ëŒ€ì‘
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetObject((int)GameObjects.GameStartCostGroupObject).GetComponent<RectTransform>());
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetObject((int)GameObjects.SurvivalTimeObject).GetComponent<RectTransform>());
     }
 
+    //todo
+    //UI_StaminaChargePopup, UI_stageSelectPopup ì‘ì—…í•´ì•¼í•¨. 
     #region ButtonClick
-    void OnClickGameStartButton() // °ÔÀÓ ½ÃÀÛ ¹öÆ°
+    void OnClickGameStartButton() // ê²Œì„ ì‹œì‘ ë²„íŠ¼
     {
         //Managers._Sound.PlayButtonClick();
 
         Managers._Game.IsGameEnd = false;
         if (Managers._Game.Stamina < Define.GAME_PER_STAMINA)
         {
-            Managers._UI.ShowPopupUI<UI_StaminaChargePopup>();
+            //Managers._UI.ShowPopupUI<UI_StaminaChargePopup>();
             return;
         }
 
         Managers._Game.Stamina -= Define.GAME_PER_STAMINA;
-        if (Managers._Game.DicMission.TryGetValue(MissionTarget.StageEnter, out MissionInfo mission))
-            mission.Progress++;
-        Managers.Scene.LoadScene(Define.Scene.GameScene, transform);
+        Managers._Scene.LoadScene(Define.Scene.GameScene, transform);
         //Managers.Game.CurrentStageData = Managers.Data.StageDic[_currentStageInfo];
     }
 
-    void OnClickStageSelectButton() // ½ºÅ×ÀÌÁö ¼±ÅÃ ¹öÆ°
+    void OnClickStageSelectButton() // ìŠ¤í…Œì´ì§€ ì„ íƒ ë²„íŠ¼
     {
         //Managers._Sound.PlayButtonClick();
 
-        UI_StageSelectPopup stageSelectPopupUI = Managers._UI.ShowPopupUI<UI_StageSelectPopup>();
+        /*UI_StageSelectPopup stageSelectPopupUI = Managers._UI.ShowPopupUI<UI_StageSelectPopup>();
 
         stageSelectPopupUI.OnPopupClosed = () =>
         {
             Refresh();
         };
-        //½ºÅ×ÀÌÁö ÀúÀå °ü·ÃÇØ¼­ Ã³¸® ÇÑ ÈÄ¿¡ ÃÖ½Å ½ºÅ×ÀÌÁö ºÒ·¯¿À°Ô Ã³¸® ÇÊ¿ä.
-        //ÇöÀç´Â ÀÓ½Ã·Î 1½ºÅ×ÀÌÁö ºÒ·¯¿À°Ô ÇØ³ùÀ½
-        stageSelectPopupUI.SetInfo(Managers._Game.CurrentStageData);
+        //ìŠ¤í…Œì´ì§€ ì €ì¥ ê´€ë ¨í•´ì„œ ì²˜ë¦¬ í•œ í›„ì— ìµœì‹  ìŠ¤í…Œì´ì§€ ë¶ˆëŸ¬ì˜¤ê²Œ ì²˜ë¦¬ í•„ìš”.
+        //í˜„ì¬ëŠ” ì„ì‹œë¡œ 1ìŠ¤í…Œì´ì§€ ë¶ˆëŸ¬ì˜¤ê²Œ í•´ë†¨ìŒ
+        stageSelectPopupUI.SetInfo(Managers._Game.CurrentStageData);*/
     }
-    #endregion*/
-    }
+    #endregion
+    
 }

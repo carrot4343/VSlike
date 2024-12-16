@@ -63,12 +63,17 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
   - m_GUID: ae59e12054fe72b40a4e00c89f91cea1
-    m_Address: UI_NotDeveloped.prefab
+    m_Address: UI_NotReady.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
   - m_GUID: 3dd13cb4456f86745a5b14b4de4146ab
     m_Address: UI_UserInfoItem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: de423b3cc73d7ab499d8da83ebf98ac0
+    m_Address: UI_BattlePopup.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload

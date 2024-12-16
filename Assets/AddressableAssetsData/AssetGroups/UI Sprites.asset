@@ -62,6 +62,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
+  - m_GUID: 52f195e8a95c30243a8ca23921a081ed
+    m_Address: MapIcon_01.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 850e3eeccf43ce04c93ef8fd36c4a7f3
+    m_Address: MapIcon_08.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: fa077a5678638974a8b6adf784971026
+    m_Address: MapIcon_14.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 68254714d3771cc4296e19cbb58661d1, type: 2}
   m_SchemaSet:
