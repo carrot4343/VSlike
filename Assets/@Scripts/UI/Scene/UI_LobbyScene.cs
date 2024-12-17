@@ -21,7 +21,7 @@ public class UI_LobbyScene : UI_Scene
     {
         //ShopToggleRedDotObject, // 알림 상황 시 사용 할 레드닷
         //EquipmentToggleRedDotObject,
-        BattleToggleRedDotObject,
+        //BattleToggleRedDotObject,
 
         MenuToggleGroup,
         CheckShopImageObject,
@@ -88,8 +88,8 @@ public class UI_LobbyScene : UI_Scene
         GetToggle((int)Toggles.EquipmentToggle).gameObject.BindEvent(OnClickEquipmentToggle);
         GetToggle((int)Toggles.BattleToggle).gameObject.BindEvent(OnClickBattleToggle);
 
-        m_shopPopupUI = Managers._UI.ShowPopupUI<UI_ShopPopup>();
-        m_equipmentPopupUI = Managers._UI.ShowPopupUI<UI_EquipmentPopup>();
+        //m_shopPopupUI = Managers._UI.ShowPopupUI<UI_ShopPopup>();
+        //m_equipmentPopupUI = Managers._UI.ShowPopupUI<UI_EquipmentPopup>();
         m_battlePopupUI = Managers._UI.ShowPopupUI<UI_BattlePopup>();
 
         //토글에 따른 ContentObject.SetActive()를 위한 오브젝트
@@ -122,8 +122,8 @@ public class UI_LobbyScene : UI_Scene
     {
         #region 팝업 초기화
 
-        m_shopPopupUI.gameObject.SetActive(false);
-        m_equipmentPopupUI.gameObject.SetActive(false);
+        //m_shopPopupUI.gameObject.SetActive(false);
+        //m_equipmentPopupUI.gameObject.SetActive(false);
         m_battlePopupUI.gameObject.SetActive(false);
 
         #endregion
@@ -135,7 +135,7 @@ public class UI_LobbyScene : UI_Scene
         // 버튼 레드닷 초기화
         //GetObject((int)GameObjects.ShopToggleRedDotObject).SetActive(false);
         //GetObject((int)GameObjects.EquipmentToggleRedDotObject).SetActive(false);
-        GetObject((int)GameObjects.BattleToggleRedDotObject).SetActive(false);
+        //GetObject((int)GameObjects.BattleToggleRedDotObject).SetActive(false);
 
         // 선택 토글 아이콘 초기화
         GetObject((int)GameObjects.CheckShopImageObject).SetActive(false);
