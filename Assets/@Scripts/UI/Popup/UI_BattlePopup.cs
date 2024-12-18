@@ -88,9 +88,9 @@ public class UI_BattlePopup : UI_Popup
         BindImage(typeof(Images));
 
         // 버튼 기능 
-        //GetButton((int)Buttons.GameStartButton).gameObject.BindEvent(OnClickGameStartButton);
+        GetButton((int)Buttons.GameStartButton).gameObject.BindEvent(OnClickGameStartButton);
         GetButton((int)Buttons.GameStartButton).GetOrAddComponent<UI_ButtonAnimation>();
-        //GetButton((int)Buttons.StageSelectButton).gameObject.BindEvent(OnClickStageSelectButton);
+        GetButton((int)Buttons.StageSelectButton).gameObject.BindEvent(OnClickStageSelectButton);
         GetButton((int)Buttons.StageSelectButton).GetOrAddComponent<UI_ButtonAnimation>();
 
         // 생존 웨이브
@@ -109,7 +109,7 @@ public class UI_BattlePopup : UI_Popup
         {
             Managers._Game.CurrentStageData = Managers._Data.StageDic[0];
         }
-        //todo
+
         Managers._Game.CurrentStageData = Managers._Data.StageDic[Managers._Game.GetMaxStageClearIndex() + 1];
 
         // StageNameText : 마지막 도전한 스테이지 표시

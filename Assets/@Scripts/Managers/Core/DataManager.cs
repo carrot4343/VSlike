@@ -6,7 +6,7 @@ using System.IO;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 
-//MakeDict ±¸Çö °­Á¦
+//MakeDict êµ¬í˜„ ê°•ì œ
 public interface ILoader<Key, Value>
 {
     Dictionary<Key, Value> MakeDict();
@@ -26,7 +26,6 @@ public class DataManager
         MonsterDic = LoadXml<Data.MonsterDataLoader, int, Data.MonsterData>("MonsterData.xml").MakeDict();
         //Json
         StageDic = LoadJson<Data.StageDataLoader, int, Data.StageData>("StageData.json").MakeDict();
-        int a = 3;
     }
 
     Loader LoadXml<Loader, Key, Item>(string name) where Loader : ILoader<Key, Item>
