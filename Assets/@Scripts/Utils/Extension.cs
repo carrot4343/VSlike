@@ -25,8 +25,23 @@ public static class Extension
 
     public static bool IsValid(this BaseController bc)
     {
-        //bc °¡ null ÀÌ ¾Æ´Ï¸é¼­ valid ÇÑ »óÅÂ¶ó¸é true¸¦ return
-        //¸¸¾à nullÀÌ°Å³ª validÇÑ »óÅÂ°¡ ¾Æ´Ï¸é false
+        //bc ê°€ null ì´ ì•„ë‹ˆë©´ì„œ valid í•œ ìƒíƒœë¼ë©´ trueë¥¼ return
+        //ë§Œì•½ nullì´ê±°ë‚˜ validí•œ ìƒíƒœê°€ ì•„ë‹ˆë©´ false
         return bc != null && bc.isActiveAndEnabled;
+    }
+
+    public static void DestroyChilds(this GameObject go)
+    {
+        Transform[] children = new Transform[go.transform.childCount];
+        for (int i = 0; i < go.transform.childCount; i++)
+        {
+            children[i] = go.transform.GetChild(i);
+        }
+
+        // ëª¨ë“  ìì‹ ì˜¤ë¸Œì íŠ¸ ì‚­ì œ
+        foreach (Transform child in children)
+        {
+            Managers._Resource.Destroy(child.gameObject);
+        }
     }
 }

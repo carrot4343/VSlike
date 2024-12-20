@@ -174,6 +174,7 @@ public class UI_LobbyScene : UI_Scene
         Refresh();
     }
     
+    //현재 배틀을 제외한 하단 버튼(상점, 장비 등)은 개발 단계. 추후 개발 시 toggle의 interactable 체크 시 상호작용 가능.
     void OnClickShopToggle()
     {
         Managers._UI.ShowPopupUI<UI_NotReady>();
