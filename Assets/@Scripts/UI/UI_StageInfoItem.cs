@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class UI_StageInfoItem : UI_Base
 {
-    /*
+    
     #region UI 기능 리스트
     // 정보 갱신
     // StageValueText : 스테이지
@@ -24,14 +24,6 @@ public class UI_StageInfoItem : UI_Base
     enum GameObjects
     {
         MaxWaveGroupObject,
-
-        FirstClearRewardLockObject,
-        SecondClearRewardLockObject,
-        ThirdClearRewardLockObject,
-
-        FirstClearRewardCompleteObject,
-        SecondClearRewardCompleteObject,
-        ThirdClearRewardCompleteObject,
     }
 
     enum Texts
@@ -110,14 +102,6 @@ public class UI_StageInfoItem : UI_Base
                 GetText((int)Texts.MaxWaveValueText).color = Utils.HexToColor("FFDB08");
                 GetText((int)Texts.MaxWaveValueText).text = (info.MaxWaveIndex + 1).ToString();
             }
-
-            GetObject((int)GameObjects.FirstClearRewardLockObject).gameObject.SetActive(false);
-            GetObject((int)GameObjects.SecondClearRewardLockObject).gameObject.SetActive(false);
-            GetObject((int)GameObjects.ThirdClearRewardLockObject).gameObject.SetActive(false);
-
-            GetObject((int)GameObjects.FirstClearRewardCompleteObject).SetActive(info.isOpenFirstBox);
-            GetObject((int)GameObjects.SecondClearRewardCompleteObject).SetActive(info.isOpenSecondBox);
-            GetObject((int)GameObjects.ThirdClearRewardCompleteObject).SetActive(info.isOpenThirdBox);
         }
         else
         {
@@ -131,14 +115,6 @@ public class UI_StageInfoItem : UI_Base
                 GetText((int)Texts.MaxWaveValueText).gameObject.SetActive(true);
                 GetText((int)Texts.MaxWaveValueText).color = Utils.HexToColor("FFDB08");
                 GetText((int)Texts.MaxWaveValueText).text = "기록 없음";
-
-                GetObject((int)GameObjects.FirstClearRewardLockObject).gameObject.SetActive(false);
-                GetObject((int)GameObjects.SecondClearRewardLockObject).gameObject.SetActive(false);
-                GetObject((int)GameObjects.ThirdClearRewardLockObject).gameObject.SetActive(false);
-
-                GetObject((int)GameObjects.FirstClearRewardCompleteObject).SetActive(info.isOpenFirstBox);
-                GetObject((int)GameObjects.SecondClearRewardCompleteObject).SetActive(info.isOpenSecondBox);
-                GetObject((int)GameObjects.ThirdClearRewardCompleteObject).SetActive(info.isOpenThirdBox);
             }
             // 새로운 스테이지
             if (Managers._Game.DicStageClearInfo.TryGetValue(m_stageData.stageIndex - 1, out StageClearInfo PrevInfo) == false)
@@ -152,14 +128,6 @@ public class UI_StageInfoItem : UI_Base
                 GetText((int)Texts.MaxWaveValueText).gameObject.SetActive(true);
                 GetText((int)Texts.MaxWaveValueText).color = Utils.HexToColor("FFDB08");
                 GetText((int)Texts.MaxWaveValueText).text = "기록 없음";
-
-                GetObject((int)GameObjects.FirstClearRewardLockObject).gameObject.SetActive(false);
-                GetObject((int)GameObjects.SecondClearRewardLockObject).gameObject.SetActive(false);
-                GetObject((int)GameObjects.ThirdClearRewardLockObject).gameObject.SetActive(false);
-
-                GetObject((int)GameObjects.FirstClearRewardCompleteObject).SetActive(info.isOpenFirstBox);
-                GetObject((int)GameObjects.SecondClearRewardCompleteObject).SetActive(info.isOpenSecondBox);
-                GetObject((int)GameObjects.ThirdClearRewardCompleteObject).SetActive(info.isOpenThirdBox);
             }
 
         }
@@ -170,18 +138,9 @@ public class UI_StageInfoItem : UI_Base
 
     void ClearRewardCompleteInit()
     {
-        GetObject((int)GameObjects.FirstClearRewardCompleteObject).gameObject.SetActive(false);
-        GetObject((int)GameObjects.SecondClearRewardCompleteObject).gameObject.SetActive(false);
-        GetObject((int)GameObjects.ThirdClearRewardCompleteObject).gameObject.SetActive(false);
-
-        GetObject((int)GameObjects.FirstClearRewardLockObject).gameObject.SetActive(true);
-        GetObject((int)GameObjects.SecondClearRewardLockObject).gameObject.SetActive(true);
-        GetObject((int)GameObjects.ThirdClearRewardLockObject).gameObject.SetActive(true);
-
         GetImage((int)Images.StageLockImage).gameObject.SetActive(true);
         GetImage((int)Images.StageImage).color = Utils.HexToColor("3A3A3A");
         GetText((int)Texts.MaxWaveText).gameObject.SetActive(false);
         GetText((int)Texts.MaxWaveValueText).gameObject.SetActive(false);
     }
-    */
 }

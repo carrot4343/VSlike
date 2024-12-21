@@ -77,6 +77,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
+  - m_GUID: 292f5acbea17bd74fbe775126aaee332
+    m_Address: UI_StageInfoItem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 8416074f15f1b2d4ea5fc88615185d9f
+    m_Address: UI_StageSelectPopup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 746dbc1875202d341aa23e219700aa27
+    m_Address: UI_StaminaChargePopup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 68254714d3771cc4296e19cbb58661d1, type: 2}
   m_SchemaSet:

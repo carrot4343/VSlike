@@ -11,7 +11,7 @@ using static UnityEngine.AdaptivePerformance.Provider.AdaptivePerformanceSubsyst
 
 public class UI_StageSelectPopup : UI_Popup
 {
-    /*
+    
     #region UI 기능 리스트
     // 정보 갱신
     // StageScrollContentObject : UI_ChapterInfoItem이 들어갈 부모 개체
@@ -65,7 +65,6 @@ public class UI_StageSelectPopup : UI_Popup
     {
         ContentObject,
         StageScrollContentObject,
-        AppearingMonsterContentObject,
         StageSelectScrollView,
 
     }
@@ -79,7 +78,6 @@ public class UI_StageSelectPopup : UI_Popup
     enum Texts
     {
         StageSelectTitleText,
-        AppearingMonsterText,
         StageSelectButtonText,
 
     }
@@ -130,11 +128,6 @@ public class UI_StageSelectPopup : UI_Popup
         m_scrollsnap = Utils.FindChild<HorizontalScrollSnap>(gameObject, recursive : true);
         m_scrollsnap.OnSelectionPageChangedEvent.AddListener(OnChangeStage);
         m_scrollsnap.StartingScreen = Managers._Game.CurrentStageData.stageIndex -1;
-        // 테스트용
-#if UNITY_EDITOR
-
-        //TextBindTest();
-#endif
         #endregion
 
         Refresh();
@@ -182,20 +175,7 @@ public class UI_StageSelectPopup : UI_Popup
         #region 스테이지 정보
         UIRefresh();
         #endregion
-
-        #region 스크롤된 스테이지 등장몬스터
-
-        List<int> monsterList = m_stageData.AppearingMonsters.ToList();
-
-        GameObject container = GetObject((int)GameObjects.AppearingMonsterContentObject);
-        container.DestroyChilds();
-        for (int i = 0; i < monsterList.Count; i++)
-        {
-            UI_MonsterInfoItem monsterInfoItemUI = Managers._UI.MakeSubItem<UI_MonsterInfoItem>(container.transform);
-     
-            monsterInfoItemUI.SetInfo(monsterList[i], m_stageData.StageLevel, this.transform);
-        }
-        #endregion
+        //추가로 표시할 정보가 있다면 여기에
     }
 
     void UIRefresh()
@@ -224,7 +204,7 @@ public class UI_StageSelectPopup : UI_Popup
         #endregion
 
         #region 스테이지 선택 버튼
-        if (Managers._Game.DicStageClearInfo.TryGetValue(m_stageData.StageIndex, out StageClearInfo info) == false)
+        if (Managers._Game.DicStageClearInfo.TryGetValue(m_stageData.stageIndex, out StageClearInfo info) == false)
             return;
         //게임 처음 시작하고 스테이지창을 오픈 한 경우
         if (info.StageIndex == 1 && info.MaxWaveIndex == 0)
@@ -284,22 +264,8 @@ public class UI_StageSelectPopup : UI_Popup
         //현재 스테이지 설정
         m_stageData = Managers._Data.StageDic[index + 1];
 
-        int[] monsterData = m_stageData.AppearingMonsters.ToArray();
-
-        GameObject container = GetObject((int)GameObjects.AppearingMonsterContentObject);
-        container.DestroyChilds();
-
-        for (int i = 0; i < monsterData.Length; i++)
-        {
-            UI_MonsterInfoItem item = Managers._UI.MakeSubItem<UI_MonsterInfoItem>(GetObject((int)GameObjects.AppearingMonsterContentObject).transform);
-            item.SetInfo(monsterData[i], m_stageData.StageLevel, this.transform);
-            //데이터 타입 물어보고 처리해야할듯
-        }
-
         UIRefresh();
-        LayoutRebuilder.ForceRebuildLayoutImmediate(GetObject((int)GameObjects.AppearingMonsterContentObject).GetComponent<RectTransform>());
     }
 
 
-    */
 }

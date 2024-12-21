@@ -61,6 +61,16 @@ public class UIManager
 
     }
 
+    public T MakeSubItem<T>(Transform parent = null, string name = null, bool pooling = true) where T : UI_Base
+    {
+        if (string.IsNullOrEmpty(name))
+            name = typeof(T).Name;
+
+        GameObject go = Managers._Resource.Instantiate($"{name}.prefab", parent, pooling);
+        go.transform.SetParent(parent);
+        return Utils.GetOrAddComponent<T>(go);
+    }
+
     public T GetSceneUI<T>() where T : UI_Base
     {
         return m_sceneUI as T;

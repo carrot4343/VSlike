@@ -214,20 +214,20 @@ public class UI_BattlePopup : UI_Popup
         Managers._Game.IsGameEnd = false;
         if (Managers._Game.Stamina < Define.GAME_PER_STAMINA)
         {
-            //Managers._UI.ShowPopupUI<UI_StaminaChargePopup>();
+            Managers._UI.ShowPopupUI<UI_StaminaChargePopup>();
             return;
         }
 
         Managers._Game.Stamina -= Define.GAME_PER_STAMINA;
         Managers._Scene.LoadScene(Define.Scene.GameScene, transform);
-        //Managers.Game.CurrentStageData = Managers.Data.StageDic[_currentStageInfo];
+        //Managers._Game.CurrentStageData = Managers._Data.StageDic[_currentStageInfo];
     }
 
     void OnClickStageSelectButton() // 스테이지 선택 버튼
     {
         //Managers._Sound.PlayButtonClick();
 
-        /*UI_StageSelectPopup stageSelectPopupUI = Managers._UI.ShowPopupUI<UI_StageSelectPopup>();
+        UI_StageSelectPopup stageSelectPopupUI = Managers._UI.ShowPopupUI<UI_StageSelectPopup>();
 
         stageSelectPopupUI.OnPopupClosed = () =>
         {
@@ -235,7 +235,7 @@ public class UI_BattlePopup : UI_Popup
         };
         //스테이지 저장 관련해서 처리 한 후에 최신 스테이지 불러오게 처리 필요.
         //현재는 임시로 1스테이지 불러오게 해놨음
-        stageSelectPopupUI.SetInfo(Managers._Game.CurrentStageData);*/
+        stageSelectPopupUI.SetInfo(Managers._Game.CurrentStageData);
     }
     #endregion
     
