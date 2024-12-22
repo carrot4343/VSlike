@@ -16,7 +16,7 @@ public class SceneManagerEx
                 SceneManager.LoadScene(GetSceneName(type));
                 break;
             case Define.Scene.GameScene:
-                SceneChangeAnimation_In anim = Managers._Resource.Instantiate("SceneChangeAnimation_In").GetOrAddComponent<SceneChangeAnimation_In>();
+                SceneChangeAnimation_In anim = Managers._Resource.Instantiate("SceneChangeAnimation_In.prefab").GetOrAddComponent<SceneChangeAnimation_In>();
                 anim.transform.SetParent(parents);
 
                 Time.timeScale = 1;
@@ -29,7 +29,7 @@ public class SceneManagerEx
                 });
                 break;
             case Define.Scene.LobbyScene:
-                SceneChangeAnimation_In anim2 = Managers._Resource.Instantiate("SceneChangeAnimation_In").GetOrAddComponent<SceneChangeAnimation_In>();
+                SceneChangeAnimation_In anim2 = Managers._Resource.Instantiate("SceneChangeAnimation_In.prefab").GetOrAddComponent<SceneChangeAnimation_In>();
                 anim2.transform.SetParent(parents);
 
                 Time.timeScale = 1;

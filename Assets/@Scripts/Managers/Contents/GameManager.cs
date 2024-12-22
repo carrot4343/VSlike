@@ -29,7 +29,7 @@ public class GameData
     public StageData CurrentStage = new StageData();
     public Dictionary<int, StageClearInfo> DicStageClearInfo = new Dictionary<int, StageClearInfo>();
 }
-#region ¹Ì¿Ï
+#region ë¯¸ì™„
 [Serializable]
 public class ContinueData
 {
@@ -66,7 +66,7 @@ public class ContinueData
     public int WaveIndex;
     public void Clear()
     {
-        // °¢ º¯¼öÀÇ ÃÊ±â°ª ¼³Á¤
+        // ê° ë³€ìˆ˜ì˜ ì´ˆê¸°ê°’ ì„¤ì •
         PlayerDataId = 0;
         Hp = 0f;
         MaxHp = 0f;
@@ -184,7 +184,7 @@ public class GameManager
     }
     public Map CurrentMap { get; set; }
 
-    //gemcount°¡ ¹Ù²î¾úÀ» ¶§ ½ÇÇàµÉ Äİ¹é ÇÔ¼ö
+    //gemcountê°€ ë°”ë€Œì—ˆì„ ë•Œ ì‹¤í–‰ë  ì½œë°± í•¨ìˆ˜
     int m_gem = 0;
     public event Action<int> OnGemCountChanged;
     public int Gem {
@@ -212,7 +212,7 @@ public class GameManager
 
 
     int m_killCount;
-    //killcount°¡ ¹Ù²î¾úÀ» ¶§ ½ÇÇàµÉ Äİ¹é ÇÔ¼ö
+    //killcountê°€ ë°”ë€Œì—ˆì„ ë•Œ ì‹¤í–‰ë  ì½œë°± í•¨ìˆ˜
     public event Action<int> OnKillCountChanged;
 
     public int KillCount
@@ -242,6 +242,12 @@ public class GameManager
     public void Init()
     {
         m_path = Application.persistentDataPath + "/SaveData.json";
+
+        if (LoadGame())
+            return;
+
+        IsLoaded = true;
+        SaveGame();
     }
 
     string m_path;

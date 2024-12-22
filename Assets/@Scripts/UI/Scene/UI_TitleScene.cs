@@ -34,7 +34,7 @@ public class UI_TitleScene : UI_Base
         GetObject((int)GameObjects.Slider).GetComponent<Slider>().value = 0;
         GetButton((int)Buttons.StartButton).gameObject.BindEvent(() =>
         {
-            //¿œ¥‹¿∫ GameScene
+            //ÏùºÎã®ÏùÄ GameScene
             if (isPreLoad)
                 Managers._Scene.LoadScene(Define.Scene.LobbyScene, transform);
         });
@@ -54,7 +54,7 @@ public class UI_TitleScene : UI_Base
                 isPreLoad = true;
                 GetButton((int)Buttons.StartButton).gameObject.SetActive(true);
                 Managers._Data.Init();
-                //Managers._Game.Init();
+                Managers._Game.Init();
                 //Managers._Time.Init();
                 //StartButtonAnimation();
             }

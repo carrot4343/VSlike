@@ -6,26 +6,27 @@ public class GameScene : BaseScene
 {
     void Start()
     {
-        //±âº» UI Ç¥½Ã
+        SceneType = Define.Scene.GameScene;
+        //ê¸°ë³¸ UI í‘œì‹œ
         Managers._UI.ShowSceneUI<UI_GameScene>();
 
-        //½ºÆ÷´×Ç® »ı»ê
+        //ìŠ¤í¬ë‹í’€ ìƒì‚°
         m_spawningPool = gameObject.AddComponent<SpawningPool>();
 
-        //ÇÃ·¹ÀÌ¾î ½ºÆù
+        //í”Œë ˆì´ì–´ ìŠ¤í°
         var player = Managers._Object.Spawn<PlayerController>(Vector3.zero);
 
-        //Á¶ÀÌ½ºÆ½ »ı¼º
+        //ì¡°ì´ìŠ¤í‹± ìƒì„±
         var joystick = Managers._Resource.Instantiate("UI_Joystick.prefab");
         joystick.name = "@UI_Jotstick";
 
-        //¸Ê »ı¼º
+        //ë§µ ìƒì„±
         var map = Managers._Resource.Instantiate("Map_01.prefab");
         map.name = "@Map";
-        //Ä«¸Ş¶ó Å¸°Ù ÁöÁ¤(ÇÃ·¹ÀÌ¾î)
+        //ì¹´ë©”ë¼ íƒ€ê²Ÿ ì§€ì •(í”Œë ˆì´ì–´)
         Camera.main.GetComponent<CameraController>().m_target = player.gameObject;
 
-        //Å³ Ä«¿îÆ®, Áª Ä«¿îÆ® º¯°æ ½Ã ¼öÇàµÇ¾î¾ß ÇÒ ÀÛ¾÷
+        //í‚¬ ì¹´ìš´íŠ¸, ì ¬ ì¹´ìš´íŠ¸ ë³€ê²½ ì‹œ ìˆ˜í–‰ë˜ì–´ì•¼ í•  ì‘ì—…
         Managers._Game.OnKillCountChanged -= HandleOnKillCountChanged;
         Managers._Game.OnKillCountChanged += HandleOnKillCountChanged;
         Managers._Game.OnGemCountChanged -= HandleOnGemCountChanged;
@@ -35,8 +36,8 @@ public class GameScene : BaseScene
     }
 
     SpawningPool m_spawningPool;
-    //StageType.. ÇÊ¿äÇÑ°¡ ? N ¹øÂ° ½ºÅ×ÀÌÁö·Î º¯°æÇÏ´Â°Ô ÇÊ¿äÇÒµí ?
-    //º¸½º°¡ ³ª¿Ô´Ù°í ÇØ¼­ Àâ¸÷ ½ºÆùÀÌ ¸ØÃâ ÇÊ¿ä°¡ ÀÖ´Â°¡? ±âÈ¹ÀÇ ¹®Á¦.
+    //StageType.. í•„ìš”í•œê°€ ? N ë²ˆì§¸ ìŠ¤í…Œì´ì§€ë¡œ ë³€ê²½í•˜ëŠ”ê²Œ í•„ìš”í• ë“¯ ?
+    //ë³´ìŠ¤ê°€ ë‚˜ì™”ë‹¤ê³  í•´ì„œ ì¡ëª¹ ìŠ¤í°ì´ ë©ˆì¶œ í•„ìš”ê°€ ìˆëŠ”ê°€? ê¸°íšì˜ ë¬¸ì œ.
     Define.StageType m_stageType;
     public Define.StageType StageType
     {
@@ -46,7 +47,7 @@ public class GameScene : BaseScene
             m_stageType = value;
             if(m_spawningPool != null)
             {
-                //½ºÅ×ÀÌÁö Å¸ÀÔÀÌ º¯°æµÊ¿¡ µû¶ó ½ºÆ÷´× Ç® ÄÑ°í ²ô±â ¼³Á¤
+                //ìŠ¤í…Œì´ì§€ íƒ€ì…ì´ ë³€ê²½ë¨ì— ë”°ë¼ ìŠ¤í¬ë‹ í’€ ì¼œê³  ë„ê¸° ì„¤ì •
                 switch(value)
                 {
                     case Define.StageType.Normal:
@@ -60,7 +61,7 @@ public class GameScene : BaseScene
         }
     }
 
-    //¼öÄ¡ º¯°æÀÌ µÇ¾ú´Âµ¥ ±× ÀÌ½´¸¦ GameScene Å¬·¡½º¿¡¼­ Ã³¸®¸¦ ÇÏ´Â°Ô ¸Â´Â°¡? »ı°¢ÇØºÁ¾ß ÇÔ.
+    //ìˆ˜ì¹˜ ë³€ê²½ì´ ë˜ì—ˆëŠ”ë° ê·¸ ì´ìŠˆë¥¼ GameScene í´ë˜ìŠ¤ì—ì„œ ì²˜ë¦¬ë¥¼ í•˜ëŠ”ê²Œ ë§ëŠ”ê°€? ìƒê°í•´ë´ì•¼ í•¨.
     int m_collectedGemCount = 0;
     int m_remainingTotalGemCount = 10;
     public void HandleOnGemCountChanged(int gemCount)
