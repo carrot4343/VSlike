@@ -246,6 +246,17 @@ public class GameManager
         if (LoadGame())
             return;
 
+        CurrentStageData = Managers._Data.StageDic[1];
+        foreach (Data.StageData stage in Managers._Data.StageDic.Values)
+        {
+            StageClearInfo info = new StageClearInfo
+            {
+                StageIndex = stage.stageIndex,
+                MaxWaveIndex = 0,
+            };
+            m_gameData.DicStageClearInfo.Add(stage.stageIndex, info);
+        }
+
         IsLoaded = true;
         SaveGame();
     }

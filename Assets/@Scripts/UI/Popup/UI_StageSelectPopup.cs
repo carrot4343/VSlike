@@ -212,7 +212,7 @@ public class UI_StageSelectPopup : UI_Popup
             GetButton((int)Buttons.StageSelectButton).gameObject.SetActive(true);
         }
         // 스테이지 진행중
-        if (info.StageIndex <=m_stageData.stageIndex)
+        if (info.StageIndex <= m_stageData.stageIndex)
             GetButton((int)Buttons.StageSelectButton).gameObject.SetActive(true);
         // 새로운 스테이지
         if (Managers._Game.DicStageClearInfo.TryGetValue(m_stageData.stageIndex - 1, out StageClearInfo PrevInfo) == false)
