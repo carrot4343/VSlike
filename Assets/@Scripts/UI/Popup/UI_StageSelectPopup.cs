@@ -163,7 +163,13 @@ public class UI_StageSelectPopup : UI_Popup
             item.SetInfo(stageData);
             m_scrollsnap.ChildObjects[stageData.stageIndex - 1] = item.gameObject;
         }
-
+        //계속 고쳐보려고 하는데... 뭐가 문제인지 모르겠다...
+        //증상 : 처음에는 1,2,3 스테이지 순서로 잘 나오는데 2번째 부터는 계속 3,2,1 스테이지로 나옴.
+        //추가로 1,2,3 스테이지가 열렸을 때는 1스테이지만 unlock 되어있고 2,3스테이지는 잘 lock 상태가 되어있는데
+        //3,2,1 순으로 나올 때는 3,1 스테이지가 unlock 상태가 됨. 그러나 3스테이지가 선택이 가능한건 아니고 1스테이지만 선택이 가능함. 시발 뭔데
+        //일단 데이터를 던지는건 제대로 던짐. 토스는 제대로 줬는데 얘가 잘 못먹는건지 들어가서 이상이 생기는건지 자꾸 이상해짐..
+        //추측으론 일단 데이터 갱신 문제? 게임 매니저쪽을 건드려 봐야 할 거 같은 느낌.
+        //아니 될거면 둘다 되고 안될거면 둘다 안되야지 왜 하나는 되고 하나는 안되고 개시부시ㅏ눙히ㅓㅜㅠㅁ휴ㅓ
         #endregion
         StageInfoRefresh();
         #endregion
