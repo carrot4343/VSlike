@@ -14,43 +14,10 @@ public class UI_StageSelectPopup : UI_Popup
     
     #region UI 기능 리스트
     // 정보 갱신
-    // StageScrollContentObject : UI_ChapterInfoItem이 들어갈 부모 개체
-    // AppearingMonsterContentObject : UI_MonsterInfo가 들어갈 부모 개체
+    // StageScrollContentObject : UI_StageInfoItem이 들어갈 부모 개체
     // StageImage : 스테이지의 이미지 (테이블에 추가 필요)
     // StageNameValueText : 스테이지의 이름 (테이블에 추가 필요)
     // StageRewardProgressSliderObject : 스테이지 클리어 시 슬라이더 상승(챕터의 최대 스테이지 수, 1씩 상승)
-
-    // 챕터 클리어 보상 데이터 연결 (기본상태 -> 보상 수령 가능 상태 -> 보상 수령 완료 상태)
-    // FirstClearRewardText : 첫번째 보상 조건 
-    //      첫번재 보상
-    //      - FirstClearRewardItemBackgroundImage : 보상 아이템의 테두리 (색상 변경)
-    //      - 일반(Common) : #AC9B83
-    //      - 고급(Uncommon)  : #73EC4E
-    //      - 희귀(Rare) : #0F84FF
-    //      - 유일(Epic) : #B740EA
-    //      - 전설(Legendary) : #F19B02
-    //      - 신화(Myth) : #FC2302
-    //      - FirstClearRewardItemImage : 보상 아이템의 아이콘
-    //      - FirstClearRewardItemCountValueText : 보상 아이템의 벨류 (개수)
-    //      - FirstClearRewardUnlockObject : 보상 수령 가능할 시 비활성화 (기본 활성화) 
-    //      - FirstClearRedDotObject : 보상 수령 가능할 시 활성화 (기본 비활성화) 
-
-
-    //      두번재 보상
-    // SecondClearRewardText : 두번째 보상 조건 
-    //      - SecondClearRewardItemBackgroundImage : : 보상 아이템의 테두리 (색상 변경)
-    //      - SecondClearRewardItemImage : 보상 아이템의 아이콘
-    //      - SecondClearRewardItemCountValueText : 보상 아이템의 벨류 (개수)
-    //      - SecondClearRewardUnlockObject : 보상 수령 가능할 시 비활성화 (기본 활성화) 
-    //      - SecondClearRedDotObject : 보상 수령 가능할 시 활성화 (기본 비활성화)
-
-    //      세번재 보상
-    // ThirdClearRewardText : 세번째 보상 조건 
-    //      - ThirdClearRewardItemBackgroundImage : : 보상 아이템의 테두리 (색상 변경)
-    //      - ThirdClearRewardItemImage : 보상 아이템의 아이콘
-    //      - ThirdClearRewardItemCountValueText : 보상 아이템의 벨류 (개수)
-    //      - ThirdClearRewardUnlockObject : 보상 수령 가능할 시 비활성화 (기본 활성화) 
-    //      - ThirdClearRedDotObject : 보상 수령 가능할 시 활성화 (기본 비활성화)
 
 
     // 로컬라이징
@@ -232,29 +199,9 @@ public class UI_StageSelectPopup : UI_Popup
 
     void OnClickStageSelectButton()
     {
-        //if (Managers.Game.DicStageClearInfo.TryGetValue(_stageData.StageIndex, out StageClearInfo info) == false)
-        //    return;
-        ////게임 처음 시작하고 스테이지창을 오픈 한 경우
-        //if (info.StageIndex == 1 && info.MaxWaveIndex == 0)
-        //{
-        //    Managers.Game.CurrentStageData = _stageData;
-        //    OnPopupClosed?.Invoke();
-        //    Managers.UI.ClosePopupUI(this);
-        //}
-
-        //if (Managers.Game.DicStageClearInfo.TryGetValue(_stageData.StageIndex - 1, out StageClearInfo PrevInfo) == false)
-        //    return;
-        //if (PrevInfo.isClear == true)
-        //{
-        //    Managers.Game.CurrentStageData = _stageData;
-        //    OnPopupClosed?.Invoke();
-        //    Managers.UI.ClosePopupUI(this);
-        //}
-
         Managers._Game.CurrentStageData = m_stageData;
         OnPopupClosed?.Invoke();
         Managers._UI.ClosePopupUI(this);
-
     }
     
     void OnClickBackButton() // 되돌아 가기
