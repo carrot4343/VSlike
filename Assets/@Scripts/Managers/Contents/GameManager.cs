@@ -7,6 +7,7 @@ using System;
 using Data;
 using System.Linq;
 using System.IO;
+using static Define;
 
 [Serializable]
 public class StageClearInfo

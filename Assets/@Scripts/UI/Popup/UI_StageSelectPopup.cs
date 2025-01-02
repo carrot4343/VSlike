@@ -115,20 +115,19 @@ public class UI_StageSelectPopup : UI_Popup
         if (m_stageData == null)
             return;
 
-        #region 초기화
-
-        //AppearingMonsterContainer.DestroyChilds();
         #region 스테이지 리스트
         GameObject StageContainer = GetObject((int)GameObjects.StageScrollContentObject);
         StageContainer.DestroyChilds();
 
         m_scrollsnap.ChildObjects = new GameObject[Managers._Data.StageDic.Count];
-
+        int i = 1;
         foreach (StageData stageData in Managers._Data.StageDic.Values)
         {
             UI_StageInfoItem item = Managers._UI.MakeSubItem<UI_StageInfoItem>(StageContainer.transform);
             item.SetInfo(stageData);
             m_scrollsnap.ChildObjects[stageData.stageIndex - 1] = item.gameObject;
+            Debug.Log(i + "/" + stageData.stageIndex + "/" + stageData.stageImage);
+            i++;
         }
         //계속 고쳐보려고 하는데... 뭐가 문제인지 모르겠다...
         //증상 : 처음에는 1,2,3 스테이지 순서로 잘 나오는데 2번째 부터는 계속 3,2,1 스테이지로 나옴.
@@ -139,7 +138,6 @@ public class UI_StageSelectPopup : UI_Popup
         //아니 될거면 둘다 되고 안될거면 둘다 안되야지 왜 하나는 되고 하나는 안되고 개시부시ㅏ눙히ㅓㅜㅠㅁ휴ㅓ
         #endregion
         StageInfoRefresh();
-        #endregion
 
     }
 
@@ -148,7 +146,7 @@ public class UI_StageSelectPopup : UI_Popup
         #region 스테이지 정보
         UIRefresh();
         #endregion
-        //추가로 표시할 정보가 있다면 여기에
+        //추가로 스테이지에 대한 표시할 정보가 있다면 여기에
     }
 
     void UIRefresh()

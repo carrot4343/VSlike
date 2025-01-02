@@ -1045,7 +1045,7 @@ MonoBehaviour:
   NextButton: {fileID: 0}
   transitionSpeed: 7.5
   UseHardSwipe: 1
-  UseFastSwipe: 0
+  UseFastSwipe: 1
   UseSwipeDeltaThreshold: 0
   FastSwipeThreshold: 100
   SwipeVelocityThreshold: 100

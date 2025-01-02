@@ -41,7 +41,7 @@ public class UI_StageInfoItem : UI_Base
     }
     #endregion
 
-    StageData m_stageData;
+    public StageData m_stageData;
 
     private void Awake()
     {
@@ -65,19 +65,15 @@ public class UI_StageInfoItem : UI_Base
 
     public void SetInfo(StageData data)
     {
+        ClearRewardCompleteInit();
         m_stageData = data;
         transform.localScale = Vector3.one;
-
         Refresh();
     }
 
     void Refresh()
     {
-        // StageValueText : 스테이지
         GetText((int)Texts.StageValueText).text = $"{m_stageData.stageIndex} 스테이지";
-        // StageNameValueText : 챕터 이름
-        //GetText((int)Texts.StageNameValueText).text = $"{_stageData.StageName}";
-        // StageImage : 챕터 이미지
         GetImage((int)Images.StageImage).sprite = Managers._Resource.Load<Sprite>(m_stageData.stageImage);
         if (Managers._Game.DicStageClearInfo.TryGetValue(m_stageData.stageIndex, out StageClearInfo info) == false)
             return;
