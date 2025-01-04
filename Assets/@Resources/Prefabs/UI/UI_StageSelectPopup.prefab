@@ -352,6 +352,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 958cce1cec8da7442a6fabcb05b8a5c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_stageData:
+    stageIndex: 0
+    name: 
+    stageImage: 
+    mapPrefab: 
+    eliteBossArray: 
+    waveArray: []
 --- !u!1 &1827699186750893733
 GameObject:
   m_ObjectHideFlags: 0
