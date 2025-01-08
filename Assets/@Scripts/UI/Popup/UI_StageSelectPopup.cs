@@ -95,6 +95,8 @@ public class UI_StageSelectPopup : UI_Popup
         m_scrollsnap = Utils.FindChild<HorizontalScrollSnap>(gameObject, recursive : true);
         m_scrollsnap.OnSelectionPageChangedEvent.AddListener(OnChangeStage);
         m_scrollsnap.StartingScreen = Managers._Game.CurrentStageData.stageIndex -1;
+        StageContainer = GetObject((int)GameObjects.StageScrollContentObject);
+        m_scrollsnap.ChildObjects = new GameObject[Managers._Data.StageDic.Count];
         #endregion
 
         Refresh();
@@ -107,6 +109,7 @@ public class UI_StageSelectPopup : UI_Popup
         Refresh();
     }
 
+    GameObject StageContainer;
     void Refresh()
     {
         if (m_init == false)
@@ -116,11 +119,7 @@ public class UI_StageSelectPopup : UI_Popup
             return;
         
         #region 스테이지 리스트
-        
-        GameObject StageContainer = GetObject((int)GameObjects.StageScrollContentObject);
         StageContainer.DestroyChilds();
-
-        m_scrollsnap.ChildObjects = new GameObject[Managers._Data.StageDic.Count];
         foreach (StageData stageData in Managers._Data.StageDic.Values)
         {
             UI_StageInfoItem item = Managers._UI.MakeSubItem<UI_StageInfoItem>(StageContainer.transform);
@@ -129,7 +128,6 @@ public class UI_StageSelectPopup : UI_Popup
         }
         #endregion
         StageInfoRefresh();
-
     }
 
     void StageInfoRefresh()
@@ -138,7 +136,6 @@ public class UI_StageSelectPopup : UI_Popup
         UIRefresh();
         #endregion
         //추가로 스테이지에 대한 표시할 정보가 있다면 여기에
-        LayoutRebuilder.ForceRebuildLayoutImmediate(GetObject((int)GameObjects.StageScrollContentObject).GetComponent<RectTransform>());
     }
 
     void UIRefresh()
@@ -154,18 +151,18 @@ public class UI_StageSelectPopup : UI_Popup
             GetImage((int)Images.LArrowImage).gameObject.SetActive(false);
             GetImage((int)Images.RArrowImage).gameObject.SetActive(true);
         }
-        else if (m_stageData.stageIndex >= 2 && m_stageData.stageIndex < 3)
+        else if (m_stageData.stageIndex >= 2 && m_stageData.stageIndex < 50)
         {
             GetImage((int)Images.LArrowImage).gameObject.SetActive(true);
             GetImage((int)Images.RArrowImage).gameObject.SetActive(true);
         }
-        else if (m_stageData.stageIndex == 3)
+        else if (m_stageData.stageIndex == 50)
         {
             GetImage((int)Images.LArrowImage).gameObject.SetActive(true);
             GetImage((int)Images.RArrowImage).gameObject.SetActive(false);
         }
         #endregion
-        
+
         #region 스테이지 선택 버튼
         if (Managers._Game.DicStageClearInfo.TryGetValue(m_stageData.stageIndex, out StageClearInfo info) == false)
             return;
@@ -185,7 +182,6 @@ public class UI_StageSelectPopup : UI_Popup
         else
             GetButton((int)Buttons.StageSelectButton).gameObject.SetActive(false);
         #endregion
-        
     }
 
     void OnClickStageSelectButton()
@@ -209,7 +205,6 @@ public class UI_StageSelectPopup : UI_Popup
         m_stageData = Managers._Data.StageDic[index + 1];
 
         UIRefresh();
-        
     }
 
 
