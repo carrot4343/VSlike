@@ -119,7 +119,7 @@ public class UI_StageSelectPopup : UI_Popup
             return;
         
         #region 스테이지 리스트
-        StageContainer.DestroyChilds();
+        //StageContainer.DestroyChilds();
         foreach (StageData stageData in Managers._Data.StageDic.Values)
         {
             UI_StageInfoItem item = Managers._UI.MakeSubItem<UI_StageInfoItem>(StageContainer.transform);
