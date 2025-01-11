@@ -95,11 +95,9 @@ public class UI_StageSelectPopup : UI_Popup
         m_scrollsnap = Utils.FindChild<HorizontalScrollSnap>(gameObject, recursive : true);
         m_scrollsnap.OnSelectionPageChangedEvent.AddListener(OnChangeStage);
         m_scrollsnap.StartingScreen = Managers._Game.CurrentStageData.stageIndex -1;
-        StageContainer = GetObject((int)GameObjects.StageScrollContentObject);
-        m_scrollsnap.ChildObjects = new GameObject[Managers._Data.StageDic.Count];
         #endregion
 
-        Refresh();
+        //Refresh();
         return true;
     }
 
@@ -108,8 +106,6 @@ public class UI_StageSelectPopup : UI_Popup
         m_stageData = stageData;
         Refresh();
     }
-
-    GameObject StageContainer;
     void Refresh()
     {
         if (m_init == false)
@@ -117,17 +113,27 @@ public class UI_StageSelectPopup : UI_Popup
 
         if (m_stageData == null)
             return;
-        
+
+        #region 초기화
+
+        //AppearingMonsterContainer.DestroyChilds();
         #region 스테이지 리스트
-        //StageContainer.DestroyChilds();
+        GameObject StageContainer = GetObject((int)GameObjects.StageScrollContentObject);
+        StageContainer.DestroyChilds();
+
+        m_scrollsnap.ChildObjects = new GameObject[Managers._Data.StageDic.Count];
+
         foreach (StageData stageData in Managers._Data.StageDic.Values)
         {
             UI_StageInfoItem item = Managers._UI.MakeSubItem<UI_StageInfoItem>(StageContainer.transform);
             item.SetInfo(stageData);
             m_scrollsnap.ChildObjects[stageData.stageIndex - 1] = item.gameObject;
         }
+
         #endregion
         StageInfoRefresh();
+        #endregion
+
     }
 
     void StageInfoRefresh()

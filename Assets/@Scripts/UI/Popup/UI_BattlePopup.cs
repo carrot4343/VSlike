@@ -107,10 +107,8 @@ public class UI_BattlePopup : UI_Popup
     {
         if (Managers._Game.CurrentStageData == null)
         {
-            Managers._Game.CurrentStageData = Managers._Data.StageDic[0];
+            Managers._Game.CurrentStageData = Managers._Data.StageDic[1];
         }
-
-        Managers._Game.CurrentStageData = Managers._Data.StageDic[Managers._Game.GetMaxStageClearIndex() + 1];
 
         // StageNameText : 마지막 도전한 스테이지 표시
         
@@ -132,17 +130,6 @@ public class UI_BattlePopup : UI_Popup
 
         // StageImage : 마지막 도전한 스테이지의 이미지
         GetImage((int)Images.StageImage).sprite = Managers._Resource.Load<Sprite>(Managers._Game.CurrentStageData.stageImage);
-
-        // 각 버튼의 레드닷(RedDotObject) : 유저에게 알릴것이 있을때 활성화 (상황 고민 필요)
-        // GameStartCostValueText : 게임 스타트 시 필요한 스테이나 표시하고 조건에 따라 텍스트 색상 변경 
-        // - 플레이 가능 : #FFFFFF
-        // - 플레이 불가능 : #FF1E00
-        // PaymentRewardButton : 첫결제 보상이 지급됬다면 비활성화
-
-        //if() // 현재 보유한 스테미너가 5미만 일때 
-        //    GetText((int)Texts.GameStartCostText).color = #FFFFFF;
-        //else // 현재 보유한 스테미너가 5이상 일때 
-        //    GetText((int)Texts.GameStartCostText).color = #F1331A;
 
         // 스테이지 보상 ( 클리어 조건에 따라 상태 변화 필요)
         if (info != null)
@@ -204,8 +191,6 @@ public class UI_BattlePopup : UI_Popup
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetObject((int)GameObjects.SurvivalTimeObject).GetComponent<RectTransform>());
     }
 
-    //todo
-    //UI_StaminaChargePopup, UI_stageSelectPopup 작업해야함. 
     #region ButtonClick
     void OnClickGameStartButton() // 게임 시작 버튼
     {
