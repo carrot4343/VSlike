@@ -298,7 +298,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 101
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!114 &1827699186733946885
 MonoBehaviour:
@@ -1052,7 +1052,7 @@ MonoBehaviour:
   NextButton: {fileID: 0}
   transitionSpeed: 7.5
   UseHardSwipe: 1
-  UseFastSwipe: 1
+  UseFastSwipe: 0
   UseSwipeDeltaThreshold: 0
   FastSwipeThreshold: 100
   SwipeVelocityThreshold: 100

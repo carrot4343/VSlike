@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class UI_StageInfoItem : UI_Base
 {
-    
     #region UI 기능 리스트
     // 정보 갱신
     // StageValueText : 스테이지
