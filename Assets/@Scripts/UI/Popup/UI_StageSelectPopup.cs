@@ -95,6 +95,7 @@ public class UI_StageSelectPopup : UI_Popup
         m_scrollsnap = Utils.FindChild<HorizontalScrollSnap>(gameObject, recursive : true);
         m_scrollsnap.OnSelectionPageChangedEvent.AddListener(OnChangeStage);
         m_scrollsnap.StartingScreen = Managers._Game.CurrentStageData.stageIndex -1;
+        m_scrollsnap.gameObject.DestroyChilds();
         #endregion
 
         Refresh();
@@ -120,15 +121,13 @@ public class UI_StageSelectPopup : UI_Popup
         #region 스테이지 리스트
         GameObject StageContainer = GetObject((int)GameObjects.StageScrollContentObject);
         StageContainer.DestroyChilds();
-        var num = 0;
         m_scrollsnap.ChildObjects = new GameObject[Managers._Data.StageDic.Count];
+
         foreach (StageData stageData in Managers._Data.StageDic.Values)
         {
             UI_StageInfoItem item = Managers._UI.MakeSubItem<UI_StageInfoItem>(StageContainer.transform);
             item.SetInfo(stageData);
             m_scrollsnap.ChildObjects[stageData.stageIndex - 1] = item.gameObject;
-            m_scrollsnap.ChildObjects[stageData.stageIndex - 1].transform.SetSiblingIndex(num);
-            num++;
         }
 
         #endregion

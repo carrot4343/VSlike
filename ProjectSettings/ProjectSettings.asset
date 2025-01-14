@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: RookissCompany
+  companyName: DefaultCompany
   productName: "\uC2AC\uB77C\uC784\uB9C8\uC2A4\uD130"
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
