@@ -95,7 +95,6 @@ public class UI_StageSelectPopup : UI_Popup
         m_scrollsnap = Utils.FindChild<HorizontalScrollSnap>(gameObject, recursive : true);
         m_scrollsnap.OnSelectionPageChangedEvent.AddListener(OnChangeStage);
         m_scrollsnap.StartingScreen = Managers._Game.CurrentStageData.stageIndex -1;
-        m_scrollsnap.gameObject.DestroyChilds();
         #endregion
 
         Refresh();
