@@ -50,7 +50,7 @@ namespace Data
         public Dictionary<int, PlayerData> MakeDict()
         {
             Dictionary<int, PlayerData> dict = new Dictionary<int, PlayerData>();
-            //levelÀ» key°ªÀ¸·Î ÇØ¼­ Á¤º¸ ·Îµå. (1, (level, hp, atk, exp)) ±¸Á¶
+            //levelì„ keyê°’ìœ¼ë¡œ í•´ì„œ ì •ë³´ ë¡œë“œ. (1, (level, hp, atk, exp)) êµ¬ì¡°
             foreach (PlayerData stat in stats)
                 dict.Add(stat.level, stat);
             return dict;
@@ -65,6 +65,7 @@ namespace Data
         [XmlAttribute] public int templateID;
         [XmlAttribute] public string name;
         [XmlAttribute] public string prefab;
+        [XmlAttribute] public string sprite;
         [XmlAttribute] public int level;
         [XmlAttribute] public int maxHp;
         [XmlAttribute] public int attack;
@@ -95,7 +96,7 @@ namespace Data
         [XmlAttribute] public int templateID;
         [XmlAttribute] public string name;
         [XmlAttribute] public string prefab;
-        //typeÀº enum ÀÚ·áÇüÀÎµ¥... ³ªÁß¿¡ enum Å¸ÀÔÀ¸·Î Çüº¯È¯À» ÇÏ°Å³ª data¿¡ typeÀ» intÇüÀ¸·Î º¯È¯ÇÏ´ø°¡ ÇØ¾ßÇÔ
+        //typeì€ enum ìë£Œí˜•ì¸ë°... ë‚˜ì¤‘ì— enum íƒ€ì…ìœ¼ë¡œ í˜•ë³€í™˜ì„ í•˜ê±°ë‚˜ dataì— typeì„ intí˜•ìœ¼ë¡œ ë³€í™˜í•˜ë˜ê°€ í•´ì•¼í•¨
         [XmlAttribute] public string type;
         [XmlAttribute] public int damage;
         [XmlAttribute] public int speed;
@@ -130,6 +131,7 @@ namespace Data
         public string name;
         public string stageImage;
         public string mapPrefab;
+        public List<int> appearingMonsters;
         public List<int> eliteBossArray;
         public List<WaveData> waveArray;
     }

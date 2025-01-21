@@ -77,8 +77,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
-  - m_GUID: 292f5acbea17bd74fbe775126aaee332
-    m_Address: UI_StageInfoItem.prefab
+  - m_GUID: 746dbc1875202d341aa23e219700aa27
+    m_Address: UI_StaminaChargePopup.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
@@ -87,8 +87,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
-  - m_GUID: 746dbc1875202d341aa23e219700aa27
-    m_Address: UI_StaminaChargePopup.prefab
+  - m_GUID: ba0f56b5f0aaa714f9966604682aff6f
+    m_Address: UI_MonsterInfoItem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 292f5acbea17bd74fbe775126aaee332
+    m_Address: UI_StageInfoItem.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload

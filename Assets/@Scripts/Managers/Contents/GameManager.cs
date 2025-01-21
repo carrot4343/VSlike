@@ -146,7 +146,6 @@ public class GameManager
             m_gameData.ContinueInfo = value;
         }
     }
-
     public StageData CurrentStageData
     {
         get { return m_gameData.CurrentStage; }
@@ -246,6 +245,8 @@ public class GameManager
 
         if (LoadGame())
             return;
+
+        PlayerPrefs.SetInt("ISFIRST", 1);
 
         CurrentStageData = Managers._Data.StageDic[1];
         foreach (Data.StageData stage in Managers._Data.StageDic.Values)

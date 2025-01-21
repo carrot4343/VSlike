@@ -5,6 +5,7 @@
       "name": "1스테이지",
       "stageImage": "MapIcon_01.sprite",
       "mapPrefab": "Map_01",
+      "appearingMonsters": [ 10000, 10003 ],
       "eliteBossArray": [ 11000, 11001, 11100 ],
       "waveArray": [
         {
@@ -77,6 +78,7 @@
       "name": "2스테이지",
       "stageImage": "MapIcon_08.sprite",
       "mapPrefab": "Map_02",
+      "appearingMonsters": [ 10010, 10013 ],
       "eliteBossArray": [ 11002, 11003, 11101 ],
       "waveArray": [
         {
@@ -149,6 +151,7 @@
       "name": "3스테이지",
       "stageImage": "MapIcon_14.sprite",
       "mapPrefab": "Map_03",
+      "appearingMonsters": [ 10020, 10023 ],
       "eliteBossArray": [ 11004, 11005, 11102 ],
       "waveArray": [
         {
@@ -221,6 +224,7 @@
       "name": "4스테이지",
       "stageImage": "MapIcon_14.sprite",
       "mapPrefab": "Map_03",
+      "appearingMonsters": [ 10030, 10033 ],
       "eliteBossArray": [ 11006, 11007, 11103 ],
       "waveArray": [
         {
@@ -293,6 +297,7 @@
       "name": "5스테이지",
       "stageImage": "MapIcon_14.sprite",
       "mapPrefab": "Map_03",
+      "appearingMonsters": [ 10040, 10043 ],
       "eliteBossArray": [ 11008, 11009, 11104 ],
       "waveArray": [
         {
