@@ -28,7 +28,6 @@ public class UI_StageInfoItem : UI_Base
     enum Texts
     {
         StageValueText,
-        //StageNameValueText,
         MaxWaveText,
         MaxWaveValueText,
     }
