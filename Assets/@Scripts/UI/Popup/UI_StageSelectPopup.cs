@@ -106,9 +106,11 @@ public class UI_StageSelectPopup : UI_Popup
         if (m_stageData == null)
             return;
 
-        #region 초기화
+        StageInfoRefresh();
+    }
 
-        //AppearingMonsterContainer.DestroyChilds();
+    void StageInfoRefresh()
+    {
         #region 스테이지 리스트
         GameObject StageContainer = GetObject((int)GameObjects.StageScrollContentObject);
         StageContainer.DestroyChilds();
@@ -123,13 +125,6 @@ public class UI_StageSelectPopup : UI_Popup
         }
 
         #endregion
-        StageInfoRefresh();
-        #endregion
-
-    }
-
-    void StageInfoRefresh()
-    {
         #region 스테이지 정보
         UIRefresh();
         #endregion
