@@ -38,8 +38,8 @@ public class Define
     public enum SkillType
     {
         None,
-        Sequence, // ´Ü¹ß¼º
-        Repeat, // ¹Ýº¹¼º
+        Sequence, // ë‹¨ë°œì„±
+        Repeat, // ë°˜ë³µì„±
     }
 
     public enum StageType
@@ -74,7 +74,7 @@ public class Define
     public const int STORM_BLADE_ID = 180;
     public const int FROZEN_HEART_ID = 190;
 
-    public const float DOT_DAMAGE_RATE = 0.2f;
+    public const float DOT_DAMAGE_RATE = 0.5f;
 
     public const float MAX_SPEED = 10.0f;
     public const int MAX_SKILL_LEVEL = 6;

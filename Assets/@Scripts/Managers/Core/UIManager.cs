@@ -121,6 +121,11 @@ public class UIManager
         RefreshTimeScale();
     }
 
+    public void ClearStackUI()
+    {
+        m_uiStack.Clear();
+    }
+
     public void RefreshTimeScale()
     {
         if (m_uiStack.Count > 0)

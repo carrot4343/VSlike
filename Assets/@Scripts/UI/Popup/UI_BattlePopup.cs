@@ -203,9 +203,9 @@ public class UI_BattlePopup : UI_Popup
             return;
         }
 
+        Managers._UI.ClearStackUI();
         Managers._Game.Stamina -= Define.GAME_PER_STAMINA;
         Managers._Scene.LoadScene(Define.Scene.GameScene, transform);
-        //Managers._Game.CurrentStageData = Managers._Data.StageDic[_currentStageInfo];
     }
 
     void OnClickStageSelectButton() // 스테이지 선택 버튼
