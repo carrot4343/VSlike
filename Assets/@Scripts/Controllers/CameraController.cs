@@ -1,24 +1,82 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject m_target;
+    #region ë³€ìˆ˜
+    public Transform m_playerTransform;
+    public float Height { get; set; } = 0;
+    public float Width { get; set; } = 0;
+
+    [SerializeField]
+    float _tickvalue = 5;
+    [SerializeField]
+    float _adjust = 0.5f;
+    bool _isShake = false;
+
+    #endregion
 
     void Start()
     {
-        
+        SetCameraSize();
     }
 
-    //Ä«¸Þ¶ó´Â È­¸é ³»ÀÇ ¸ðµç ¿ä¼ÒµéÀÌ update µÈ ÈÄ ¿òÁ÷¿©¾ß È­¸é ³»ÀÇ ¿À·ù¸¦ ¹æÁö ÇÒ ¼ö ÀÖÀ¸¹Ç·Î lateupdate »ç¿ë
+    void SetCameraSize()
+    {
+        Camera.main.orthographicSize = 21f;
+        Height = Camera.main.orthographicSize;
+        Width = Height * Screen.width / Screen.height;
+    }
+
     void LateUpdate()
     {
-        if(m_target == null)
-        {
-            return;
-        }
+        if (m_playerTransform != null && Managers._Game.CurrentMap != null && _isShake == false)
+            LimitCameraArea();
+    }
 
-        transform.position = new Vector3(m_target.transform.position.x, m_target.transform.position.y, -10);
+    void LimitCameraArea()
+    {
+        transform.position = new Vector3(m_playerTransform.position.x, m_playerTransform.position.y, -10f);
+
+        float limitX = Managers._Game.CurrentMap.MapSize.x * 0.5f - Width;
+        float clampX = Mathf.Clamp(transform.position.x, -limitX, limitX);
+
+        float limitY = Managers._Game.CurrentMap.MapSize.y * 0.5f - Height;
+        float clampY = Mathf.Clamp(transform.position.y, -limitY, limitY);
+
+        transform.position = new Vector3(clampX, clampY, -10f);
+    }
+
+    Vector3 camPos;
+    public void Shake()
+    {
+        if (_isShake == false)
+            StartCoroutine(CoShake(0.25f));
+    }
+
+
+
+    IEnumerator CoShake(float duration)
+    {
+        float halfDuration = duration / 2;
+        float elapsed = 0f;
+        float tick = Random.Range(-10f, 10f);
+        _isShake = true;
+        while (elapsed < duration)
+        {
+            if (Managers._UI.GetUIStackCount() > 0)
+                break;
+
+            elapsed += Time.deltaTime / halfDuration;
+
+            tick += Time.deltaTime * _tickvalue;
+            transform.position += new Vector3(
+                Mathf.PerlinNoise(tick, 0) - .5f,
+                Mathf.PerlinNoise(0, tick) - .5f,
+                0f) * _adjust * Mathf.PingPong(elapsed, halfDuration);
+            yield return null;
+        }
+        //yield return new WaitForSeconds(0.1f);
+        _isShake = false;
     }
 }

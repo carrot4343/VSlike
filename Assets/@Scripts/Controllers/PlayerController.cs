@@ -38,19 +38,21 @@ public class PlayerController : CreatureController
         if (base.Init() == false)
             return false;
 
+        FindObjectOfType<CameraController>().m_playerTransform = gameObject.transform;
+        transform.localScale = Vector3.one;
         m_speed = 5.0f;
         
         return true;
     }
 
-    //¼ø¼­°¡ ²¿ÀÌ´Â°É ¹æÁöÇÏ±â À§ÇØ ¸Å´ÏÀú¸¦ »ç¿ëÇÏ´Â°Ç initlate¿¡¼­ ¼öÇà.
-    //½ÇÁ¦·Î addskillÀ» init¿¡ ¹èÄ¡ÇÏ¸é object manager¿¡¼­ ¾ÆÁ÷ ¹èÄ¡µÇÁö ¾ÊÀº player°´Ã¼ ·Îµå¸¦ ½ÃµµÇÏ¿© null error¸¦ ¹ß»ı½ÃÅ´.
+    //ìˆœì„œê°€ ê¼¬ì´ëŠ”ê±¸ ë°©ì§€í•˜ê¸° ìœ„í•´ ë§¤ë‹ˆì €ë¥¼ ì‚¬ìš©í•˜ëŠ”ê±´ initlateì—ì„œ ìˆ˜í–‰.
+    //ì‹¤ì œë¡œ addskillì„ initì— ë°°ì¹˜í•˜ë©´ object managerì—ì„œ ì•„ì§ ë°°ì¹˜ë˜ì§€ ì•Šì€ playerê°ì²´ ë¡œë“œë¥¼ ì‹œë„í•˜ì—¬ null errorë¥¼ ë°œìƒì‹œí‚´.
     public override bool InitLate()
     {
         base.InitLate();
 
         Managers._Game.OnMoveDirChanged += HandleOnMoveDirChanged;
-        //±âº»½ºÅ³
+        //ê¸°ë³¸ìŠ¤í‚¬
         Skills.AddSkill<EgoSword>(transform.position, transform);
         return true;
     }
@@ -117,7 +119,8 @@ public class PlayerController : CreatureController
 
     public override void OnDamaged(BaseController attacker, int damage)
     {
-        //±âÁ¸ ºÎ¸ğÅ¬·¡½ºÀÇ OnDamaged ¸¦ À¯ÁöÇÏ¸é¼­
+        //ê¸°ì¡´ ë¶€ëª¨í´ë˜ìŠ¤ì˜ OnDamaged ë¥¼ ìœ ì§€í•˜ë©´ì„œ
+        Managers._Game.CameraController.Shake();
         base.OnDamaged(attacker, damage);
     }
 }

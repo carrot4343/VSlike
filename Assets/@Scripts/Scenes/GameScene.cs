@@ -16,6 +16,8 @@ public class GameScene : BaseScene
         //플레이어 스폰
         var player = Managers._Object.Spawn<PlayerController>(Vector3.zero);
 
+        Managers._Game.CameraController = FindObjectOfType<CameraController>();
+
         //조이스틱 생성
         var joystick = Managers._Resource.Instantiate("UI_Joystick.prefab");
         joystick.name = "@UI_Jotstick";
@@ -23,8 +25,6 @@ public class GameScene : BaseScene
         //맵 생성
         var map = Managers._Resource.Instantiate("Map_01.prefab");
         map.name = "@Map";
-        //카메라 타겟 지정(플레이어)
-        Camera.main.GetComponent<CameraController>().m_target = player.gameObject;
 
         //킬 카운트, 젬 카운트 변경 시 수행되어야 할 작업
         Managers._Game.OnKillCountChanged -= HandleOnKillCountChanged;

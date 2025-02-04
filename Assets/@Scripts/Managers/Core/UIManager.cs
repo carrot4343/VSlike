@@ -60,7 +60,10 @@ public class UIManager
         }
 
     }
-
+    public int GetUIStackCount()
+    {
+        return m_uiStack.Count;
+    }
     public T MakeSubItem<T>(Transform parent = null, string name = null, bool pooling = true) where T : UI_Base
     {
         if (string.IsNullOrEmpty(name))

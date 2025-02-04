@@ -236,7 +236,7 @@ public class GameManager
             OnPlayerLevelChanged?.Invoke(value);
         }
     }
-
+    public CameraController CameraController { get; set; }
     public bool IsLoaded = false;
     public bool IsGameEnd = false;
     public void Init()
