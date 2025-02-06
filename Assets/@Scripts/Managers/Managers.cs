@@ -52,12 +52,12 @@ public class Managers : MonoBehaviour
         }
     }
 
-    //°¢°¢ µî·ÏµÈ collection, actionµéÀ» ºñ¿ì´Â ÀÛ¾÷
+    //ê°ê° ë“±ë¡ëœ collection, actionë“¤ì„ ë¹„ìš°ëŠ” ì‘ì—…
     public static void Clear()
     {
         //_Sound.Clear();
         _Scene.Clear();
-        //_UI.Clear();
+        _UI.Clear();
         //_Pool.Clear();
         //_Object.Clear();
     }

@@ -23,7 +23,7 @@ public class CameraController : MonoBehaviour
 
     void SetCameraSize()
     {
-        Camera.main.orthographicSize = 21f;
+        Camera.main.orthographicSize = 18f;
         Height = Camera.main.orthographicSize;
         Width = Height * Screen.width / Screen.height;
     }

@@ -138,6 +138,13 @@ public class UI_StageSelectPopup : UI_Popup
         //-데이터 연동 과정 점검
         //-Data가 입력되는 과정을 하나하나 로그를 찍어 관찰
         //-연관된 객체의 부모 객체 점검
+
+        //25.02.06
+        //일단 드래그로 넘어가지 않는 현상의 원인을 파악함. ui가 남아있는 동안 timescale 이 0이 되어 애니메이션이 동작을 하지 않았던 것.
+        //ui쪽을 잘 수정해서 TimeScale = 1 이 될 수 있게 하면 해결 가능할 듯함.
+        //Tlqkf드디ㅓ 해결하뮤ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ
+        //ui stack이 정상적으로 사라지지 않는 현상이 있었고 그로 인해 timescale이 0으로 남아있었고(RefreshTimeScale 에서)
+        //이를 해결하는 과정에서 ui manager를 엎으면서 stack logic을 제대로 처리하게 되면서 scroll object가 정상적으로 구성됨.
         #endregion
         #region 스테이지 정보
         UIRefresh();

@@ -39,7 +39,7 @@ public class UI_StageInfoItem : UI_Base
     }
     #endregion
 
-    public StageData m_stageData;
+    StageData m_stageData;
 
     private void Awake()
     {

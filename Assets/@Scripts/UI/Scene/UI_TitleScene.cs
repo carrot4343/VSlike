@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_TitleScene : UI_Base
+public class UI_TitleScene : UI_Scene
 {
     enum GameObjects
     {

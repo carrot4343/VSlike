@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-public class UI_SkillSelectPopup : UI_Base
+public class UI_SkillSelectPopup : UI_Popup
 {
     #region enums
     enum GameObjects
@@ -84,14 +84,14 @@ public class UI_SkillSelectPopup : UI_Base
         m_grid = GetObject((int)GameObjects.SkillCardSelectListObject).transform;
     }
 
-    //OnEnable ¿¡¼­ RefreshUI ¸¦ ÇÏ¸é null error°¡ ¹ß»ıÇÑ´Ù. ÀÌÀ¯°¡ ¹»±î? -> »ı¸íÁÖ±â ¹®Á¦¿´À½. Init ¸Ş¼­µå¸¦ Start°¡ ¾Æ´Ñ Awake¿¡ ³õÀ½À¸·Î ÇØ°á.
+    //OnEnable ì—ì„œ RefreshUI ë¥¼ í•˜ë©´ null errorê°€ ë°œìƒí•œë‹¤. ì´ìœ ê°€ ë­˜ê¹Œ? -> ìƒëª…ì£¼ê¸° ë¬¸ì œì˜€ìŒ. Init ë©”ì„œë“œë¥¼ Startê°€ ì•„ë‹Œ Awakeì— ë†“ìŒìœ¼ë¡œ í•´ê²°.
     void RefreshUI()
     {
         GetText((int)Texts.BeforeLevelValueText).text = (Managers._Game.PlayerLevel - 1).ToString();
         GetText((int)Texts.AfterLevelValueText).text = Managers._Game.PlayerLevel.ToString();
         GetText((int)Texts.CardRefreshCountValueText).text = $"{restRefresh} / 3";
 
-        //º¸À¯ÁßÀÎ skill icon load
+        //ë³´ìœ ì¤‘ì¸ skill icon load
         for (int i = (int)Image.BattleSkilI_Icon_0; i < (int)Image.BattleSkilI_Icon_0 + Managers._Game.Player.Skills.Skills.Count; i++)
         {
             int templateID = Managers._Game.Player.Skills.Skills[i].TemplateID;
@@ -125,7 +125,7 @@ public class UI_SkillSelectPopup : UI_Base
         int[] randomInt = new int[size];
 
         List<int> tempList = new List<int>(Managers._Game.Player.Skills.availableTemplateIdList);
-        //½ºÅ³ º¸À¯ »óÇÑ¼±¿¡ µµ´ŞÇÑ °æ¿ì ¸®½ºÆ® Á¦ÇÑ
+        //ìŠ¤í‚¬ ë³´ìœ  ìƒí•œì„ ì— ë„ë‹¬í•œ ê²½ìš° ë¦¬ìŠ¤íŠ¸ ì œí•œ
         if (Managers._Game.Player.Skills.Skills.Count >= 6)
         {
             for (int i = 0; i < 6; i++)
@@ -133,12 +133,12 @@ public class UI_SkillSelectPopup : UI_Base
                 tempList[i] = Managers._Game.Player.Skills.Skills[i].TemplateID / 10 * 10;
             }
         }
-        //ÀÌ¹Ì ¾÷±×·¹ÀÌµå°¡ ¿Ï·áµÈ ½ºÅ³ÀÇ id¸¦ ¸®½ºÆ®¿¡¼­ Á¦°Å
+        //ì´ë¯¸ ì—…ê·¸ë ˆì´ë“œê°€ ì™„ë£Œëœ ìŠ¤í‚¬ì˜ idë¥¼ ë¦¬ìŠ¤íŠ¸ì—ì„œ ì œê±°
         for (int i = 0; i < Managers._Game.Player.Skills.Skills.Count; i++)
         {
             if (Managers._Game.Player.Skills.Skills[i].SkillLevel >= 6)
             {
-                //listÀÇ template id´Â ±âº» id¶ó¼­ 10 ´ÜÀ§ÀÌ¹Ç·Î 1ÀÇÀÚ¸®¿¡¼­ ³»¸² ÇÔ. template id = template id + skill levelÀÌ±â ¶§¹®
+                //listì˜ template idëŠ” ê¸°ë³¸ idë¼ì„œ 10 ë‹¨ìœ„ì´ë¯€ë¡œ 1ì˜ìë¦¬ì—ì„œ ë‚´ë¦¼ í•¨. template id = template id + skill levelì´ê¸° ë•Œë¬¸
                 tempList.Remove((Managers._Game.Player.Skills.Skills[i].TemplateID / 10) * 10);
             }
         }
@@ -153,7 +153,7 @@ public class UI_SkillSelectPopup : UI_Base
         return randomInt;
     }
 
-    //ÀÜ¿© refresh´Â ½ºÅ×ÀÌÁö¸¦ °ü¸®ÇÏ´Â Å¬·¡½º¿¡ ÀÌ¾çÇÒ ÇÊ¿ä°¡ ÀÖÀ½. ÀÏ´ÜÀº ±â´É±¸ÇöÀ» À§ÇØ,,,,
+    //ì”ì—¬ refreshëŠ” ìŠ¤í…Œì´ì§€ë¥¼ ê´€ë¦¬í•˜ëŠ” í´ë˜ìŠ¤ì— ì´ì–‘í•  í•„ìš”ê°€ ìˆìŒ. ì¼ë‹¨ì€ ê¸°ëŠ¥êµ¬í˜„ì„ ìœ„í•´,,,,
     int restRefresh = 3;
     void OnClickCardRefreshButton()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 using Unity.VisualScripting;
 using UnityEngine.UI;
 
-public class UI_GameResultPopup : UI_Base
+public class UI_GameResultPopup : UI_Popup
 {
     enum GameObjects
     { 
@@ -58,9 +58,9 @@ public class UI_GameResultPopup : UI_Base
             return;
 
         GetText((int)Texts.GameResultPopupTitleText).text = "Game Result";
-        GetText((int)Texts.ResultStageValueText).text = "STAGE 1"; //ÃßÈÄ ½ºÅ×ÀÌÁö µ¥ÀÌÅÍ¸¦ ·Îµå ÇÒ ¼ö ÀÖµµ·Ï º¯°æ
+        GetText((int)Texts.ResultStageValueText).text = "STAGE 1"; //ì¶”í›„ ìŠ¤í…Œì´ì§€ ë°ì´í„°ë¥¼ ë¡œë“œ í•  ìˆ˜ ìˆë„ë¡ ë³€ê²½
         GetText((int)Texts.ResultSurvivalTimeText).text = "Survival Time";
-        GetText((int)Texts.ResultSurvivalTimeValueText).text = "15:00"; //³²Àº ½Ã°£ µ¥ÀÌÅÍ¸¦ ·Îµå ÇÒ ¼ö ÀÖµµ·Ï 
+        GetText((int)Texts.ResultSurvivalTimeValueText).text = "15:00"; //ë‚¨ì€ ì‹œê°„ ë°ì´í„°ë¥¼ ë¡œë“œ í•  ìˆ˜ ìˆë„ë¡ 
         GetText((int)Texts.ResultGoldValueText).text = Managers._Game.Gold.ToString();
         GetText((int)Texts.ResultKillValueText).text = Managers._Game.KillCount.ToString();
         GetText((int)Texts.ConfirmButtonText).text = "OK";
@@ -71,8 +71,8 @@ public class UI_GameResultPopup : UI_Base
         if (m_init == false)
             return;
 
-        GetText((int)Texts.ResultStageValueText).text = "STAGE 1"; //ÃßÈÄ ½ºÅ×ÀÌÁö µ¥ÀÌÅÍ¸¦ ·Îµå ÇÒ ¼ö ÀÖµµ·Ï º¯°æ
-        GetText((int)Texts.ResultSurvivalTimeValueText).text = "15:00"; //³²Àº ½Ã°£ µ¥ÀÌÅÍ¸¦ ·Îµå ÇÒ ¼ö ÀÖµµ·Ï 
+        GetText((int)Texts.ResultStageValueText).text = "STAGE 1"; //ì¶”í›„ ìŠ¤í…Œì´ì§€ ë°ì´í„°ë¥¼ ë¡œë“œ í•  ìˆ˜ ìˆë„ë¡ ë³€ê²½
+        GetText((int)Texts.ResultSurvivalTimeValueText).text = "15:00"; //ë‚¨ì€ ì‹œê°„ ë°ì´í„°ë¥¼ ë¡œë“œ í•  ìˆ˜ ìˆë„ë¡ 
         GetText((int)Texts.ResultGoldValueText).text = Managers._Game.Gold.ToString();
         GetText((int)Texts.ResultKillValueText).text = Managers._Game.KillCount.ToString();
         //TODO
@@ -90,7 +90,7 @@ public class UI_GameResultPopup : UI_Base
 
     void OnClickComfirmButton()
     {
-        //DestroyÇÏ°í Instatiate ÇÏ´Â °úÁ¤À» ¹İº¹ÇÏ±â º¸´Ü È°¼ºÈ­ ºñÈ°¼ºÈ­°¡ ¸®¼Ò½º¸¦ ´ú Àâ¾Æ¸ÔÀ¸¹Ç·Î
+        //Destroyí•˜ê³  Instatiate í•˜ëŠ” ê³¼ì •ì„ ë°˜ë³µí•˜ê¸° ë³´ë‹¨ í™œì„±í™” ë¹„í™œì„±í™”ê°€ ë¦¬ì†ŒìŠ¤ë¥¼ ëœ ì¡ì•„ë¨¹ìœ¼ë¯€ë¡œ
         gameObject.SetActive(false);
     }
 }

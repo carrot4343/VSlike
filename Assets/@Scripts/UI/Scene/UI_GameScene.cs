@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UI_GameScene : UI_Base
+public class UI_GameScene : UI_Scene
 {
     float m_expRatio = 0;
     public void SetGemCountRatio(float ratio)
@@ -61,7 +61,7 @@ public class UI_GameScene : UI_Base
             return;
 
         GetText((int)Texts.WaveText).text = "Wave";
-        GetText((int)Texts.WaveValueText).text = "1"; //ÇöÀç ¸î ¿şÀÌºêÀÎÁö
+        GetText((int)Texts.WaveValueText).text = "1"; //í˜„ì¬ ëª‡ ì›¨ì´ë¸Œì¸ì§€
         GetText((int)Texts.TimeLimitValueText).text = "15:00";
         GetText((int)Texts.GoldValueText).text = Managers._Game.Gold.ToString();
         GetText((int)Texts.KillValueText).text = Managers._Game.KillCount.ToString();

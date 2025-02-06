@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class GameScene : BaseScene
 {
+    UI_GameScene m_ui;
     void Start()
     {
         SceneType = Define.Scene.GameScene;
         //기본 UI 표시
-        Managers._UI.ShowSceneUI<UI_GameScene>();
+        m_ui = Managers._UI.ShowSceneUI<UI_GameScene>();
 
         //스포닝풀 생산
         m_spawningPool = gameObject.AddComponent<SpawningPool>();
@@ -25,6 +26,7 @@ public class GameScene : BaseScene
         //맵 생성
         var map = Managers._Resource.Instantiate("Map_01.prefab");
         map.name = "@Map";
+        map.GetComponent<Map>().Init();
 
         //킬 카운트, 젬 카운트 변경 시 수행되어야 할 작업
         Managers._Game.OnKillCountChanged -= HandleOnKillCountChanged;

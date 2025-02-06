@@ -10,7 +10,7 @@ public class UI_SkillCardItem : UI_Base
     bool m_isNew;
     List<SkillBase> m_playerSkill;
     
-    //OnEnable¿¡¼­ È¤Àº refresh¿¡¼­ Scale°ªÀ» 1·Î ¹Ù²Ù°Ô ÇÏÀÚ. ¿Ö ÀÌ·± Çö»óÀÌ »ı±æ±î? << ¾ÈµÊ. °­Á¦·Î ÀÏ´Ü pixelÀ» ´Ã·Á³õ±ä Çß´Âµ¥...
+    //OnEnableì—ì„œ í˜¹ì€ refreshì—ì„œ Scaleê°’ì„ 1ë¡œ ë°”ê¾¸ê²Œ í•˜ì. ì™œ ì´ëŸ° í˜„ìƒì´ ìƒê¸¸ê¹Œ? << ì•ˆë¨. ê°•ì œë¡œ ì¼ë‹¨ pixelì„ ëŠ˜ë ¤ë†“ê¸´ í–ˆëŠ”ë°...
     public void SetInfo(int templateID)
     {
         m_templateID = templateID;
@@ -48,13 +48,13 @@ public class UI_SkillCardItem : UI_Base
     {
         CardNameText,
         SkillDescriptionText,
-        NewText, //ÁøÂ¥ "new" ÅØ½ºÆ®ÀÓ
+        NewText, //ì§„ì§œ "new" í…ìŠ¤íŠ¸ì„
         EvoText,
     }
 
     enum Buttons
     {
-        //ÀÌ UI ÀüÃ¼°¡ ÇÏ³ªÀÇ ¹öÆ°ÀÓ. ±×·¯¸é ÀÌ°É Bind ·Î ¿¬°áÇØ¾ß ÇÏ´Â°¡? ÀÇ¹®Á¡
+        //ì´ UI ì „ì²´ê°€ í•˜ë‚˜ì˜ ë²„íŠ¼ì„. ê·¸ëŸ¬ë©´ ì´ê±¸ Bind ë¡œ ì—°ê²°í•´ì•¼ í•˜ëŠ”ê°€? ì˜ë¬¸ì 
         SkillCardBackgroundImage,
     }
 
