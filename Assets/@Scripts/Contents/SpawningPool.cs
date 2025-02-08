@@ -10,10 +10,9 @@ public class SpawningPool : MonoBehaviour
     float m_spawnInterval = 0.1f;
     float m_stageInterval = 10.0f;
     int m_maxMonsterCount = 500;
-    int m_waveMax = 1000;
+    int m_waveMax = 100;
     int m_spawnCount = 0;
 
-    public int SpawnTemplateID { get; set; }
     public int SpawnEliteTemplateID { get; set; }
     public int SpawnBossTemplateID { get; set; }
 
@@ -45,7 +44,7 @@ public class SpawningPool : MonoBehaviour
                 SpecialSpawn(Managers._Game.CurrentWaveData.eliteID[0]);
                 yield return new WaitForSeconds(m_stageInterval);
             }
-            SpawnTemplateID += 1;
+
             m_spawnCount = 0;
         }
         //배열 마지막은 boss id
@@ -78,6 +77,5 @@ public class SpawningPool : MonoBehaviour
     public void Clear()
     {
         StopCoroutine(CoUpdateSpawningPool());
-        SpawnTemplateID = (int)(SpawnTemplateID / 10) * 10;
     }
 }
