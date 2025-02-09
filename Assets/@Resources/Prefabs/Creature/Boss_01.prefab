@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 172186902061502101}
   - component: {fileID: 5352567305372701676}
   - component: {fileID: 8348940882743115943}
-  - component: {fileID: 2826835564878606555}
   - component: {fileID: 3100588931042490990}
+  - component: {fileID: 2948824190305854124}
   m_Layer: 0
   m_Name: Boss_01
   m_TagString: Untagged
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &5352567305372701676
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -107,7 +107,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!50 &8348940882743115943
 Rigidbody2D:
   serializedVersion: 4
@@ -129,22 +129,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &2826835564878606555
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7532676317545343419}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.605}
-  serializedVersion: 2
-  m_Radius: 1.4
 --- !u!114 &3100588931042490990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,3 +141,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f9903990ce3d504ca340d3eee3a063c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &2948824190305854124
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7532676317545343419}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1.605}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 2.61, y: 3.21}
+    newSize: {x: 2.61, y: 3.21}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2.8}
+  m_EdgeRadius: 0

@@ -7,26 +7,28 @@ public class Move : SequenceSkill
 {
     Rigidbody2D m_rigidbody;
     Coroutine m_coroutine;
+    MonsterController m_controller;
 
     public override void DoSkill(Action callback = null)
     {
         if (m_coroutine != null)
             StopCoroutine(m_coroutine);
 
+        m_controller = GetComponent<MonsterController>();
         m_coroutine = StartCoroutine(CoMove(callback));
     }
 
     float Speed { get; } = 2.0f;
-    string AnimationName { get; } = "Moving";
 
     IEnumerator CoMove(Action callback = null)
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
-        GetComponent<Animator>().Play(AnimationName);
+
         float elapsed = 0;
 
         while (true)
         {
+            m_controller.CreatureState = Define.CreatureState.Moving;
             elapsed += Time.deltaTime;
             if (elapsed > 5.0f)
                 break;
@@ -34,11 +36,13 @@ public class Move : SequenceSkill
             Vector3 dir = ((Vector2)Managers._Game.Player.transform.position - m_rigidbody.position).normalized;
             Vector2 targetPosition = Managers._Game.Player.transform.position + dir * UnityEngine.Random.Range(1, 4);
 
-            //Target°ú ÃæºÐÈ÷ °¡±î¿öÁö¸é
-            if (Vector3.Distance(m_rigidbody.position, targetPosition) <= 5.0f)
-                //TODO
-                //Attack State·Î ¹Ù²ï´Ù´ø°¡
+            //Targetê³¼ ì¶©ë¶„ížˆ ê°€ê¹Œì›Œì§€ë©´
+            if (Vector3.Distance(m_rigidbody.position, targetPosition) <= 4.0f)
+            {
+                m_controller.CreatureState = Define.CreatureState.Skill;
+                yield return new WaitForSeconds(0.5f);
                 continue;
+            }
 
             Vector2 dirVec = targetPosition - m_rigidbody.position;
             Vector2 nextVec = dirVec.normalized * Speed * Time.fixedDeltaTime;
@@ -47,7 +51,7 @@ public class Move : SequenceSkill
             yield return null;
         }
 
-        //ÄÝ¹éÇÔ¼ö ¼öÇà
+        //ì½œë°±í•¨ìˆ˜ ìˆ˜í–‰
         callback?.Invoke();
     }
 }

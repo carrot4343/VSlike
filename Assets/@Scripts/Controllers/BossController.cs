@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class BossController : MonsterController
 {
+    BoxCollider2D m_collider;
+    Vector2 defaultColliderSize;
     public override bool Init()
     {
-        //SkillBook Ãß°¡µÊ.
+        //SkillBook ì¶”ê°€ë¨.
         base.Init();
 
         m_animator = GetComponent<Animator>();
+        m_collider = GetComponent<BoxCollider2D>();
+        defaultColliderSize = m_collider.size;
+
+        
         m_HP = 10000;
 
-        //Move¶ÇÇÑ Skill »óÅÂ¿¡ Æ÷ÇÔÀÌ¹Ç·Î ±âº» State¸¦ Skill·Î ¼³Á¤
+        //Moveë˜í•œ Skill ìƒíƒœì— í¬í•¨ì´ë¯€ë¡œ ê¸°ë³¸ Stateë¥¼ Skillë¡œ ì„¤ì •
         CreatureState = Define.CreatureState.Skill;
 
-        //½ºÅ³ÀÇ Sequence¸¦ µî·ÏÇÏ°í
+        //ìŠ¤í‚¬ì˜ Sequenceë¥¼ ë“±ë¡í•˜ê³ 
         Skills.AddSkill<Move>(transform.position);
         Skills.AddSkill<Dash>(transform.position);
         Skills.AddSkill<Dash>(transform.position);
         Skills.AddSkill<Dash>(transform.position);
-        //¼öÇà
+        //ìˆ˜í–‰
         Skills.StartNextSequenceSkill();
 
         return true;
@@ -28,26 +34,30 @@ public class BossController : MonsterController
     //State Pattern
     public override void UpdateAnimation()
     {
-        //ÇöÀç State¿¡ µû¶ó animation ¼öÇà. State¿¡ º¯È­°¡ ÀÖÀ» ¶§ ½ÇÇàµÊ.
+        //í˜„ì¬ Stateì— ë”°ë¼ animation ìˆ˜í–‰. Stateì— ë³€í™”ê°€ ìˆì„ ë•Œ ì‹¤í–‰ë¨.
         switch (CreatureState)
         {
             case Define.CreatureState.Idle:
                 m_animator.Play("Idle");
+                m_collider.size = defaultColliderSize;
                 break;
             case Define.CreatureState.Moving:
                 m_animator.Play("Moving");
+                m_collider.size = defaultColliderSize;
                 break;
             case Define.CreatureState.Skill:
+                m_collider.size = new Vector2(defaultColliderSize.x * 2, defaultColliderSize.y);
                 m_animator.Play("Attack");
                 break;
             case Define.CreatureState.Dead:
                 m_animator.Play("Death");
+                m_collider.size = defaultColliderSize;
                 break;
         }
     }
-    //MonsterController¿¡¼­ »ó¼Ó¹ŞÀº UpdateDead¿¡¼­ 
-    //ÀÌ¹Ì OnDead ¶ó´Â ÇÔ¼ö¿¡¼­ DespawnÀ» ºñ·ÔÇÑ ¿©·¯ ÇÔ¼öµéÀ» Ã³¸®ÇÏ°í ÀÖ´Âµ¥ ±»ÀÌ ÇÊ¿äÇÒ±î? ÀÇ¹®
-    //½ÇÇè °á°ú µüÈ÷ ¹®Á¦´Â ¾øÀ½
+    //MonsterControllerì—ì„œ ìƒì†ë°›ì€ UpdateDeadì—ì„œ 
+    //ì´ë¯¸ OnDead ë¼ëŠ” í•¨ìˆ˜ì—ì„œ Despawnì„ ë¹„ë¡¯í•œ ì—¬ëŸ¬ í•¨ìˆ˜ë“¤ì„ ì²˜ë¦¬í•˜ê³  ìˆëŠ”ë° êµ³ì´ í•„ìš”í• ê¹Œ? ì˜ë¬¸
+    //ì‹¤í—˜ ê²°ê³¼ ë”±íˆ ë¬¸ì œëŠ” ì—†ìŒ
     //protected override void UpdateDead()
     //{
     //    if (m_coWait == null)
@@ -62,7 +72,7 @@ public class BossController : MonsterController
 
     protected override void OnDead()
     {
-        //»óÅÂ¸¦ Dead·Î º¯°æ
+        //ìƒíƒœë¥¼ Deadë¡œ ë³€ê²½
         CreatureState = Define.CreatureState.Dead;
         base.OnDead();
 
