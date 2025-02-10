@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SkillDatas>
-  <SkillData templateID="100" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="100" coolTime="1.0" level="1"
+  <SkillData templateID="100" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="10000" coolTime="1.0" level="1"
              description="Attack that sweeps the front." image="EgoSword_Icon.sprite">
   </SkillData>
   <SkillData templateID="101" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="150" coolTime="1.0" level="2"

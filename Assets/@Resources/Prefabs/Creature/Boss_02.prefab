@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4810074280743722416}
   - component: {fileID: 4134305312677804268}
   - component: {fileID: 8335203891266209371}
+  - component: {fileID: 3647947912477464189}
   m_Layer: 0
   m_Name: Boss_02
   m_TagString: Untagged
@@ -154,3 +155,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.1, y: 2.8}
   m_EdgeRadius: 0
+--- !u!114 &3647947912477464189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7887945258959265876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f9903990ce3d504ca340d3eee3a063c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

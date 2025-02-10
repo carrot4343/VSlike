@@ -24,7 +24,7 @@ public class GameScene : BaseScene
         joystick.name = "@UI_Jotstick";
 
         //맵 생성
-        var map = Managers._Resource.Instantiate("Map_01.prefab");
+        var map = Managers._Resource.Instantiate(Managers._Game.CurrentStageData.mapPrefab + ".prefab");
         map.name = "@Map";
         map.GetComponent<Map>().Init();
 
@@ -89,11 +89,7 @@ public class GameScene : BaseScene
 
     public void HandleOnKillCountChanged(int killCount)
     {
-        //boss spawn
-        if(killCount == 2999)
-        {
-            StageType = Define.StageType.Boss;
-        }
+
     }
 
     private void OnDestroy()

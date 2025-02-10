@@ -16,6 +16,7 @@ public class StageClearInfo
     public int MaxWaveIndex = 0;
     public bool isClear = false;
 }
+
 [Serializable]
 public class GameData
 {
@@ -30,7 +31,7 @@ public class GameData
     public StageData CurrentStage = new StageData();
     public Dictionary<int, StageClearInfo> DicStageClearInfo = new Dictionary<int, StageClearInfo>();
 }
-#region 미완
+
 [Serializable]
 public class ContinueData
 {
@@ -97,10 +98,9 @@ public class ContinueData
         //SoulShopList.Clear();
         //SavedSupportSkill.Clear();
         SavedBattleSkill.Clear();
-
     }
 }
-#endregion
+
 public class GameManager
 {
     public GameData m_gameData = new GameData();
@@ -159,6 +159,10 @@ public class GameManager
     {
         get { return m_gameData.ContinueInfo.WaveIndex; }
         set { m_gameData.ContinueInfo.WaveIndex = value; }
+    }
+    public void SetNextStage()
+    {
+        CurrentStageData = Managers._Data.StageDic[CurrentStageData.stageIndex + 1];
     }
 
     public int GetMaxStageIndex()
@@ -294,6 +298,14 @@ public class GameManager
             m_gameData = data;
         IsLoaded = true;
         return true;
+    }
+
+    public void ClearContinueData()
+    {
+        //Managers._Game.SoulShopList.Clear();
+        ContinueInfo.Clear();
+        CurrentWaveIndex = 0;
+        SaveGame();
     }
     public void Clear()
     {
