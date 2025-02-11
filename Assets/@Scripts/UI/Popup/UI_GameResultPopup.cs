@@ -27,7 +27,7 @@ public class UI_GameResultPopup : UI_Popup
 
     enum Buttons
     {
-        StatisticsButton,
+        //StatisticsButton,
         ConfirmButton,
     }
 
@@ -75,11 +75,6 @@ public class UI_GameResultPopup : UI_Popup
         GetText((int)Texts.ResultGoldValueText).text = Managers._Game.Gold.ToString();
         GetText((int)Texts.ResultKillValueText).text = Managers._Game.KillCount.ToString();
         //TODO
-    }
-
-    private void OnEnable()
-    {
-        RefreshUI();
     }
 
     void OnClickStatisticsButton()

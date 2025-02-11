@@ -76,7 +76,8 @@ public class BossController : MonsterController
         CreatureState = Define.CreatureState.Dead;
         base.OnDead();
 
-        Managers._UI.ShowPopupUI<UI_GameResultPopup>();
+        UI_GameResultPopup resultUI = Managers._UI.ShowPopupUI<UI_GameResultPopup>();
+        resultUI.SetInfo();
     }
 }
 

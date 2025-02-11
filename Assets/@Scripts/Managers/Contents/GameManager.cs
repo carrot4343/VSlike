@@ -272,8 +272,9 @@ public class GameManager
     {
         if (Player != null)
         {
-            m_gameData.ContinueInfo.SavedBattleSkill = Player.Skills?.Skills;
+            //m_gameData.ContinueInfo.SavedBattleSkill = Player.Skills?.Skills;
             //m_gameData.ContinueInfo.SavedSupportSkill = Player.Skills?.SupportSkills;
+            //player skill이 null이 되는듯? 일단 주석 처리하고 추후 처리
         }
         string jsonStr = JsonConvert.SerializeObject(m_gameData);
         File.WriteAllText(m_path, jsonStr);
