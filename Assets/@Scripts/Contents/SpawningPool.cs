@@ -10,7 +10,7 @@ public class SpawningPool : MonoBehaviour
     float m_spawnInterval = 0.1f;
     float m_stageInterval = 1.0f;
     int m_maxMonsterCount = 500;
-    int m_waveMax = 1;
+    int m_waveMax = 300;
     int m_spawnCount = 0;
     //default 0.1 10.0 500 1000 0
     public int SpawnEliteTemplateID { get; set; }
@@ -29,7 +29,6 @@ public class SpawningPool : MonoBehaviour
     IEnumerator CoUpdateSpawningPool()
     {
 
-        //한 웨이브에 1000마리?
         for(int i = 0; i < 9; i++)
         {
             Managers._Game.CurrentWaveIndex = i;

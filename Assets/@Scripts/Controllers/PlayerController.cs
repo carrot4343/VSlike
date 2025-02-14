@@ -7,7 +7,7 @@ public class PlayerController : CreatureController
 {
     Vector2 m_moveDir = Vector2.zero;
     float EnvCollectDist { get; set; } = 1.0f;
-    public int PlayerAtk { get; set; } = 25;
+    public int PlayerAtk { get; set; } = 5;
     public float PlayerSpeed
     {
         get

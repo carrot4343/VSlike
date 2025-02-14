@@ -6,8 +6,8 @@ public class SkillBook : MonoBehaviour
 {
     //Like Skill Manager
 
-    //Skills listÀÇ ÇÊ¿ä¼º? ´çÀå¿¡ ¾ø¾îµµ ¹®Á¦´Â ¾ø´Ù
-    //ÇÏÁö¸¸ ÃßÈÄ ½ºÅ³À» ·¹º§¾÷ ½ÃÅ°°Å³ª ÇÏ´Â °æ¿ì ¸ğµç ½ºÅ³À» ºÒ·¯¿Ã ÇÊ¿ä°¡ ÀÖÀ½.
+    //Skills listì˜ í•„ìš”ì„±? ë‹¹ì¥ì— ì—†ì–´ë„ ë¬¸ì œëŠ” ì—†ë‹¤
+    //í•˜ì§€ë§Œ ì¶”í›„ ìŠ¤í‚¬ì„ ë ˆë²¨ì—… ì‹œí‚¤ê±°ë‚˜ í•˜ëŠ” ê²½ìš° ëª¨ë“  ìŠ¤í‚¬ì„ ë¶ˆëŸ¬ì˜¬ í•„ìš”ê°€ ìˆìŒ.
     public List<SkillBase> Skills { get; } = new List<SkillBase>();
     public List<SkillBase> RepeatedSkills { get; } = new List<SkillBase>();
     public List<SequenceSkill> SequenceSkills { get; } = new List<SequenceSkill>();
@@ -16,20 +16,28 @@ public class SkillBook : MonoBehaviour
     100, 110, 120, 130, 140, 150, 160, 180, 190
     };
 
-    //parentÀÇ SkillBook¿¡ ½ºÅ³ Ãß°¡
+    //parentì˜ SkillBookì— ìŠ¤í‚¬ ì¶”ê°€
     public T AddSkill<T>(Vector3 position, Transform parent = null, int templateID = 0) where T : SkillBase
     {
-        //Generic typeÀ» ¹ÙÅÁÀ¸·Î ¾î¶² ½ºÅ³ÀÎÁö ÆÇº°
-        //ÃßÈÄ Data¿Í ¿¬°èµÇ°Ô ¹Ù²ã¾ß ÇÒ µí.
+        //Generic typeì„ ë°”íƒ•ìœ¼ë¡œ ì–´ë–¤ ìŠ¤í‚¬ì¸ì§€ íŒë³„
+        //ì¶”í›„ Dataì™€ ì—°ê³„ë˜ê²Œ ë°”ê¿”ì•¼ í•  ë“¯.
         System.Type type = typeof(T);
+        //typeì— í•´ë‹¹í•˜ëŠ” ìŠ¤í‚¬ì´ skills(í˜„ì¬ ë³´ìœ ì¤‘ì¸ skill list)ì— ìˆê±°ë‚˜ templateIDê°€ skillsì— ìˆëŠ” ê²½ìš° - í•œë§ˆë””ë¡œ ì´ë¯¸ ë³´ìœ ì¤‘ì¼ ê²½ìš°
         if (Skills.Exists(skill => skill.GetType() == type) || Skills.Exists(skill => (skill.TemplateID / 10) * 10 == templateID))
         {
+            //Skillsë¥¼ ìˆœíšŒí•˜ë©´ì„œ
             for (int i = 0; i < Skills.Count; i++)
             {
+                //typeì´ ë™ì¼í•˜ê±°ë‚˜ templateIDê°€ ë™ì¼í•œì§€ ì²´í¬.
                 if (Skills[i].GetType() == type || Skills[i].TemplateID/10 * 10 == templateID)
                 {
+                    if(Skills[i].SkillLevel >= 6)
+                    {
+                        Debug.LogError("Skill is already max level");
+                        return null;
+                    }
                     Skills[i].SkillUpgrade();
-                    //ÀÌ ÀÛ¾÷À» ÇÏÁö ¾ÊÀ¸¸é skill levelÀº ¿Ã¶ó°¡´Âµ¥ ½Ç½Ã°£À¸·Î Àû¿ëÀÌ ¾ÈµÊ
+                    //ì´ ì‘ì—…ì„ í•˜ì§€ ì•Šìœ¼ë©´ skill levelì€ ì˜¬ë¼ê°€ëŠ”ë° ì‹¤ì‹œê°„ìœ¼ë¡œ ì ìš©ì´ ì•ˆë¨
                     Skills[i].Init();
                     return Skills[i] as T;
                 }
@@ -38,12 +46,12 @@ public class SkillBook : MonoBehaviour
 
         if (type == typeof(EgoSword) || templateID == 100)
         {
-            //½ºÅ³ ½ºÆùÇÏ°í
+            //ìŠ¤í‚¬ ìŠ¤í°í•˜ê³ 
             var egoSword = Managers._Object.Spawn<EgoSword>(position, Define.EGO_SWORD_ID);
-            //½ºÅ³ ¼öÇà
+            //ìŠ¤í‚¬ ìˆ˜í–‰
             egoSword.ActivateSkill();
 
-            //½ºÅ³À» ¼öÇàÇÏ´Â °´Ã¼ÀÇ ½ºÅ³ ¸®½ºÆ®¿¡ Ãß°¡.
+            //ìŠ¤í‚¬ì„ ìˆ˜í–‰í•˜ëŠ” ê°ì²´ì˜ ìŠ¤í‚¬ ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€.
             Skills.Add(egoSword);
             RepeatedSkills.Add(egoSword);
 
@@ -52,7 +60,7 @@ public class SkillBook : MonoBehaviour
         else if (type == typeof(FireballSkill) || templateID == 110)
         {
             PlayerController pc = Managers._Object.Player;
-            //Player¿¡°Ô fireballskill ÄÄÆ÷³ÍÆ®¸¦ Ãß°¡ÇÏ¿© ¹ß»ç´ë·Î ¼³Á¤
+            //Playerì—ê²Œ fireballskill ì»´í¬ë„ŒíŠ¸ë¥¼ ì¶”ê°€í•˜ì—¬ ë°œì‚¬ëŒ€ë¡œ ì„¤ì •
             var fireBall = pc.gameObject.GetOrAddComponent<FireballSkill>();
             //fireBall.transform.SetParent(parent);
             fireBall.ActivateSkill();
@@ -139,8 +147,8 @@ public class SkillBook : MonoBehaviour
         }
         else if (type.IsSubclassOf(typeof(SequenceSkill)))
         {
-            //Sequence SkillÀº ½ºÅ³µéÀ» µî·ÏÇÏ°í º°µµÀÇ ÇÔ¼ö¸¦ ÅëÇØ ½ÇÇà½ÃÅ°´Â º°µµÀÇ °úÁ¤ÀÌ ÇÊ¿äÇÔ
-            //AddSkill ÈÄ StartNextSequenceSkill()
+            //Sequence Skillì€ ìŠ¤í‚¬ë“¤ì„ ë“±ë¡í•˜ê³  ë³„ë„ì˜ í•¨ìˆ˜ë¥¼ í†µí•´ ì‹¤í–‰ì‹œí‚¤ëŠ” ë³„ë„ì˜ ê³¼ì •ì´ í•„ìš”í•¨
+            //AddSkill í›„ StartNextSequenceSkill()
             var skill = gameObject.GetOrAddComponent<T>();
             Skills.Add(skill);
             SequenceSkills.Add(skill as SequenceSkill);
@@ -152,7 +160,7 @@ public class SkillBook : MonoBehaviour
     }
 
     int m_sequenceIndex = 0;
-    //Sequence Skill List ¿¡ µî·ÏµÈ ½ºÅ³ ¼öÇà
+    //Sequence Skill List ì— ë“±ë¡ëœ ìŠ¤í‚¬ ìˆ˜í–‰
     public void StartNextSequenceSkill()
     {
         if (m_stopped)
@@ -160,23 +168,23 @@ public class SkillBook : MonoBehaviour
         if (SequenceSkills.Count == 0)
             return;
 
-        //ÇöÀç SequenceSkills ListÀÇ index ¹øÂ° ½ºÅ³ ¼öÇà. ÃßÈÄ callback ÇÔ¼ö·Î OnfinishedSequenceSkillÀ» ¼öÇàÇÏ°Ô ÇÔ.
+        //í˜„ì¬ SequenceSkills Listì˜ index ë²ˆì§¸ ìŠ¤í‚¬ ìˆ˜í–‰. ì¶”í›„ callback í•¨ìˆ˜ë¡œ OnfinishedSequenceSkillì„ ìˆ˜í–‰í•˜ê²Œ í•¨.
         SequenceSkills[m_sequenceIndex].DoSkill(OnFinishedSequenceSkill);
     }
 
-    //DoSkill¿¡¼­ ½ºÅ³ ÀÛµ¿ÀÌ ¸ğµÎ ³¡³­ ÈÄ ¼öÇàµÉ ÇÔ¼ö.
+    //DoSkillì—ì„œ ìŠ¤í‚¬ ì‘ë™ì´ ëª¨ë‘ ëë‚œ í›„ ìˆ˜í–‰ë  í•¨ìˆ˜.
     void OnFinishedSequenceSkill()
     {
-        //Index¸¦ 1 ´Ã¸®°í ÀÌ¸¦ ¸®½ºÆ®¿¡ ÀúÀåµÈ ½ºÅ³ÀÇ °³¼ö·Î ³ª´« ³ª¸ÓÁö¸¦ index¿¡ ÇÒ´çÇÔ.
-        //½ºÅ³ÀÌ 4°³ ÀÖ´Ù¸é index´Â 0 -> 1 -> 2 -> 3 -> 0 -> 1 -> 2 ...
+        //Indexë¥¼ 1 ëŠ˜ë¦¬ê³  ì´ë¥¼ ë¦¬ìŠ¤íŠ¸ì— ì €ì¥ëœ ìŠ¤í‚¬ì˜ ê°œìˆ˜ë¡œ ë‚˜ëˆˆ ë‚˜ë¨¸ì§€ë¥¼ indexì— í• ë‹¹í•¨.
+        //ìŠ¤í‚¬ì´ 4ê°œ ìˆë‹¤ë©´ indexëŠ” 0 -> 1 -> 2 -> 3 -> 0 -> 1 -> 2 ...
         m_sequenceIndex = (m_sequenceIndex + 1) % SequenceSkills.Count;
         StartNextSequenceSkill();
     }
 
     bool m_stopped = false;
 
-    //¸ğµç Skill ÁßÁö
-    //´ÙÀ½ ½ºÅ×ÀÌÁö·Î ³Ñ¾î°¡°Å³ª ÇÒ¶§ »ç¿ëÇÒ µí.
+    //ëª¨ë“  Skill ì¤‘ì§€
+    //ë‹¤ìŒ ìŠ¤í…Œì´ì§€ë¡œ ë„˜ì–´ê°€ê±°ë‚˜ í• ë•Œ ì‚¬ìš©í•  ë“¯.
     public void StopSkills()
     {
         m_stopped = true;

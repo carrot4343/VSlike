@@ -119,7 +119,9 @@ public class UI_SkillSelectPopup : UI_Popup
             m_items.Add(item);
         }
     }
-
+    //현재 버그
+    //1. 스킬을 최대 제한(6개) 보유중일 때, 보유한 스킬 6개 중 3개를 가져와야 하는데, 중복으로 등장하는 스킬이 존재하는 버그.
+    //2. 스킬 클릭하는 범위에 대한 버그.
     int[] CreateRandomTemplateID(int size)
     {
         int[] randomInt = new int[size];

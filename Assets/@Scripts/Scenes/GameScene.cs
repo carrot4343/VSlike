@@ -102,8 +102,11 @@ public class GameScene : BaseScene
     }
 
     void Update()
-    { 
-        
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Managers._Game.PlayerLevel++;
+        }
     }
 
     public override void Clear()
