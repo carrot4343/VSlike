@@ -103,7 +103,7 @@ public class GameScene : BaseScene
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown("space"))
         {
             Managers._Game.PlayerLevel++;
         }
