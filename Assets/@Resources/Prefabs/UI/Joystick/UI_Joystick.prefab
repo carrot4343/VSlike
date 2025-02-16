@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_backGround: {fileID: 3363119999929917979}
   m_handler: {fileID: 682194734687654650}
+  m_gameScene: {fileID: 3146652389643943603, guid: d3e004d01e3551d40b6fc8e1054ee65f, type: 3}
 --- !u!1 &2774119887755966229
 GameObject:
   m_ObjectHideFlags: 0

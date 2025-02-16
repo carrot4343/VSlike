@@ -8,13 +8,16 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
 {
     [SerializeField] Image m_backGround;
     [SerializeField] Image m_handler;
+    [SerializeField] GameObject m_gameScene;
 
+    RectTransform m_backgroundScreen;
     Vector2 m_touchPosition;
     Vector2 m_moveDir;
     float m_joystickRadius;
 
     void Start()
     {
+        m_backgroundScreen = Utils.FindChild(m_gameScene, "Background").GetComponent<RectTransform>();
         m_joystickRadius = m_backGround.gameObject.GetComponent<RectTransform>().sizeDelta.y / 2;
     }
 
@@ -29,10 +32,12 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
     }
     public void OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        m_touchPosition = eventData.position;
-        m_backGround.transform.position = m_touchPosition;
-        m_handler.transform.position = m_touchPosition;
-
+        if(RectTransformUtility.RectangleContainsScreenPoint(m_backgroundScreen, eventData.position))
+        {
+            m_touchPosition = eventData.position;
+            m_backGround.transform.position = m_touchPosition;
+            m_handler.transform.position = m_touchPosition;
+        }
     }
     public void OnPointerUp(UnityEngine.EventSystems.PointerEventData eventData)
     {
