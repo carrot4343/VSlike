@@ -28,16 +28,23 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
 
     public void OnPointerClick(UnityEngine.EventSystems.PointerEventData eventData)
     {
-
+        if (RectTransformUtility.RectangleContainsScreenPoint(m_backgroundScreen, eventData.position))
+        {
+            Debug.Log(eventData.position);
+        }
     }
     public void OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        if(RectTransformUtility.RectangleContainsScreenPoint(m_backgroundScreen, eventData.position))
+        Debug.Log("Size: " + m_backgroundScreen.sizeDelta);
+        Debug.Log("Position: " + m_backgroundScreen.anchoredPosition);
+
+        if (RectTransformUtility.RectangleContainsScreenPoint(m_backgroundScreen, eventData.position, null) == true)
         {
-            m_touchPosition = eventData.position;
-            m_backGround.transform.position = m_touchPosition;
-            m_handler.transform.position = m_touchPosition;
+            Debug.Log(eventData.position);
         }
+        m_touchPosition = eventData.position;
+        m_backGround.transform.position = m_touchPosition;
+        m_handler.transform.position = m_touchPosition;
     }
     public void OnPointerUp(UnityEngine.EventSystems.PointerEventData eventData)
     {
