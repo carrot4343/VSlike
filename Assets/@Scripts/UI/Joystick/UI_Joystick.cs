@@ -19,19 +19,34 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
     {
         m_backgroundScreen = Utils.FindChild(m_gameScene, "Background").GetComponent<RectTransform>();
         m_joystickRadius = m_backGround.gameObject.GetComponent<RectTransform>().sizeDelta.y / 2;
+
+        m_backgroundScreen.sizeDelta = new Vector2(0, 150); // 가로 0, 세로 150
+        m_backgroundScreen.anchoredPosition = new Vector2(0, -75); // 위치 조정
     }
 
     void Update()
     {
         
     }
+    void OnDrawGizmos()
+    {
+        if (m_backgroundScreen == null)
+            return;
+
+        // RectTransform의 네 모서리 좌표 계산
+        Vector3[] corners = new Vector3[4];
+        m_backgroundScreen.GetWorldCorners(corners);
+
+        // 네 모서리를 선으로 그리기
+        Debug.DrawLine(corners[0], corners[1], Color.red); // 왼쪽 아래 -> 오른쪽 아래
+        Debug.DrawLine(corners[1], corners[2], Color.red); // 오른쪽 아래 -> 오른쪽 위
+        Debug.DrawLine(corners[2], corners[3], Color.red); // 오른쪽 위 -> 왼쪽 위
+        Debug.DrawLine(corners[3], corners[0], Color.red); // 왼쪽 위 -> 왼쪽 아래
+    }
 
     public void OnPointerClick(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        if (RectTransformUtility.RectangleContainsScreenPoint(m_backgroundScreen, eventData.position))
-        {
-            Debug.Log(eventData.position);
-        }
+
     }
     public void OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
