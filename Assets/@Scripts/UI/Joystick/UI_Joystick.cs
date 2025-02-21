@@ -10,6 +10,7 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
     [SerializeField] Image m_handler;
     [SerializeField] GameObject m_gameScene;
 
+    Rect touchArea = new Rect(0, 0, Screen.width, Screen.height - 200);
     GameObject m_backgroundScreen;
     Vector2 m_touchPosition;
     Vector2 m_moveDir;
@@ -32,13 +33,14 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
     }
     public void OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        if(eventData.hovered.Contains(m_backgroundScreen))
+        if (eventData.position.x < touchArea.xMax && eventData.position.y < touchArea.yMax)
         {
-            Debug.Log(eventData.position);
+            Debug.Log(eventData.position); 
+            m_touchPosition = eventData.position;
+            m_backGround.transform.position = m_touchPosition;
+            m_handler.transform.position = m_touchPosition;
         }
-        m_touchPosition = eventData.position;
-        m_backGround.transform.position = m_touchPosition;
-        m_handler.transform.position = m_touchPosition;
+        
     }
     public void OnPointerUp(UnityEngine.EventSystems.PointerEventData eventData)
     {
