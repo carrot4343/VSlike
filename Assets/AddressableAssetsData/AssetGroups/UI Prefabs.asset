@@ -37,7 +37,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
-  - m_GUID: 94b69e033026589439712259640df809
+  - m_GUID: 1f982259da9125047ba3b87d67d00f78
     m_Address: UI_SkillCardItem.prefab
     m_ReadOnly: 0
     m_SerializedLabels:

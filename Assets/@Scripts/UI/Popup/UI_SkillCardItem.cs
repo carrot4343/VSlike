@@ -38,18 +38,19 @@ public class UI_SkillCardItem : UI_Base
         StarOn_2,
         StarOn_3,
         StarOn_4,
+        StarOn_5,
         StarOff_0,
         StarOff_1,
         StarOff_2,
         StarOff_3,
         StarOff_4,
+        StarOff_5,
     }
     enum Texts
     {
         CardNameText,
         SkillDescriptionText,
         NewText, //진짜 "new" 텍스트임
-        EvoText,
     }
 
     enum Buttons
@@ -78,15 +79,15 @@ public class UI_SkillCardItem : UI_Base
         GetButton((int)Buttons.SkillCardBackgroundImage).gameObject.BindEvent(OnClickSkillCardBackGroundImage);
         GetText((int)Texts.CardNameText).text = m_skillData.name;
         GetText((int)Texts.SkillDescriptionText).text = m_skillData.description;
-        GetText((int)Texts.EvoText).text = "Evo";
 
-        for (int i = 1; i <= 5; i++)
+        for (int i = 1; i <= 6; i++)
         {
             GetImage(i).enabled = false;
         }
+
         if (m_isNew)
         {
-            for(int i = 6; i <= 10; i++)
+            for(int i = 7; i <= 12; i++)
             {
                 GetImage(i).enabled = false;
             }
@@ -94,7 +95,7 @@ public class UI_SkillCardItem : UI_Base
         }
         else
         {
-            for (int i = 6; i <= 10; i++)
+            for (int i = 7; i <= 12; i++)
             {
                 GetImage(i).enabled = true;
             }

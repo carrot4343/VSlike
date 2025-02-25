@@ -80,8 +80,6 @@ public class UI_SkillSelectPopup : UI_Popup
         GetText((int)Texts.CardRefreshText).text = "Refresh";
         GetText((int)Texts.ADRefreshText).text = "Refresh";
         GetText((int)Texts.CharacterLevelupTitleText).text = "Level up !";
-
-        m_grid = GetObject((int)GameObjects.SkillCardSelectListObject).transform;
     }
 
     //OnEnable 에서 RefreshUI 를 하면 null error가 발생한다. 이유가 뭘까? -> 생명주기 문제였음. Init 메서드를 Start가 아닌 Awake에 놓음으로 해결.
@@ -101,22 +99,18 @@ public class UI_SkillSelectPopup : UI_Popup
         PopulateGrid();
     }
 
-    Transform m_grid;
+    GameObject m_grid;
 
-    List<UI_SkillCardItem> m_items = new List<UI_SkillCardItem>();
     void PopulateGrid()
     {
-        foreach (Transform t in m_grid.transform)
-            Managers._Resource.Destroy(t.gameObject);
+        m_grid = GetObject((int)GameObjects.SkillCardSelectListObject);
+        m_grid.DestroyChilds();
 
         int[] randomTemplateID = CreateRandomTemplateID(3);
         for (int i = 0; i < 3; i++)
         {
-            var go = Managers._Resource.Instantiate("UI_SkillCardItem.prefab");
-            UI_SkillCardItem item = go.GetOrAddComponent<UI_SkillCardItem>();
-            item.transform.SetParent(m_grid.transform);
+            UI_SkillCardItem item = Managers._UI.MakeSubItem<UI_SkillCardItem>(m_grid.transform);
             item.SetInfo(randomTemplateID[i]);
-            m_items.Add(item);
         }
     }
     //현재 버그
