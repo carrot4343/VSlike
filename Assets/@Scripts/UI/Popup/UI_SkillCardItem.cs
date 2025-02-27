@@ -45,6 +45,7 @@ public class UI_SkillCardItem : UI_Base
         StarOff_3,
         StarOff_4,
         StarOff_5,
+        SkillCardBackgroundImage,
     }
     enum Texts
     {
@@ -53,10 +54,9 @@ public class UI_SkillCardItem : UI_Base
         NewText, //진짜 "new" 텍스트임
     }
 
-    enum Buttons
+    enum GameObjects
     {
-        //이 UI 전체가 하나의 버튼임. 그러면 이걸 Bind 로 연결해야 하는가? 의문점
-        SkillCardBackgroundImage,
+        UI_SkillCardItem,
     }
 
     public override bool Init()
@@ -65,8 +65,9 @@ public class UI_SkillCardItem : UI_Base
             return false;
 
         BindText(typeof(Texts));
-        BindButton(typeof(Buttons));
         BindImage(typeof(Image));
+        BindObject(typeof(GameObjects));
+        gameObject.BindEvent(OnClicked);
 
         return true;
     }
@@ -76,7 +77,8 @@ public class UI_SkillCardItem : UI_Base
         if (m_init == false)
             return;
 
-        GetButton((int)Buttons.SkillCardBackgroundImage).gameObject.BindEvent(OnClickSkillCardBackGroundImage);
+        transform.localScale = Vector3.one;
+        //GetButton((int)Buttons.SkillCardBackgroundImage).gameObject.BindEvent(OnClickSkillCardBackGroundImage);
         GetText((int)Texts.CardNameText).text = m_skillData.name;
         GetText((int)Texts.SkillDescriptionText).text = m_skillData.description;
 
@@ -122,7 +124,7 @@ public class UI_SkillCardItem : UI_Base
         }
     }
 
-    void OnClickSkillCardBackGroundImage()
+    void OnClicked()
     {
         Managers._Game.Player.Skills.AddSkill<SkillBase>(Managers._Game.Player.transform.position, Managers._Game.Player.transform, m_templateID);
         Managers._UI.ClosePopupUI();

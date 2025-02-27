@@ -10,21 +10,20 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
     [SerializeField] Image m_handler;
     [SerializeField] GameObject m_gameScene;
 
-    Rect touchArea = new Rect(0, 0, Screen.width, Screen.height - 200);
-    GameObject m_backgroundScreen;
+    Rect touchArea;
     Vector2 m_touchPosition;
     Vector2 m_moveDir;
     float m_joystickRadius;
 
     void Start()
     {
-        m_backgroundScreen = Utils.FindChild(m_gameScene, "Background");
+        touchArea = new Rect(0, 0, Screen.width, Screen.height - 200);
         m_joystickRadius = m_backGround.gameObject.GetComponent<RectTransform>().sizeDelta.y / 2;
     }
 
     void Update()
     {
-
+        Debug.Log("touch area : (" + touchArea.xMin + "," + touchArea.yMin + "," + touchArea.xMax + "," + touchArea.yMax + ")");
     }
 
     public void OnPointerClick(UnityEngine.EventSystems.PointerEventData eventData)
@@ -33,9 +32,9 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
     }
     public void OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
+        Debug.Log(eventData.position);
         if (eventData.position.x < touchArea.xMax && eventData.position.y < touchArea.yMax)
         {
-            Debug.Log(eventData.position); 
             m_touchPosition = eventData.position;
             m_backGround.transform.position = m_touchPosition;
             m_handler.transform.position = m_touchPosition;
