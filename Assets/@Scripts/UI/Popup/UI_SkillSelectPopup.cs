@@ -90,9 +90,9 @@ public class UI_SkillSelectPopup : UI_Popup
         GetText((int)Texts.CardRefreshCountValueText).text = $"{restRefresh} / 3";
 
         //보유중인 skill icon load
-        for (int i = (int)Image.BattleSkilI_Icon_0; i < (int)Image.BattleSkilI_Icon_0 + Managers._Game.Player.Skills.Skills.Count; i++)
+        for (int i = (int)Image.BattleSkilI_Icon_0; i < (int)Image.BattleSkilI_Icon_0 + m_player.Skills.Skills.Count; i++)
         {
-            int templateID = Managers._Game.Player.Skills.Skills[i].TemplateID;
+            int templateID = m_player.Skills.Skills[i].TemplateID;
             GetImage(i).enabled = true;
             GetImage(i).sprite = Managers._Resource.Load<Sprite>(Managers._Data.SkillDic[templateID].image);
         }
@@ -100,14 +100,22 @@ public class UI_SkillSelectPopup : UI_Popup
     }
 
     GameObject m_grid;
+    PlayerController m_player = Managers._Game.Player;
 
     void PopulateGrid()
     {
         m_grid = GetObject((int)GameObjects.SkillCardSelectListObject);
         m_grid.DestroyChilds();
 
-        int[] randomTemplateID = CreateRandomTemplateID(3);
-        for (int i = 0; i < 3; i++)
+        int size = 3;
+        
+        //2개, 1개를 전달해야 하는 경우가 있는데
+        //1. skill이 이미 6개 보유중이면서
+        //2. 해당 skill들을 만렙을 찍어서 만렙이 아닌 스킬이 2개 1개인 경우.
+
+        int[] randomTemplateID = new int[size];
+        randomTemplateID = CreateRandomTemplateID(size);
+        for (int i = 0; i < size; i++)
         {
             UI_SkillCardItem item = Managers._UI.MakeSubItem<UI_SkillCardItem>(m_grid.transform);
             item.SetInfo(randomTemplateID[i]);
@@ -121,24 +129,28 @@ public class UI_SkillSelectPopup : UI_Popup
     {
         int[] randomInt = new int[size];
 
-        List<int> tempList = new List<int>(Managers._Game.Player.Skills.availableTemplateIdList);
+        List<int> tempList = new List<int>();
         //스킬 보유 상한선에 도달한 경우 리스트 제한
         if (Managers._Game.Player.Skills.Skills.Count >= 6)
         {
             for (int i = 0; i < 6; i++)
             {
-                tempList[i] = Managers._Game.Player.Skills.Skills[i].TemplateID / 10 * 10;
+                tempList.Add(m_player.Skills.Skills[i].TemplateID / 10 * 10);
             }
-            tempList.RemoveRange(6, Managers._Game.Player.Skills.Skills.Count);
+            tempList.RemoveRange(6, m_player.Skills.Skills.Count);
+        }
+        else
+        {
+            tempList = new List<int>(m_player.Skills.availableTemplateIdList);
         }
 
         //이미 업그레이드가 완료된 스킬의 id를 리스트에서 제거
-        for (int i = 0; i < Managers._Game.Player.Skills.Skills.Count; i++)
+        for (int i = 0; i < m_player.Skills.Skills.Count; i++)
         {
-            if (Managers._Game.Player.Skills.Skills[i].SkillLevel >= 6)
+            if (m_player.Skills.Skills[i].SkillLevel >= 6)
             {
                 //list의 template id는 기본 id라서 10 단위이므로 1의자리에서 내림 함. Template id = default template id + skill level이기 때문
-                tempList.Remove((Managers._Game.Player.Skills.Skills[i].TemplateID / 10) * 10);
+                tempList.Remove((m_player.Skills.Skills[i].TemplateID / 10) * 10);
             }
         }
 
