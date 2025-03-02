@@ -18,6 +18,10 @@
   <SkillData templateID="105" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="300" coolTime="1.0" level="6"
              description="Attack that sweeps the front." image="EgoSword_Icon.sprite">
   </SkillData>
+	<!--만렙 스킬의 새 prefab 지정 필요-->
+  <SkillData templateID="106" name="EgoSword" type="Melee" prefab="EgoSword.prefab" damage="400" coolTime="1.0" level="7"
+             description="The Ultimate Sword." image="EgoSword_Icon.sprite">
+  </SkillData>
   <SkillData templateID="110" name="FireBall" type="Projectile" prefab="FireBall.prefab" damage="150" coolTime="1.2" speed="10" level="1"
              description="Fire disposable fireball forward." image="FireBall_Icon.sprite">
   </SkillData>

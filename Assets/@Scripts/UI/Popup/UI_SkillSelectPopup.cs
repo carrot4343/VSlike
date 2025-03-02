@@ -122,8 +122,8 @@ public class UI_SkillSelectPopup : UI_Popup
         }
     }
     //현재 버그
-    //1. 스킬을 최대 제한(6개) 보유중일 때, 보유한 스킬 6개 중 3개를 가져와야 하는데, 중복으로 등장하는 스킬이 존재하는 버그.
-    //2. 스킬 클릭하는 범위에 대한 버그.
+    //1. 스킬을 최대 제한(6개) 보유중일 때, 보유한 스킬 6개 중 3개를 가져와야 하는데, 중복으로 등장하는 스킬이 존재하는 버그.---해결----
+    //2. 스킬 클릭하는 범위에 대한 버그. ------------------해결---------------
     //3. 스킬을 만렙 찍어도 계속 뜨는 버그.
     int[] CreateRandomTemplateID(int size)
     {
@@ -131,13 +131,13 @@ public class UI_SkillSelectPopup : UI_Popup
 
         List<int> tempList = new List<int>();
         //스킬 보유 상한선에 도달한 경우 리스트 제한
-        if (Managers._Game.Player.Skills.Skills.Count >= 6)
+        if (Managers._Game.Player.Skills.Skills.Count >= Define.MAX_SKILL_NUM)
         {
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < Define.MAX_SKILL_NUM; i++)
             {
                 tempList.Add(m_player.Skills.Skills[i].TemplateID / 10 * 10);
             }
-            tempList.RemoveRange(6, m_player.Skills.Skills.Count);
+            tempList.RemoveRange(Define.MAX_SKILL_NUM, m_player.Skills.Skills.Count - Define.MAX_SKILL_NUM);
         }
         else
         {
@@ -147,7 +147,7 @@ public class UI_SkillSelectPopup : UI_Popup
         //이미 업그레이드가 완료된 스킬의 id를 리스트에서 제거
         for (int i = 0; i < m_player.Skills.Skills.Count; i++)
         {
-            if (m_player.Skills.Skills[i].SkillLevel >= 6)
+            if (m_player.Skills.Skills[i].SkillLevel >= Define.MAX_SKILL_LEVEL)
             {
                 //list의 template id는 기본 id라서 10 단위이므로 1의자리에서 내림 함. Template id = default template id + skill level이기 때문
                 tempList.Remove((m_player.Skills.Skills[i].TemplateID / 10) * 10);

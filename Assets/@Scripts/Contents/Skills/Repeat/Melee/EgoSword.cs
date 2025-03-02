@@ -18,14 +18,14 @@ public class EgoSword : RepeatSkill
     {
         WaitForSeconds wait = new WaitForSeconds(CoolTime);
 
-        //animation 1,2,3,4¸¦ ¼øÈ¸ÇÏ¸ç ±×·ÁÁö´Â À§Ä¡ ¼³Á¤, °¢ ½ºÀ® È°¼ºÈ­, ¾Ö´Ï¸ÞÀÌ¼Ç ½Ã°£¸¸Å­ ´ë±â °úÁ¤ ¹Ýº¹
+        //animation 1,2,3,4ë¥¼ ìˆœíšŒí•˜ë©° ê·¸ë ¤ì§€ëŠ” ìœ„ì¹˜ ì„¤ì •, ê° ìŠ¤ìœ™ í™œì„±í™”, ì• ë‹ˆë©”ì´ì…˜ ì‹œê°„ë§Œí¼ ëŒ€ê¸° ê³¼ì • ë°˜ë³µ
         while(true)
         {
             SetParticles(SwingType.First);
             m_swingParticles[(int)SwingType.First].gameObject.SetActive(true);
             yield return new WaitForSeconds(m_swingParticles[(int)SwingType.First].main.duration);
 
-            if(SkillLevel >= 5)
+            if(SkillLevel >= Define.MAX_SKILL_LEVEL)
             {
                 SetParticles(SwingType.Second);
                 m_swingParticles[(int)SwingType.Second].gameObject.SetActive(true);
@@ -55,7 +55,7 @@ public class EgoSword : RepeatSkill
         return true;
     }
 
-    //±×·ÁÁö´Â À§Ä¡ Á¶Á¤
+    //ê·¸ë ¤ì§€ëŠ” ìœ„ì¹˜ ì¡°ì •
     void SetParticles(SwingType swingType)
     {
         if (Managers._Game.Player == null)

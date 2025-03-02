@@ -16,9 +16,10 @@ public class UI_SkillCardItem : UI_Base
         m_templateID = templateID;
         m_isNew = true;
         Managers._Data.SkillDic.TryGetValue(templateID, out m_skillData);
-        m_playerSkill = Managers._Game.Player.Skills.Skills;
+        m_playerSkill = new List<SkillBase>(Managers._Game.Player.Skills.Skills);
         for (int i = 0; i < m_playerSkill.Count; i++)
         {
+            //현재 skill card에 나타낼 스킬의 정보를 가져오기 위해 player skill list 참조.
             if(m_playerSkill[i].TemplateID/10 * 10 == templateID)
             {
                 m_skillLevel = m_playerSkill[i].SkillLevel;
@@ -89,18 +90,22 @@ public class UI_SkillCardItem : UI_Base
 
         if (m_isNew)
         {
+            /*
             for(int i = 7; i <= 12; i++)
             {
                 GetImage(i).enabled = false;
             }
+            */
             GetText((int)Texts.NewText).text = "New!";
         }
         else
         {
+            /*
             for (int i = 7; i <= 12; i++)
             {
                 GetImage(i).enabled = true;
             }
+            */
             GetText((int)Texts.NewText).text = "";
         }
         
@@ -117,7 +122,7 @@ public class UI_SkillCardItem : UI_Base
 
         if(m_isNew == false)
         {
-            for (int i = 0; i <= m_skillLevel; i++)
+            for (int i = 1; i <= m_skillLevel+1; i++)
             {
                 GetImage(i).enabled = true;
             }
