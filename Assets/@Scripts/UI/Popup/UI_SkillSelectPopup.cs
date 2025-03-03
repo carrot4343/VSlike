@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using System;
 public class UI_SkillSelectPopup : UI_Popup
@@ -101,35 +102,42 @@ public class UI_SkillSelectPopup : UI_Popup
 
     GameObject m_grid;
     PlayerController m_player = Managers._Game.Player;
+    int skillSelectNum;
 
     void PopulateGrid()
     {
         m_grid = GetObject((int)GameObjects.SkillCardSelectListObject);
         m_grid.DestroyChilds();
 
-        int size = 3;
+        //스킬을 6개 습득하고 만렙이 4개 이상이면
+        if (m_player.Skills.Skills.Count() >= Define.MAX_SKILL_NUM && 
+            m_player.Skills.Skills.Count(x => x.SkillLevel >= Define.MAX_SKILL_LEVEL) >= 4)
+        {
+            skillSelectNum = m_player.Skills.Skills.Count(x => x.SkillLevel < Define.MAX_SKILL_LEVEL);
+        }
+        else//일반적인 경우
+        {
+            skillSelectNum = 3;
+        }
         
         //2개, 1개를 전달해야 하는 경우가 있는데
         //1. skill이 이미 6개 보유중이면서
         //2. 해당 skill들을 만렙을 찍어서 만렙이 아닌 스킬이 2개 1개인 경우.
 
-        int[] randomTemplateID = new int[size];
-        randomTemplateID = CreateRandomTemplateID(size);
-        for (int i = 0; i < size; i++)
+        int[] randomTemplateID = new int[skillSelectNum];
+        randomTemplateID = CreateRandomTemplateID(skillSelectNum);
+        for (int i = 0; i < skillSelectNum; i++)
         {
             UI_SkillCardItem item = Managers._UI.MakeSubItem<UI_SkillCardItem>(m_grid.transform);
             item.SetInfo(randomTemplateID[i]);
         }
     }
-    //현재 버그
-    //1. 스킬을 최대 제한(6개) 보유중일 때, 보유한 스킬 6개 중 3개를 가져와야 하는데, 중복으로 등장하는 스킬이 존재하는 버그.---해결----
-    //2. 스킬 클릭하는 범위에 대한 버그. ------------------해결---------------
-    //3. 스킬을 만렙 찍어도 계속 뜨는 버그.
+
     int[] CreateRandomTemplateID(int size)
     {
-        int[] randomInt = new int[size];
-
         List<int> tempList = new List<int>();
+
+        int[] randomInt = new int[size];
         //스킬 보유 상한선에 도달한 경우 리스트 제한
         if (Managers._Game.Player.Skills.Skills.Count >= Define.MAX_SKILL_NUM)
         {
