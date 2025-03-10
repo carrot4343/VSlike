@@ -52,6 +52,7 @@ public class EgoSword : RepeatSkill
         Owner = Managers._Game.Player;
         SetInfo(TemplateID);
 
+        Debug.Log("Egosword init");
         return true;
     }
 

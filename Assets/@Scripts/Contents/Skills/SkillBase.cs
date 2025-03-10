@@ -11,7 +11,7 @@ public class SkillBase : BaseController
 
     public int TemplateID { get; set; }
 
-    //private ·Î ÇÑ ÀÌÀ¯´Â ÇÁ·ÎÆÛÆ¼¿¡¼­ ÀûÇÕÇÑ Á¶°ÇÀ» °ÅÄ¡Áö ¾Ê°í ¼öÁ¤µÇ´Â °æ¿ì¸¦ ¹æÁöÇÏ±â À§ÇÔ.
+    //private ë¡œ í•œ ì´ìœ ëŠ” í”„ë¡œí¼í‹°ì—ì„œ ì í•©í•œ ì¡°ê±´ì„ ê±°ì¹˜ì§€ ì•Šê³  ìˆ˜ì •ë˜ëŠ” ê²½ìš°ë¥¼ ë°©ì§€í•˜ê¸° ìœ„í•¨.
     private int m_skillLevel = 0;
     public int SkillLevel
     {
@@ -48,9 +48,9 @@ public class SkillBase : BaseController
 
     public virtual void SetInfo(int templateID)
     {
-        //out µÈ data °ªÀ» »ç¿ëÇÏÁö ¾Ê´Â °æ¿ì(Áö±İÃ³·³) trygetvalue¿Í containskey Áß¿¡ ¹«¾ùÀ» »ç¿ëÇÒÁö´Â »ı°¢ÇØ ºÁ¾ß ÇÒ ¹®Á¦.
-        //´ëºÎºĞÀÇ »óÈ²¿¡ trygetvalue°¡ ºü¸£±ä ÇÏ³ª Áö±İÃ³·³ °ª Æ÷ÇÔ ¿©ºÎ¸¸ µûÁú ¶§´Â containskey°¡ ¾à°£ ´õ ºü¸£´Ù´Â µí. (10% ¹Ì¸¸)
-        //±×·¡µµ È¤½Ã ³ªÁß¿¡ ¶Ç ¾µÁö ¸ğ¸£´Ï±î ±×³É trygetvalue¸¦ »ç¿ëÇÏ´Â°Ô ¿ÇÁö ¾ÊÀ»±î? ÇÏ´Â »ı°¢.
+        //out ëœ data ê°’ì„ ì‚¬ìš©í•˜ì§€ ì•ŠëŠ” ê²½ìš°(ì§€ê¸ˆì²˜ëŸ¼) trygetvalueì™€ containskey ì¤‘ì— ë¬´ì—‡ì„ ì‚¬ìš©í• ì§€ëŠ” ìƒê°í•´ ë´ì•¼ í•  ë¬¸ì œ.
+        //ëŒ€ë¶€ë¶„ì˜ ìƒí™©ì— trygetvalueê°€ ë¹ ë¥´ê¸´ í•˜ë‚˜ ì§€ê¸ˆì²˜ëŸ¼ ê°’ í¬í•¨ ì—¬ë¶€ë§Œ ë”°ì§ˆ ë•ŒëŠ” containskeyê°€ ì•½ê°„ ë” ë¹ ë¥´ë‹¤ëŠ” ë“¯. (10% ë¯¸ë§Œ)
+        //ê·¸ë˜ë„ í˜¹ì‹œ ë‚˜ì¤‘ì— ë˜ ì“¸ì§€ ëª¨ë¥´ë‹ˆê¹Œ ê·¸ëƒ¥ trygetvalueë¥¼ ì‚¬ìš©í•˜ëŠ”ê²Œ ì˜³ì§€ ì•Šì„ê¹Œ? í•˜ëŠ” ìƒê°.
         if (Managers._Data.SkillDic.TryGetValue(templateID, out Data.SkillData data) == false)
         {
             Debug.LogError("Set info failed : wrong templateID");
@@ -61,8 +61,8 @@ public class SkillBase : BaseController
 
         Damage = SkillData.damage;
     }
-    //Projectile À» spawnÇÏ´Â °´Ã¼¿¡¼­ »ç¿ë
-    //ÀÚ½Ä Å¬·¡½ºÀÎ projectilecontroller¿¡ ÀÇÁ¸ÇÏ´Â ÀÌ ÇüÅÂ°¡ ¿ÇÀº°¡? °í¹ÎÇØ¾ß ÇÒ ¹®Á¦. (¾È¾²¸é ¾î¶±ÇÒ°Çµ¥)
+    //Projectile ì„ spawní•˜ëŠ” ê°ì²´ì—ì„œ ì‚¬ìš©
+    //ìì‹ í´ë˜ìŠ¤ì¸ projectilecontrollerì— ì˜ì¡´í•˜ëŠ” ì´ í˜•íƒœê°€ ì˜³ì€ê°€? ê³ ë¯¼í•´ì•¼ í•  ë¬¸ì œ. (ì•ˆì“°ë©´ ì–´ë–¡í• ê±´ë°)
     protected virtual ProjectileController GenerateProjectile(int templateID, CreatureController owner,
         Vector3 startPos, Vector3 dir, Vector3 targetPos, 
         ProjectileController.projectileType type = ProjectileController.projectileType.disposable)
@@ -72,7 +72,7 @@ public class SkillBase : BaseController
 
         return pc;
     }
-    //PoolingÀ» À§ÇØ destroy ¸¦ »ç¿ëÇÏÁö ¾Ê°í µû·Î ¸Ş¼­µå¸¦ ¸¸µë (Despawn À» ¾²°í ½Í´Ù´Â ¶æ)
+    //Poolingì„ ìœ„í•´ destroy ë¥¼ ì‚¬ìš©í•˜ì§€ ì•Šê³  ë”°ë¡œ ë©”ì„œë“œë¥¼ ë§Œë“¬ (Despawn ì„ ì“°ê³  ì‹¶ë‹¤ëŠ” ëœ»)
     #region Destroy
     Coroutine m_coDestroy;
     public void StartDestroy(float delaySeconds)
@@ -101,11 +101,11 @@ public class SkillBase : BaseController
 
     #endregion
 
-    //UI¸¦ ´Ù·ç´Â Å¬·¡½º¿¡¼­ Á÷Á¢ SkillLevel °ªÀ» ¼öÁ¤ÇÏ´Â°Ô ½â ¸¶À½¿¡ µéÁö ¾Ê¾Æ¼­ ÀÌ·± ÇüÅÂ¸¦ ÇÏ°Ô µÆ´Âµ¥...
-    //»ç½Ç ±×³É UIÅ¬·¡½º¿¡¼­ SkillLevel++ ÇÏ´Â°Å¿¡ ±¦È÷ ¿À¹öÇìµå¸¸ Ãß°¡µÈ°Ô ¾Æ´Ñ°¡? ½Í±â´Â ÇÔ.
-    //¹°·Ğ ¸Å ÇÁ·¹ÀÓ¸¶´Ù ºÒ·¯¿À´Â ¸Ş¼­µåµµ ¾Æ´Ï°í ÇØ¼­ ¿µÇâÀÌ Å©Áø ¾Ê°ÚÁö¸¸ ±¦È÷ ÂóÂóÇÑ ÀÌ ´À³¦.
-    //SkillÀ» UpgradeÇÔ¿¡ ÀÖ¾î¼­ ¹«¾ğ°¡ Ãß°¡ÀûÀ¸·Î ¼ö¹İµÇ´Â µ¿ÀÛÀÌ ÀÖÀ»±î? ½Í±äÇÔ. ÀÖ´Ù¸é ÀÌ ÇüÅÂ°¡ ±¦ÂúÀºµ¥
-    //¸¸¾à ¾ø´Â°Ô È®½ÇÇÏ´Ù¸é? ±×·¯¸é ±×³É ¿ÜºÎ¿¡¼­ SkillLevel++À» ÇÏ´Â°Ô ¸Â°ÚÁö...
+    //UIë¥¼ ë‹¤ë£¨ëŠ” í´ë˜ìŠ¤ì—ì„œ ì§ì ‘ SkillLevel ê°’ì„ ìˆ˜ì •í•˜ëŠ”ê²Œ ì© ë§ˆìŒì— ë“¤ì§€ ì•Šì•„ì„œ ì´ëŸ° í˜•íƒœë¥¼ í•˜ê²Œ ëëŠ”ë°...
+    //ì‚¬ì‹¤ ê·¸ëƒ¥ UIí´ë˜ìŠ¤ì—ì„œ SkillLevel++ í•˜ëŠ”ê±°ì— ê´œíˆ ì˜¤ë²„í—¤ë“œë§Œ ì¶”ê°€ëœê²Œ ì•„ë‹Œê°€? ì‹¶ê¸°ëŠ” í•¨.
+    //ë¬¼ë¡  ë§¤ í”„ë ˆì„ë§ˆë‹¤ ë¶ˆëŸ¬ì˜¤ëŠ” ë©”ì„œë“œë„ ì•„ë‹ˆê³  í•´ì„œ ì˜í–¥ì´ í¬ì§„ ì•Šê² ì§€ë§Œ ê´œíˆ ì°ì°í•œ ì´ ëŠë‚Œ.
+    //Skillì„ Upgradeí•¨ì— ìˆì–´ì„œ ë¬´ì–¸ê°€ ì¶”ê°€ì ìœ¼ë¡œ ìˆ˜ë°˜ë˜ëŠ” ë™ì‘ì´ ìˆì„ê¹Œ? ì‹¶ê¸´í•¨. ìˆë‹¤ë©´ ì´ í˜•íƒœê°€ ê´œì°®ì€ë°
+    //ë§Œì•½ ì—†ëŠ”ê²Œ í™•ì‹¤í•˜ë‹¤ë©´? ê·¸ëŸ¬ë©´ ê·¸ëƒ¥ ì™¸ë¶€ì—ì„œ SkillLevel++ì„ í•˜ëŠ”ê²Œ ë§ê² ì§€...
     public void SkillUpgrade()
     {
         SkillLevel++;
@@ -116,6 +116,6 @@ public class SkillBase : BaseController
 
     protected virtual void OnSkillLevelUpgrade()
     {
-        
+        Debug.Log("OnSkillLevelUpgrade called");
     }
 }

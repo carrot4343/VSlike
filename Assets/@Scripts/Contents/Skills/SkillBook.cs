@@ -155,6 +155,13 @@ public class SkillBook : MonoBehaviour
 
             return skill as T;
         }
+        else if (type.IsSubclassOf(typeof(StatusUpgrade)))
+        {
+            var skill = gameObject.GetOrAddComponent<T>();
+            Skills.Add(skill);
+
+            return skill as T;
+        }
             
         return null;
     }

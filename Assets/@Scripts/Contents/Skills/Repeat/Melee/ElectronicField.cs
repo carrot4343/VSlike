@@ -5,7 +5,7 @@ using System.Linq;
 
 public class ElectronicField : RepeatSkill
 {
-    //(¹üÀ§ ¾È¿¡ µé¾î¿Â target, target¿¡°Ô ÇÇÇØ¸¦ ÁÖ´Â Coroutine)À» ½ÖÀ¸·Î °¡Áö´Â Dictionary
+    //(ë²”ìœ„ ì•ˆì— ë“¤ì–´ì˜¨ target, targetì—ê²Œ í”¼í•´ë¥¼ ì£¼ëŠ” Coroutine)ì„ ìŒìœ¼ë¡œ ê°€ì§€ëŠ” Dictionary
     Dictionary<MonsterController, Coroutine> m_coroutineDict = new Dictionary<MonsterController, Coroutine>();
     public override bool Init()
     {
@@ -13,11 +13,11 @@ public class ElectronicField : RepeatSkill
         TemplateID = TemplateID = Define.ELECTRONIC_FIELD_ID + SkillLevel;
         Owner = Managers._Game.Player;
         SetInfo(TemplateID);
-        
+        Debug.Log("ElectronicField init");
         return true;
     }
-    //InitLate¸¦ Unity »ı¸íÁÖ±â¸¦ ÀÌ¿ëÇÏ±â À§ÇØ »ç¿ë ÇÒ ¼ö ÀÖÁö¸¸, ¶§·Î´Â ÀÌ·¸°Ô ÇÑ¹ø¸¸ ½ÇÇàµÇ°í ½ÍÀº ±â´ÉµéÀ» ºĞ¸® ÇÒ ¶§¿¡µµ »ç¿ë.
-    //MonsterController¿¡¼­ if(base.Init())À» »ç¿ëÇÏ¿© È£Ãâ Å¸ÀÌ¹ÖÀ» Á¶Á¤ÇÏ¿´À¸³ª, ÀÌ °æ¿ì´Â base initÀÌ ¹İµå½Ã ¼±ÇàµÇ¾î¾ß ÇÏ°í Setinfo´Â ¹İº¹ ¼öÇàµÇ¾î¾ß ÇÏ±â¿¡ ÀÌ·¯ÇÑ ¹æ¹ıÀ» ÃëÇÔ.
+    //InitLateë¥¼ Unity ìƒëª…ì£¼ê¸°ë¥¼ ì´ìš©í•˜ê¸° ìœ„í•´ ì‚¬ìš© í•  ìˆ˜ ìˆì§€ë§Œ, ë•Œë¡œëŠ” ì´ë ‡ê²Œ í•œë²ˆë§Œ ì‹¤í–‰ë˜ê³  ì‹¶ì€ ê¸°ëŠ¥ë“¤ì„ ë¶„ë¦¬ í•  ë•Œì—ë„ ì‚¬ìš©.
+    //MonsterControllerì—ì„œ if(base.Init())ì„ ì‚¬ìš©í•˜ì—¬ í˜¸ì¶œ íƒ€ì´ë°ì„ ì¡°ì •í•˜ì˜€ìœ¼ë‚˜, ì´ ê²½ìš°ëŠ” base initì´ ë°˜ë“œì‹œ ì„ í–‰ë˜ì–´ì•¼ í•˜ê³  SetinfoëŠ” ë°˜ë³µ ìˆ˜í–‰ë˜ì–´ì•¼ í•˜ê¸°ì— ì´ëŸ¬í•œ ë°©ë²•ì„ ì·¨í•¨.
     public override bool InitLate()
     {
         base.InitLate();
@@ -31,7 +31,7 @@ public class ElectronicField : RepeatSkill
         
     }
 
-    //TargetÀÌ Trigger¿¡ ÁøÀÔÇÏ¸é ÀÏÁ¤ ½Ã°£¸¶´Ù ÇÇÇØ¸¦ ÁÖ´Â ÄÚ·çÆ¾À» ½ÃÀÛÇÏ°í, (Target, Target¿¡°Ô ÇÇÇØ¸¦ ÁÖ´Â Coroutine)À» Dict¿¡ Ãß°¡
+    //Targetì´ Triggerì— ì§„ì…í•˜ë©´ ì¼ì • ì‹œê°„ë§ˆë‹¤ í”¼í•´ë¥¼ ì£¼ëŠ” ì½”ë£¨í‹´ì„ ì‹œì‘í•˜ê³ , (Target, Targetì—ê²Œ í”¼í•´ë¥¼ ì£¼ëŠ” Coroutine)ì„ Dictì— ì¶”ê°€
     private void OnTriggerEnter2D(Collider2D collision)
     {
         MonsterController target = collision.gameObject.GetComponent<MonsterController>();
@@ -50,7 +50,7 @@ public class ElectronicField : RepeatSkill
         m_coroutineDict.Add(target, coDotDamage);
     }
 
-    //TargetÀÌ Trigger¿¡¼­ Å»ÃâÇÏ¸é CoroutineÀ» ÁßÁöÇÏ°í ÇØ´ç Dictiary ½ÖÀ» Dict¿¡¼­ Á¦°Å
+    //Targetì´ Triggerì—ì„œ íƒˆì¶œí•˜ë©´ Coroutineì„ ì¤‘ì§€í•˜ê³  í•´ë‹¹ Dictiary ìŒì„ Dictì—ì„œ ì œê±°
     private void OnTriggerExit2D(Collider2D collision)
     {
         MonsterController target = collision.gameObject.GetComponent<MonsterController>();
@@ -66,7 +66,7 @@ public class ElectronicField : RepeatSkill
         m_coroutineDict.Remove(target);
     }
 
-    //ÀÏÁ¤ ½Ã°£¸¶´Ù target¿¡°Ô ÇÇÇØ¸¦ ÁÜ
+    //ì¼ì • ì‹œê°„ë§ˆë‹¤ targetì—ê²Œ í”¼í•´ë¥¼ ì¤Œ
     public IEnumerator CoStartDotDamage(MonsterController target)
     {
         while (true)
@@ -78,12 +78,12 @@ public class ElectronicField : RepeatSkill
             yield return new WaitForSeconds(Define.DOT_DAMAGE_RATE);
         }
     }
-    //¿©´ã.. ÀÌ°Å °íÃÄº¸°Ú´Ù°í 3ÀÏ Á¤µµ ¸Ó¸®½Î¸Ç°Å°°À½...
-    //issue - ´Ù½Ã spawn µÈ monsterµéÀÌ ÀÚ²Ù Àç½ºÆù µÇÀÚ¸¶ÀÚ Á×´Â ¹®Á¦°¡ ¹ß»ı.
-    //Á¢±Ù1 -> Dictionary·Î ÂüÁ¶ÇÏ´Â CoroutineÀÌ ²¿¿´³ª? -> ¾Æ´Ô
-    //Á¢±Ù2 -> StopCoroutineÀÌ Á¦´ë·Î µ¿ÀÛÇÏÁö ¾Ê¾Ò³ª? -> Á¦´ë·Î µ¿ÀÛÇÔ.
-    //Á¢±Ù3 -> È¤½Ã Àç½ºÆù µÇ´Â ¼ø°£ À§Ä¡¸¦ ¿Å°Ü¼­ SpawnµÇ±â Àü¿¡ EnableÀÌ ¼±ÇàµÇ¾î TriggerEnter¸¦ ¹ßµ¿½ÃÄ×³ª? -> ¾Æ´Ô
-    //Á¢±Ù4 -> ÀÌ°ÍÀú°Í ½ÃµµÇØ º¸´Â µµÁß ºĞ¸í µ¥¹ÌÁö¸¦ Àû°Ô ÁÖ´Âµ¥ ½ºÅ³¿¡ ´êÀÚ¸¶ÀÚ ÀûÀÌ Á×À½. -> ?? ¿ø·¡ 1ÃÊ¿¡ °ÉÃÄ¼­ Á×À»ÅÙµ¥?
-    //°á±¹ ¹®Á¦´Â Monster°¡ Àç»ı¼ºµÉ¶§ Ã¼·ÂÀ» initÇØÁÖÁö ¾Ê¾Æ¼­ Ã¼·Â 0À¸·Î Àç½ºÆùµÇ¾î ÇØ´ç Çö»óÀÌ ¹ß»ıÇÏ´Â°Å¿´À½...
-    //ÇØ°á¹æ¹ı - Monster¿¡¼­ initÇÒ¶§ m_HP = m_maxHP ·Î ÇØ°á. Çã¹«ÇÔ...
+    //ì—¬ë‹´.. ì´ê±° ê³ ì³ë³´ê² ë‹¤ê³  3ì¼ ì •ë„ ë¨¸ë¦¬ì‹¸ë§¨ê±°ê°™ìŒ...
+    //issue - ë‹¤ì‹œ spawn ëœ monsterë“¤ì´ ìê¾¸ ì¬ìŠ¤í° ë˜ìë§ˆì ì£½ëŠ” ë¬¸ì œê°€ ë°œìƒ.
+    //ì ‘ê·¼1 -> Dictionaryë¡œ ì°¸ì¡°í•˜ëŠ” Coroutineì´ ê¼¬ì˜€ë‚˜? -> ì•„ë‹˜
+    //ì ‘ê·¼2 -> StopCoroutineì´ ì œëŒ€ë¡œ ë™ì‘í•˜ì§€ ì•Šì•˜ë‚˜? -> ì œëŒ€ë¡œ ë™ì‘í•¨.
+    //ì ‘ê·¼3 -> í˜¹ì‹œ ì¬ìŠ¤í° ë˜ëŠ” ìˆœê°„ ìœ„ì¹˜ë¥¼ ì˜®ê²¨ì„œ Spawnë˜ê¸° ì „ì— Enableì´ ì„ í–‰ë˜ì–´ TriggerEnterë¥¼ ë°œë™ì‹œì¼°ë‚˜? -> ì•„ë‹˜
+    //ì ‘ê·¼4 -> ì´ê²ƒì €ê²ƒ ì‹œë„í•´ ë³´ëŠ” ë„ì¤‘ ë¶„ëª… ë°ë¯¸ì§€ë¥¼ ì ê²Œ ì£¼ëŠ”ë° ìŠ¤í‚¬ì— ë‹¿ìë§ˆì ì ì´ ì£½ìŒ. -> ?? ì›ë˜ 1ì´ˆì— ê±¸ì³ì„œ ì£½ì„í…ë°?
+    //ê²°êµ­ ë¬¸ì œëŠ” Monsterê°€ ì¬ìƒì„±ë ë•Œ ì²´ë ¥ì„ inití•´ì£¼ì§€ ì•Šì•„ì„œ ì²´ë ¥ 0ìœ¼ë¡œ ì¬ìŠ¤í°ë˜ì–´ í•´ë‹¹ í˜„ìƒì´ ë°œìƒí•˜ëŠ”ê±°ì˜€ìŒ...
+    //í•´ê²°ë°©ë²• - Monsterì—ì„œ inití• ë•Œ m_HP = m_maxHP ë¡œ í•´ê²°. í—ˆë¬´í•¨...
 }

@@ -48,8 +48,11 @@ public class UI_SkillSelectPopup : UI_Popup
 
     public override bool Init()
     {
+        m_player = Managers._Game.Player;
+
         if (base.Init() == false)
             return false;
+
 
         BindObject(typeof(GameObjects));
         BindText(typeof(Texts));
@@ -101,7 +104,7 @@ public class UI_SkillSelectPopup : UI_Popup
     }
 
     GameObject m_grid;
-    PlayerController m_player = Managers._Game.Player;
+    PlayerController m_player;
     int skillSelectNum;
 
     void PopulateGrid()
