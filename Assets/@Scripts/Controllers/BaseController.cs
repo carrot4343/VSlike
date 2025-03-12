@@ -15,9 +15,9 @@ public class BaseController : MonoBehaviour
         InitLate();
     }
 
-    //»ó¼ÓÀ» ¹ŞÀ¸¸é¼­ Start¸¦ »ç¿ëÇÏ°Ô µÇ¸é »óÀ§Å¬·¡½ºÀÇ Start°¡ ¸·È÷´Â °æ¿ì°¡ ¹ß»ı.
-    //±×·¡¼­ µû·Î °¡»óÇÔ¼ö¸¦ ¸¸µé¾î¼­ start³ª awake½Ã ÇØ¾ß ÇÒ ÀÏÀÌ ÀÖ´Ù¸é ÇØ´ç ÇÔ¼ö¿¡¼­ ÀÌ·ç¾îÁú ¼ö ÀÖ°Ô²û ÇÔ.
-    bool m_init = false;
+    //ìƒì†ì„ ë°›ìœ¼ë©´ì„œ Startë¥¼ ì‚¬ìš©í•˜ê²Œ ë˜ë©´ ìƒìœ„í´ë˜ìŠ¤ì˜ Startê°€ ë§‰íˆëŠ” ê²½ìš°ê°€ ë°œìƒ.
+    //ê·¸ë˜ì„œ ë”°ë¡œ ê°€ìƒí•¨ìˆ˜ë¥¼ ë§Œë“¤ì–´ì„œ startë‚˜ awakeì‹œ í•´ì•¼ í•  ì¼ì´ ìˆë‹¤ë©´ í•´ë‹¹ í•¨ìˆ˜ì—ì„œ ì´ë£¨ì–´ì§ˆ ìˆ˜ ìˆê²Œë” í•¨.
+    protected bool m_init = false;
     public virtual bool Init()
     {
         if (m_init)
@@ -27,7 +27,7 @@ public class BaseController : MonoBehaviour
         return true;
     }
 
-    //À¯´ÏÆ¼ »ı¸íÁÖ±â¸¦ ÀÌ¿ëÇØ¼­ init¿¡¼­ °´Ã¼¸¦ loadÇÏ°í initlate¿¡¼­ ÇØ´ç °´Ã¼¸¦ ¹èÄ¡ÇÏ°Å³ª ´Ù¸¥ °´Ã¼¿¡ ºÙÀÌ´Â Çàµ¿À» ¼öÇà.
+    //ìœ ë‹ˆí‹° ìƒëª…ì£¼ê¸°ë¥¼ ì´ìš©í•´ì„œ initì—ì„œ ê°ì²´ë¥¼ loadí•˜ê³  initlateì—ì„œ í•´ë‹¹ ê°ì²´ë¥¼ ë°°ì¹˜í•˜ê±°ë‚˜ ë‹¤ë¥¸ ê°ì²´ì— ë¶™ì´ëŠ” í–‰ë™ì„ ìˆ˜í–‰.
     bool m_initLate = false;
     public virtual bool InitLate()
     {
@@ -38,7 +38,7 @@ public class BaseController : MonoBehaviour
         return true;
     }
 
-    // Updateµµ Start¿Í ¸¶Âù°¡Áö
+    // Updateë„ Startì™€ ë§ˆì°¬ê°€ì§€
     void Update()
     {
         UpdateController();

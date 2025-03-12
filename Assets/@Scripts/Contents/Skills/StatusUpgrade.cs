@@ -9,13 +9,16 @@ public class StatusUpgrade : SkillBase
     int m_playerDefaultMaxHp;
     public override bool Init()
     {
-        if (base.Init())
-            return true;
+        bool baseReturnBoolean = base.Init();
+        //한번만 수행해야 하는 것들
+        if (baseReturnBoolean)
+        {
+            //m_playerDefaultAttack = Managers._Game.Player.PlayerAtk;
+            //Debug.Log($"default atk : {m_playerDefaultAttack}");
+            Debug.Log($"Attack : {Managers._Game.Player.PlayerAtk} \n Speed : {Managers._Game.Player.PlayerSpeed} \n Max Hp : {Managers._Game.Player.m_maxHP}");
+        }
 
-        //m_playerDefaultAttack = Managers._Game.Player.PlayerAtk;
-        //Debug.Log($"default atk : {m_playerDefaultAttack}");
-        Debug.Log($"Attack : {Managers._Game.Player.PlayerAtk} \n Speed : {Managers._Game.Player.PlayerSpeed} \n Max Hp : {Managers._Game.Player.m_maxHP}");
-        return true;
+        return baseReturnBoolean;
     }
 }
 

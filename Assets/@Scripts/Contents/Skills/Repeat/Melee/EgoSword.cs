@@ -46,14 +46,16 @@ public class EgoSword : RepeatSkill
 
     public override bool Init()
     {
-        base.Init();
-
         TemplateID = Define.EGO_SWORD_ID + SkillLevel;
         Owner = Managers._Game.Player;
         SetInfo(TemplateID);
 
-        Debug.Log("Egosword init");
-        return true;
+        bool baseReturnBoolean = base.Init();
+        //한번만 수행해야 하는 것들
+        if(baseReturnBoolean)
+            Debug.Log("init");
+
+        return baseReturnBoolean;
     }
 
     //그려지는 위치 조정
