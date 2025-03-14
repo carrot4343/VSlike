@@ -106,6 +106,21 @@ public class UI_SkillSelectPopup : UI_Popup
     GameObject m_grid;
     PlayerController m_player;
     int skillSelectNum;
+    bool isAllSkillMaxLevel = false;
+    int SkillSelectNum
+    {
+        get { return skillSelectNum; }
+        set
+        {
+            //모든 스킬이 만렙인 경우 (업그레이드 가능한 스킬이 없는 경우)
+            if (value == 0)
+            {
+                isAllSkillMaxLevel = true;
+            }
+            //무조건 1개는 선택이 가능하게끔
+            skillSelectNum = Math.Max(1, value);
+        }
+    }
 
     void PopulateGrid()
     {
@@ -116,20 +131,23 @@ public class UI_SkillSelectPopup : UI_Popup
         if (m_player.Skills.Skills.Count() >= Define.MAX_SKILL_NUM && 
             m_player.Skills.Skills.Count(x => x.SkillLevel >= Define.MAX_SKILL_LEVEL) >= 4)
         {
-            skillSelectNum = m_player.Skills.Skills.Count(x => x.SkillLevel < Define.MAX_SKILL_LEVEL);
+            SkillSelectNum = m_player.Skills.Skills.Count(x => x.SkillLevel < Define.MAX_SKILL_LEVEL);
         }
         else//일반적인 경우
         {
-            skillSelectNum = 3;
+            SkillSelectNum = 3;
         }
-        
-        //2개, 1개를 전달해야 하는 경우가 있는데
-        //1. skill이 이미 6개 보유중이면서
-        //2. 해당 skill들을 만렙을 찍어서 만렙이 아닌 스킬이 2개 1개인 경우.
 
-        int[] randomTemplateID = new int[skillSelectNum];
-        randomTemplateID = CreateRandomTemplateID(skillSelectNum);
-        for (int i = 0; i < skillSelectNum; i++)
+        //모든 스킬이 만렙이면
+        if(isAllSkillMaxLevel)
+        {
+            UI_HpRecover item = Managers._UI.MakeSubItem<UI_HpRecover>(m_grid.transform);
+            return;
+        }
+
+        int[] randomTemplateID = new int[SkillSelectNum];
+        randomTemplateID = CreateRandomTemplateID(SkillSelectNum);
+        for (int i = 0; i < SkillSelectNum; i++)
         {
             UI_SkillCardItem item = Managers._UI.MakeSubItem<UI_SkillCardItem>(m_grid.transform);
             item.SetInfo(randomTemplateID[i]);

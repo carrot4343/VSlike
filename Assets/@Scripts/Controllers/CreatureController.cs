@@ -23,15 +23,8 @@ public class CreatureController : BaseController
         }
         set
         {
-            //ÃÖ´ë Ã¼·Â ÃÊ°ú ¹æÁö
-            if(value > m_maxHP)
-            {
-                m_hp = m_maxHP;
-            }
-            else
-            {
-                m_hp = value;
-            }
+            //ìµœëŒ€ ì²´ë ¥ ì´ˆê³¼ ë°©ì§€
+            m_hp = Mathf.Min(m_maxHP, value);
         }
     }
     public int m_maxHP { get; set; } = 100;
@@ -53,7 +46,7 @@ public class CreatureController : BaseController
         m_HP = m_maxHP;
     }
 
-    //CreatureµéÀº °øÅëÀûÀ¸·Î ÇÇÇØ¸¦ ¹ŞÀ» ¶§¿Í »ç¸ÁÇßÀ» ¶§¸¦ Ã³¸®ÇØÁÖ¾î¾ß ÇÏ¹Ç·Î °¡»óÇÔ¼ö·Î½á °¢ÀÚ Å¬·¡½º¿¡¼­ ±¸ÇöÇÏ°Ô ÇÔ.
+    //Creatureë“¤ì€ ê³µí†µì ìœ¼ë¡œ í”¼í•´ë¥¼ ë°›ì„ ë•Œì™€ ì‚¬ë§í–ˆì„ ë•Œë¥¼ ì²˜ë¦¬í•´ì£¼ì–´ì•¼ í•˜ë¯€ë¡œ ê°€ìƒí•¨ìˆ˜ë¡œì¨ ê°ì í´ë˜ìŠ¤ì—ì„œ êµ¬í˜„í•˜ê²Œ í•¨.
     public virtual void OnDamaged(BaseController attacker, int damage)
     {
         m_HP -= damage;
