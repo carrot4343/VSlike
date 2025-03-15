@@ -15,8 +15,10 @@ public class BossController : MonsterController
         m_collider = GetComponent<BoxCollider2D>();
         defaultColliderSize = m_collider.size;
 
-        
+        m_monsterAttack = 40;
         m_HP = 10000;
+        Debug.Log("Stack Trace:\n" + UnityEngine.StackTraceUtility.ExtractStackTrace());
+        Debug.Log($"Boss object initialized. {gameObject.name}");
 
         //Move또한 Skill 상태에 포함이므로 기본 State를 Skill로 설정
         CreatureState = Define.CreatureState.Skill;
@@ -55,14 +57,6 @@ public class BossController : MonsterController
                 break;
         }
     }
-    //MonsterController에서 상속받은 UpdateDead에서 
-    //이미 OnDead 라는 함수에서 Despawn을 비롯한 여러 함수들을 처리하고 있는데 굳이 필요할까? 의문
-    //실험 결과 딱히 문제는 없음
-    //protected override void UpdateDead()
-    //{
-    //    if (m_coWait == null)
-    //        Managers._Object.Despawn(this);
-    //}
 
     public override void OnDamaged(BaseController attacker, int damage)
     {

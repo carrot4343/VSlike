@@ -47,26 +47,28 @@ public class MonsterController : CreatureController
     protected virtual void UpdateIdle() { }
     protected virtual void UpdateSkill() { }
     protected virtual void UpdateMoving() { }
-    //OnDead°¡ ÀÖ´Â »óÈ²¿¡¼­ UpdateDead¸¦ ºñ·ÔÇÑ Dead StateÀÇ ÇÊ¿ä¼º?
+    //OnDeadê°€ ìˆëŠ” ìƒí™©ì—ì„œ UpdateDeadë¥¼ ë¹„ë¡¯í•œ Dead Stateì˜ í•„ìš”ì„±?
     protected virtual void UpdateDead() { }
 
     #endregion
     public override bool Init()
     {
-        //¸Å¹ø InitÀÌ È£ÃâµÉ ¶§¸¶´Ù ¼öÇà. ÀÌ °úÁ¤À» ºĞ¸®ÇÏÁö ¾Ê°í ÃÖÃÊ 1È¸¸¸ ¼öÇàÇÏ¸é Respawn µÇÀÚ¸¶ÀÚ OnDeadÈ£Ãâ
+        //ë§¤ë²ˆ Initì´ í˜¸ì¶œë  ë•Œë§ˆë‹¤ ìˆ˜í–‰. ì´ ê³¼ì •ì„ ë¶„ë¦¬í•˜ì§€ ì•Šê³  ìµœì´ˆ 1íšŒë§Œ ìˆ˜í–‰í•˜ë©´ Respawn ë˜ìë§ˆì OnDeadí˜¸ì¶œ
         m_HP = m_maxHP;
-
+        m_monsterAttack = 5;
         Debug.Log(m_HP);
-        //ÃÖÃÊ 1È¸¸¸ ¼öÇà
+        //ìµœì´ˆ 1íšŒë§Œ ìˆ˜í–‰
         if (base.Init())
             return false;
+
         objectType = Define.ObjectType.Monster;
         m_animator = GetComponent<Animator>();
         CreatureState = Define.CreatureState.Moving;
+
         return true;
     }
 
-    //¹°¸® ¿òÁ÷ÀÓÀ» ÀÌ¿ëÇÒ ¶© update º¸´Ü fixed update
+    //ë¬¼ë¦¬ ì›€ì§ì„ì„ ì´ìš©í•  ë• update ë³´ë‹¨ fixed update
     void FixedUpdate()
     {
         if (CreatureState != Define.CreatureState.Moving)
@@ -76,7 +78,7 @@ public class MonsterController : CreatureController
         if (pc == null)
             return;
 
-        //Player¿Í MonsterÀÇ º¤ÅÍ °ü°è¸¦ ÅëÇØ ÀÌµ¿ °áÁ¤. flipX ´Â ½ºÇÁ¶óÀÌÆ® È¸Àü
+        //Playerì™€ Monsterì˜ ë²¡í„° ê´€ê³„ë¥¼ í†µí•´ ì´ë™ ê²°ì •. flipX ëŠ” ìŠ¤í”„ë¼ì´íŠ¸ íšŒì „
         Vector3 dir = pc.transform.position - transform.position;
         Vector3 newPos = transform.position + dir.normalized * Time.deltaTime * m_speed;
         GetComponent<Rigidbody2D>().MovePosition(newPos);
@@ -90,7 +92,7 @@ public class MonsterController : CreatureController
             return;
         if (this.IsValid() == false)
             return;
-        //µµÆ® ÀåÆÇ µ¥¹ÌÁö
+        //ë„íŠ¸ ì¥íŒ ë°ë¯¸ì§€
         if (m_coDotDamage != null)
             StopCoroutine(m_coDotDamage);
 
@@ -104,7 +106,7 @@ public class MonsterController : CreatureController
             return;
         if (this.IsValid() == false)
             return;
-        //µµÆ® ÀåÆÇ µ¥¹ÌÁö
+        //ë„íŠ¸ ì¥íŒ ë°ë¯¸ì§€
         if (m_coDotDamage != null)
             StopCoroutine(m_coDotDamage);
 
@@ -112,20 +114,21 @@ public class MonsterController : CreatureController
     }
 
     Coroutine m_coDotDamage;
+    protected int m_monsterAttack;
     public IEnumerator CoStartDotDamage(PlayerController target)
     {
         while(true)
         {
-            target.OnDamaged(this, 2);
+            target.OnDamaged(this, m_monsterAttack);
             //cool time
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(1.0f);
         }
     }
 
     public override void OnDamaged(BaseController attacker, int damage)
     {
-        //PlayerÀÇ °ø°İ·Â (½ºÅ³·Î °ø°İ·Â ÀÚÃ¼¸¦ ¿Ã¸°´Ù°Å³ª Àåºñ¾ÆÀÌÅÛÀ» ¾ò´Â´Ù°Å³ª...)À» ´õÇÏ´Â °úÁ¤.
-        //ÃßÈÄ °è»ê½ÄÀº ¼öÁ¤ÀÌ ÇÊ¿äÇÔ (±âÈ¹ÀÇ ¹®Á¦)
+        //Playerì˜ ê³µê²©ë ¥ (ìŠ¤í‚¬ë¡œ ê³µê²©ë ¥ ìì²´ë¥¼ ì˜¬ë¦°ë‹¤ê±°ë‚˜ ì¥ë¹„ì•„ì´í…œì„ ì–»ëŠ”ë‹¤ê±°ë‚˜...)ì„ ë”í•˜ëŠ” ê³¼ì •.
+        //ì¶”í›„ ê³„ì‚°ì‹ì€ ìˆ˜ì •ì´ í•„ìš”í•¨ (ê¸°íšì˜ ë¬¸ì œ)
         if(attacker.GetComponent<PlayerController>() != null)
         {
             damage += Managers._Game.Player.PlayerAtk;

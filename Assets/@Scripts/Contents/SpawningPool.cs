@@ -10,7 +10,7 @@ public class SpawningPool : MonoBehaviour
     float m_spawnInterval = 0.1f;
     float m_stageInterval = 1.0f;
     int m_maxMonsterCount = 500;
-    int m_waveMax = 300;
+    int m_waveMax = 1;
     int m_spawnCount = 0;
     //default 0.1 10.0 500 1000 0
     public int SpawnEliteTemplateID { get; set; }

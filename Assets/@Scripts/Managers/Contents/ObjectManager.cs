@@ -11,23 +11,23 @@ public class ObjectManager
     public HashSet<ProjectileController> Projectiles { get; } = new HashSet<ProjectileController>();
     public HashSet<GemController> Gems { get; } = new HashSet<GemController>();
 
-    //loadÇÑ ¸®¼Ò½º¸¦ ¹ÙÅÁÀ¸·Î ¸Ê¿¡ spawnÇÏ´Â ÇÔ¼ö. ½ºÆùÇÒ °´Ã¼ÀÇ ID¿Í ½ºÆù À§Ä¡¸¦ ¸Å°³º¯¼ö·Î ¹ŞÀ½.
+    //loadí•œ ë¦¬ì†ŒìŠ¤ë¥¼ ë°”íƒ•ìœ¼ë¡œ ë§µì— spawní•˜ëŠ” í•¨ìˆ˜. ìŠ¤í°í•  ê°ì²´ì˜ IDì™€ ìŠ¤í° ìœ„ì¹˜ë¥¼ ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ìŒ.
     public T Spawn<T>(Vector3 position, int templateID = 0) where T : BaseController
     {
-        //½ºÆùÇÏ´Â ¹°Ã¼ÀÇ Å¸ÀÔ Á¤º¸
+        //ìŠ¤í°í•˜ëŠ” ë¬¼ì²´ì˜ íƒ€ì… ì •ë³´
         System.Type type = typeof(T);
 
-        //Å¸ÀÔ Á¤º¸¿¡ µû¶ó ¼ÒÈ¯.
+        //íƒ€ì… ì •ë³´ì— ë”°ë¼ ì†Œí™˜.
         if(type == typeof(PlayerController))
         {
-            //¸®¼Ò½º ¸Å´ÏÀúÀÇ Instantiate¸¦ È°¿ë
+            //ë¦¬ì†ŒìŠ¤ ë§¤ë‹ˆì €ì˜ Instantiateë¥¼ í™œìš©
             GameObject go = Managers._Resource.Instantiate("Slime_01.prefab");
             go.name = "Player";
             go.transform.position = position;
 
             PlayerController pc = go.GetOrAddComponent<PlayerController>();
             Player = pc;
-            //»ı¼ºÇØÁÖ¾úÀ¸¹Ç·Î Awake ³ª Start¸¦ ´ëÃ¼ÇÑ Init ÇÔ¼ö ½ÇÇà
+            //ìƒì„±í•´ì£¼ì—ˆìœ¼ë¯€ë¡œ Awake ë‚˜ Startë¥¼ ëŒ€ì²´í•œ Init í•¨ìˆ˜ ì‹¤í–‰
             pc.Init();
 
             return pc as T;
@@ -58,7 +58,7 @@ public class ObjectManager
             GemController gc = go.GetOrAddComponent<GemController>();
             Gems.Add(gc);
             gc.Init();
-            //ÇöÀç´Â key°ªÀ» ·£´ıÀ¸·Î Á¤ÇÏÁö¸¸ ÃßÈÄ °æÇèÄ¡ ¾ç¿¡ µû¶ó ½ºÇÁ¶óÀÌÆ® º¯°æ
+            //í˜„ì¬ëŠ” keyê°’ì„ ëœë¤ìœ¼ë¡œ ì •í•˜ì§€ë§Œ ì¶”í›„ ê²½í—˜ì¹˜ ì–‘ì— ë”°ë¼ ìŠ¤í”„ë¼ì´íŠ¸ ë³€ê²½
             string key = UnityEngine.Random.Range(0, 2) == 0 ? "BlueGem.sprite" : "GreenGem.sprite";
             Sprite sprite = Managers._Resource.Load<Sprite>(key);
             go.GetComponent<SpriteRenderer>().sprite = sprite;
@@ -118,7 +118,7 @@ public class ObjectManager
 
         if (type == typeof(PlayerController))
         {
-            //Player°¡ Despawn? »ı°¢ÇØ ºÁ¾ß ÇÒ ¹®Á¦.
+            //Playerê°€ Despawn? ìƒê°í•´ ë´ì•¼ í•  ë¬¸ì œ.
         }
         else if (type == typeof(MonsterController))
         {

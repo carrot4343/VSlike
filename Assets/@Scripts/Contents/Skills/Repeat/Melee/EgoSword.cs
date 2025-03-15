@@ -50,6 +50,7 @@ public class EgoSword : RepeatSkill
         Owner = Managers._Game.Player;
         SetInfo(TemplateID);
 
+        //부모 클래스의 Init 결과를 저장하기 위해서
         bool baseReturnBoolean = base.Init();
         //한번만 수행해야 하는 것들
         if(baseReturnBoolean)

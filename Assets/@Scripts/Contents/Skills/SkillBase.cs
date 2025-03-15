@@ -116,6 +116,6 @@ public class SkillBase : BaseController
 
     protected virtual void OnSkillLevelUpgrade()
     {
-        Debug.Log("OnSkillLevelUpgrade called");
+        Debug.Log($"OnSkillLevelUpgrade called, {gameObject.name}");
     }
 }
