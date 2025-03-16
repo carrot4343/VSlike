@@ -57,6 +57,7 @@ public class MonsterController : CreatureController
         m_HP = m_maxHP;
         m_monsterAttack = 5;
         Debug.Log(m_HP);
+
         //최초 1회만 수행
         if (base.Init())
             return false;

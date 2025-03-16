@@ -110,12 +110,12 @@ public class SkillBase : BaseController
     {
         SkillLevel++;
 
-        Debug.Log($"Skill upgraded. skill level : {SkillLevel}");
+        Debug.Log($"Skill upgraded. {this.GetType().Name} : {SkillLevel - 1} -> {SkillLevel}");
         OnSkillLevelUpgrade();
     }
 
     protected virtual void OnSkillLevelUpgrade()
     {
-        Debug.Log($"OnSkillLevelUpgrade called, {gameObject.name}");
+
     }
 }

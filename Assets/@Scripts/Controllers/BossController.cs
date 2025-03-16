@@ -9,7 +9,8 @@ public class BossController : MonsterController
     public override bool Init()
     {
         //SkillBook 추가됨.
-        base.Init();
+        if (base.Init() == true)
+            return false;
 
         m_animator = GetComponent<Animator>();
         m_collider = GetComponent<BoxCollider2D>();
@@ -17,7 +18,6 @@ public class BossController : MonsterController
 
         m_monsterAttack = 40;
         m_HP = 10000;
-        Debug.Log("Stack Trace:\n" + UnityEngine.StackTraceUtility.ExtractStackTrace());
         Debug.Log($"Boss object initialized. {gameObject.name}");
 
         //Move또한 Skill 상태에 포함이므로 기본 State를 Skill로 설정
@@ -25,8 +25,6 @@ public class BossController : MonsterController
 
         //스킬의 Sequence를 등록하고
         Skills.AddSkill<Move>(transform.position);
-        Skills.AddSkill<Dash>(transform.position);
-        Skills.AddSkill<Dash>(transform.position);
         Skills.AddSkill<Dash>(transform.position);
         //수행
         Skills.StartNextSequenceSkill();
