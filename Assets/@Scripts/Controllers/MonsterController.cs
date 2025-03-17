@@ -55,18 +55,19 @@ public class MonsterController : CreatureController
     {
         //매번 Init이 호출될 때마다 수행. 이 과정을 분리하지 않고 최초 1회만 수행하면 Respawn 되자마자 OnDead호출
         m_HP = m_maxHP;
-        m_monsterAttack = 5;
         Debug.Log(m_HP);
 
         //최초 1회만 수행
-        if (base.Init())
+        bool baseInitBoolean = base.Init();
+        if (!baseInitBoolean)
             return false;
 
+        m_monsterAttack = 5;
         objectType = Define.ObjectType.Monster;
         m_animator = GetComponent<Animator>();
         CreatureState = Define.CreatureState.Moving;
 
-        return true;
+        return baseInitBoolean;
     }
 
     //물리 움직임을 이용할 땐 update 보단 fixed update

@@ -33,12 +33,12 @@ public class CreatureController : BaseController
 
     public override bool Init()
     {
-        base.Init();
+        bool baseInitBoolean = base.Init();
 
         Skills = gameObject.GetOrAddComponent<SkillBook>();
         m_offset = GetComponent<Collider2D>();
 
-        return true;
+        return baseInitBoolean;
     }
 
     public void OnEnable()

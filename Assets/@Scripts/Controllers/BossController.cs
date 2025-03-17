@@ -8,20 +8,21 @@ public class BossController : MonsterController
     Vector2 defaultColliderSize;
     public override bool Init()
     {
-        //SkillBook 추가됨.
-        if (base.Init() == true)
-            return false;
-
         m_animator = GetComponent<Animator>();
         m_collider = GetComponent<BoxCollider2D>();
         defaultColliderSize = m_collider.size;
 
         m_monsterAttack = 40;
         m_HP = 10000;
+
+        bool baseInitBoolean = base.Init();
+        if (!baseInitBoolean)
+            return false;
+
+        
         Debug.Log($"Boss object initialized. {gameObject.name}");
 
-        //Move또한 Skill 상태에 포함이므로 기본 State를 Skill로 설정
-        CreatureState = Define.CreatureState.Skill;
+        CreatureState = Define.CreatureState.Moving;
 
         //스킬의 Sequence를 등록하고
         Skills.AddSkill<Move>(transform.position);
@@ -29,11 +30,12 @@ public class BossController : MonsterController
         //수행
         Skills.StartNextSequenceSkill();
 
-        return true;
+        return baseInitBoolean;
     }
     //State Pattern
     public override void UpdateAnimation()
     {
+        Debug.Log($"Boss skill having : {Skills.Skills.Count}");
         //현재 State에 따라 animation 수행. State에 변화가 있을 때 실행됨.
         switch (CreatureState)
         {

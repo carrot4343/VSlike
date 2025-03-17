@@ -152,7 +152,7 @@ public class SkillBook : MonoBehaviour
             var skill = gameObject.GetOrAddComponent<T>();
             Skills.Add(skill);
             SequenceSkills.Add(skill as SequenceSkill);
-
+            Debug.Log($"Skill added {skill.name}");
             return skill as T;
         }
         else if (type.IsSubclassOf(typeof(StatusUpgrade)))

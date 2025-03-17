@@ -51,12 +51,12 @@ public class EgoSword : RepeatSkill
         SetInfo(TemplateID);
 
         //부모 클래스의 Init 결과를 저장하기 위해서
-        bool baseReturnBoolean = base.Init();
+        bool baseInitBoolean = base.Init();
         //한번만 수행해야 하는 것들
-        if(baseReturnBoolean)
+        if(baseInitBoolean)
             Debug.Log("init");
 
-        return baseReturnBoolean;
+        return baseInitBoolean;
     }
 
     //그려지는 위치 조정
