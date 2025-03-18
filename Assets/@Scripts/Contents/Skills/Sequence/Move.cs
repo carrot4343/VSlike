@@ -22,12 +22,14 @@ public class Move : SequenceSkill
 
     IEnumerator CoMove(Action callback = null)
     {
+        Debug.Log("Move Called");
         m_rigidbody = GetComponent<Rigidbody2D>();
 
         float elapsed = 0;
 
         while (true)
         {
+            Debug.Log("Move Started");
             m_controller.CreatureState = Define.CreatureState.Moving;
             elapsed += Time.deltaTime;
             if (elapsed > 5.0f)
@@ -39,7 +41,7 @@ public class Move : SequenceSkill
             //Target과 충분히 가까워지면
             if (Vector3.Distance(m_rigidbody.position, targetPosition) <= 3.5f)
             {
-                m_controller.CreatureState = Define.CreatureState.Skill;
+                m_controller.CreatureState = Define.CreatureState.Attack;
                 yield return new WaitForSeconds(0.5f);
                 continue;
             }

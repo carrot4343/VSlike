@@ -52,6 +52,7 @@ public class Define
     {
         Idle,
         Moving,
+        Attack,
         Skill,
         Dead
     }

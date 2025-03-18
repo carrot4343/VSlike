@@ -19,9 +19,20 @@ public class SkillBook : MonoBehaviour
     //parent의 SkillBook에 스킬 추가
     public T AddSkill<T>(Vector3 position, Transform parent = null, int templateID = 0) where T : SkillBase
     {
-        //Generic type을 바탕으로 어떤 스킬인지 판별
-        //추후 Data와 연계되게 바꿔야 할 듯.
         System.Type type = typeof(T);
+
+        //SequenceSkill 의 경우 별도의 skill level upgrade 가 필요 없으므로 먼저 처리. 예쁘진 않네.
+        if(type.IsSubclassOf(typeof(SequenceSkill)))
+        {
+            //Sequence Skill은 스킬들을 등록하고 별도의 함수를 통해 실행시키는 별도의 과정이 필요함
+            //AddSkill 후 StartNextSequenceSkill()
+            var skill = gameObject.GetOrAddComponent<T>();
+            Skills.Add(skill);
+            SequenceSkills.Add(skill as SequenceSkill);
+            Debug.Log($"Skill added {skill.name}");
+            return skill as T;
+        }
+
         //type에 해당하는 스킬이 skills(현재 보유중인 skill list)에 있거나 templateID가 skills에 있는 경우 - 한마디로 이미 보유중일 경우
         if (Skills.Exists(skill => skill.GetType() == type) || Skills.Exists(skill => (skill.TemplateID / 10) * 10 == templateID))
         {
@@ -144,16 +155,6 @@ public class SkillBook : MonoBehaviour
             RepeatedSkills.Add(frozenHeart);
 
             return frozenHeart as T;
-        }
-        else if (type.IsSubclassOf(typeof(SequenceSkill)))
-        {
-            //Sequence Skill은 스킬들을 등록하고 별도의 함수를 통해 실행시키는 별도의 과정이 필요함
-            //AddSkill 후 StartNextSequenceSkill()
-            var skill = gameObject.GetOrAddComponent<T>();
-            Skills.Add(skill);
-            SequenceSkills.Add(skill as SequenceSkill);
-            Debug.Log($"Skill added {skill.name}");
-            return skill as T;
         }
         else if (type.IsSubclassOf(typeof(StatusUpgrade)))
         {

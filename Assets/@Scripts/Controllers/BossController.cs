@@ -19,13 +19,13 @@ public class BossController : MonsterController
         if (!baseInitBoolean)
             return false;
 
-        
-        Debug.Log($"Boss object initialized. {gameObject.name}");
-
         CreatureState = Define.CreatureState.Moving;
 
         //스킬의 Sequence를 등록하고
         Skills.AddSkill<Move>(transform.position);
+        Skills.AddSkill<Dash>(transform.position);
+        Skills.AddSkill<Dash>(transform.position);
+        Skills.AddSkill<Dash>(transform.position);
         Skills.AddSkill<Dash>(transform.position);
         //수행
         Skills.StartNextSequenceSkill();
@@ -35,7 +35,6 @@ public class BossController : MonsterController
     //State Pattern
     public override void UpdateAnimation()
     {
-        Debug.Log($"Boss skill having : {Skills.Skills.Count}");
         //현재 State에 따라 animation 수행. State에 변화가 있을 때 실행됨.
         switch (CreatureState)
         {
@@ -47,9 +46,12 @@ public class BossController : MonsterController
                 m_animator.Play("Moving");
                 m_collider.size = defaultColliderSize;
                 break;
-            case Define.CreatureState.Skill:
+            case Define.CreatureState.Attack:
                 m_collider.size = new Vector2(defaultColliderSize.x * 2, defaultColliderSize.y);
                 m_animator.Play("Attack");
+                break;
+            case Define.CreatureState.Skill:
+                m_animator.Play("Charge");
                 break;
             case Define.CreatureState.Dead:
                 m_animator.Play("Death");

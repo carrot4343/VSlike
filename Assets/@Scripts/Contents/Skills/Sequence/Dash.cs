@@ -7,12 +7,14 @@ public class Dash : SequenceSkill
 {
     Rigidbody2D m_rigidbody;
     Coroutine m_coroutine;
+    MonsterController m_controller;
 
     public override void DoSkill(Action callback = null)
     {
         if (m_coroutine != null)
             StopCoroutine(m_coroutine);
 
+        m_controller = GetComponent<MonsterController>();
         m_coroutine = StartCoroutine(CoDash(callback));
     }
 
@@ -22,8 +24,10 @@ public class Dash : SequenceSkill
 
     IEnumerator CoDash(Action callback = null)
     {
-        m_rigidbody = GetComponent<Rigidbody2D>();
+        Debug.Log("dash called");
 
+        m_rigidbody = GetComponent<Rigidbody2D>();
+        m_controller.CreatureState = Define.CreatureState.Skill;
         yield return new WaitForSeconds(WaitTime);
 
         GetComponent<Animator>().Play(AnimationName);
@@ -33,6 +37,7 @@ public class Dash : SequenceSkill
 
         while(Vector3.Distance(m_rigidbody.position, targetPosition) > 0.2f)
         {
+            Debug.Log("dash started");
             Vector2 dirVec = targetPosition - m_rigidbody.position;
 
             Vector2 nextVec = dirVec.normalized * Speed * Time.fixedDeltaTime;
