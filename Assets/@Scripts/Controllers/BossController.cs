@@ -12,9 +12,6 @@ public class BossController : MonsterController
         m_collider = GetComponent<BoxCollider2D>();
         defaultColliderSize = m_collider.size;
 
-        m_monsterAttack = 40;
-        m_HP = 10000;
-
         bool baseInitBoolean = base.Init();
         if (!baseInitBoolean)
             return false;

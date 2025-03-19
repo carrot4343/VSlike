@@ -120,14 +120,14 @@
   <MonsterData templateID="11009" name="Elite_10" prefab="Elite_04.prefab" sprite="BossIcon_23.sprite" level="1" maxHp="4500" attack="45" speed="3.0" exp="900">
   </MonsterData>
   
-  <MonsterData templateID="11100" name="Boss_01" prefab="Boss_01.prefab" sprite="Boss_01_Idle_01.sprite" level="1" maxHp="10000" attack="60" speed="3.0" exp="0">
+  <MonsterData templateID="11100" name="Boss_01" prefab="Boss_01.prefab" sprite="Boss_01_Idle_01.sprite" level="1" maxHp="10000" attack="40" speed="3.0" exp="0">
   </MonsterData>
-  <MonsterData templateID="11101" name="Boss_02" prefab="Boss_02.prefab" sprite="Boss_01_Idle_02.sprite" level="1" maxHp="12000" attack="65" speed="3.0" exp="0">
+  <MonsterData templateID="11101" name="Boss_02" prefab="Boss_02.prefab" sprite="Boss_01_Idle_02.sprite" level="1" maxHp="12000" attack="45" speed="3.0" exp="0">
   </MonsterData>
-  <MonsterData templateID="11102" name="Boss_03" prefab="Boss_03.prefab" sprite="Boss_01_Idle_03.sprite" level="1" maxHp="14000" attack="70" speed="3.0" exp="0">
+  <MonsterData templateID="11102" name="Boss_03" prefab="Boss_03.prefab" sprite="Boss_01_Idle_03.sprite" level="1" maxHp="14000" attack="55" speed="3.0" exp="0">
   </MonsterData>
-  <MonsterData templateID="11103" name="Boss_04" prefab="Boss_01.prefab" sprite="Boss_01_Idle_01.sprite" level="1" maxHp="16000" attack="75" speed="3.0" exp="0">
+  <MonsterData templateID="11103" name="Boss_04" prefab="Boss_01.prefab" sprite="Boss_01_Idle_01.sprite" level="1" maxHp="16000" attack="60" speed="3.0" exp="0">
   </MonsterData>
-  <MonsterData templateID="11104" name="Boss_05" prefab="Boss_02.prefab" sprite="Boss_01_Idle_02.sprite" level="1" maxHp="18000" attack="80" speed="3.0" exp="0">
+  <MonsterData templateID="11104" name="Boss_05" prefab="Boss_02.prefab" sprite="Boss_01_Idle_02.sprite" level="1" maxHp="18000" attack="65" speed="3.0" exp="0">
   </MonsterData>
 </MonsterDatas>

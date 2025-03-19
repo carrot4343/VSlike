@@ -16,6 +16,19 @@ public class MonsterController : CreatureController
         }
     }
 
+    public int MonsterAttack
+    {
+        get
+        {
+            return m_monsterAttack;
+        }
+        set
+        {
+            m_monsterAttack = value;
+        }
+    }
+
+
     protected Animator m_animator;
     public virtual void UpdateAnimation()
     {
@@ -62,7 +75,6 @@ public class MonsterController : CreatureController
         if (!baseInitBoolean)
             return false;
 
-        m_monsterAttack = 5;
         objectType = Define.ObjectType.Monster;
         m_animator = GetComponent<Animator>();
         CreatureState = Define.CreatureState.Moving;
@@ -116,7 +128,7 @@ public class MonsterController : CreatureController
     }
 
     Coroutine m_coDotDamage;
-    protected int m_monsterAttack;
+    int m_monsterAttack;
     public IEnumerator CoStartDotDamage(PlayerController target)
     {
         while(true)

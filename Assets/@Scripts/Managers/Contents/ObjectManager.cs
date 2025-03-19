@@ -45,6 +45,7 @@ public class ObjectManager
 
             MonsterController mc = go.GetOrAddComponent<MonsterController>();
             mc.m_maxHP = monsterData.maxHp;
+            mc.MonsterAttack = monsterData.attack;
             Monsters.Add(mc);
             mc.Init();
 

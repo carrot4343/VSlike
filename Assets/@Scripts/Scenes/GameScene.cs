@@ -98,6 +98,7 @@ public class GameScene : BaseScene
         {
             Managers._Game.OnGemCountChanged -= HandleOnGemCountChanged;
             Managers._Game.OnKillCountChanged -= HandleOnKillCountChanged;
+            Managers._Game.OnPlayerLevelChanged -= HandleOnPlayerLevelChanged;
         }
     }
 
@@ -115,6 +116,7 @@ public class GameScene : BaseScene
         {
             Managers._Game.OnGemCountChanged -= HandleOnGemCountChanged;
             Managers._Game.OnKillCountChanged -= HandleOnKillCountChanged;
+            Managers._Game.OnPlayerLevelChanged -= HandleOnPlayerLevelChanged;
         }
     }
 }

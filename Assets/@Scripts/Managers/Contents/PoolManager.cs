@@ -25,7 +25,7 @@ class Pool
     public Pool(GameObject prefab)
     {
         _prefab = prefab;
-        //»ı¼º / È°¼ºÈ­ / ºñÈ°¼ºÈ­ / ÆÄ±«
+        //ìƒì„± / í™œì„±í™” / ë¹„í™œì„±í™” / íŒŒê´´
         _pool = new ObjectPool<GameObject>(OnCreate, OnGet, OnRelease, OnDestroy);
     }
 
@@ -42,7 +42,7 @@ class Pool
     GameObject OnCreate()
     {
         GameObject go = GameObject.Instantiate(_prefab);
-        //Root ¾Æ·¡¿¡ ¸ğÀÌ°Ô²û
+        //Root ì•„ë˜ì— ëª¨ì´ê²Œë”
         go.transform.parent = Root;
         go.name = _prefab.name;
         return go;
@@ -68,7 +68,7 @@ public class PoolManager
 {
     Dictionary<string, Pool> pools = new Dictionary<string, Pool>();
 
-    //¿ÀºêÁ§Æ® È°¼ºÈ­
+    //ì˜¤ë¸Œì íŠ¸ í™œì„±í™”
     public GameObject Pop(GameObject prefab)
     {
         if (pools.ContainsKey(prefab.name) == false)
@@ -76,7 +76,7 @@ public class PoolManager
 
         return pools[prefab.name].Pop();
     }
-    //ºñÈ°¼ºÈ­
+    //ë¹„í™œì„±í™”
     public bool Push(GameObject go)
     {
         if (pools.ContainsKey(go.name) == false)
@@ -85,10 +85,15 @@ public class PoolManager
         pools[go.name].Push(go);
         return true;
     }
-    //Ç® »ı¼º
+    //í’€ ìƒì„±
     void CreatePool(GameObject prefab)
     {
         Pool pool = new Pool(prefab);
         pools.Add(prefab.name, pool);
+    }
+
+    public void Clear()
+    {
+        pools.Clear();
     }
 }
