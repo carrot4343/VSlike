@@ -46,6 +46,7 @@ public class ObjectManager
             MonsterController mc = go.GetOrAddComponent<MonsterController>();
             mc.m_maxHP = monsterData.maxHp;
             mc.MonsterAttack = monsterData.attack;
+            mc.MonsterEXP = monsterData.exp;
             Monsters.Add(mc);
             mc.Init();
 
@@ -60,13 +61,12 @@ public class ObjectManager
             Gems.Add(gc);
             gc.Init();
             //현재는 key값을 랜덤으로 정하지만 추후 경험치 양에 따라 스프라이트 변경
-            string key = UnityEngine.Random.Range(0, 2) == 0 ? "BlueGem.sprite" : "GreenGem.sprite";
+            string key = gc.GemSpriteName;
             Sprite sprite = Managers._Resource.Load<Sprite>(key);
             go.GetComponent<SpriteRenderer>().sprite = sprite;
 
             GridController gdc = GameObject.Find("@Grid").GetOrAddComponent<GridController>();
             gdc.Add(go);
-            //GameObject.Find("@Grid").GetOrAddComponent<GridController>().Add(go);
 
             return gc as T;
         }

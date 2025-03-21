@@ -76,6 +76,7 @@ public class Define
     public const int FROZEN_HEART_ID = 190;
 
     public const float DOT_DAMAGE_RATE = 0.5f;
+    public const float MONSTER_ATTACK_RATE = 1.0f;
 
     public const float MAX_SPEED = 10.0f;
     public const int MAX_SKILL_LEVEL = 6;

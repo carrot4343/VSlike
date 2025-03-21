@@ -28,6 +28,12 @@ public class MonsterController : CreatureController
         }
     }
 
+    public int MonsterEXP
+    {
+        get;set;
+    }
+
+    float m_monsterAttackCooldown = 0.0f;
 
     protected Animator m_animator;
     public virtual void UpdateAnimation()
@@ -38,6 +44,9 @@ public class MonsterController : CreatureController
     public override void UpdateController()
     {
         base.UpdateController();
+
+        if (m_monsterAttackCooldown < Define.MONSTER_ATTACK_RATE)
+            m_monsterAttackCooldown += Time.deltaTime;
 
         switch (CreatureState)
         {
@@ -106,6 +115,12 @@ public class MonsterController : CreatureController
             return;
         if (this.IsValid() == false)
             return;
+
+        if (m_monsterAttackCooldown < Define.MONSTER_ATTACK_RATE)
+            return;
+        else
+            m_monsterAttackCooldown = 0.0f;
+
         //도트 장판 데미지
         if (m_coDotDamage != null)
             StopCoroutine(m_coDotDamage);
@@ -162,6 +177,7 @@ public class MonsterController : CreatureController
         m_coDotDamage = null;
 
         GemController gc = Managers._Object.Spawn<GemController>(transform.position);
+        gc.GemValue = MonsterEXP;
 
         Managers._Object.Despawn(this);
     }

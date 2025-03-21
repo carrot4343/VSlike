@@ -70,7 +70,7 @@ namespace Data
         [XmlAttribute] public int maxHp;
         [XmlAttribute] public int attack;
         [XmlAttribute] public float speed;
-        [XmlAttribute] public float exp;
+        [XmlAttribute] public int exp;
     }
 
     [Serializable, XmlRoot("MonsterDatas")]

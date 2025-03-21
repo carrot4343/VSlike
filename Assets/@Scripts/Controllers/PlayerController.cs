@@ -70,6 +70,7 @@ public class PlayerController : CreatureController
     public override void UpdateController()
     {
         base.UpdateController();
+
         MovePlayer();
         CollectEnv();
     }
@@ -119,6 +120,7 @@ public class PlayerController : CreatureController
 
     public override void OnDamaged(BaseController attacker, int damage)
     {
+
         //기존 부모클래스의 OnDamaged 를 유지하면서
         Managers._Game.CameraController.Shake();
         base.OnDamaged(attacker, damage);
