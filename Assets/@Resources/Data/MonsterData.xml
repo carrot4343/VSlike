@@ -4,19 +4,19 @@
   </MonsterData>
   <MonsterData templateID="10001" name="Monster_01" prefab="Monster_01.prefab" sprite="MonsterIcon_01.sprite" level="2" maxHp="120" attack="11" speed="3.2" exp="12">
   </MonsterData>
-  <MonsterData templateID="10002" name="Monster_01" prefab="Monster_01.prefab" sprite="MonsterIcon_01.sprite" level="3" maxHp="140" attack="12" speed="3.2" exp="13">
+  <MonsterData templateID="10002" name="Monster_01" prefab="Monster_01.prefab" sprite="MonsterIcon_01.sprite" level="3" maxHp="140" attack="12" speed="3.2" exp="15">
   </MonsterData>
-  <MonsterData templateID="10003" name="Monster_02" prefab="Monster_02.prefab" sprite="MonsterIcon_02.sprite" level="1" maxHp="200" attack="15" speed="3.2" exp="15">
+  <MonsterData templateID="10003" name="Monster_02" prefab="Monster_02.prefab" sprite="MonsterIcon_02.sprite" level="1" maxHp="200" attack="15" speed="3.2" exp="20">
   </MonsterData>
-  <MonsterData templateID="10004" name="Monster_02" prefab="Monster_02.prefab" sprite="MonsterIcon_02.sprite" level="2" maxHp="250" attack="16" speed="3.2" exp="18">
+  <MonsterData templateID="10004" name="Monster_02" prefab="Monster_02.prefab" sprite="MonsterIcon_02.sprite" level="2" maxHp="250" attack="16" speed="3.2" exp="30">
   </MonsterData>
-  <MonsterData templateID="10005" name="Monster_02" prefab="Monster_02.prefab" sprite="MonsterIcon_02.sprite" level="3" maxHp="300" attack="17" speed="3.2" exp="20">
+  <MonsterData templateID="10005" name="Monster_02" prefab="Monster_02.prefab" sprite="MonsterIcon_02.sprite" level="3" maxHp="300" attack="17" speed="3.2" exp="50">
   </MonsterData>
-  <MonsterData templateID="10006" name="Monster_03" prefab="Monster_03.prefab" sprite="MonsterIcon_03.sprite" level="1" maxHp="400" attack="20" speed="3.2" exp="25">
+  <MonsterData templateID="10006" name="Monster_03" prefab="Monster_03.prefab" sprite="MonsterIcon_03.sprite" level="1" maxHp="400" attack="20" speed="3.2" exp="70">
   </MonsterData>
-  <MonsterData templateID="10007" name="Monster_03" prefab="Monster_03.prefab" sprite="MonsterIcon_03.sprite" level="2" maxHp="450" attack="22" speed="3.2" exp="30">
+  <MonsterData templateID="10007" name="Monster_03" prefab="Monster_03.prefab" sprite="MonsterIcon_03.sprite" level="2" maxHp="450" attack="22" speed="3.2" exp="100">
   </MonsterData>
-  <MonsterData templateID="10008" name="Monster_03" prefab="Monster_03.prefab" sprite="MonsterIcon_03.sprite" level="3" maxHp="500" attack="25" speed="3.2" exp="40">
+  <MonsterData templateID="10008" name="Monster_03" prefab="Monster_03.prefab" sprite="MonsterIcon_03.sprite" level="3" maxHp="500" attack="25" speed="3.2" exp="150">
   </MonsterData>
   
   <MonsterData templateID="10010" name="Monster_04" prefab="Monster_04.prefab" sprite="MonsterIcon_25.sprite" level="1" maxHp="110" attack="11" speed="3.2" exp="10">

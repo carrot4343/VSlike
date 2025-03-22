@@ -10,7 +10,7 @@ public class ElectronicField : RepeatSkill
     public override bool Init()
     {
         base.Init();
-        TemplateID = TemplateID = Define.ELECTRONIC_FIELD_ID + SkillLevel;
+        TemplateID = Define.ELECTRONIC_FIELD_ID + SkillLevel;
         Owner = Managers._Game.Player;
         SetInfo(TemplateID);
         Debug.Log("ElectronicField init");

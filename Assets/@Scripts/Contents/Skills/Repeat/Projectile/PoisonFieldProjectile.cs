@@ -34,15 +34,14 @@ public class PoisonFieldProjectile : RepeatSkill
         }
     }
 
-    //Åõ»çÃ¼(µ¥¹ÌÁö ¾øÀ½)À» ÆÄ±«ÇÏ°í µ¶ÀåÆÇÀ» »ı¼ºÇÏ´Â ÄÚ·çÆ¾
+    //íˆ¬ì‚¬ì²´(ë°ë¯¸ì§€ ì—†ìŒ)ì„ íŒŒê´´í•˜ê³  ë…ì¥íŒì„ ìƒì„±í•˜ëŠ” ì½”ë£¨í‹´
     IEnumerator DestroyAndSpawnPoisonField(ProjectileController pc)
     {
         yield return new WaitForSeconds(m_flyTime);
         if (pc != null)
             Managers._Object.Despawn(pc);
 
-        //¸¹¾Æ¾ß 5°³ÀÌ¹Ç·Î ±»ÀÌ Ç®¸µÀº ÇÏÁö ¾ÊÀ½. ÇÏ´Â°Ô ³´³ª?
-        Managers._Object.Spawn<PoisonField>(pc.transform.position, Define.POISON_FIELD + SkillLevel);
+        Managers._Object.Spawn<PoisonField>(pc.transform.position, Define.POISON_FIELD+SkillLevel);
         yield break;
     }
 }

@@ -65,13 +65,14 @@ public class GameScene : BaseScene
 
     //수치 변경이 되었는데 그 이슈를 GameScene 클래스에서 처리를 하는게 맞는가? 생각해봐야 함.
     int m_collectedGemCount = 0;
-    int m_remainingTotalGemCount = 10;
+    int m_remainingTotalGemCount = 100;
     public void HandleOnGemCountChanged(int gemCount)
     {
         m_collectedGemCount = Managers._Game.Gem;
         //level up
-        if(m_collectedGemCount == m_remainingTotalGemCount)
+        if(m_collectedGemCount >= m_remainingTotalGemCount)
         {
+            m_collectedGemCount -= m_remainingTotalGemCount;
             Managers._Game.PlayerLevel++;
         }
 
@@ -83,7 +84,7 @@ public class GameScene : BaseScene
         Managers._UI.ShowPopupUI<UI_SkillSelectPopup>();
         m_collectedGemCount = 0;
         Managers._Game.Gem = m_collectedGemCount;
-        m_remainingTotalGemCount = (int)((float)m_remainingTotalGemCount * 1.3);
+        m_remainingTotalGemCount = (int)((float)m_remainingTotalGemCount * 1.2);
         Managers._UI.GetSceneUI<UI_GameScene>().SetGemCountRatio((float)m_collectedGemCount / m_remainingTotalGemCount);
     }
 

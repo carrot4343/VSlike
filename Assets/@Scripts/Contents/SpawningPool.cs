@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class SpawningPool : MonoBehaviour
 {
-    //해야 할 일 12/10
-    //스테이지 데이터, 웨이브 데이터 분리하기.
-
-    float m_spawnInterval = 0.1f;
+    float m_spawnInterval = 0.2f;
     float m_stageInterval = 1.0f;
     int m_maxMonsterCount = 500;
-    int m_waveMax = 100;
+    int m_waveMax = 200;
     int m_spawnCount = 0;
     //default 0.1 10.0 500 1000 0
     public int SpawnEliteTemplateID { get; set; }

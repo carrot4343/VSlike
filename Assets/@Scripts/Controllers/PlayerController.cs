@@ -105,8 +105,9 @@ public class PlayerController : CreatureController
             Vector3 dir = gem.transform.position - transform.position;
             if(dir.sqrMagnitude <= sqrCollectDist)
             {
-                Managers._Game.Gem += 1;
+                Managers._Game.Gem += gem.GemValue;
                 Managers._Object.Despawn(gem);
+                Debug.Log($"Player EXP is now : {Managers._Game.Gem}");
             }
         }
     }
