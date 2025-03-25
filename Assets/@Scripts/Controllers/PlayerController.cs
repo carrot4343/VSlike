@@ -126,4 +126,12 @@ public class PlayerController : CreatureController
         Managers._Game.CameraController.Shake();
         base.OnDamaged(attacker, damage);
     }
+
+    protected override void OnDead()
+    {
+        base.OnDead();
+
+        UI_GameoverPopup gameoverUI = Managers._UI.ShowPopupUI<UI_GameoverPopup>();
+        gameoverUI.SetInfo();
+    }
 }

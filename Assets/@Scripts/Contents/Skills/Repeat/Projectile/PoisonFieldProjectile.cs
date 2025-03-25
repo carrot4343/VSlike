@@ -41,7 +41,9 @@ public class PoisonFieldProjectile : RepeatSkill
         if (pc != null)
             Managers._Object.Despawn(pc);
 
-        Managers._Object.Spawn<PoisonField>(pc.transform.position, Define.POISON_FIELD+SkillLevel);
+        PoisonField poisonField = Managers._Object.Spawn<PoisonField>(pc.transform.position, Define.POISON_FIELD+SkillLevel);
+        poisonField.SkillLevel = SkillLevel;
+        poisonField.Init();
         yield break;
     }
 }

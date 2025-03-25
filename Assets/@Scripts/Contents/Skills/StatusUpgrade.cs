@@ -15,7 +15,7 @@ public class StatusUpgrade : SkillBase
         {
             //m_playerDefaultAttack = Managers._Game.Player.PlayerAtk;
             //Debug.Log($"default atk : {m_playerDefaultAttack}");
-            Debug.Log($"Attack : {Managers._Game.Player.PlayerAtk} \n Speed : {Managers._Game.Player.PlayerSpeed} \n Max Hp : {Managers._Game.Player.m_maxHP}");
+            Debug.Log($"Attack : {Managers._Game.Player.PlayerAtk} \n Speed : {Managers._Game.Player.PlayerSpeed} \n Max Hp : {Managers._Game.Player.MaxHP}");
         }
 
         return baseReturnBoolean;
@@ -50,8 +50,8 @@ public class HpUpgrade : StatusUpgrade
     protected override void OnSkillLevelUpgrade()
     {
         base.OnSkillLevelUpgrade();
-        int increaseNum = (int)(Managers._Game.Player.m_maxHP * 1.1f) - Managers._Game.Player.m_maxHP;
-        Managers._Game.Player.m_maxHP += increaseNum;
-        Managers._Game.Player.m_HP += increaseNum;
+        int increaseNum = (int)(Managers._Game.Player.MaxHP * 1.1f) - Managers._Game.Player.MaxHP;
+        Managers._Game.Player.MaxHP += increaseNum;
+        Managers._Game.Player.HP += increaseNum;
     }
 }

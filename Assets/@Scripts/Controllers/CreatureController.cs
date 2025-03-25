@@ -15,7 +15,7 @@ public class CreatureController : BaseController
             return m_offset.bounds.center;
         }
     }
-    public int m_HP
+    public int HP
     {
         get
         {
@@ -24,10 +24,10 @@ public class CreatureController : BaseController
         set
         {
             //최대 체력 초과 방지
-            m_hp = Mathf.Min(m_maxHP, value);
+            m_hp = Mathf.Min(MaxHP, value);
         }
     }
-    public int m_maxHP { get; set; } = 100;
+    public int MaxHP { get; set; } = 100;
 
     public SkillBook Skills { get; protected set; }
 
@@ -43,17 +43,17 @@ public class CreatureController : BaseController
 
     public void OnEnable()
     {
-        m_HP = m_maxHP;
+        HP = MaxHP;
     }
 
     //Creature들은 공통적으로 피해를 받을 때와 사망했을 때를 처리해주어야 하므로 가상함수로써 각자 클래스에서 구현하게 함.
     public virtual void OnDamaged(BaseController attacker, int damage)
     {
-        m_HP -= damage;
+        HP -= damage;
         Managers._Object.ShowDamageFont(CenterPosition, damage, 0, transform);
-        if (m_HP <= 0)
+        if (HP <= 0)
         {
-            m_HP = 0;
+            HP = 0;
             OnDead();
         }
     }

@@ -25,14 +25,6 @@ public class UI_BattlePopup : UI_Popup
     // GameStartButtonText : START
     #endregion
 
-    //우선 GameManager에 GameData를 만들어서 쓸지를 생각해보아야 함.
-    //분명 추후에 도움이 되긴 하겠지만 시간이 꽤 길어질 거 같음.
-    //그리고 이어하기 기능에 대한 생각.
-    //이어하기 기능을 만들 것인가? 만들게 된다면 어디서부터 건들어야 하지?
-    //필요할까? 라는 생각도 듬.
-    //스태미너가 있는 게임이니까 필요하다고 생각이 들기는 함...
-    //결국 GameManager부터 더 뜯어보는수밖에...
-
     #region Enum
     enum GameObjects
     {

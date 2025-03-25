@@ -40,7 +40,7 @@ public class UI_HpRecover : UI_Base
 
     void OnClicked()
     {
-        Managers._Game.Player.m_HP += 30;
+        Managers._Game.Player.HP += 30;
         Managers._UI.ClosePopupUI();
     }
 }

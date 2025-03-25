@@ -60,7 +60,7 @@ public class BossController : MonsterController
     public override void OnDamaged(BaseController attacker, int damage)
     {
         base.OnDamaged(attacker, damage);
-        Debug.Log($"{m_HP}");
+        Debug.Log($"{HP}");
     }
 
     protected override void OnDead()

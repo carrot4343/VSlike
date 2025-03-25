@@ -76,8 +76,7 @@ public class MonsterController : CreatureController
     public override bool Init()
     {
         //매번 Init이 호출될 때마다 수행. 이 과정을 분리하지 않고 최초 1회만 수행하면 Respawn 되자마자 OnDead호출
-        m_HP = m_maxHP;
-        Debug.Log(m_HP);
+        HP = MaxHP;
 
         //최초 1회만 수행
         bool baseInitBoolean = base.Init();
