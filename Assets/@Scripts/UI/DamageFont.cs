@@ -13,6 +13,7 @@ public class DamageFont : MonoBehaviour
         _damageText = GetComponent<TextMeshPro>();
         transform.position = pos;
 
+
         if (healAmount > 0)
         {
             _damageText.text = $"{Mathf.RoundToInt(healAmount)}";
@@ -33,6 +34,12 @@ public class DamageFont : MonoBehaviour
         {
             GetComponent<MeshRenderer>().sortingOrder = 321;
         }
+
+        PlayerController player = parent.GetComponent<PlayerController>();
+        if (player != null)
+        {
+            _damageText.color = Color.red;
+        }
         DoAnimation();
     }
 
@@ -44,8 +51,8 @@ public class DamageFont : MonoBehaviour
     {
         Sequence seq = DOTween.Sequence();
 
-        //1. Å©±â°¡ 0~ 110ÆÛ ±îÁö Ä¿Á³´Ù°¡ 100ÆÛ±îÁö µ¹¾Æ°£´Ù
-        //2. ¼­¼­È÷ »ç¶óÁø´Ù
+        //1. í¬ê¸°ê°€ 0~ 110í¼ ê¹Œì§€ ì»¤ì¡Œë‹¤ê°€ 100í¼ê¹Œì§€ ëŒì•„ê°„ë‹¤
+        //2. ì„œì„œíˆ ì‚¬ë¼ì§„ë‹¤
         transform.localScale = new Vector3(0, 0, 0);
 
         seq.Append(transform.DOScale(1.3f, 0.3f).SetEase(Ease.InOutBounce))

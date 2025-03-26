@@ -31,7 +31,6 @@ public class UI_GameScene : UI_Scene
     enum Buttons
     {
         PauseButton,
-        DevelopButton,
     }
 
     public override bool Init()
@@ -44,7 +43,6 @@ public class UI_GameScene : UI_Scene
         BindButton(typeof(Buttons));
 
         GetButton((int)Buttons.PauseButton).gameObject.BindEvent(OnClickPauseButton);
-        GetButton((int)Buttons.DevelopButton).gameObject.BindEvent(OnClickDevelopButton);
 
         SetDefault();
         return true;
@@ -85,13 +83,9 @@ public class UI_GameScene : UI_Scene
 
     void OnClickPauseButton()
     {
-        Debug.Log("Pause Button Clicked");
+        Managers._UI.ShowPopupUI<UI_PausePopup>();
     }
 
-    void OnClickDevelopButton()
-    {
-        Debug.Log("Pause Button Clicked");
-    }
 
     private void Update()
     {
