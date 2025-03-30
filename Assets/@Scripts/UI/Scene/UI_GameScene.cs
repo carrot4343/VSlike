@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
+using Sequence = DG.Tweening.Sequence;
 
 public class UI_GameScene : UI_Scene
 {
@@ -16,6 +18,8 @@ public class UI_GameScene : UI_Scene
     {
         WaveObject,
         ExpSliderObject,
+        WhiteFlash,
+        OnDamaged,
     }
 
     enum Texts
@@ -85,7 +89,35 @@ public class UI_GameScene : UI_Scene
     {
         Managers._UI.ShowPopupUI<UI_PausePopup>();
     }
+    public void OnDamaged()
+    {
+        StartCoroutine(CoBloodScreen());
+    }
+    public void DoWhiteFlash()
+    {
+        StartCoroutine(CoWhiteScreen());
+    }
+    IEnumerator CoBloodScreen()
+    {
+        Color targetColor = new Color(1, 0, 0, 0.3f);
 
+        yield return null;
+        Sequence seq = DOTween.Sequence();
+
+        seq.Append(GetObject((int)GameObjects.OnDamaged).GetComponent<Image>().DOColor(targetColor, 0.3f))
+            .Append(GetObject((int)GameObjects.OnDamaged).GetComponent<Image>().DOColor(Color.clear, 0.3f)).OnComplete(() => { });
+    }
+
+    IEnumerator CoWhiteScreen()
+    {
+        Color targetColor = new Color(1, 1, 1, 1f);
+
+        yield return null;
+        Sequence seq = DOTween.Sequence();
+
+        seq.Append(GetObject((int)GameObjects.WhiteFlash).GetComponent<Image>().DOFade(1, 0.1f))
+            .Append(GetObject((int)GameObjects.WhiteFlash).GetComponent<Image>().DOFade(0, 0.2f)).OnComplete(() => { });
+    }
 
     private void Update()
     {

@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using static Define;
 
 public class PlayerController : CreatureController
 {
     Vector2 m_moveDir = Vector2.zero;
-    float EnvCollectDist { get; set; } = 1.0f;
+    public float m_itemCollectDist { get; } = 4.0f;
     public int PlayerAtk { get; set; } = 5;
     public float PlayerSpeed
     {
@@ -30,6 +31,7 @@ public class PlayerController : CreatureController
 
     public Transform Indicator { get { return m_indicator; } }
     public Transform SkillBook { get { return m_skillBook; } }
+    public Vector3 PlayerCenterPos { get { return Indicator.transform.position; } }
     public Vector3 FireSocket { get { return m_fireSocket.position; } }
     public Vector3 ShootDir { get { return (m_fireSocket.position - m_indicator.position).normalized; } }
 
@@ -38,6 +40,7 @@ public class PlayerController : CreatureController
         if (base.Init() == false)
             return false;
 
+        ObjectType = ObjectType.Player;
         FindObjectOfType<CameraController>().m_playerTransform = gameObject.transform;
         transform.localScale = Vector3.one;
         m_speed = 5.0f;
@@ -94,20 +97,29 @@ public class PlayerController : CreatureController
 
     void CollectEnv()
     {
-        float sqrCollectDist = EnvCollectDist * EnvCollectDist;
+        List<DropItemController> items = Managers._Game.CurrentMap.Grid.GatherObjects(transform.position, m_itemCollectDist + 0.5f);
 
-        var findGems = GameObject.Find("@Grid").GetComponent<GridController>().GatherObjects(transform.position, EnvCollectDist + 0.5f);
-        
-        foreach(var go in findGems)
+        foreach (DropItemController item in items)
         {
-            GemController gem = go.GetComponent<GemController>();
-
-            Vector3 dir = gem.transform.position - transform.position;
-            if(dir.sqrMagnitude <= sqrCollectDist)
+            Vector3 dir = item.transform.position - transform.position;
+            switch (item.itemType)
             {
-                Managers._Game.Gem += gem.GemValue;
-                Managers._Object.Despawn(gem);
-                Debug.Log($"Player EXP is now : {Managers._Game.Gem}");
+                case ObjectType.DropBox:
+                case ObjectType.Potion:
+                case ObjectType.Magnet:
+                case ObjectType.Bomb:
+                    if (dir.sqrMagnitude <= item.CollectDist * item.CollectDist)
+                    {
+                        item.GetItem();
+                    }
+                    break;
+                default:
+                    float cd = item.CollectDist;// * CollectDistBonus;
+                    if (dir.sqrMagnitude <= cd * cd)
+                    {
+                        item.GetItem();
+                    }
+                    break;
             }
         }
     }
@@ -127,7 +139,7 @@ public class PlayerController : CreatureController
         base.OnDamaged(attacker, damage);
     }
 
-    protected override void OnDead()
+    public override void OnDead()
     {
         base.OnDead();
 

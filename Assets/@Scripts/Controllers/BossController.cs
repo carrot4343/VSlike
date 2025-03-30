@@ -10,6 +10,7 @@ public class BossController : MonsterController
     {
         m_animator = GetComponent<Animator>();
         m_collider = GetComponent<BoxCollider2D>();
+        ObjectType = Define.ObjectType.Boss;
         defaultColliderSize = m_collider.size;
 
         bool baseInitBoolean = base.Init();
@@ -63,7 +64,7 @@ public class BossController : MonsterController
         Debug.Log($"{HP}");
     }
 
-    protected override void OnDead()
+    public override void OnDead()
     {
         //상태를 Dead로 변경
         CreatureState = Define.CreatureState.Dead;

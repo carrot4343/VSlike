@@ -10,6 +10,7 @@ public class ObjectManager
     public HashSet<MonsterController> Monsters { get; } = new HashSet<MonsterController>();
     public HashSet<ProjectileController> Projectiles { get; } = new HashSet<ProjectileController>();
     public HashSet<GemController> Gems { get; } = new HashSet<GemController>();
+    public HashSet<DropItemController> DropItems { get; } = new HashSet<DropItemController>();
 
     //load한 리소스를 바탕으로 맵에 spawn하는 함수. 스폰할 객체의 ID와 스폰 위치를 매개변수로 받음.
     public T Spawn<T>(Vector3 position, int templateID = 0) where T : BaseController
@@ -66,9 +67,49 @@ public class ObjectManager
             go.GetComponent<SpriteRenderer>().sprite = sprite;
 
             GridController gdc = GameObject.Find("@Grid").GetOrAddComponent<GridController>();
-            gdc.Add(go);
+            gdc.Add(gc);
 
             return gc as T;
+        }
+        else if (type == typeof(PotionController))
+        {
+            GameObject go = Managers._Resource.Instantiate("Potion", pooling: true);
+            PotionController pc = go.GetOrAddComponent<PotionController>();
+            go.transform.position = position;
+            DropItems.Add(pc);
+            Managers._Game.CurrentMap.Grid.Add(pc);
+
+            return pc as T;
+        }
+        else if (type == typeof(BombController))
+        {
+            GameObject go = Managers._Resource.Instantiate("Bomb", pooling: true);
+            BombController bc = go.GetOrAddComponent<BombController>();
+            go.transform.position = position;
+            DropItems.Add(bc);
+            Managers._Game.CurrentMap.Grid.Add(bc);
+
+            return bc as T;
+        }
+        else if (type == typeof(MagnetController))
+        {
+            GameObject go = Managers._Resource.Instantiate("Magnet", pooling: true);
+            MagnetController mc = go.GetOrAddComponent<MagnetController>();
+            go.transform.position = position;
+            DropItems.Add(mc);
+            Managers._Game.CurrentMap.Grid.Add(mc);
+
+            return mc as T;
+        }
+        else if (type == typeof(EliteBoxController))
+        {
+            GameObject go = Managers._Resource.Instantiate("DropBox", pooling: true);
+            EliteBoxController bc = go.GetOrAddComponent<EliteBoxController>();
+            go.transform.position = position;
+            DropItems.Add(bc);
+            Managers._Game.CurrentMap.Grid.Add(bc);
+            //Managers.Sound.Play(Sound.Effect, "Drop_Box");
+            return bc as T;
         }
         else if(type == typeof(ProjectileController))
         {
@@ -130,7 +171,33 @@ public class ObjectManager
         {
             Gems.Remove(obj as GemController);
             Managers._Resource.Destroy(obj.gameObject);
-            GameObject.Find("@Grid").GetComponent<GridController>().Remove(obj.gameObject);
+            Managers._Game.CurrentMap.Grid.Remove(obj as GemController);
+        }
+        else if (type == typeof(PotionController))
+        {
+            Managers._Resource.Destroy(obj.gameObject);
+            Managers._Game.CurrentMap.Grid.Remove(obj as PotionController);
+        }
+        else if (type == typeof(MagnetController))
+        {
+            Managers._Resource.Destroy(obj.gameObject);
+            Managers._Game.CurrentMap.Grid.Remove(obj as MagnetController);
+        }
+        else if (type == typeof(BombController))
+        {
+            Managers._Resource.Destroy(obj.gameObject);
+            Managers._Game.CurrentMap.Grid.Remove(obj as BombController);
+        }
+        else if (type == typeof(EliteBoxController))
+        {
+            Managers._Resource.Destroy(obj.gameObject);
+            Managers._Game.CurrentMap.Grid.Remove(obj as EliteBoxController);
+        }
+        else if (type == typeof(GemController))
+        {
+            Gems.Remove(obj as GemController);
+            Managers._Resource.Destroy(obj.gameObject);
+            GameObject.Find("@Grid").GetComponent<GridController>().Remove(obj as GemController);
         }
         else if (type == typeof(ProjectileController))
         {
@@ -150,7 +217,44 @@ public class ObjectManager
         var monsters = Monsters.ToList();
 
         foreach (var monster in monsters)
+        {
             Despawn<MonsterController>(monster);
+            monster.OnDead();
+        }
+    }
+
+    public void KillAllMonsters()
+    {
+        UI_GameScene scene = Managers._UI.SceneUI as UI_GameScene;
+
+        if (scene != null)
+            scene.DoWhiteFlash();
+        foreach (MonsterController monster in Monsters.ToList())
+        {
+            if (monster.ObjectType == Define.ObjectType.Monster)
+                monster.OnDead();
+        }
+        DespawnAllMonsterProjectiles();
+    }
+    public void DespawnAllMonsterProjectiles()
+    {
+        /*foreach (ProjectileController proj in Projectiles.ToList())
+        {
+            if (proj.SkillType == Define.SkillType.MonsterSkill_01)
+                Despawn(proj);
+        }*/
+    }
+    public void CollectAllItems()
+    {
+        foreach (GemController gem in Gems.ToList())
+        {
+            gem.GetItem();
+        }
+
+        /*foreach (SoulController soul in Souls.ToList())
+        {
+            soul.GetItem();
+        }*/
     }
 
     public void ShowDamageFont(Vector2 pos, float damage, float healAmount, Transform parent, bool isCritical = false)

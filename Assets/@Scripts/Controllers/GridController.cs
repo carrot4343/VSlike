@@ -4,8 +4,8 @@ using UnityEngine;
 
 class Cell
 {
-    //±×¸®µå ¼¿¿¡ ¼Ò¼ÓµÈ ¿ÀºêÁ§Æ® ¸®½ºÆ®¼Â
-    public HashSet<GameObject> Objects { get; } = new HashSet<GameObject>();
+    //ê·¸ë¦¬ë“œ ì…€ì— ì†Œì†ëœ ì˜¤ë¸Œì íŠ¸ ë¦¬ìŠ¤íŠ¸ì…‹
+    public HashSet<DropItemController> Objects { get; } = new HashSet<DropItemController>();
 }
 public class GridController : BaseController
 {
@@ -21,22 +21,22 @@ public class GridController : BaseController
         return true;
     }
 
-    public void Add(GameObject go)
+    public void Add(DropItemController go)
     {
-        //¿ÀºêÁ§Æ®ÀÇ À§Ä¡¸¦ ÁÂÇ¥(±×¸®µå)·Î º¯È¯
+        //ì˜¤ë¸Œì íŠ¸ì˜ ìœ„ì¹˜ë¥¼ ì¢Œí‘œ(ê·¸ë¦¬ë“œ)ë¡œ ë³€í™˜
         Vector3Int cellPos = m_grid.WorldToCell(go.transform.position);
 
-        //À§¿¡¼­ ¾òÀº ÁÂÇ¥¿¡ ÇØ´çÇÏ´Â ±×¸®µå ¼¿
+        //ìœ„ì—ì„œ ì–»ì€ ì¢Œí‘œì— í•´ë‹¹í•˜ëŠ” ê·¸ë¦¬ë“œ ì…€
         Cell cell = GetCell(cellPos);
         if(cell == null)
         {
             return;
         }
-        //±×¸®µå ¼¿ÀÇ ¿ÀºêÁ§Æ® ¸®½ºÆ®¿¡ go Ãß°¡
+        //ê·¸ë¦¬ë“œ ì…€ì˜ ì˜¤ë¸Œì íŠ¸ ë¦¬ìŠ¤íŠ¸ì— go ì¶”ê°€
         cell.Objects.Add(go);
     }
 
-    public void Remove(GameObject go)
+    public void Remove(DropItemController go)
     {
         Vector3Int cellPos = m_grid.WorldToCell(go.transform.position);
 
@@ -45,7 +45,7 @@ public class GridController : BaseController
         {
             return;
         }
-        //add¿Í µ¿ÀÏÇÏ³ª ¼¿ÀÇ ¿ÀºêÁ§Æ® ¸®½ºÆ®¿¡¼­ addÀÎÁö remove ÀÎÁö¸¸ ´Ù¸§.
+        //addì™€ ë™ì¼í•˜ë‚˜ ì…€ì˜ ì˜¤ë¸Œì íŠ¸ ë¦¬ìŠ¤íŠ¸ì—ì„œ addì¸ì§€ remove ì¸ì§€ë§Œ ë‹¤ë¦„.
         cell.Objects.Remove(go);
     }
 
@@ -61,11 +61,11 @@ public class GridController : BaseController
         return cell;
     }
 
-    public List<GameObject> GatherObjects(Vector3 pos, float range)
+    public List<DropItemController> GatherObjects(Vector3 pos, float range)
     {
-        List<GameObject> objects = new List<GameObject>();
+        List<DropItemController> objects = new List<DropItemController>();
 
-        //pos ÁÖº¯ range ¸¸Å­ÀÇ ¹üÀ§¿¡ ¼ÓÇÏ´Â grid °è»ê
+        //pos ì£¼ë³€ range ë§Œí¼ì˜ ë²”ìœ„ì— ì†í•˜ëŠ” grid ê³„ì‚°
         Vector3Int left = m_grid.WorldToCell(pos + new Vector3(-range, 0));
         Vector3Int right = m_grid.WorldToCell(pos + new Vector3(+range, 0));
         Vector3Int bottom = m_grid.WorldToCell(pos + new Vector3(0, -range));
@@ -76,7 +76,7 @@ public class GridController : BaseController
         int minY = bottom.y;
         int maxY = top.y;
 
-        //À§¿¡¼­ ±¸ÇÑ ¹üÀ§¿¡ Æ÷ÇÔµÇ´Â ¿ÀºêÁ§Æ® Å½»ö
+        //ìœ„ì—ì„œ êµ¬í•œ ë²”ìœ„ì— í¬í•¨ë˜ëŠ” ì˜¤ë¸Œì íŠ¸ íƒìƒ‰
         for(int x = minX; x <= maxX; x++)
         {
             for(int y = minY; y <= maxY; y++)
@@ -84,7 +84,7 @@ public class GridController : BaseController
                 if (m_cells.ContainsKey(new Vector3Int(x, y, 0)) == false)
                     continue;
 
-                //x,y¿¡ ÇØ´çÇÏ´Â ±×¸®µå ¼¿ÀÇ ¿ÀºêÁ§Æ®µéÀ» objects ¸®½ºÆ®¿¡ ¸ğµÎ Ãß°¡ÇÔ.
+                //x,yì— í•´ë‹¹í•˜ëŠ” ê·¸ë¦¬ë“œ ì…€ì˜ ì˜¤ë¸Œì íŠ¸ë“¤ì„ objects ë¦¬ìŠ¤íŠ¸ì— ëª¨ë‘ ì¶”ê°€í•¨.
                 objects.AddRange(m_cells[new Vector3Int(x, y, 0)].Objects);
             }
         }

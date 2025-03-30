@@ -31,8 +31,16 @@ public class Define
     {
         Player,
         Monster,
+        EliteMonster,
+        Boss,
         Projectile,
-        Env,
+        Gem,
+        Soul,
+        Potion,
+        DropBox,
+        Magnet,
+        Bomb
+
     }
 
     public enum SkillType
@@ -56,6 +64,15 @@ public class Define
         Skill,
         Dead
     }
+
+    public enum DropItemType
+    {
+        Potion,
+        Magnet,
+        DropBox,
+        Bomb
+    }
+
 
     public const int PLAYER_DATA_ID = 1;
     public const string EXP_GEM_PREFAB = "BlueGem.prefab";
@@ -86,4 +103,15 @@ public class Define
 
     public const int MAX_STAMINA = 100;
     public const int GAME_PER_STAMINA = 3;
+
+
+    public static readonly int UI_GAMESCENE_SORT_CLOSED = 321;
+    public static readonly int SOUL_SORT = 105;
+
+    //소울이 이동중일때 오더 변경
+    public static readonly int UI_GAMESCENE_SORT_OPEN = 323;
+    public static readonly int SOUL_SORT_GETITEM = 322;
+
+    public static float POTION_COLLECT_DISTANCE = 2.6F;
+    public static float BOX_COLLECT_DISTANCE = 2.6F;
 }

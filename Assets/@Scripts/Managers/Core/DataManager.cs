@@ -18,6 +18,7 @@ public class DataManager
     public Dictionary<int, Data.SkillData> SkillDic { get; private set; } = new Dictionary<int, Data.SkillData>();
     public Dictionary<int, Data.MonsterData> MonsterDic { get; private set; } = new Dictionary<int, Data.MonsterData>();
     public Dictionary<int, Data.StageData> StageDic { get; private set; } = new Dictionary<int, Data.StageData>();
+    public Dictionary<int, Data.DropItemData> DropItemDataDic { get; private set; } = new Dictionary<int, Data.DropItemData>();
 
     public void Init()
     {
@@ -26,6 +27,7 @@ public class DataManager
         MonsterDic = LoadXml<Data.MonsterDataLoader, int, Data.MonsterData>("MonsterData.xml").MakeDict();
         //Json
         StageDic = LoadJson<Data.StageDataLoader, int, Data.StageData>("StageData.json").MakeDict();
+        DropItemDataDic = LoadJson<Data.DropItemDataLoader, int, Data.DropItemData>("DropItemData.json").MakeDict();
     }
 
     Loader LoadXml<Loader, Key, Item>(string name) where Loader : ILoader<Key, Item>

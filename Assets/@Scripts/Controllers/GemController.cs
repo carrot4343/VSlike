@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GemController : BaseController
+public class GemController : DropItemController
 {
     public int GemValue
     {
@@ -22,13 +22,14 @@ public class GemController : BaseController
     }
     public override bool Init()
     {
+        itemType = Define.ObjectType.Gem;
         base.Init();
 
         if (gemValue < 20)
         {
             GemSpriteName = "GreenGem.sprite";
         }
-        else if(gemValue >= 30)
+        else if(gemValue >= 70)
         {
             GemSpriteName = "YellowGem.sprite";
         }

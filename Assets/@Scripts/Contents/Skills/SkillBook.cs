@@ -15,6 +15,16 @@ public class SkillBook : MonoBehaviour
     public List<int> availableTemplateIdList { get; } = new List<int>() {
     100, 110, 120, 130, 140, 150, 160, 180, 190
     };
+    public Define.ObjectType m_ownerType;
+    public void Awake()
+    {
+        m_ownerType = GetComponent<CreatureController>().ObjectType;
+
+    }
+    public void SetInfo(Define.ObjectType type)
+    {
+        m_ownerType = type;
+    }
 
     //parent의 SkillBook에 스킬 추가
     public T AddSkill<T>(Vector3 position, Transform parent = null, int templateID = 0) where T : SkillBase

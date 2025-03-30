@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Define;
 
 public class CreatureController : BaseController
 {
@@ -57,8 +58,22 @@ public class CreatureController : BaseController
             OnDead();
         }
     }
-
-    protected virtual void OnDead()
+    public bool IsMonster()
+    {
+        switch (ObjectType)
+        {
+            case ObjectType.Boss:
+            case ObjectType.Monster:
+            case ObjectType.EliteMonster:
+                return true;
+            case ObjectType.Player:
+            case ObjectType.Projectile:
+                return false; ;
+            default:
+                return false;
+        }
+    }
+    public virtual void OnDead()
     {
     
     }

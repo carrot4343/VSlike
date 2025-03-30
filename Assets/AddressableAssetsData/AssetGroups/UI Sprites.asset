@@ -82,6 +82,46 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
+  - m_GUID: 306f69e51f578654cbc6f9ea7f99c207
+    m_Address: RareBox_Icon.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 8b36eba1c2242eb47b42a4b2426af2a7
+    m_Address: Potion_Icon.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: eb12e58c44ad10e4cbace4f8f0724fbc
+    m_Address: Potion_High_Icon.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 6904d33901a14d24fae9901ee3735e7c
+    m_Address: Potion_Full_Icon.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: f1d872f097aff8040ac7d437e789c723
+    m_Address: Magnet_Icon.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: c92fcb33b3b8f4f469671e02476ca25a
+    m_Address: EpicBox_Icon.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: d95307edb5fe16742b91b52994b08134
+    m_Address: CommonBox_Icon.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: e999f11042cd241a38ff7e27c7803480
+    m_Address: Bomb_Icon.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 68254714d3771cc4296e19cbb58661d1, type: 2}
   m_SchemaSet:

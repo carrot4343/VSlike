@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,6 +33,7 @@ public class ProjectileController : SkillBase
     {
         base.Init();
         StartDestroy(m_lifeTime);
+        ObjectType = Define.ObjectType.Projectile;
         return true;
     }
     

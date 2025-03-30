@@ -53,9 +53,6 @@ public class CameraController : MonoBehaviour
         if (_isShake == false)
             StartCoroutine(CoShake(0.25f));
     }
-
-
-
     IEnumerator CoShake(float duration)
     {
         float halfDuration = duration / 2;

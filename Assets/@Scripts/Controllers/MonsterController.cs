@@ -83,7 +83,7 @@ public class MonsterController : CreatureController
         if (!baseInitBoolean)
             return false;
 
-        objectType = Define.ObjectType.Monster;
+        ObjectType = Define.ObjectType.Monster;
         m_animator = GetComponent<Animator>();
         CreatureState = Define.CreatureState.Moving;
 
@@ -165,7 +165,7 @@ public class MonsterController : CreatureController
         base.OnDamaged(attacker, damage);
     }
 
-    protected override void OnDead()
+    public override void OnDead()
     {
         base.OnDead();
 
