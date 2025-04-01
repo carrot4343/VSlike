@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,5 +40,41 @@ public class GemController : DropItemController
         }
 
         return true;
+    }
+    Coroutine m_coMoveToPlayer;
+    public override void GetItem()
+    {
+        base.GetItem();
+        if (m_coMoveToPlayer == null && this.IsValid())
+        {
+            Sequence seq = DOTween.Sequence();
+            Vector3 dir = (transform.position - Managers._Game.Player.PlayerCenterPos).normalized;
+            Vector3 target = gameObject.transform.position + dir * 1.5f;
+            seq.Append(transform.DOMove(target, 0.3f).SetEase(Ease.Linear)).OnComplete(() =>
+            {
+                m_coMoveToPlayer = StartCoroutine(CoMoveToPlayer());
+            });
+        }
+    }
+
+    public IEnumerator CoMoveToPlayer()
+    {
+        while (this.IsValid() == true)
+        {
+            float dist = Vector3.Distance(gameObject.transform.position, Managers._Game.Player.PlayerCenterPos);
+
+            transform.position = Vector3.MoveTowards(transform.position, Managers._Game.Player.PlayerCenterPos, Time.deltaTime * 30.0f);
+
+            if (dist < 0.4f)
+            {
+                //string soundName = UnityEngine.Random.value > 0.5 ? "ExpGet_01" : "ExpGet_02";
+                //Managers.Sound.Play(Define.Sound.Effect, soundName);
+                Managers._Game.Gem += GemValue;
+                Managers._Object.Despawn(this);
+                yield break;
+            }
+
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

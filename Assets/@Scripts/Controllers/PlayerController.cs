@@ -7,7 +7,7 @@ using static Define;
 public class PlayerController : CreatureController
 {
     Vector2 m_moveDir = Vector2.zero;
-    public float m_itemCollectDist { get; } = 4.0f;
+    public float m_itemCollectDist { get; } = 2.0f;
     public int PlayerAtk { get; set; } = 5;
     public float PlayerSpeed
     {
@@ -43,7 +43,7 @@ public class PlayerController : CreatureController
         ObjectType = ObjectType.Player;
         FindObjectOfType<CameraController>().m_playerTransform = gameObject.transform;
         transform.localScale = Vector3.one;
-        m_speed = 5.0f;
+        m_speed = 5.5f;
         
         return true;
     }

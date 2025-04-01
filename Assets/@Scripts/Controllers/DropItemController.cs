@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DropItemController : BaseController
 {
-    public float CollectDist { get; set; } = 4.0f;
+    public float CollectDist { get; set; } = 2.0f;
     public Coroutine m_coroutine;
     public Define.ObjectType itemType;
     public override bool Init()
