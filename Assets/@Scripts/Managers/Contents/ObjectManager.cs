@@ -66,8 +66,7 @@ public class ObjectManager
             Sprite sprite = Managers._Resource.Load<Sprite>(key);
             go.GetComponent<SpriteRenderer>().sprite = sprite;
 
-            GridController gdc = GameObject.Find("@Grid").GetOrAddComponent<GridController>();
-            gdc.Add(gc);
+            Managers._Game.CurrentMap.Grid.Add(gc);
 
             return gc as T;
         }
@@ -197,7 +196,7 @@ public class ObjectManager
         {
             Gems.Remove(obj as GemController);
             Managers._Resource.Destroy(obj.gameObject);
-            GameObject.Find("@Grid").GetComponent<GridController>().Remove(obj as GemController);
+            Managers._Game.CurrentMap.Grid.Remove(obj as GemController);
         }
         else if (type == typeof(ProjectileController))
         {
