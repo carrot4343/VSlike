@@ -21,6 +21,17 @@ public class GemController : DropItemController
     {
         get;set;
     }
+    public override void OnDisable()
+    {
+        base.OnDisable();
+
+        if (m_coMoveToPlayer != null)
+        {
+            StopCoroutine(m_coMoveToPlayer);
+            m_coMoveToPlayer = null;
+        }
+    }
+
     public override bool Init()
     {
         itemType = Define.ObjectType.Gem;
@@ -44,6 +55,7 @@ public class GemController : DropItemController
     Coroutine m_coMoveToPlayer;
     public override void GetItem()
     {
+        //현재 Spawn된 Gem의 coroutine이 없어지지않는 문제 있음.
         base.GetItem();
         if (m_coMoveToPlayer == null && this.IsValid())
         {

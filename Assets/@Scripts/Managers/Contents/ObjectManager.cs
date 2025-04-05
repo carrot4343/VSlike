@@ -61,7 +61,7 @@ public class ObjectManager
             GemController gc = go.GetOrAddComponent<GemController>();
             Gems.Add(gc);
             gc.Init();
-            //현재는 key값을 랜덤으로 정하지만 추후 경험치 양에 따라 스프라이트 변경
+
             string key = gc.GemSpriteName;
             Sprite sprite = Managers._Resource.Load<Sprite>(key);
             go.GetComponent<SpriteRenderer>().sprite = sprite;
@@ -149,11 +149,6 @@ public class ObjectManager
 
     public void Despawn<T>(T obj) where T : BaseController
     {
-        if (obj.IsValid() == false)
-        {
-            return;
-        }
-
         System.Type type = typeof(T);
 
 
@@ -191,12 +186,6 @@ public class ObjectManager
         {
             Managers._Resource.Destroy(obj.gameObject);
             Managers._Game.CurrentMap.Grid.Remove(obj as EliteBoxController);
-        }
-        else if (type == typeof(GemController))
-        {
-            Gems.Remove(obj as GemController);
-            Managers._Resource.Destroy(obj.gameObject);
-            Managers._Game.CurrentMap.Grid.Remove(obj as GemController);
         }
         else if (type == typeof(ProjectileController))
         {

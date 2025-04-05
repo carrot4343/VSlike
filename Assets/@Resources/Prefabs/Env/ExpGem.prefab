@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9020259688176225934}
   - component: {fileID: 5549333654744202580}
+  - component: {fileID: -7195291857986348806}
   m_Layer: 0
-  m_Name: BlueGem
+  m_Name: ExpGem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 105
-  m_Sprite: {fileID: 21300000, guid: 86ce6973c1157184ba84929dbfe5abfc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e549fc117f6538148a7507be704ee0ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,3 +85,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-7195291857986348806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8328325697077500283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd9aaa2e3c39824eb71a5b1bf52e4c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 0

@@ -88,7 +88,7 @@ public class PlayerController : CreatureController
         }
 
         if (m_moveDir != Vector2.zero)
-        {S
+        {
             m_indicator.eulerAngles = new Vector3(0, 0, Mathf.Atan2(-dir.x, dir.y) * 180 / Mathf.PI);
         }
 

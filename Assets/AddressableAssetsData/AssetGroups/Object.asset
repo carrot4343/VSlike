@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: 35fad6a8e61bcf24ba1dd7fe895fae8e
   m_SerializeEntries:
   - m_GUID: 7786076883138ec40b89ab83f02fa079
-    m_Address: BlueGem.prefab
+    m_Address: ExpGem.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
