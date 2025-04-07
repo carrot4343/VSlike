@@ -175,8 +175,24 @@ public class MonsterController : CreatureController
             StopCoroutine(m_coDotDamage);
         m_coDotDamage = null;
 
-        GemController gc = Managers._Object.Spawn<GemController>(transform.position);
-        gc.GemValue = MonsterEXP;
+        int num = Random.Range(0, 1000);
+        if (num < 5)
+        {
+            MagnetController mc = Managers._Object.Spawn<MagnetController>(transform.position);
+        }
+        else if (num < 10)
+        {
+            PotionController pc = Managers._Object.Spawn<PotionController>(transform.position);
+        }
+        else if (num < 15)
+        {
+            BombController bc = Managers._Object.Spawn<BombController>(transform.position);
+        }
+        else
+        {
+            GemController gc = Managers._Object.Spawn<GemController>(transform.position);
+            gc.GemValue = MonsterEXP;
+        }
 
         Managers._Object.Despawn(this);
     }

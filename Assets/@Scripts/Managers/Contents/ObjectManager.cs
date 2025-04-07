@@ -72,7 +72,7 @@ public class ObjectManager
         }
         else if (type == typeof(PotionController))
         {
-            GameObject go = Managers._Resource.Instantiate("Potion", pooling: true);
+            GameObject go = Managers._Resource.Instantiate("Potion.prefab", pooling: true);
             PotionController pc = go.GetOrAddComponent<PotionController>();
             go.transform.position = position;
             DropItems.Add(pc);
@@ -82,7 +82,7 @@ public class ObjectManager
         }
         else if (type == typeof(BombController))
         {
-            GameObject go = Managers._Resource.Instantiate("Bomb", pooling: true);
+            GameObject go = Managers._Resource.Instantiate("Bomb.prefab", pooling: true);
             BombController bc = go.GetOrAddComponent<BombController>();
             go.transform.position = position;
             DropItems.Add(bc);
@@ -92,7 +92,7 @@ public class ObjectManager
         }
         else if (type == typeof(MagnetController))
         {
-            GameObject go = Managers._Resource.Instantiate("Magnet", pooling: true);
+            GameObject go = Managers._Resource.Instantiate("Magnet.prefab", pooling: true);
             MagnetController mc = go.GetOrAddComponent<MagnetController>();
             go.transform.position = position;
             DropItems.Add(mc);
@@ -102,7 +102,7 @@ public class ObjectManager
         }
         else if (type == typeof(EliteBoxController))
         {
-            GameObject go = Managers._Resource.Instantiate("DropBox", pooling: true);
+            GameObject go = Managers._Resource.Instantiate("DropBox.prefab", pooling: true);
             EliteBoxController bc = go.GetOrAddComponent<EliteBoxController>();
             go.transform.position = position;
             DropItems.Add(bc);

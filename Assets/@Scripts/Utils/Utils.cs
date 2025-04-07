@@ -76,4 +76,15 @@ public static class Utils
 
         return parsedColor;
     }
+
+    public static bool PercentageGacha(int prob)
+    {
+        bool result = false;
+
+        int num = Random.Range(0, 1000);
+        if (num < prob)
+            result = true;
+
+        return result;
+    }
 }
