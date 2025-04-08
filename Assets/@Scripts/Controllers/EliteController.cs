@@ -12,4 +12,11 @@ public class EliteController : MonsterController
 
         return true;
     }
+
+    public override void OnDead()
+    {
+        base.OnDead();
+
+        Managers._Game.Gold += 100;
+    }
 }

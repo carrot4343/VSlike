@@ -176,15 +176,15 @@ public class MonsterController : CreatureController
         m_coDotDamage = null;
 
         int num = Random.Range(0, 1000);
-        if (num < 5)
+        if (num < 4)
         {
             MagnetController mc = Managers._Object.Spawn<MagnetController>(transform.position);
         }
-        else if (num < 10)
+        else if (num < 7)
         {
             PotionController pc = Managers._Object.Spawn<PotionController>(transform.position);
         }
-        else if (num < 15)
+        else if (num < 10)
         {
             BombController bc = Managers._Object.Spawn<BombController>(transform.position);
         }

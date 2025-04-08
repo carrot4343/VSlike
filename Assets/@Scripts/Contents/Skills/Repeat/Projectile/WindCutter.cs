@@ -29,7 +29,7 @@ public class WindCutter : RepeatSkill
         {
             Vector3 spawnPos = Managers._Game.Player.FireSocket;
             Vector3 dir = Managers._Game.Player.ShootDir;
-            ProjectileController pc = GenerateProjectile(Define.WINDCUTTER_ID, Managers._Game.Player, spawnPos, dir, Vector3.zero, ProjectileController.projectileType.persistent);
+            ProjectileController pc = GenerateProjectile(TemplateID, Managers._Game.Player, spawnPos, dir, Vector3.zero, ProjectileController.projectileType.persistent);
             pc.Speed = 20.0f;
             yield return waitDuration;
             pc.Speed = 0.0f;

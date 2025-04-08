@@ -109,6 +109,7 @@ public class GameScene : BaseScene
         {
             Managers._Game.PlayerLevel++;
         }
+
     }
 
     public override void Clear()
