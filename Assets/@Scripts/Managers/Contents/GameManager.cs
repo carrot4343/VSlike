@@ -160,6 +160,11 @@ public class GameManager
         get { return m_gameData.ContinueInfo.WaveIndex; }
         set { m_gameData.ContinueInfo.WaveIndex = value; }
     }
+
+    public float PlayTime
+    {
+        get;set;
+    }
     public void SetNextStage()
     {
         CurrentStageData = Managers._Data.StageDic[CurrentStageData.stageIndex + 1];

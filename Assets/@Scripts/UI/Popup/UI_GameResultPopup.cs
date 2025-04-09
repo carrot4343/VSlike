@@ -71,6 +71,9 @@ public class UI_GameResultPopup : UI_Popup
         if (m_init == false)
             return;
 
+        int minutes = Mathf.FloorToInt(Managers._Game.PlayTime / 60f);
+        int seconds = Mathf.FloorToInt(Managers._Game.PlayTime % 60f);
+        string timerText = $"{minutes:00}:{seconds:00}";
         GetText((int)Texts.ResultSurvivalTimeValueText).text = "15:00"; //남은 시간 데이터를 로드 할 수 있도록 
         GetText((int)Texts.ResultGoldValueText).text = Managers._Game.Gold.ToString();
         GetText((int)Texts.ResultKillValueText).text = Managers._Game.KillCount.ToString();

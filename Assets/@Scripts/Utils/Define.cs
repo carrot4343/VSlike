@@ -104,6 +104,7 @@ public class Define
     public const int MAX_STAMINA = 100;
     public const int GAME_PER_STAMINA = 3;
 
+    public const float MAX_PLAY_TIME = 900f;
 
     public static readonly int UI_GAMESCENE_SORT_CLOSED = 321;
     public static readonly int SOUL_SORT = 105;

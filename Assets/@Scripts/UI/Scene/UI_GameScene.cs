@@ -42,6 +42,7 @@ public class UI_GameScene : UI_Scene
         if (base.Init() == false)
             return false;
 
+        timeLeft = Define.MAX_PLAY_TIME;
         BindObject(typeof(GameObjects));
         BindText(typeof(Texts));
         BindButton(typeof(Buttons));
@@ -64,7 +65,6 @@ public class UI_GameScene : UI_Scene
 
         GetText((int)Texts.WaveText).text = "Wave";
         GetText((int)Texts.WaveValueText).text = "1"; //현재 몇 웨이브인지
-        GetText((int)Texts.TimeLimitValueText).text = "15:00";
         GetText((int)Texts.GoldValueText).text = Managers._Game.Gold.ToString();
         GetText((int)Texts.KillValueText).text = Managers._Game.KillCount.ToString();
         GetText((int)Texts.CharacterLevelValueText).text = Managers._Game.PlayerLevel.ToString();
@@ -72,17 +72,34 @@ public class UI_GameScene : UI_Scene
         GetObject((int)GameObjects.ExpSliderObject).GetComponent<Slider>().value = 0;
     }
 
+    bool temp = true;
+    float timeLeft;
+    int minutes, seconds;
     void RefreshUI()
     {
         if (m_init == false)
             return;
 
-        GetText((int)Texts.TimeLimitValueText).text = "15:00";
         GetText((int)Texts.GoldValueText).text = Managers._Game.Gold.ToString();
         GetText((int)Texts.KillValueText).text = Managers._Game.KillCount.ToString();
         GetText((int)Texts.CharacterLevelValueText).text = Managers._Game.PlayerLevel.ToString();
+        GetText((int)Texts.WaveValueText).text = (Managers._Game.CurrentWaveIndex + 1).ToString();
 
         GetObject((int)GameObjects.ExpSliderObject).GetComponent<Slider>().value = m_expRatio;
+
+        timeLeft = Mathf.Max(0f, timeLeft - Time.deltaTime);
+        minutes = Mathf.FloorToInt(timeLeft / 60f);
+        seconds = Mathf.FloorToInt(timeLeft % 60f);
+        string timerText = $"{minutes:00}:{seconds:00}";
+        GetText((int)Texts.TimeLimitValueText).text = timerText;
+
+        if (timeLeft <= 0f && temp)
+        {
+            Managers._Game.PlayTime = Define.MAX_PLAY_TIME - timeLeft;
+            temp = false;
+            UI_GameoverPopup gameoverUI = Managers._UI.ShowPopupUI<UI_GameoverPopup>();
+            gameoverUI.SetInfo();
+        }
     }
 
     void OnClickPauseButton()
