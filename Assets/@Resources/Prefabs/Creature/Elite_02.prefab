@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1901976980863989707}
   - component: {fileID: 7253658881486119188}
   - component: {fileID: 860083347170602982}
+  - component: {fileID: 2275796293103053429}
   m_Layer: 0
   m_Name: Elite_02
   m_TagString: Untagged
@@ -110,7 +111,7 @@ Rigidbody2D:
   m_Constraints: 4
 --- !u!95 &7253658881486119188
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -127,7 +128,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!61 &860083347170602982
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -154,3 +155,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.68}
   m_EdgeRadius: 0
+--- !u!114 &2275796293103053429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6642814982323586115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e851a18e8b6cd4740bbf3ced0fe5bb54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
