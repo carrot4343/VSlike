@@ -252,6 +252,26 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
+  - m_GUID: b193535f3380fdf4d91cc46e457511a8
+    m_Address: Elite_10.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: e9e67e18fc872454d8a5639807fe5238
+    m_Address: Elite_09.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: fce7f51eae4df5046b0d813753eec985
+    m_Address: Elite_08.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: df7e15f3a6ce5694ca1ae41f938359a2
+    m_Address: Elite_07.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 68254714d3771cc4296e19cbb58661d1, type: 2}
   m_SchemaSet:

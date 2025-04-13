@@ -280,13 +280,6 @@ public class GameManager
             //m_gameData.ContinueInfo.SavedBattleSkill = Player.Skills?.Skills;
             //m_gameData.ContinueInfo.SavedSupportSkill = Player.Skills?.SupportSkills;
             //player skill이 null이 되는듯? 일단 주석 처리하고 추후 처리
-            //Save기능에 대한 고찰...
-            //1. 필요한가? 엄연히 '로그라이크'의 하위 장르인데 굳이 필요한가?
-            //2. 필요하다면 이유는 플탐이 긴 경우. 한판에 30분 40분 걸린다면 필요하겠지
-            //3. 근데 한판에 10분 20분 하는 게임을 세이브가 필요한가? 있음 좋긴 함 근데.
-            //4. 근데 완전한 저장을 하려면 너무 많은 리소스가 투입된다.
-            //5. 현재 투사체의 위치와 벡터, 적과 플레이어 위치, 스킬 리스트, 어떤 스킬을 수행중이었는가, 마릿수, 맵에 있는 기타 등등 오브젝트
-            //6. 이 모든 걸 저장해야함. 할만할지도?? 다시 생각해보니 아닌듯함.
         }
         string jsonStr = JsonConvert.SerializeObject(m_gameData);
         File.WriteAllText(m_path, jsonStr);
