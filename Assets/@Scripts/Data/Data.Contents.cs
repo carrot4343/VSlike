@@ -201,4 +201,31 @@ namespace Data
         }
     }
     #endregion
+
+    #region MaterialtData
+    [Serializable]
+    public class MaterialData
+    {
+        public int DataId;
+        public Define.MaterialType MaterialType;
+        public Define.MaterialGrade MaterialGrade;
+        public string NameTextID;
+        public string DescriptionTextID;
+        public string SpriteName;
+
+    }
+
+    [Serializable]
+    public class MaterialDataLoader : ILoader<int, MaterialData>
+    {
+        public List<MaterialData> Materials = new List<MaterialData>();
+        public Dictionary<int, MaterialData> MakeDict()
+        {
+            Dictionary<int, MaterialData> dict = new Dictionary<int, MaterialData>();
+            foreach (MaterialData mat in Materials)
+                dict.Add(mat.DataId, mat);
+            return dict;
+        }
+    }
+    #endregion
 }
