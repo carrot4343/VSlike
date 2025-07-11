@@ -120,6 +120,54 @@ public class Define
         Legendary3,
     }
 
+    public enum GachaRarity
+    {
+        Normal,
+        Special,
+    }
+
+    public enum EquipmentType
+    {
+        Weapon,
+        Gloves,
+        Ring,
+        Belt,
+        Armor,
+        Boots,
+    }
+
+    public enum EquipmentGrade
+    {
+        None,
+        Common,
+        Uncommon,
+        Rare,
+        Epic,
+        Epic1,
+        Epic2,
+        Legendary,
+        Legendary1,
+        Legendary2,
+        Legendary3,
+        Myth,
+        Myth1,
+        Myth2,
+        Myth3
+    }
+
+    public enum EquipmentSortType
+    {
+        Level,
+        Grade,
+    }
+
+    public enum MergeEquipmentType
+    {
+        None,
+        ItemCode,
+        Grade,
+    }
+
     public static class EquipmentUIColors
     {
         #region 장비 이름 색상

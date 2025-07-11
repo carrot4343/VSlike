@@ -228,4 +228,75 @@ namespace Data
         }
     }
     #endregion
+
+    #region EquipmentData
+    [Serializable]
+    public class EquipmentData
+    {
+        public string DataId;
+        public Define.GachaRarity GachaRarity;
+        public Define.EquipmentType EquipmentType;
+        public Define.EquipmentGrade EquipmentGrade;
+        public string NameTextID;
+        public string DescriptionTextID;
+        public string SpriteName;
+        public string HpRegen;
+        public int MaxHpBonus;
+        public int MaxHpBonusPerUpgrade;
+        public int AtkDmgBonus;
+        public int AtkDmgBonusPerUpgrade;
+        public int MaxLevel;
+        public int UncommonGradeSkill;
+        public int RareGradeSkill;
+        public int EpicGradeSkill;
+        public int LegendaryGradeSkill;
+        public int BasicSkill;
+        public Define.MergeEquipmentType MergeEquipmentType1;
+        public string MergeEquipment1;
+        public Define.MergeEquipmentType MergeEquipmentType2;
+        public string MergeEquipment2;
+        public string MergedItemCode;
+        public int LevelupMaterialID;
+        public string DowngradeEquipmentCode;
+        public string DowngradeMaterialCode;
+        public int DowngradeMaterialCount;
+    }
+
+    [Serializable]
+    public class EquipmentDataLoader : ILoader<string, EquipmentData>
+    {
+        public List<EquipmentData> Equipments = new List<EquipmentData>();
+        public Dictionary<string, EquipmentData> MakeDict()
+        {
+            Dictionary<string, EquipmentData> dict = new Dictionary<string, EquipmentData>();
+            foreach (EquipmentData equip in Equipments)
+                dict.Add(equip.DataId, equip);
+            return dict;
+        }
+    }
+    #endregion
+
+    #region LevelData
+    [Serializable]
+    public class EquipmentLevelData
+    {
+        public int Level;
+        public int UpgradeCost;
+        public int UpgradeRequiredItems;
+    }
+
+    [Serializable]
+    public class EquipmentLevelDataLoader : ILoader<int, EquipmentLevelData>
+    {
+        public List<EquipmentLevelData> levels = new List<EquipmentLevelData>();
+        public Dictionary<int, EquipmentLevelData> MakeDict()
+        {
+            Dictionary<int, EquipmentLevelData> dict = new Dictionary<int, EquipmentLevelData>();
+
+            foreach (EquipmentLevelData levelData in levels)
+                dict.Add(levelData.Level, levelData);
+            return dict;
+        }
+    }
+    #endregion
 }
