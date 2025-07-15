@@ -63,10 +63,26 @@ public class UI_LobbyScene : UI_Scene
 
     UI_BattlePopup m_battlePopupUI;
     bool m_isSelectedBattle = false;
+    UI_MergePopup m_mergePopupUI;
+    public UI_MergePopup MergePopupUI { get { return m_mergePopupUI; } }
     UI_EquipmentPopup m_equipmentPopupUI;
     public UI_EquipmentPopup EquipmentPopupUI { get { return m_equipmentPopupUI; } }
     UI_ShopPopup m_shopPopupUI;
-    
+    bool m_isSelectedShop = false;
+    UI_ChallengePopup m_challengePopupUI;
+    //UI_MergePopup m_mergePopupUI;
+    //public UI_MergePopup MergePopupUI { get { return m_mergePopupUI; } }
+    UI_EquipmentInfoPopup m_equipmentInfoPopupUI;
+    public UI_EquipmentInfoPopup EquipmentInfoPopupUI { get { return m_equipmentInfoPopupUI; } }
+    UI_EquipmentResetPopup m_equipmentResetPopupUI;
+    public UI_EquipmentResetPopup EquipmentResetPopupUI { get { return m_equipmentResetPopupUI; } }
+    UI_RewardPopup m_rewardPopupUI;
+    public UI_RewardPopup RewardPopupUI { get { return m_rewardPopupUI; } }
+    //UI_MergeResultPopup m_mergeResultPopupUI;
+    //public UI_MergeResultPopup MergeResultPopupUI { get { return m_mergeResultPopupUI; } }
+
+
+
     public void OnDestroy()
     {
         if (Managers._Game != null)

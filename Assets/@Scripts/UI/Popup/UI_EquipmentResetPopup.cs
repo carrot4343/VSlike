@@ -7,7 +7,7 @@ using static Define;
 
 public class UI_EquipmentResetPopup : UI_Popup
 {
-    /*
+    
     #region UI 기능 리스트
     // 정보 갱신
     // TargetEquipment ( 초기화 할 장비 )
@@ -531,5 +531,5 @@ public class UI_EquipmentResetPopup : UI_Popup
 
         GetObject((int)GameObjects.DowngradeGroupObject).gameObject.SetActive(true);
         GetToggle((int)Toggles.DowngradeTapToggle).isOn = true;
-    }*/
+    }
 }

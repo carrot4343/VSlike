@@ -6,6 +6,7 @@ using static Utils;
 
 public class Define
 {
+    public static readonly Dictionary<Type, Array> _enumDict = new Dictionary<Type, Array>();
     public enum UIEvent
     {
         Click,
@@ -74,7 +75,13 @@ public class Define
         DropBox,
         Bomb
     }
-
+    //장비아이템에서 인벤토리에 있는지 케릭터 장비 에 있는지
+    public enum UI_ItemParentType
+    {
+        CharacterEquipmentGroup,
+        EquipInventoryGroup,
+        GachaResultPopup,
+    }
     public enum MaterialType
     {
         Gold,
@@ -194,12 +201,27 @@ public class Define
     }
 
 
-    public const int PLAYER_DATA_ID = 1;
+    public const int 
+        _DATA_ID = 1;
     public const string EXP_GEM_PREFAB = "ExpGem.prefab";
-    public const int GOBLIN_ID = 1;
-    public const int SNAKE_ID = 2;
-    public const int BOSS_ID = 3;
-    public const int ElITE_ID = 5;
+    public static string GOLD_SPRITE_NAME = "Gold_Icon";
+    public static int ID_GOLD = 50001;
+    public static int ID_DIA = 50002;
+    public static int ID_STAMINA = 50003;
+    public static int ID_BRONZE_KEY = 50201;
+    public static int ID_SILVER_KEY = 50202;
+    public static int ID_GOLD_KEY = 50203;
+    public static int ID_RANDOM_SCROLL = 50301;
+    public static int ID_POTION = 60001;
+    public static int ID_MAGNET = 60004;
+    public static int ID_BOMB = 60008;
+
+    public static int ID_WEAPON_SCROLL = 50101;
+    public static int ID_GLOVES_SCROLL = 50102;
+    public static int ID_RING_SCROLL = 50103;
+    public static int ID_BELT_SCROLL = 50104;
+    public static int ID_ARMOR_SCROLL = 50105;
+    public static int ID_BOOTS_SCROLL = 50106;
 
     public const int EGO_SWORD_ID = 100;
     public const int FIREBALL_ID = 110;
@@ -235,4 +257,6 @@ public class Define
 
     public static float POTION_COLLECT_DISTANCE = 2.6F;
     public static float BOX_COLLECT_DISTANCE = 2.6F;
+
+
 }

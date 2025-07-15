@@ -87,4 +87,18 @@ public static class Utils
 
         return result;
     }
+
+    //Enum값중 랜덤값 반환
+    public static T GetRandomEnumValue<T>() where T : struct, Enum
+    {
+        Type type = typeof(T);
+
+        if (!_enumDict.ContainsKey(type))
+            _enumDict[type] = Enum.GetValues(type);
+
+        Array values = _enumDict[type];
+
+        int index = UnityEngine.Random.Range(0, values.Length);
+        return (T)values.GetValue(index);
+    }
 }
