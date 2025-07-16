@@ -14,6 +14,7 @@ public class UIManager
     UI_Base m_sceneUI;
 
     Stack<UI_Popup> m_uiStack = new Stack<UI_Popup>();
+    Stack<UI_Toast> m_toastStack = new Stack<UI_Toast>();
     public UI_Base SceneUI { get { return m_sceneUI; } }
 
     public event Action<int> OnTimeScaleChanged;
@@ -129,6 +130,32 @@ public class UIManager
         RefreshTimeScale();
 
         return popup;
+    }
+    public UI_Toast ShowToast(string msg)
+    {
+        string name = typeof(UI_Toast).Name;
+        GameObject go = Managers._Resource.Instantiate($"{name}", pooling: true);
+        UI_Toast popup = Utils.GetOrAddComponent<UI_Toast>(go);
+        popup.SetInfo(msg);
+        m_toastStack.Push(popup);
+        go.transform.SetParent(Root.transform);
+        CoroutineManager.StartCoroutine(CoCloseToastUI());
+        return popup;
+    }
+    IEnumerator CoCloseToastUI()
+    {
+        yield return new WaitForSeconds(1f);
+        CloseToastUI();
+    }
+    public void CloseToastUI()
+    {
+        if (m_toastStack.Count == 0)
+            return;
+
+        UI_Toast toast = m_toastStack.Pop();
+        Managers._Resource.Destroy(toast.gameObject);
+        toast = null;
+        m_toastOrder--;
     }
 
     public void ClosePopupUI(UI_Popup popup)
