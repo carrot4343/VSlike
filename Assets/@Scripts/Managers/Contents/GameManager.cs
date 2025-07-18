@@ -64,7 +64,7 @@ public class ContinueData
     public int SkillRefreshCount = 3;
     public float SoulCount;
 
-    //public List<SupportSkillData> SoulShopList = new List<SupportSkillData>();
+    public List<SupportSkillData> SoulShopList = new List<SupportSkillData>();
     //public List<SupportSkillData> SavedSupportSkill = new List<SupportSkillData>();
     public List<SkillBase> SavedBattleSkill = new List<SkillBase>();
 
@@ -119,6 +119,16 @@ public class GameManager
             m_gameData.OwnedEquipments = value;
             //갱신이 빈번하게 발생하여 렉 발생, Sorting시 무한루프 발생으로 인하여 주석처리
             //EquipInfoChanged?.Invoke();
+        }
+    }
+
+    public List<SupportSkillData> SoulShopList
+    {
+        get { return m_gameData.ContinueInfo.SoulShopList; }
+        set
+        {
+            m_gameData.ContinueInfo.SoulShopList = value;
+            SaveGame();
         }
     }
     public int Dia
