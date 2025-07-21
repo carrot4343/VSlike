@@ -107,6 +107,46 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
+  - m_GUID: 438b8f0830b5bfc45865d82f6cf7836f
+    m_Address: UI_PausePopup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: aa6e62f9ee89a7547bafcb44c79b75c0
+    m_Address: UI_EquipmentResetPopup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: a5c87303402c9f84f968437f95bdce6d
+    m_Address: UI_EquipmentPopup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 2f89d00a5e7684247878a4f8ddfb9ee8
+    m_Address: UI_EquipmentInfoPopup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 7dee9c03c24fd114dba0fbbd966e45e2
+    m_Address: UI_ToolTipItem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 73c74bd14105a8c4b898371cce10e0eb
+    m_Address: UI_MergeEquipItem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: d70cfb68c693d5b4c945321314dcbe5f
+    m_Address: UI_MaterialItem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: b3334937219623f4e893cab79c429060
+    m_Address: UI_EquipItem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 68254714d3771cc4296e19cbb58661d1, type: 2}
   m_SchemaSet:

@@ -31,11 +31,11 @@ public class DataManager
         MonsterDic = LoadXml<Data.MonsterDataLoader, int, Data.MonsterData>("MonsterData.xml").MakeDict();
         //Json
         StageDic = LoadJson<Data.StageDataLoader, int, Data.StageData>("StageData.json").MakeDict();
-        SupportSkillDic = LoadJson<Data.SupportSkillDataLoader, int, Data.SupportSkillData>("SupportSkillData").MakeDict();
+        SupportSkillDic = LoadJson<Data.SupportSkillDataLoader, int, Data.SupportSkillData>("SupportSkillData.json").MakeDict();
         DropItemDataDic = LoadJson<Data.DropItemDataLoader, int, Data.DropItemData>("DropItemData.json").MakeDict();
-        MaterialDic = LoadJson<Data.MaterialDataLoader, int, Data.MaterialData>("MaterialData").MakeDict();
-        EquipDataDic = LoadJson<Data.EquipmentDataLoader, string, Data.EquipmentData>("EquipmentData").MakeDict();
-        EquipLevelDataDic = LoadJson<Data.EquipmentLevelDataLoader, int, Data.EquipmentLevelData>("EquipmentLevelData").MakeDict();
+        MaterialDic = LoadJson<Data.MaterialDataLoader, int, Data.MaterialData>("MaterialData.json").MakeDict();
+        EquipDataDic = LoadJson<Data.EquipmentDataLoader, string, Data.EquipmentData>("EquipmentData.json").MakeDict();
+        EquipLevelDataDic = LoadJson<Data.EquipmentLevelDataLoader, int, Data.EquipmentLevelData>("EquipmentLevelData.json").MakeDict();
     }
 
     Loader LoadXml<Loader, Key, Item>(string name) where Loader : ILoader<Key, Item>

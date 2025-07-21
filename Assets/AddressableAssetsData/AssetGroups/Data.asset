@@ -47,6 +47,36 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
+  - m_GUID: fee162826cf7d2145a59280f05fb26ba
+    m_Address: SupportSkillData.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 8fb3f6af32dc16f4e95b80942cbad739
+    m_Address: StageData.xml
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 5a58fd5ec1fe4d542a8fa99322aba71a
+    m_Address: MaterialData.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: fd94baa25784b9d40bc35b2346a9a9c8
+    m_Address: GachaTableData.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 9daacea83a096d9449414fe91088dd84
+    m_Address: EquipmentLevelData.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 7f720a3275e7d2f49b670415ca7ef77b
+    m_Address: EquipmentData.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 68254714d3771cc4296e19cbb58661d1, type: 2}
   m_SchemaSet:
