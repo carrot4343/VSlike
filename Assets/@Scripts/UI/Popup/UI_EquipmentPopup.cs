@@ -91,11 +91,6 @@ public class UI_EquipmentPopup : UI_Popup
     string sortText_Level = "정렬 : 레벨";
     string sortText_Grade = "정렬 : 등급";
 
-    private void Awake()
-    {
-        Init();
-    }
-
     public override bool Init()
     {
         if (base.Init() == false)

@@ -147,6 +147,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
+  - m_GUID: 5c5515883eb246246a75f1be7d2db756
+    m_Address: UI_MergeResultPopup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 3f818e9ed5ac12b4cb7f67da8eaf7b04
+    m_Address: UI_MergePopup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 554cc1ae797654246ab45c9a2336dab0
+    m_Address: UI_MergeAllResultPopup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 68254714d3771cc4296e19cbb58661d1, type: 2}
   m_SchemaSet:
