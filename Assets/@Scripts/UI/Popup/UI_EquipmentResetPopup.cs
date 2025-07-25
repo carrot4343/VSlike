@@ -467,7 +467,7 @@ public class UI_EquipmentResetPopup : UI_Popup
         {
             Managers._Game.AddEquipment(_equipment.EquipmentData.DowngradeMaterialCode);
         }
-        //Managers.Game.AddMaterialItem(_equipment.EquipmentData.DowngradeMaterialCode, _equipment.EquipmentData.DowngradeMaterialCount);
+        //Managers._Game.AddMaterialItem(_equipment.EquipmentData.DowngradeMaterialCode, _equipment.EquipmentData.DowngradeMaterialCount);
 
         // 선택된 장비를 삭제한다.
         Managers._Game.OwnedEquipments.Remove(_equipment);
