@@ -398,4 +398,15 @@ namespace Data
         }
     }
     #endregion
+
+    #region GachaRateData
+    public class GachaRateData
+    {
+        public string EquipmentID;
+        public float GachaRate;
+        public Define.EquipmentGrade EquipGrade;
+
+    }
+
+    #endregion
 }

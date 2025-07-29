@@ -95,7 +95,7 @@ public class UI_GachaEquipmentInfoPopup : UI_Popup
         _equipment = equipment;
         //Refresh();
     }
-    /*
+    
     void Refresh()
     {
         #region 정보갱신
@@ -237,7 +237,7 @@ public class UI_GachaEquipmentInfoPopup : UI_Popup
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetObject((int)GameObjects.EquipmentGradeSkillScrollContentObject).GetComponent<RectTransform>());
         #endregion
     }
-    */
+    
     void OnClickBackgroundButton() // 배경 버튼 (팝업 닫기)
     {
         //Managers._Sound.PlayPopupClose();

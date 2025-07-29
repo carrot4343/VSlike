@@ -57,9 +57,9 @@ public class UI_ToolTipItem : UI_Base
     }
 
     // 서포트 스킬 툴팁
-    /*public void SetInfo(Data.SupportSkillData skillData, RectTransform targetPos, RectTransform parentsCanvas)
+    public void SetInfo(Data.SupportSkillData skillData, RectTransform targetPos, RectTransform parentsCanvas)
     {
-        GetImage((int)Images.TargetImage).sprite = Managers.Resource.Load<Sprite>(skillData.IconLabel);
+        GetImage((int)Images.TargetImage).sprite = Managers._Resource.Load<Sprite>(skillData.IconLabel);
         GetText((int)Texts.TargetNameText).gameObject.SetActive(true);
         GetText((int)Texts.TargetNameText).text = skillData.Name;
         GetText((int)Texts.TargetDescriptionText).gameObject.SetActive(true);
@@ -89,7 +89,7 @@ public class UI_ToolTipItem : UI_Base
         ToolTipPosSet(targetPos, parentsCanvas); // 위치 설정
 
         Refresh();
-    }*/
+    }
 
     // 재료 툴팁
     public void SetInfo(Data.MaterialData materialData, RectTransform targetPos, RectTransform parentsCanvas)
