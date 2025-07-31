@@ -101,6 +101,7 @@ public class UI_EquipmentPopup : UI_Popup
         BindText(typeof(Texts));
         BindImage(typeof(Images));
 
+
         GetObject((int)GameObjects.CharacterRedDotObject).gameObject.SetActive(false);
         GetObject((int)GameObjects.MergeButtonRedDotObject).gameObject.SetActive(false);
         GetButton((int)Buttons.CharacterButton).gameObject.BindEvent(OnClickCharacterButton);
@@ -265,7 +266,7 @@ public class UI_EquipmentPopup : UI_Popup
             if (item.IsEquipped)
                 continue;
 
-            UI_EquipItem popup = Managers._Resource.Instantiate("UI_EquipItem", GetObject((int)GameObjects.EquipInventoryObject).transform, true).GetOrAddComponent<UI_EquipItem>();
+            UI_EquipItem popup = Managers._Resource.Instantiate("UI_EquipItem.prefab", GetObject((int)GameObjects.EquipInventoryObject).transform, true).GetOrAddComponent<UI_EquipItem>();
 
             popup.transform.SetParent(GetObject((int)GameObjects.EquipInventoryObject).transform);
             popup.SetInfo(item, Define.UI_ItemParentType.EquipInventoryGroup, ScrollRect);

@@ -1,17 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Define;
 
-public class UI_MergeAllResultPopup : UI_Popup
+public class UI_InventoryPopup : UI_Popup
 {
+    #region UI 기능 리스트
+    // 정보 갱신
+    //InventoryScrollContentObject : MaterialInfoButton 아이템을 넣는 부모 개체
+    // 인벤토리 탭은 추후 추가 예정
+
+    // 로컬라이징
+    // BackgroundText
+    // InventoryPopupTitleText
+
+    #endregion
+
     #region Enum
     enum GameObjects
     {
-        MergeAlIScrollContentObject,
         ContentObject,
+        InventoryScrollContentObject,
     }
-
     enum Buttons
     {
         BackgroundButton,
@@ -19,18 +28,15 @@ public class UI_MergeAllResultPopup : UI_Popup
 
     enum Texts
     {
-        MergeAllPopupTitleText,
-        BackgroundText
+        BackgroundText,
+        InventoryPopupTitleText,
     }
     #endregion
-
-    List<Equipment> _items = new List<Equipment>();
 
     private void Awake()
     {
         Init();
     }
-
     private void OnEnable()
     {
         PopupOpenAnimation(GetObject((int)GameObjects.ContentObject));
@@ -45,38 +51,34 @@ public class UI_MergeAllResultPopup : UI_Popup
         BindButton(typeof(Buttons));
         BindText(typeof(Texts));
 
+        // 테스트용
+#if UNITY_EDITOR
         GetButton((int)Buttons.BackgroundButton).gameObject.BindEvent(OnClickBackgroundButton);
 
-        #endregion
-        Refresh();
 
+        
+        //TextBindTest();
+#endif
+        #endregion
+
+        Refresh();
         return true;
     }
-    public void SetInfo(List<Equipment> items)
+
+    public void SetInfo()
     {
-        _items = items;
 
         Refresh();
     }
 
     void Refresh()
     {
-        GameObject container = GetObject((int)GameObjects.MergeAlIScrollContentObject);
-        container.DestroyChilds();
-
-        foreach (Equipment item in _items)
-        {
-            UI_EquipItem equipItem = Managers._Resource.Instantiate("UI_EquipItem.prefab", pooling: true).GetOrAddComponent<UI_EquipItem>();
-            equipItem.transform.SetParent(container.transform);
-            equipItem.SetInfo(item, UI_ItemParentType.EquipInventoryGroup);
-        }
 
     }
 
-
-    void OnClickBackgroundButton() // 화면 터치하여 닫기
+    void OnClickBackgroundButton() // 배경 닫기 버튼
     {
         Managers._UI.ClosePopupUI(this);
-        //gameObject.SetActive(false);
+
     }
 }

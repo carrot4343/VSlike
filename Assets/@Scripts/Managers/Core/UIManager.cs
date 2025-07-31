@@ -71,7 +71,7 @@ public class UIManager
         if (string.IsNullOrEmpty(name))
             name = typeof(T).Name;
 
-        GameObject go = Managers._Resource.Instantiate($"{name}");
+        GameObject go = Managers._Resource.Instantiate($"{name}.prefab");
         if (parent != null)
             go.transform.SetParent(parent);
 
@@ -134,7 +134,7 @@ public class UIManager
     public UI_Toast ShowToast(string msg)
     {
         string name = typeof(UI_Toast).Name;
-        GameObject go = Managers._Resource.Instantiate($"{name}", pooling: true);
+        GameObject go = Managers._Resource.Instantiate($"{name}.prefab", pooling: true);
         UI_Toast popup = Utils.GetOrAddComponent<UI_Toast>(go);
         popup.SetInfo(msg);
         m_toastStack.Push(popup);

@@ -132,6 +132,13 @@ public class Define
         Normal,
         Special,
     }
+    public enum GachaType
+    {
+        None,
+        CommonGacha,
+        AdvancedGacha,
+        PickupGacha,
+    }
 
     public enum EquipmentType
     {

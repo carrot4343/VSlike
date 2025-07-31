@@ -399,6 +399,28 @@ namespace Data
     }
     #endregion
 
+    #region GachaData
+    public class GachaTableData
+    {
+        public Define.GachaType Type;
+        public List<GachaRateData> GachaRateTable = new List<GachaRateData>();
+    }
+
+
+    [Serializable]
+    public class GachaDataLoader : ILoader<Define.GachaType, GachaTableData>
+    {
+        public List<GachaTableData> GachaTable = new List<GachaTableData>();
+        public Dictionary<Define.GachaType, GachaTableData> MakeDict()
+        {
+            Dictionary<Define.GachaType, GachaTableData> dict = new Dictionary<Define.GachaType, GachaTableData>();
+            foreach (GachaTableData gacha in GachaTable)
+                dict.Add(gacha.Type, gacha);
+            return dict;
+        }
+    }
+    #endregion
+
     #region GachaRateData
     public class GachaRateData
     {

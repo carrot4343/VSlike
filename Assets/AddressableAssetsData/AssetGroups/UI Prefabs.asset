@@ -182,6 +182,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload
+  - m_GUID: aab35252266fa2944be3715a8ef4cb94
+    m_Address: UI_GachaResultsPopup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: 7055ac6a233509846b82244b2f8ad975
+    m_Address: UI_GachaListPopup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+  - m_GUID: c4c28b880563818428bb5015cea74879
+    m_Address: UI_BackToHomePopup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 68254714d3771cc4296e19cbb58661d1, type: 2}
   m_SchemaSet:
