@@ -77,9 +77,14 @@ public class UI_RewardPopup : UI_Popup
 
         GetButton((int)Buttons.BackgroundButton).gameObject.BindEvent(OnClickBackgroundButton);
         #endregion
-        Refresh();
         //Managers._Sound.Play(Define.Sound.Effect, "PopupOpen_Reward");
 
+        return true;
+    }
+    public override bool InitLate()
+    {
+        base.InitLate();
+        Refresh();
         return true;
     }
 

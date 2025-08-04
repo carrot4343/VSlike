@@ -421,12 +421,11 @@ public class GameManager
         int AtkBonus = 0;
         var (equipHpBonus, equipAtkBonus) = GetEquipmentBonus();
 
-        PlayerController pl = Player;
-
-        hpBonus = (equipHpBonus);
-        AtkBonus = (equipAtkBonus);
-
-        return (hpBonus, AtkBonus);
+        PlayerController pl = new PlayerController();
+        int totalHp = equipHpBonus + pl.MaxHP;
+        int totalAtk = equipAtkBonus + pl.PlayerAtk;
+        
+        return (pl.MaxHP + hpBonus, pl.PlayerAtk + AtkBonus);
     }
 
     public (int hp, int atk) GetEquipmentBonus()

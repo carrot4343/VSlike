@@ -130,10 +130,14 @@ public class UI_EquipmentPopup : UI_Popup
 #endif
         #endregion
 
+        return true;
+    }
+    public override bool InitLate()
+    {
+        base.InitLate();
         Refresh();
         return true;
     }
-
     public void SetInfo()
     {
         Refresh();
@@ -203,8 +207,8 @@ public class UI_EquipmentPopup : UI_Popup
 
         // 공격력,HP 설정
         var (hp, attack) = Managers._Game.GetPlayerStat();
-        GetText((int)Texts.AttackValueText).text = (Managers._Game.Player.PlayerAtk + attack).ToString();
-        GetText((int)Texts.HealthValueText).text = (Managers._Game.Player.MaxHP + hp).ToString();
+        GetText((int)Texts.AttackValueText).text = attack.ToString();
+        GetText((int)Texts.HealthValueText).text = hp.ToString();
 
         #endregion
 
